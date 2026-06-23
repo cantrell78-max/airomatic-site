@@ -1,0 +1,119 @@
+---
+const nav = [
+  { href: "/", label: "Home" },
+  { href: "/live/", label: "Live" },
+  { href: "/blog/", label: "Blog" },
+  { href: "/about/", label: "About" },
+  { href: "/contact/", label: "Contact" },
+];
+
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path.startsWith(href);
+
+const wordmarkSrc = "/images/brand/wordmark.svg";
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="/" class="logo">
+      <img
+        src={wordmarkSrc}
+        alt="airomatic.ai"
+        width={420}
+        height={48}
+        class="logo__wordmark"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </a>
+    <nav class="nav" aria-label="Main">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={["nav__link", { "nav__link--active": isActive(item.href) }]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: var(--header-h);
+    background: rgba(6, 7, 11, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: 1rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 1;
+    min-width: 0;
+    color: var(--text);
+  }
+
+  .logo:hover {
+    color: var(--text);
+    opacity: 0.92;
+  }
+
+  .logo__wordmark {
+    display: block;
+    width: auto;
+    height: calc(var(--header-h) - 1.25rem);
+    max-width: min(100%, 14rem);
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.25rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .nav__link {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+
+  .nav__link:hover,
+  .nav__link--active {
+    color: var(--accent);
+  }
+
+  @media (max-width: 640px) {
+    .nav {
+      gap: 0.75rem;
+    }
+
+    .nav__link {
+      font-size: 0.75rem;
+    }
+
+    .logo__wordmark {
+      height: calc(var(--header-h) - 1.5rem);
+      max-width: min(100%, 10rem);
+    }
+  }
+</style>

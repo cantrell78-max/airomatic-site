@@ -1,0 +1,110 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { site } from "../config/site";
+
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout title="Home">
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="eyebrow mono">AI startup · Built in public</p>
+      <h1>Intelligence, engineered live.</h1>
+      <p class="lead">
+        {site.name} builds practical AI tools and ships them in the open — including this site, coded live on YouTube with Grok Build.
+      </p>
+      <div class="hero__actions">
+        {
+          site.youtubeUrl ? (
+            <a href="/live/" class="btn btn--live">Watch live</a>
+          ) : (
+            <a href="/live/" class="btn">Live sessions</a>
+          )
+        }
+        <a href="/blog/" class="btn btn--ghost">Read the build log</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Focus</p>
+      <h2>What we're building</h2>
+      <div class="grid-services">
+        <article class="card">
+          <h3>AI tooling</h3>
+          <p>Pragmatic software that puts large language models to work on real problems — not demos for their own sake.</p>
+        </article>
+        <article class="card">
+          <h3>Live development</h3>
+          <p>Grok Build coding sessions streamed on YouTube. Watch architecture decisions, implementation, and deploys as they happen.</p>
+        </article>
+        <article class="card">
+          <h3>Open process</h3>
+          <p>Blog posts, session recaps, and embedded videos documenting what we ship and how we got there.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow">Build log</p>
+      <h2>Latest from the blog</h2>
+      {
+        posts.length > 0 ? (
+          <ul class="blog-list">
+            {posts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="lead">Posts will appear here once published.</p>
+        )
+      }
+      <p style="margin-top: 1.5rem">
+        <a href="/blog/">All posts →</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 6rem 0 5rem;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    background: linear-gradient(
+      135deg,
+      rgba(139, 124, 248, 0.06) 0%,
+      rgba(62, 224, 208, 0.03) 50%,
+      transparent 100%
+    );
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 42rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>

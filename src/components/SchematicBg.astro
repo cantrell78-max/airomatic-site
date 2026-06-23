@@ -1,0 +1,57 @@
+---
+/** Faint neural-network / blueprint layer behind page content */
+---
+<div class="schematic-bg" aria-hidden="true">
+  <svg class="schematic-bg__svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.35" />
+      </pattern>
+      <linearGradient id="fade" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#06070b" stop-opacity="0.3" />
+        <stop offset="50%" stop-color="#06070b" stop-opacity="0.85" />
+        <stop offset="100%" stop-color="#06070b" stop-opacity="1" />
+      </linearGradient>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid)" />
+    <g stroke="currentColor" fill="none" stroke-width="0.6" opacity="0.25">
+      <circle cx="300" cy="200" r="6" fill="currentColor" opacity="0.3" />
+      <circle cx="500" cy="320" r="6" fill="currentColor" opacity="0.3" />
+      <circle cx="700" cy="180" r="6" fill="currentColor" opacity="0.3" />
+      <circle cx="900" cy="340" r="6" fill="currentColor" opacity="0.3" />
+      <circle cx="600" cy="480" r="6" fill="currentColor" opacity="0.3" />
+      <line x1="300" y1="200" x2="500" y2="320" />
+      <line x1="500" y1="320" x2="700" y2="180" />
+      <line x1="700" y1="180" x2="900" y2="340" />
+      <line x1="500" y1="320" x2="600" y2="480" />
+      <line x1="900" y1="340" x2="600" y2="480" />
+      <circle cx="600" cy="400" r="160" stroke-dasharray="4 8" />
+      <line x1="0" y1="400" x2="1200" y2="400" opacity="0.4" />
+      <line x1="600" y1="0" x2="600" y2="800" opacity="0.4" />
+    </g>
+    <text x="48" y="64" fill="currentColor" font-family="monospace" font-size="11" opacity="0.35">
+      AIROMATIC // INFERENCE LAYER
+    </text>
+    <text x="48" y="84" fill="currentColor" font-family="monospace" font-size="10" opacity="0.25">
+      TOKENS OK · LATENCY 42ms · SYS NOMINAL
+    </text>
+    <rect width="100%" height="100%" fill="url(#fade)" />
+  </svg>
+</div>
+
+<style>
+  .schematic-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    color: var(--accent-dim, #5c4fd4);
+    overflow: hidden;
+  }
+
+  .schematic-bg__svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.55;
+  }
+</style>

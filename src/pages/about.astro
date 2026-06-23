@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../config/site";
+---
+
+<BaseLayout
+  title="About"
+  description="About Airomatic — an AI startup by Adam Cantrell, building software in public with live Grok Build sessions."
+>
+  <section class="section">
+    <div class="container about">
+      <p class="eyebrow">About</p>
+      <h1>The name behind the code</h1>
+
+      <div class="about__copy prose">
+        <p>
+          Hi, I'm <strong>Adam Cantrell</strong> — <strong>Airomatic</strong> is my AI startup at <strong>airomatic.ai</strong>, where I build practical tools and document the process in public.
+        </p>
+
+        <h2>Built in public</h2>
+        <p>
+          This site is part of the product. I'm streaming the build live on YouTube using <strong>Grok Build</strong> — an AI coding agent that scaffolds, implements, and deploys alongside me in real time. Sessions cover everything from Astro components to GitHub and Cloudflare.
+        </p>
+
+        <h2>Why Airomatic</h2>
+        <p>
+          The name comes from my grandfather's HVAC company, <strong>Airomatic</strong>: air, automation, and craftsmanship passed down through the family. I also run <a href="https://aeromaticdrone.com" target="_blank" rel="noopener noreferrer">Aeromatic Drone Services</a> — same root, different altitude.
+        </p>
+        <p>
+          Airomatic the startup carries that thread forward: intelligent systems, built carefully, shipped openly.
+        </p>
+
+        <h2>What's next</h2>
+        <p>
+          AI tooling for real workflows, session recaps on the blog, and a growing library of live builds. Based in <strong>{site.location}</strong>, building for anyone who wants to see how modern AI-assisted development actually works.
+        </p>
+
+        <div class="about__actions">
+          <a href="/live/" class="btn btn--live">Watch live</a>
+          <a href="/contact/" class="btn btn--ghost">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about__copy {
+    margin-top: 2rem;
+  }
+
+  .about__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>

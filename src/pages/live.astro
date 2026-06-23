@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import YouTubeEmbed from "../components/YouTubeEmbed.astro";
+import { site } from "../config/site";
+---
+
+<BaseLayout
+  title="Live"
+  description="Watch Airomatic live coding sessions on YouTube — building airomatic.ai with Grok Build."
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Live</p>
+      <h1>Grok Build sessions</h1>
+      <p class="lead">
+        This site is being built in public. Tune in on YouTube to watch live coding with Grok Build — from scaffolding to deploy.
+      </p>
+
+      <div class="live-grid">
+        <div class="live-main">
+          {
+            site.youtubeLiveId ? (
+              <>
+                <span class="live-badge">Featured stream</span>
+                <YouTubeEmbed
+                  id={site.youtubeLiveId}
+                  title="Airomatic live coding session"
+                />
+              </>
+            ) : (
+              <div class="card empty-state">
+                <p style="margin: 0">
+                  <strong>No stream embedded yet.</strong>
+                </p>
+                <p style="margin: 1rem 0 0; font-size: 0.95rem">
+                  Add <code>PUBLIC_YOUTUBE_LIVE_ID</code> to your <code>.env</code> file to feature a live stream or VOD here.
+                </p>
+              </div>
+            )
+          }
+        </div>
+
+        <aside class="live-sidebar">
+          <div class="card">
+            <h3 style="margin-top: 0">What to expect</h3>
+            <ul class="live-list">
+              <li>Scaffolding the Astro site from scratch</li>
+              <li>Designing pages, components, and content</li>
+              <li>Git, GitHub, and Cloudflare deploy setup</li>
+              <li>Q&amp;A in chat while we code</li>
+            </ul>
+          </div>
+
+          {
+            site.youtubeUrl ? (
+              <div class="card">
+                <h3 style="margin-top: 0">YouTube channel</h3>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem">
+                  Subscribe for notifications when we go live.
+                </p>
+                <p style="margin: 1.25rem 0 0">
+                  <a
+                    href={site.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn--live"
+                  >
+                    Open channel
+                  </a>
+                </p>
+              </div>
+            ) : (
+              <div class="card">
+                <h3 style="margin-top: 0">Channel coming soon</h3>
+                <p style="margin: 0; color: var(--text-muted); font-size: 0.95rem">
+                  Set <code>PUBLIC_YOUTUBE_URL</code> in <code>.env</code> once your YouTube channel is ready.
+                </p>
+              </div>
+            )
+          }
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .live-grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 900px) {
+    .live-grid {
+      grid-template-columns: 1.4fr 1fr;
+      align-items: start;
+    }
+  }
+
+  .live-main .live-badge {
+    margin-bottom: 1rem;
+  }
+
+  .live-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+  }
+
+  .live-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  .live-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .live-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+</style>

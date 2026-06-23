@@ -1,0 +1,58 @@
+---
+import { site } from "../config/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer section--tight">
+  <div class="container footer__inner">
+    <p class="footer__brand">
+      <strong>Airomatic</strong> — {site.tagline}
+    </p>
+    <p class="footer__meta">
+      Built in public · Live on YouTube with Grok Build
+    </p>
+    {
+      site.youtubeUrl && (
+        <p class="footer__link">
+          <a href={site.youtubeUrl} target="_blank" rel="noopener noreferrer">
+            Watch live sessions →
+          </a>
+        </p>
+      )
+    }
+    <p class="mono footer__copy">© {year} Airomatic · airomatic.ai</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
+  }
+
+  .footer__inner {
+    text-align: center;
+  }
+
+  .footer__brand {
+    margin: 0 0 0.35rem;
+    color: var(--text);
+  }
+
+  .footer__meta {
+    margin: 0 0 1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .footer__link {
+    margin: 0 0 1rem;
+  }
+
+  .footer__copy {
+    margin: 0;
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+</style>

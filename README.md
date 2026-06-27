@@ -36,10 +36,10 @@ Copy `env.example` to `.env` and fill in:
 
 ## Deploy
 
-Same Cloudflare Workers flow as `aeromatic-site`:
+GitHub + Cloudflare Workers Builds — see **[DEPLOY.md](./DEPLOY.md)** for full setup.
 
 - Build: `npm run build`
-- Deploy: `npx wrangler deploy`
+- Deploy: `npm run deploy` (or `npx wrangler deploy`)
 - Custom domain: `airomatic.ai` in Cloudflare dashboard
 
 ## Related

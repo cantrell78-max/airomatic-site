@@ -9,7 +9,7 @@ export const site = {
     import.meta.env.PUBLIC_YOUTUBE_URL ?? "https://www.youtube.com/@airomaticAI",
   /** Featured live stream or VOD on /live/ — override via PUBLIC_YOUTUBE_LIVE_ID */
   youtubeLiveId: import.meta.env.PUBLIC_YOUTUBE_LIVE_ID ?? "c8LH2OFCFVE",
-  contactEmail: import.meta.env.PUBLIC_CONTACT_EMAIL ?? "",
+  contactEmail: import.meta.env.PUBLIC_CONTACT_EMAIL ?? "adam@airomatic.ai",
 } as const;
 
 export const formspreeAction = site.formspreeId

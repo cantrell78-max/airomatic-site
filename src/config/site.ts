@@ -4,7 +4,7 @@ export const site = {
   tagline: "AI tools & live-built software",
   url: "https://airomatic.ai",
   location: "Bend, Oregon",
-  formspreeId: import.meta.env.PUBLIC_FORMSPREE_ID ?? "",
+  formspreeId: import.meta.env.PUBLIC_FORMSPREE_ID ?? "mbdvygbb",
   youtubeUrl:
     import.meta.env.PUBLIC_YOUTUBE_URL ?? "https://www.youtube.com/@airomaticAI",
   /** Featured live stream or VOD on /live/ — override via PUBLIC_YOUTUBE_LIVE_ID */

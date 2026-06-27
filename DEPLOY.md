@@ -34,10 +34,16 @@ git push -u origin main
 
 ## 3. Custom domain (airomatic.ai)
 
-1. Workers project → **Settings** → **Domains & Routes** → **Add** → **Custom domain**
-2. Enter `airomatic.ai` and optionally `www.airomatic.ai`
-3. Cloudflare adds DNS records automatically if the domain is on the same account
-4. HTTPS certificate provisions in a few minutes
+Custom domains are declared in `wrangler.jsonc` and applied on every deploy:
+
+```jsonc
+"routes": [
+  { "pattern": "airomatic.ai", "custom_domain": true },
+  { "pattern": "www.airomatic.ai", "custom_domain": true }
+]
+```
+
+Cloudflare creates DNS records and HTTPS certificates automatically when the zone is on the same account. To add via dashboard instead: **Settings** → **Domains & Routes** → **Add** → **Custom domain**.
 
 ### Redirect www → apex (optional)
 

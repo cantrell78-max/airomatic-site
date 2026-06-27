@@ -1,5 +1,5 @@
 /**
- * Header wordmark from concepts/01-logo.png (airomatic.ai text band).
+ * Full header lockup from concepts/01-logo.png (ai mark + airomatic.ai text).
  */
 import sharp from "sharp";
 import path from "node:path";
@@ -9,9 +9,8 @@ const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const src =
   process.argv[2] ??
   path.join(root, "public/images/brand/concepts/01-logo.png");
-const out = path.join(root, "public/images/brand/wordmark.webp");
+const out = path.join(root, "public/images/brand/logo-lockup.webp");
 
-/** Matches --bg / header in global.css */
 const HEADER_BG = { r: 6, g: 7, b: 11 };
 
 function colorDistance(r1, g1, b1, r2, g2, b2) {
@@ -20,14 +19,10 @@ function colorDistance(r1, g1, b1, r2, g2, b2) {
 
 function isBackgroundPixel(r, g, b) {
   const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-  const isGoldText = r > 130 && g > 100 && lum > 110 && r >= g - 20;
-  const isTealGraphic = g > r + 8 && lum > 60;
-  const isPurpleGraphic = b > r + 10 && lum > 45;
-  const isSparkle = lum > 190;
-  if (isGoldText || isTealGraphic || isPurpleGraphic || isSparkle) return false;
+  const isContent = lum > 42 && (g > r - 10 || b > r - 5 || (r > 130 && g > 100));
+  if (isContent) return false;
   if (lum < 24) return true;
-  if (colorDistance(r, g, b, HEADER_BG.r, HEADER_BG.g, HEADER_BG.b) < 35) return true;
-  return lum < 40;
+  return colorDistance(r, g, b, HEADER_BG.r, HEADER_BG.g, HEADER_BG.b) < 35;
 }
 
 const trimmed = await sharp(src).trim({ threshold: 10 }).toBuffer();
@@ -54,13 +49,9 @@ for (let y = 0; y < height; y++) {
   }
 }
 
-const bandTop = Math.floor(height * 0.74);
-const bandHeight = Math.floor(height * 0.2);
-
 await sharp(outBuf, { raw: { width, height, channels } })
-  .extract({ left: 0, top: bandTop, width, height: bandHeight })
   .flatten({ background: HEADER_BG })
-  .resize({ width: 420, withoutEnlargement: false })
+  .resize({ height: 64, withoutEnlargement: false })
   .webp({ quality: 92 })
   .toFile(out);
 

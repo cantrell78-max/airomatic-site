@@ -13,7 +13,8 @@
     "deploy": "npm run build && wrangler deploy",
     "brand:wordmark": "node scripts/optimize-wordmark.mjs",
     "brand:mark": "node scripts/optimize-mark.mjs",
-    "brand:optimize": "npm run brand:wordmark && npm run brand:mark"
+    "brand:lockup": "node scripts/optimize-lockup.mjs",
+    "brand:optimize": "npm run brand:lockup && npm run brand:mark"
   },
   "dependencies": {
     "astro": "^6.4.4"

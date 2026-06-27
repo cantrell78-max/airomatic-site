@@ -13,7 +13,7 @@ This project uses Cloudflare’s **Workers Builds** flow (Git → build → `wra
 | Deploy command | `npx wrangler deploy` (default) |
 | Static files | `./dist` via `wrangler.jsonc` in the repo |
 
-Node version **22** in the project’s environment settings (matches `.nvmrc`).
+Node version **22.12.0** — set via `.nvmrc` / `.node-version` in the repo (or `NODE_VERSION=22.12.0` in Cloudflare **Build Variables**).
 
 ## 1. GitHub repository
 

@@ -2,6 +2,7 @@
 title: "Building this site live with Grok Build"
 description: "How airomatic.ai went from a blank directory to a deployed Astro site — streamed on YouTube."
 pubDate: 2026-06-23
+youtubeId: c8LH2OFCFVE
 ---
 
 This post documents the meta-build: using **Grok Build** to create the site you're reading, while streaming the process on YouTube.
@@ -20,15 +21,9 @@ This post documents the meta-build: using **Grok Build** to create the site you'
 4. Blog collection with these launch posts
 5. YouTube embed component for session recaps
 
-## Going live on YouTube
+## Session recording
 
-The **Live** page (`/live/`) is the hub for streams. Once your channel is ready:
-
-1. Copy `env.example` → `.env`
-2. Set `PUBLIC_YOUTUBE_URL` to your channel
-3. Set `PUBLIC_YOUTUBE_LIVE_ID` to embed a featured stream or VOD
-
-Add `youtubeId` to any blog post frontmatter to embed that session's recording inline.
+Watch **Day 1** — *Starting an AI Company with Grok Build* — embedded above. The [Live](/live/) page always features the current stream or latest VOD via `PUBLIC_YOUTUBE_LIVE_ID` in `.env`.
 
 ## Watch next
 

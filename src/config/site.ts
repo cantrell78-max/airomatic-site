@@ -5,9 +5,10 @@ export const site = {
   url: "https://airomatic.ai",
   location: "Bend, Oregon",
   formspreeId: import.meta.env.PUBLIC_FORMSPREE_ID ?? "",
-  youtubeUrl: import.meta.env.PUBLIC_YOUTUBE_URL ?? "",
-  /** Optional: embed a live stream or featured VOD on /live/ */
-  youtubeLiveId: import.meta.env.PUBLIC_YOUTUBE_LIVE_ID ?? "",
+  youtubeUrl:
+    import.meta.env.PUBLIC_YOUTUBE_URL ?? "https://www.youtube.com/@airomaticAI",
+  /** Featured live stream or VOD on /live/ — override via PUBLIC_YOUTUBE_LIVE_ID */
+  youtubeLiveId: import.meta.env.PUBLIC_YOUTUBE_LIVE_ID ?? "c8LH2OFCFVE",
   contactEmail: import.meta.env.PUBLIC_CONTACT_EMAIL ?? "",
 } as const;
 

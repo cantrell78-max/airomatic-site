@@ -11,17 +11,29 @@ const path = Astro.url.pathname;
 const isActive = (href: string) =>
   href === "/" ? path === "/" : path.startsWith(href);
 
-const wordmarkSrc = "/images/brand/wordmark.svg";
+const markSrc = "/images/brand/logo-mark.webp";
+const wordmarkSrc = "/images/brand/wordmark.webp";
+const wordmarkWidth = 520;
+const wordmarkHeight = 155;
 ---
 
 <header class="header">
   <div class="container header__inner">
     <a href="/" class="logo">
       <img
+        src={markSrc}
+        alt=""
+        width={124}
+        height={96}
+        class="logo__mark"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <img
         src={wordmarkSrc}
         alt="airomatic.ai"
-        width={420}
-        height={48}
+        width={wordmarkWidth}
+        height={wordmarkHeight}
         class="logo__wordmark"
         fetchpriority="high"
         decoding="async"
@@ -64,9 +76,18 @@ const wordmarkSrc = "/images/brand/wordmark.svg";
   .logo {
     display: flex;
     align-items: center;
+    gap: 0.65rem;
     flex-shrink: 1;
     min-width: 0;
     color: var(--text);
+  }
+
+  .logo__mark {
+    display: block;
+    width: auto;
+    height: calc(var(--header-h) - 1.35rem);
+    flex-shrink: 0;
+    object-fit: contain;
   }
 
   .logo:hover {
@@ -77,8 +98,8 @@ const wordmarkSrc = "/images/brand/wordmark.svg";
   .logo__wordmark {
     display: block;
     width: auto;
-    height: calc(var(--header-h) - 1.25rem);
-    max-width: min(100%, 14rem);
+    height: calc(var(--header-h) - 1.65rem);
+    max-width: min(100%, 11.5rem);
     object-fit: contain;
     object-position: left center;
   }
@@ -111,9 +132,13 @@ const wordmarkSrc = "/images/brand/wordmark.svg";
       font-size: 0.75rem;
     }
 
+    .logo__mark {
+      height: calc(var(--header-h) - 1.75rem);
+    }
+
     .logo__wordmark {
-      height: calc(var(--header-h) - 1.5rem);
-      max-width: min(100%, 10rem);
+      height: calc(var(--header-h) - 2rem);
+      max-width: min(100%, 8.5rem);
     }
   }
 </style>

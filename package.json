@@ -10,12 +10,16 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "brand:wordmark": "node scripts/optimize-wordmark.mjs",
+    "brand:mark": "node scripts/optimize-mark.mjs",
+    "brand:optimize": "npm run brand:wordmark && npm run brand:mark"
   },
   "dependencies": {
     "astro": "^6.4.4"
   },
   "devDependencies": {
+    "sharp": "^0.34.5",
     "wrangler": "^4.97.0"
   }
 }

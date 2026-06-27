@@ -19,13 +19,14 @@ const fullTitle =
     ? "Airomatic | AI Tools Built in Public"
     : `${title} | Airomatic`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
-const ogImage = new URL("/images/brand/wordmark.svg", site.url).href;
+const ogImage = new URL("/images/brand/wordmark.webp", site.url).href;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/images/brand/favicon-192.png" sizes="192x192" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />

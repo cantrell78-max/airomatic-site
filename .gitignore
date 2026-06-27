@@ -23,6 +23,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# original AI brand mocks (regenerate with npm run brand:optimize)
+public/images/brand/concepts/
+
 # wrangler
 .wrangler
 .dev.vars*

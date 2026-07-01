@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import SpaceEmbed from "../../components/SpaceEmbed.astro";
 import YouTubeEmbed from "../../components/YouTubeEmbed.astro";
 import { getCollection, render } from "astro:content";
 
@@ -31,6 +32,22 @@ const { Content } = await render(post);
       </time>
       {post.data.youtubeId && <YouTubeEmbed id={post.data.youtubeId} title={post.data.title} />}
       <Content />
+      {
+        post.data.embedUrl && (
+          <>
+            <h2>Try the live dashboard</h2>
+            <p>
+              Running on Hugging Face — click <strong>Refresh</strong> to pull the latest X posts and run Grok
+              analysis.{" "}
+              <a href="https://huggingface.co/spaces/airomatic/xmoney" target="_blank" rel="noopener noreferrer">
+                Open in a new tab
+              </a>
+              .
+            </p>
+            <SpaceEmbed url={post.data.embedUrl} title={post.data.title} />
+          </>
+        )
+      }
     </div>
   </article>
 </BaseLayout>

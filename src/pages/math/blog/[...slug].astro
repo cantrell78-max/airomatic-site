@@ -1,0 +1,38 @@
+---
+import MathLayout from '../../../layouts/MathLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('mathBlog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<MathLayout title={post.data.title} description={post.data.description}>
+  <article class="section">
+    <div class="container prose">
+      <p class="eyebrow">Math blog</p>
+      <h1>{post.data.title}</h1>
+      <time
+        class="mono"
+        datetime={post.data.pubDate.toISOString()}
+        style="font-size: 0.85rem; color: var(--text-muted)"
+      >
+        {
+          post.data.pubDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        }
+      </time>
+      <Content />
+    </div>
+  </article>
+</MathLayout>

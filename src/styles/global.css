@@ -203,9 +203,173 @@ p {
   margin-top: 2rem;
 }
 
+.prose :global(h3) {
+  margin-top: 1.5rem;
+}
+
+.prose :global(pre) {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.prose :global(code) {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.prose :global(.katex-display) {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.prose :global(.katex) {
+  font-size: 1.1em;
+}
+
 .prose :global(img) {
   border: 1px solid var(--border);
   margin: 1.5rem 0;
+}
+
+.grid-2 {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-3 {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.formula-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.formula-card__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--warm);
+}
+
+.formula-card__math {
+  padding: 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  text-align: center;
+}
+
+.comparison {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--border);
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 720px) {
+  .comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+.comparison__pane {
+  padding: 1.25rem;
+}
+
+.comparison__pane--source {
+  background: var(--bg-elevated);
+  border-right: 1px solid var(--border);
+}
+
+@media (max-width: 720px) {
+  .comparison__pane--source {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+.comparison__pane--rendered {
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5rem;
+}
+
+.comparison__heading {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+}
+
+.comparison__code {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text);
+}
+
+.steps {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 1.5rem 3rem;
+  border-left: 1px solid var(--border);
+  margin-left: 1rem;
+}
+
+.steps li:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: -1rem;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+
+.hero-math {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 1.5rem 0 2rem;
 }
 
 .form-group {

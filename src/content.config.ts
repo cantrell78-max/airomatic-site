@@ -13,4 +13,13 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const mathBlog = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/math-blog" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+  }),
+});
+
+export const collections = { blog, mathBlog };

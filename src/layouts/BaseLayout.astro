@@ -8,16 +8,22 @@ import { site } from "../config/site";
 interface Props {
   title: string;
   description?: string;
+  section?: string;
 }
 
 const {
   title,
   description = "Airomatic — an AI startup building tools in public. Watch live Grok Build coding sessions on YouTube.",
+  section,
 } = Astro.props;
 const fullTitle =
   title === "Home"
     ? "Airomatic | AI Tools Built in Public"
-    : `${title} | Airomatic`;
+    : section && title === section
+      ? `${section} | Airomatic`
+      : section
+        ? `${title} | ${section} | Airomatic`
+        : `${title} | Airomatic`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL("/images/brand/logo-lockup.webp", site.url).href;
 ---
@@ -44,6 +50,7 @@ const ogImage = new URL("/images/brand/logo-lockup.webp", site.url).href;
     <meta name="theme-color" content="#06070b" />
     <meta name="generator" content={Astro.generator} />
     <title>{fullTitle}</title>
+    <slot name="head" />
   </head>
   <body>
     <SchematicBg />

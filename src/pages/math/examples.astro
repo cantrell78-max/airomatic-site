@@ -1,0 +1,89 @@
+---
+import MathLayout from '../../layouts/MathLayout.astro';
+import Math from '../../components/math/Math.astro';
+
+const formulas = [
+  {
+    category: 'Basic algebra',
+    items: [
+      { label: 'Quadratic formula', tex: 'x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}' },
+      { label: 'Binomial theorem', tex: '(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k' },
+      { label: 'Difference of squares', tex: 'a^2 - b^2 = (a - b)(a + b)' },
+    ],
+  },
+  {
+    category: 'Geometry',
+    items: [
+      { label: 'Pythagorean theorem', tex: 'a^2 + b^2 = c^2' },
+      { label: 'Area of a circle', tex: 'A = \\pi r^2' },
+      { label: 'Volume of a sphere', tex: 'V = \\frac{4}{3}\\pi r^3' },
+    ],
+  },
+  {
+    category: 'Calculus',
+    items: [
+      { label: 'Definition of derivative', tex: "f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}" },
+      { label: 'Fundamental theorem', tex: '\\int_a^b f(x)\\,dx = F(b) - F(a)' },
+      { label: 'Gaussian integral', tex: '\\int_{-\\infty}^{\\infty} e^{-x^2}\\,dx = \\sqrt{\\pi}' },
+    ],
+  },
+  {
+    category: 'Famous identities',
+    items: [
+      { label: "Euler's identity", tex: 'e^{i\\pi} + 1 = 0' },
+      { label: 'Golden ratio', tex: '\\varphi = \\frac{1 + \\sqrt{5}}{2} \\approx 1.618' },
+      { label: 'Fibonacci closed form (Binet)', tex: 'F_n = \\frac{\\varphi^n - \\psi^n}{\\sqrt{5}}, \\quad \\psi = \\frac{1 - \\sqrt{5}}{2}' },
+    ],
+  },
+  {
+    category: 'Mandelbrot set',
+    items: [
+      { label: 'Iteration map', tex: 'z_{n+1} = z_n^2 + c' },
+      { label: 'Membership condition', tex: '\\text{Escape: } |z_n| > 2 \\text{ for some } n \\in \\mathbb{N}' },
+      { label: 'Boundary in the complex plane', tex: 'M = \\{ c \\in \\mathbb{C} : \\limsup_{n\\to\\infty} |z_n| \\le 2 \\}' },
+    ],
+  },
+  {
+    category: 'Polar curves',
+    items: [
+      { label: 'Rose curve', tex: 'r = a \\cos(k\\theta)' },
+      { label: 'Cardioid', tex: 'r = a(1 + \\cos\\theta)' },
+      { label: 'Lemniscate of Bernoulli', tex: 'r^2 = a^2 \\cos(2\\theta)' },
+    ],
+  },
+];
+---
+
+<MathLayout
+  title="Examples"
+  description="Gallery of mathematical formulas rendered with KaTeX — algebra, geometry, calculus, and more."
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Formula gallery</p>
+      <h1>Mathematical examples</h1>
+      <p class="lead">
+        Each formula below is rendered with the <code>&lt;Math /&gt;</code> component at build time.
+        The same LaTeX works in Markdown when <code>remark-math</code> and <code>rehype-katex</code> are configured.
+      </p>
+
+      {
+        formulas.map((section) => (
+          <div style="margin-top: 3rem;">
+            <h2>{section.category}</h2>
+            <div class="grid-3" style="margin-top: 1.25rem;">
+              {section.items.map((item) => (
+                <article class="card formula-card">
+                  <p class="formula-card__label">{item.label}</p>
+                  <div class="formula-card__math">
+                    <Math tex={item.tex} display />
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</MathLayout>

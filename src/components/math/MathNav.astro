@@ -1,0 +1,97 @@
+---
+const nav = [
+  { href: '/math/', label: 'Overview' },
+  { href: '/math/examples/', label: 'Examples' },
+  { href: '/math/comparison/', label: 'Comparison' },
+  { href: '/math/blog/', label: 'Blog' },
+];
+
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/math/' ? path === '/math/' : path.startsWith(href);
+---
+
+<nav class="math-nav" aria-label="Math section">
+  <div class="container math-nav__inner">
+    <a href="/math/" class="math-nav__brand">
+      <span class="math-nav__mark">∑</span>
+      <span>Math Publishing</span>
+    </a>
+    <div class="math-nav__links">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={['math-nav__link', { 'math-nav__link--active': isActive(item.href) }]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</nav>
+
+<style>
+  .math-nav {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+  }
+
+  .math-nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    flex-wrap: wrap;
+  }
+
+  .math-nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+
+  .math-nav__brand:hover {
+    color: var(--accent);
+  }
+
+  .math-nav__mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 1rem;
+    color: var(--accent-secondary);
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .math-nav__links {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  .math-nav__link {
+    padding: 0.35rem 0.65rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    border: 1px solid transparent;
+  }
+
+  .math-nav__link:hover,
+  .math-nav__link--active {
+    color: var(--accent);
+    border-color: var(--border);
+    background: var(--surface);
+  }
+</style>

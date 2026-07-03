@@ -1,0 +1,24 @@
+---
+import Math from './Math.astro';
+
+interface Props {
+  source: string;
+  tex: string;
+  display?: boolean;
+}
+
+const { source, tex, display = true } = Astro.props;
+---
+
+<div class="comparison">
+  <div class="comparison__pane comparison__pane--source">
+    <p class="comparison__heading">Markdown / LaTeX</p>
+    <pre class="comparison__code"><code>{source}</code></pre>
+  </div>
+  <div class="comparison__pane comparison__pane--rendered">
+    <div>
+      <p class="comparison__heading">Rendered (KaTeX)</p>
+      <Math tex={tex} display={display} />
+    </div>
+  </div>
+</div>

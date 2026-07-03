@@ -1,0 +1,35 @@
+---
+import katex from 'katex';
+
+interface Props {
+  tex: string;
+  display?: boolean;
+}
+
+const { tex, display = false } = Astro.props;
+
+const html = katex.renderToString(tex, {
+  displayMode: display,
+  throwOnError: false,
+  trust: false,
+});
+---
+
+{display ? (
+  <div class="math-display" set:html={html} />
+) : (
+  <span class="math-inline" set:html={html} />
+)}
+
+<style>
+  .math-display {
+    margin: 1rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: center;
+  }
+
+  .math-inline :global(.katex) {
+    font-size: 1em;
+  }
+</style>

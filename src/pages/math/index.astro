@@ -1,0 +1,115 @@
+---
+import MathLayout from '../../layouts/MathLayout.astro';
+import Math from '../../components/math/Math.astro';
+---
+
+<MathLayout
+  title="Math"
+  description="KaTeX math rendering on airomatic.ai — setup guide, formula gallery, Markdown comparison, and sample blog post."
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">KaTeX + Astro</p>
+      <h1>Beautiful math on static sites</h1>
+      <p class="lead">
+        A complete reference for publishing mathematical notation on the web. KaTeX renders LaTeX
+        at build time with no client-side JavaScript — fast, accessible, and beautiful.
+      </p>
+      <p class="hero-math">
+        <Math tex="e^{i\pi} + 1 = 0" display />
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
+        <a href="/math/examples/" class="btn">View formula gallery</a>
+        <a href="/math/comparison/" class="btn btn--ghost">Markdown comparison</a>
+        <a href="/math/blog/beauty-of-mathematics/" class="btn btn--ghost">Sample blog post</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <p class="eyebrow">Quick start</p>
+      <h2>Setup in four steps</h2>
+      <ol class="steps">
+        <li>
+          <strong>Install dependencies</strong>
+          <pre><code>npm install katex remark-math rehype-katex</code></pre>
+        </li>
+        <li>
+          <strong>Configure Astro Markdown plugins</strong> in <code>astro.config.mjs</code>:
+          <pre><code>{`import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
+export default defineConfig({
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
+});`}</code></pre>
+        </li>
+        <li>
+          <strong>Load KaTeX styles</strong> — use <code>MathLayout.astro</code> or add
+          <code>KatexHead.astro</code> to your layout:
+          <pre><code>{`---
+import KatexHead from '../components/math/KatexHead.astro';
+---
+<KatexHead slot="head" />`}</code></pre>
+        </li>
+        <li>
+          <strong>Write math in Markdown</strong> with <code>$...$</code> for inline and <code>$$...$$</code> for display math,
+          or use the <code>&lt;Math /&gt;</code> component in <code>.astro</code> files.
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Included components</p>
+      <h2>Ready-to-use KaTeX building blocks</h2>
+      <div class="grid-2" style="margin-top: 2rem;">
+        <article class="card">
+          <h3><code>MathLayout.astro</code></h3>
+          <p>
+            Page layout with KaTeX CSS and section navigation. Use for any math page or blog template.
+          </p>
+        </article>
+        <article class="card">
+          <h3><code>Math.astro</code></h3>
+          <p>
+            Renders arbitrary LaTeX at build time. Pass <code>tex</code> and optional <code>display</code> prop.
+          </p>
+          <div class="formula-card__math" style="margin-top: 1rem;">
+            <Math tex="\varphi = \frac{1 + \sqrt{5}}{2}" display />
+          </div>
+        </article>
+        <article class="card">
+          <h3><code>MathComparison.astro</code></h3>
+          <p>
+            Side-by-side source and rendered output — ideal for tutorials showing Markdown syntax
+            next to the final math.
+          </p>
+        </article>
+        <article class="card">
+          <h3><code>KatexHead.astro</code></h3>
+          <p>
+            Minimal head fragment that imports KaTeX styles. Drop into any existing layout.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" style="background: var(--bg-elevated);">
+    <div class="container">
+      <p class="eyebrow">On this site</p>
+      <h2>Explore the demo</h2>
+      <p>
+        This section lives at <strong>airomatic.ai/math</strong> as part of the main Airomatic site.
+        Browse the <a href="/math/examples/">formula gallery</a>, the
+        <a href="/math/comparison/">Markdown comparison</a>, or read
+        <a href="/math/blog/beauty-of-mathematics/">The Beauty of Mathematics</a>.
+      </p>
+    </div>
+  </section>
+</MathLayout>

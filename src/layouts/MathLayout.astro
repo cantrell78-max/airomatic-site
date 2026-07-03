@@ -1,0 +1,24 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import KatexHead from '../components/math/KatexHead.astro';
+import MathNav from '../components/math/MathNav.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'KaTeX math rendering on airomatic.ai — formulas, tutorials, and a sample blog post.',
+} = Astro.props;
+
+---
+
+<BaseLayout title={title} section="Math" description={description}>
+  <KatexHead slot="head" />
+  <div class="math-section">
+    <MathNav />
+    <slot />
+  </div>
+</BaseLayout>

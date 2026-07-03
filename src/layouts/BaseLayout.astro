@@ -9,13 +9,21 @@ interface Props {
   title: string;
   description?: string;
   section?: string;
+  /** Absolute URL or site-relative path (e.g. /og-image.jpg) */
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: "website" | "article";
 }
 
 const {
   title,
   description = "Airomatic — an AI startup building tools in public. Watch live Grok Build coding sessions on YouTube.",
   section,
+  ogImage = site.ogImage,
+  ogImageAlt = `${site.name} — ${site.ogTagline}`,
+  ogType = "website",
 } = Astro.props;
+
 const fullTitle =
   title === "Home"
     ? "Airomatic | AI Tools Built in Public"
@@ -24,8 +32,11 @@ const fullTitle =
       : section
         ? `${title} | ${section} | Airomatic`
         : `${title} | Airomatic`;
+
 const canonical = new URL(Astro.url.pathname, site.url).href;
-const ogImage = new URL("/images/brand/logo-lockup.webp", site.url).href;
+const ogImageUrl = ogImage.startsWith("http")
+  ? ogImage
+  : new URL(ogImage, site.url).href;
 ---
 
 <!doctype html>
@@ -37,16 +48,28 @@ const ogImage = new URL("/images/brand/logo-lockup.webp", site.url).href;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta property="og:type" content="website" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:alt" content="Airomatic — airomatic.ai" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:secure_url" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content={String(site.ogImageWidth)} />
+    <meta property="og:image:height" content={String(site.ogImageHeight)} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+
     <meta name="theme-color" content="#06070b" />
     <meta name="generator" content={Astro.generator} />
     <title>{fullTitle}</title>

@@ -14,7 +14,8 @@
     "brand:wordmark": "node scripts/optimize-wordmark.mjs",
     "brand:mark": "node scripts/optimize-mark.mjs",
     "brand:lockup": "node scripts/optimize-lockup.mjs",
-    "brand:optimize": "npm run brand:lockup && npm run brand:mark"
+    "brand:optimize": "npm run brand:lockup && npm run brand:mark",
+    "brand:og-image": "node scripts/generate-og-image.mjs"
   },
   "dependencies": {
     "astro": "^6.4.4",

@@ -8,7 +8,11 @@ const posts = (await getCollection("blog"))
   .slice(0, 3);
 ---
 
-<BaseLayout title="Home">
+<BaseLayout
+  title="Home"
+  description="Airomatic builds practical AI tools in public — live on YouTube with Grok Build. AI That Smells Success."
+  ogImageAlt={`${site.name} — ${site.ogTagline}`}
+>
   <section class="hero">
     <div class="container hero__inner">
       <p class="eyebrow mono">AI startup · Built in public</p>

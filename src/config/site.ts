@@ -2,7 +2,12 @@
 export const site = {
   name: "Airomatic",
   tagline: "AI tools & live-built software",
+  /** Shown on the default Open Graph preview image */
+  ogTagline: "AI That Smells Success",
   url: "https://airomatic.ai",
+  ogImage: "/og-image.jpg",
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   location: "Bend, Oregon",
   formspreeId: import.meta.env.PUBLIC_FORMSPREE_ID ?? "mbdvygbb",
   youtubeUrl:

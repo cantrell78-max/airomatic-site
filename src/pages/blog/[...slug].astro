@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import KatexHead from "../../components/math/KatexHead.astro";
 import SpaceEmbed from "../../components/SpaceEmbed.astro";
 import YouTubeEmbed from "../../components/YouTubeEmbed.astro";
 import { getCollection, render } from "astro:content";
@@ -17,6 +18,7 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
+  <KatexHead slot="head" />
   <article class="section">
     <div class="container prose">
       <p class="eyebrow">Blog</p>

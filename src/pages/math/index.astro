@@ -16,7 +16,7 @@ import Math from '../../components/math/Math.astro';
         at build time with no client-side JavaScript — fast, accessible, and beautiful.
       </p>
       <p class="hero-math">
-        <Math tex="e^{i\pi} + 1 = 0" display />
+        <Math tex="e^{i\\pi} + 1 = 0" display />
       </p>
       <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
         <a href="/math/examples/" class="btn">View formula gallery</a>
@@ -80,7 +80,7 @@ import KatexHead from '../components/math/KatexHead.astro';
             Renders arbitrary LaTeX at build time. Pass <code>tex</code> and optional <code>display</code> prop.
           </p>
           <div class="formula-card__math" style="margin-top: 1rem;">
-            <Math tex="\varphi = \frac{1 + \sqrt{5}}{2}" display />
+            <Math tex="\\varphi = \\frac{1 + \\sqrt{5}}{2}" display />
           </div>
         </article>
         <article class="card">

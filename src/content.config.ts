@@ -12,6 +12,8 @@ const blog = defineCollection({
     embedUrl: z.string().url().optional(),
     /** Optional absolute or site-relative OG image override */
     ogImage: z.string().optional(),
+    /** Startup ids from src/data/startups.json to embed as cards in the post */
+    featuredStartupIds: z.array(z.string()).optional(),
   }),
 });
 

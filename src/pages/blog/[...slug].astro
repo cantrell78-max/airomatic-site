@@ -3,7 +3,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import KatexHead from "../../components/math/KatexHead.astro";
 import SpaceEmbed from "../../components/SpaceEmbed.astro";
 import YouTubeEmbed from "../../components/YouTubeEmbed.astro";
+import StartupCard from "../../components/StartupCard.astro";
 import { site } from "../../config/site";
+import { getStartupsSorted } from "../../lib/startups";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -16,6 +18,11 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const featuredIds = post.data.featuredStartupIds ?? [];
+const featuredStartups = featuredIds
+  .map((id) => getStartupsSorted().find((s) => s.id === id))
+  .filter((s): s is NonNullable<typeof s> => Boolean(s));
 ---
 
 <BaseLayout
@@ -42,6 +49,25 @@ const { Content } = await render(post);
       {post.data.youtubeId && <YouTubeEmbed id={post.data.youtubeId} title={post.data.title} />}
       <Content />
       {
+        featuredStartups.length > 0 && (
+          <section class="featured-startups" aria-label="Featured startup announcements">
+            <h2>From the archive</h2>
+            <p>
+              A few announcements from{" "}
+              <a href="/startups/">Agentic AI Startup News</a> — click any card to open the full living archive.
+            </p>
+            <div class="featured-startups__grid">
+              {featuredStartups.map((startup) => (
+                <StartupCard startup={startup} href="/startups/" />
+              ))}
+            </div>
+            <p>
+              <a href="/startups/">Browse all announcements →</a>
+            </p>
+          </section>
+        )
+      }
+      {
         post.data.embedUrl && (
           <>
             <h2>Try the live dashboard</h2>
@@ -60,3 +86,34 @@ const { Content } = await render(post);
     </div>
   </article>
 </BaseLayout>
+
+<style>
+  .featured-startups {
+    margin-top: 2.5rem;
+    max-width: none;
+  }
+
+  .featured-startups__grid {
+    display: grid;
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .featured-startups__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .featured-startups__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Cards sit outside the narrow prose column */
+  .featured-startups :global(.startup-card__name) {
+    font-size: 1.1rem;
+  }
+</style>

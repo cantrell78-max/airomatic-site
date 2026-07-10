@@ -6,14 +6,14 @@ import { site } from "../config/site";
 
 <BaseLayout
   title="Live"
-  description="Watch Airomatic live coding sessions on YouTube — building Mars-Colony and other AI products with Grok Build."
+  description="Watch Airomatic live coding sessions on YouTube — building Agentic AI Startup News and other AI products with Grok Build."
 >
   <section class="section">
     <div class="container">
       <p class="eyebrow">Live</p>
       <h1>Grok Build sessions</h1>
       <p class="lead">
-        Airomatic is built in public. Tune in on YouTube to watch live coding with Grok Build — from marketing sites to real AI products like <strong>Mars-Colony</strong>.
+        Airomatic is built in public. Tune in on YouTube to watch live coding with Grok Build — from marketing sites to product surfaces like <strong>Agentic AI Startup News</strong>.
       </p>
 
       <div class="live-grid">
@@ -24,7 +24,7 @@ import { site } from "../config/site";
                 <span class="live-badge">Featured stream</span>
                 <YouTubeEmbed
                   id={site.youtubeLiveId}
-                  title="Building Mars-Colony Live with Grok Build"
+                  title="Building Agentic AI Startup News Live with Grok Build"
                 />
               </>
             ) : (
@@ -42,14 +42,19 @@ import { site } from "../config/site";
 
         <aside class="live-sidebar">
           <div class="card">
-            <h3 style="margin-top: 0">Now building: Mars-Colony</h3>
+            <h3 style="margin-top: 0">Now building: Agentic AI Startup News</h3>
             <ul class="live-list">
-              <li><strong>Mars-Colony</strong> — satirical Mars colonization sim</li>
-              <li>Python + Streamlit Mission Control dashboard</li>
-              <li>Life support, robots, crew, dust storms &amp; crises</li>
-              <li>Sol-by-sol simulation loop (1 sol = 1 Martian day)</li>
               <li>
-                <a href="/blog/mars-colony-live/">Read the build log →</a>
+                <strong>Agentic AI Startup News</strong> — satirical funding-announcement archive on airomatic.ai
+              </li>
+              <li>Data-driven card grid from JSON + generated founder portraits</li>
+              <li>Filters by vertical, modal detail view, load-more pagination</li>
+              <li>Built as a living, updateable feed with a subtle ironic edge</li>
+              <li>
+                <a href="/startups/">Browse the archive →</a>
+              </li>
+              <li>
+                <a href="/blog/agentic-ai-startup-news-live/">Read the build log →</a>
               </li>
             </ul>
           </div>

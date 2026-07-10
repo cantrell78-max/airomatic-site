@@ -1,0 +1,266 @@
+---
+import type { Startup } from "../lib/startups";
+import { formatStartupDate } from "../lib/startups";
+
+interface Props {
+  startup: Startup;
+  /**
+   * When set, the card is a plain link (e.g. blog embeds → /startups/)
+   * instead of opening the archive modal.
+   */
+  href?: string;
+}
+
+const { startup, href } = Astro.props;
+const tags = startup.verticals.slice(0, 3);
+const founderLine = startup.founderTitle
+  ? `${startup.founderName} · ${startup.founderTitle}`
+  : startup.founderName;
+const ctaLabel = href ? "Open archive →" : "Read announcement →";
+---
+
+<article
+  class="startup-card"
+  data-startup-id={startup.id}
+  data-verticals={startup.verticals.join("|")}
+>
+  {
+    href ? (
+      <a
+        href={href}
+        class="startup-card__trigger"
+        aria-label={`View ${startup.companyName} in Agentic AI Startup News`}
+      >
+        <div class="startup-card__media">
+          <img
+            src={startup.image}
+            alt={`${startup.founderName}, founder of ${startup.companyName}`}
+            width="320"
+            height="320"
+            loading="lazy"
+            decoding="async"
+            class="startup-card__portrait"
+          />
+        </div>
+        <div class="startup-card__body">
+          <div class="startup-card__meta">
+            <time class="startup-card__date" datetime={startup.date}>
+              {formatStartupDate(startup.date)}
+            </time>
+            <span class="startup-card__round">{startup.round}</span>
+          </div>
+          <h2 class="startup-card__name">{startup.companyName}</h2>
+          <p class="startup-card__founder">{founderLine}</p>
+          <ul class="startup-card__tags" aria-label="Verticals">
+            {tags.map((tag) => (
+              <li class="startup-card__tag">{tag}</li>
+            ))}
+          </ul>
+          <p class="startup-card__desc">{startup.description}</p>
+          <span class="startup-card__cta">{ctaLabel}</span>
+        </div>
+      </a>
+    ) : (
+      <>
+        <button
+          type="button"
+          class="startup-card__trigger"
+          data-startup-open={startup.id}
+          aria-haspopup="dialog"
+          aria-label={`Open details for ${startup.companyName}`}
+        >
+          <div class="startup-card__media">
+            <img
+              src={startup.image}
+              alt={`${startup.founderName}, founder of ${startup.companyName}`}
+              width="320"
+              height="320"
+              loading="lazy"
+              decoding="async"
+              class="startup-card__portrait"
+            />
+          </div>
+          <div class="startup-card__body">
+            <div class="startup-card__meta">
+              <time class="startup-card__date" datetime={startup.date}>
+                {formatStartupDate(startup.date)}
+              </time>
+              <span class="startup-card__round">{startup.round}</span>
+            </div>
+            <h2 class="startup-card__name">{startup.companyName}</h2>
+            <p class="startup-card__founder">{founderLine}</p>
+            <ul class="startup-card__tags" aria-label="Verticals">
+              {tags.map((tag) => (
+                <li class="startup-card__tag">{tag}</li>
+              ))}
+            </ul>
+            <p class="startup-card__desc">{startup.description}</p>
+            <span class="startup-card__cta">{ctaLabel}</span>
+          </div>
+        </button>
+
+        <script
+          type="application/json"
+          data-startup-payload={startup.id}
+          set:html={JSON.stringify({
+            id: startup.id,
+            companyName: startup.companyName,
+            headline: startup.headline,
+            round: startup.round,
+            date: startup.date,
+            description: startup.description,
+            founderName: startup.founderName,
+            founderTitle: startup.founderTitle,
+            founderQuote: startup.founderQuote,
+            investorQuote: startup.investorQuote,
+            verticals: startup.verticals,
+            image: startup.image,
+          })}
+        />
+      </>
+    )
+  }
+</article>
+
+<style>
+  .startup-card {
+    height: 100%;
+  }
+
+  .startup-card__trigger {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .startup-card__trigger:hover,
+  .startup-card__trigger:focus-visible {
+    border-color: var(--accent);
+    box-shadow: 0 0 28px var(--glow);
+    outline: none;
+  }
+
+  .startup-card__trigger:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .startup-card__media {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .startup-card__portrait {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .startup-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.65rem;
+    padding: 1.25rem;
+  }
+
+  .startup-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .startup-card__date {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .startup-card__round {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--accent-secondary);
+  }
+
+  .startup-card__name {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .startup-card__founder {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .startup-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0.15rem 0 0;
+    padding: 0;
+  }
+
+  .startup-card__tag {
+    padding: 0.2rem 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(139, 124, 248, 0.1);
+    border: 1px solid rgba(139, 124, 248, 0.28);
+  }
+
+  .startup-card__desc {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .startup-card__cta {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .startup-card__trigger:hover .startup-card__cta {
+    color: var(--text);
+  }
+</style>

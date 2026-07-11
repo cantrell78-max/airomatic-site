@@ -113,8 +113,17 @@ const pageSize = 6;
           </blockquote>
           <blockquote class="startup-modal__quote startup-modal__quote--investor">
             <p data-modal-investor-quote></p>
-            <footer>— Investor</footer>
+            <footer data-modal-investor-attr>— Investor</footer>
           </blockquote>
+          <div class="startup-modal__social" data-modal-social hidden>
+            <p class="startup-modal__social-label mono">Hashtags</p>
+            <ul class="startup-modal__hashtags" data-modal-hashtags></ul>
+            <p class="startup-modal__social-label mono">X post</p>
+            <pre class="startup-modal__xpost" data-modal-xpost></pre>
+            <button type="button" class="btn btn--ghost startup-modal__copy" data-modal-copy-x>
+              Copy X post
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -379,7 +388,68 @@ const pageSize = 6;
 
   .startup-modal__quote--investor {
     border-left-color: var(--accent-secondary);
-    margin-bottom: 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .startup-modal__social {
+    margin-top: 0.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .startup-modal__social[hidden] {
+    display: none;
+  }
+
+  .startup-modal__social-label {
+    margin: 0 0 0.45rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .startup-modal__social-label + .startup-modal__social-label,
+  .startup-modal__hashtags + .startup-modal__social-label {
+    margin-top: 0.85rem;
+  }
+
+  .startup-modal__hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    list-style: none;
+    margin: 0 0 0.25rem;
+    padding: 0;
+  }
+
+  .startup-modal__hashtags :global(li) {
+    padding: 0.15rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    color: var(--accent-secondary);
+    background: rgba(94, 234, 212, 0.08);
+    border: 1px solid rgba(94, 234, 212, 0.25);
+  }
+
+  .startup-modal__xpost {
+    margin: 0 0 0.75rem;
+    padding: 0.75rem 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--text);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    max-height: 10rem;
+    overflow-y: auto;
+  }
+
+  .startup-modal__copy {
+    font-size: 0.75rem;
   }
 </style>
 
@@ -468,6 +538,20 @@ const pageSize = 6;
     const modalFounder = modal.querySelector("[data-modal-founder]");
     const modalFounderQuote = modal.querySelector("[data-modal-founder-quote]");
     const modalInvestorQuote = modal.querySelector("[data-modal-investor-quote]");
+    const modalInvestorAttr = modal.querySelector("[data-modal-investor-attr]");
+    const modalSocial = modal.querySelector("[data-modal-social]");
+    const modalHashtags = modal.querySelector("[data-modal-hashtags]");
+    const modalXPost = modal.querySelector("[data-modal-xpost]");
+    const modalCopyX = modal.querySelector("[data-modal-copy-x]");
+
+    function formatInvestorAttribution(data) {
+      const name = (data.investorName || "").trim();
+      const firm = (data.investorFirm || "").trim();
+      if (name && firm) return `${name} · ${firm}`;
+      if (name) return name;
+      if (firm) return firm;
+      return "Investor";
+    }
 
     function formatDate(iso) {
       try {
@@ -521,6 +605,8 @@ const pageSize = 6;
         modalInvestorQuote.textContent = data.investorQuote
           ? `“${data.investorQuote}”`
           : "";
+      if (modalInvestorAttr)
+        modalInvestorAttr.textContent = `— ${formatInvestorAttribution(data)}`;
       if (modalTags) {
         modalTags.innerHTML = "";
         (data.verticals || []).forEach((tag) => {
@@ -529,6 +615,22 @@ const pageSize = 6;
           modalTags.appendChild(li);
         });
       }
+
+      const tags = Array.isArray(data.hashtags) ? data.hashtags.filter(Boolean) : [];
+      const xPost = (data.xPost || "").trim();
+      if (modalSocial) {
+        const showSocial = tags.length > 0 || xPost.length > 0;
+        modalSocial.hidden = !showSocial;
+      }
+      if (modalHashtags) {
+        modalHashtags.innerHTML = "";
+        tags.forEach((tag) => {
+          const li = document.createElement("li");
+          li.textContent = tag.startsWith("#") ? tag : `#${tag}`;
+          modalHashtags.appendChild(li);
+        });
+      }
+      if (modalXPost) modalXPost.textContent = xPost;
 
       if (typeof modal.showModal === "function") {
         modal.showModal();
@@ -543,6 +645,23 @@ const pageSize = 6;
       } else {
         modal.removeAttribute("open");
       }
+    }
+
+    if (modalCopyX) {
+      modalCopyX.addEventListener("click", async () => {
+        const text = modalXPost?.textContent || "";
+        if (!text) return;
+        try {
+          await navigator.clipboard.writeText(text);
+          const prev = modalCopyX.textContent;
+          modalCopyX.textContent = "Copied";
+          setTimeout(() => {
+            modalCopyX.textContent = prev || "Copy X post";
+          }, 1400);
+        } catch {
+          modalCopyX.textContent = "Copy failed";
+        }
+      });
     }
 
     grid.addEventListener("click", (e) => {

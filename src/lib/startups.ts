@@ -23,8 +23,29 @@ export interface Startup {
   founderTitle: string | null;
   founderQuote: string;
   investorQuote: string;
+  /** Optional display name for the investor quote attribution */
+  investorName?: string | null;
+  /** Optional firm for the investor quote attribution */
+  investorFirm?: string | null;
   verticals: string[];
+  /** Exactly 5 hashtags for social (include leading #) */
+  hashtags?: string[];
+  /** Ready-to-post X copy for the Agentic AI Startup News account */
+  xPost?: string;
   image: string;
+}
+
+/** Attribution line for the investor quote footer (modal). */
+export function formatInvestorAttribution(startup: {
+  investorName?: string | null;
+  investorFirm?: string | null;
+}): string {
+  const name = startup.investorName?.trim() || "";
+  const firm = startup.investorFirm?.trim() || "";
+  if (name && firm) return `${name} · ${firm}`;
+  if (name) return name;
+  if (firm) return firm;
+  return "Investor";
 }
 
 export const startups: Startup[] = startupsData as Startup[];
@@ -46,13 +67,21 @@ export const STARTUP_FILTERS = [
   "All",
   "Quantum",
   "Defense",
+  "AI SOC",
+  "Security",
   "Insurtech",
+  "Fintech",
+  "Legal AI",
   "Dev Tools",
+  "Agentic CX",
   "Real Estate",
   "Proptech",
   "Escrow",
   "Voice AI",
   "Sovereign Entities",
+  "Healthtech",
+  "Agent Infra",
+  "Fincrime",
 ] as const;
 
 export type StartupFilter = (typeof STARTUP_FILTERS)[number];

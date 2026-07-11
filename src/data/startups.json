@@ -1,5 +1,397 @@
 [
   {
+    "id": "triagix-2026-07",
+    "date": "2026-07-11",
+    "companyName": "Triagix",
+    "headline": "Triagix Raises $175M Series B Led by Crosspoint for Autonomous AI SOC Agents That Close Every Alert",
+    "round": "$175M Series B",
+    "description": "Agentic security operations stack that triages, hunts, and responds across SIEM and EDR with elite human analysts always in the loop—and full investigation audit trails.",
+    "founderName": "Kwame Asante",
+    "founderTitle": "ex-CrowdStrike",
+    "founderQuote": "Tier-1 triage is no longer a headcount problem. It is an agent reliability problem, and we productized the analyst loop.",
+    "investorQuote": "AI SOC is where agentic systems meet mission-critical accountability—Triagix is shipping production-grade autonomous defense.",
+    "investorName": "Greg Clark",
+    "investorFirm": "Crosspoint Capital Partners",
+    "verticals": [
+      "AI SOC",
+      "Security",
+      "Multi-Agent"
+    ],
+    "hashtags": [
+      "#AISOC",
+      "#Cybersecurity",
+      "#AgenticAI",
+      "#SeriesB",
+      "#SecurityOps"
+    ],
+    "image": "/images/startups/kwame-asante.jpg",
+    "xPost": "Triagix raises $175M Series B. Agentic security operations stack that triages, hunts, and responds across SIEM and EDR with elite human analysts always in the loop—and full investigation audit trails.\n\n\"Tier-1 triage is no longer a headcount problem. It is an agent reliability problem, and we productized the analyst loop.\" — Kwame Asante\n\n\"AI SOC is where agentic systems meet mission-critical accountability—Triagix is shipping production-grade autonomous defense.\" — Greg Clark · Crosspoint Capital Partners\n\n#AISOC #Cybersecurity #AgenticAI #SeriesB #SecurityOps"
+  },
+  {
+    "id": "servara-2026-07",
+    "date": "2026-07-11",
+    "companyName": "Servara",
+    "headline": "Servara Raises $82M Series B for Agentic CX Stack That Resolves Tickets End-to-End Across Enterprise Channels",
+    "round": "$82M Series B",
+    "description": "Customer-experience agents that own resolution across chat, email, and voice—deep CRM and ERP integrations with policy-aware handoff when judgment is still human.",
+    "founderName": "Sofia Reyes",
+    "founderTitle": "ex-Zendesk",
+    "founderQuote": "Copilots draft replies. Our agents close loops—refunds, swaps, escalations—inside the systems of record.",
+    "investorQuote": "Agentic CX is the first enterprise agent surface with measurable ROI every quarter, and Servara is compounding that wedge.",
+    "investorName": "Jan Hammer",
+    "investorFirm": "Index Ventures",
+    "verticals": [
+      "Agentic CX",
+      "Customer Support",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#AgenticCX",
+      "#CustomerExperience",
+      "#SeriesB",
+      "#AgenticAI",
+      "#EnterpriseAI"
+    ],
+    "image": "/images/startups/sofia-reyes.jpg",
+    "xPost": "Servara raises $82M Series B. Customer-experience agents that own resolution across chat, email, and voice—deep CRM and ERP integrations with policy-aware handoff when judgment is still human.\n\n\"Copilots draft replies. Our agents close loops—refunds, swaps, escalations—inside the systems of record.\" — Sofia Reyes\n\n\"Agentic CX is the first enterprise agent surface with measurable ROI every quarter, and Servara is compounding that wedge.\" — Jan Hammer · Index Ventures\n\n#AgenticCX #CustomerExperience #SeriesB #AgenticAI #EnterpriseAI"
+  },
+  {
+    "id": "jurisix-2026-07",
+    "date": "2026-07-11",
+    "companyName": "Jurisix",
+    "headline": "Jurisix Raises $98M Series B for Multi-Agent Legal Workbench With Matter-Level Persistent Context",
+    "round": "$98M Series B",
+    "description": "Law-firm and in-house agents that draft, review, and orchestrate matter workflows with privilege-aware audit trails and firm-specific precedent graphs.",
+    "founderName": "Daniel Park",
+    "founderTitle": "ex-Palantir",
+    "founderQuote": "Legal work is multi-step and liability-heavy. Agents only win when context and proof travel with every action.",
+    "investorQuote": "The legal agent category is consolidating around teams that treat governance as product, not a slide—Jurisix is that stack.",
+    "investorName": "Shaun Maguire",
+    "investorFirm": "Sequoia Capital",
+    "verticals": [
+      "Legal AI",
+      "Agentic Work",
+      "Compliance"
+    ],
+    "hashtags": [
+      "#LegalTech",
+      "#AgenticAI",
+      "#SeriesB",
+      "#LawFirm",
+      "#EnterpriseAI"
+    ],
+    "image": "/images/startups/daniel-park.jpg",
+    "xPost": "Jurisix raises $98M Series B. Law-firm and in-house agents that draft, review, and orchestrate matter workflows with privilege-aware audit trails and firm-specific precedent graphs.\n\n\"Legal work is multi-step and liability-heavy. Agents only win when context and proof travel with every action.\" — Daniel Park\n\n\"The legal agent category is consolidating around teams that treat governance as product, not a slide—Jurisix is that stack.\" — Shaun Maguire · Sequoia Capital\n\n#LegalTech #AgenticAI #SeriesB #LawFirm #EnterpriseAI"
+  },
+  {
+    "id": "forjex-2026-07",
+    "date": "2026-07-10",
+    "companyName": "Forjex",
+    "headline": "Forjex Raises $130M Series B for AI-Native Software Forge That Ships From Intent to Production With Full Audit Trails",
+    "round": "$130M Series B",
+    "description": "Multi-agent coding platform where enterprise teams move from business intent to tested production code—shared persistent context, policy gates, and repo-native deployment.",
+    "founderName": "Aisha Rahman",
+    "founderTitle": "ex-GitHub",
+    "founderQuote": "The forge is not a chat window. It is an operating system for teams that need agent velocity without losing the paper trail.",
+    "investorQuote": "Coding agents that survive regulated enterprises will own the next software cycle—Forjex is built for that bar.",
+    "investorName": "Martin Casado",
+    "investorFirm": "a16z",
+    "verticals": [
+      "Dev Tools",
+      "Agentic Coding",
+      "Software Forge"
+    ],
+    "hashtags": [
+      "#DevTools",
+      "#AgenticCoding",
+      "#SeriesB",
+      "#SoftwareEngineering",
+      "#AgenticAI"
+    ],
+    "image": "/images/startups/aisha-rahman.jpg",
+    "xPost": "Forjex raises $130M Series B. Multi-agent coding platform where enterprise teams move from business intent to tested production code—shared persistent context, policy gates, and repo-native deployment.\n\n\"The forge is not a chat window. It is an operating system for teams that need agent velocity without losing the paper trail.\" — Aisha Rahman\n\n\"Coding agents that survive regulated enterprises will own the next software cycle—Forjex is built for that bar.\" — Martin Casado · a16z\n\n#DevTools #AgenticCoding #SeriesB #SoftwareEngineering #AgenticAI"
+  },
+  {
+    "id": "idenix-2026-07",
+    "date": "2026-07-10",
+    "companyName": "Idenix",
+    "headline": "Idenix Raises $48M Series A to Make AI Agents First-Class Identities Inside the Enterprise IAM Stack",
+    "round": "$48M Series A",
+    "description": "Identity and authorization infrastructure for non-human agents—provisioning, scoped tool access, rotation, and revocation treated like employees with machine-speed lifecycle.",
+    "founderName": "Rafael Costa",
+    "founderTitle": "ex-Okta",
+    "founderQuote": "If agents act, they need identities. Everything else is shadow IT with a model card.",
+    "investorQuote": "Agent identity is the missing control plane for production agent fleets—Idenix is the category-defining layer.",
+    "investorName": "Mamoon Hamid",
+    "investorFirm": "Kleiner Perkins",
+    "verticals": [
+      "Agent Identity",
+      "Security",
+      "IAM"
+    ],
+    "hashtags": [
+      "#Identity",
+      "#AgenticAI",
+      "#SeriesA",
+      "#Cybersecurity",
+      "#IAM"
+    ],
+    "image": "/images/startups/rafael-costa.jpg",
+    "xPost": "Idenix raises $48M Series A. Identity and authorization infrastructure for non-human agents—provisioning, scoped tool access, rotation, and revocation treated like employees with machine-speed lifecycle.\n\n\"If agents act, they need identities. Everything else is shadow IT with a model card.\" — Rafael Costa\n\n\"Agent identity is the missing control plane for production agent fleets—Idenix is the category-defining layer.\" — Mamoon Hamid · Kleiner Perkins\n\n#Identity #AgenticAI #SeriesA #Cybersecurity #IAM"
+  },
+  {
+    "id": "tracera-2026-07",
+    "date": "2026-07-10",
+    "companyName": "Tracera",
+    "headline": "Tracera Raises $42M Series A for Agentic Financial Crime Investigations Across Banks and Fintechs",
+    "round": "$42M Series A",
+    "description": "Investigation agents that assemble case files, score SAR narratives, and coordinate multi-hop entity resolution while keeping compliance officers in the approval path.",
+    "founderName": "Yuki Nakamura",
+    "founderTitle": "ex-Stripe",
+    "founderQuote": "Financial crime is a graph problem plus a paperwork problem. Agents finally close both loops without inventing evidence.",
+    "investorQuote": "Fincrime is where agentic automation meets regulators—Tracera pairs speed with defensibility.",
+    "investorName": "Sonny Vu",
+    "investorFirm": "Lightspeed Venture Partners",
+    "verticals": [
+      "Fincrime",
+      "Compliance",
+      "Agentic Investigations"
+    ],
+    "hashtags": [
+      "#FinCrime",
+      "#RegTech",
+      "#SeriesA",
+      "#AgenticAI",
+      "#Banking"
+    ],
+    "image": "/images/startups/yuki-nakamura.jpg",
+    "xPost": "Tracera raises $42M Series A. Investigation agents that assemble case files, score SAR narratives, and coordinate multi-hop entity resolution while keeping compliance officers in the approval path.\n\n\"Financial crime is a graph problem plus a paperwork problem. Agents finally close both loops without inventing evidence.\" — Yuki Nakamura\n\n\"Fincrime is where agentic automation meets regulators—Tracera pairs speed with defensibility.\" — Sonny Vu · Lightspeed Venture Partners\n\n#FinCrime #RegTech #SeriesA #AgenticAI #Banking"
+  },
+  {
+    "id": "railora-2026-07",
+    "date": "2026-07-09",
+    "companyName": "Railora",
+    "headline": "Railora Raises $19M Seed to Build the Trust and Payment Rails for the Agentic Economy",
+    "round": "$19M Seed",
+    "description": "Accountable payment and authorization rails so autonomous agents can move money with spend limits, counterparty checks, and cryptographic audit trails for every action.",
+    "founderName": "Omar Haddad",
+    "founderTitle": "ex-Ripple",
+    "founderQuote": "Agents already try to spend. We make that spend policy-bound, attributable, and reversible when it has to be.",
+    "investorQuote": "The agentic economy only scales if money and identity share a trust fabric—Railora is laying those rails early.",
+    "investorName": "Katie Haun",
+    "investorFirm": "Haun Ventures",
+    "verticals": [
+      "Agentic Economy",
+      "Payments",
+      "Trust Layer"
+    ],
+    "hashtags": [
+      "#AgenticEconomy",
+      "#Fintech",
+      "#SeedRound",
+      "#AgenticAI",
+      "#Payments"
+    ],
+    "image": "/images/startups/omar-haddad.jpg",
+    "xPost": "Railora raises $19M Seed. Accountable payment and authorization rails so autonomous agents can move money with spend limits, counterparty checks, and cryptographic audit trails for every action.\n\n\"Agents already try to spend. We make that spend policy-bound, attributable, and reversible when it has to be.\" — Omar Haddad\n\n\"The agentic economy only scales if money and identity share a trust fabric—Railora is laying those rails early.\" — Katie Haun · Haun Ventures\n\n#AgenticEconomy #Fintech #SeedRound #AgenticAI #Payments"
+  },
+  {
+    "id": "sivara-2026-07",
+    "date": "2026-07-11",
+    "companyName": "Sivara",
+    "headline": "Sivara Raises $92M Series B After Its Own IR Agent Fielded 140 LPs and Mapped $370M of Soft Circles",
+    "round": "$92M Series B",
+    "description": "Enterprise agent stack that runs investor relations end-to-end—memo drafting, diligence Q&A, slide heatmaps, and continuous LP equilibrium—until the round is effectively a product demo.",
+    "founderName": "Amara Okonkwo",
+    "founderTitle": "ex-Stripe",
+    "founderQuote": "If your fundraise still requires a human to schedule the follow-up, you are shipping the wrong infrastructure layer.",
+    "investorQuote": "The teams turning capital formation itself into an agentic workflow are defining the next operating system for venture.",
+    "investorName": "Aaref Hilaly",
+    "investorFirm": "Bain Capital Ventures",
+    "verticals": [
+      "Enterprise AI",
+      "Agentic IR",
+      "Fundraising Infra"
+    ],
+    "hashtags": [
+      "#AgenticAI",
+      "#SeriesB",
+      "#EnterpriseAI",
+      "#VentureCapital",
+      "#StartupNews"
+    ],
+    "xPost": "Sivara raises $92M Series B. Enterprise agent stack that runs investor relations end-to-end—memo drafting, diligence Q&A, slide heatmaps, and continuous LP equilibrium—until the round is effectively a product demo.\n\n\"If your fundraise still requires a human to schedule the follow-up, you are shipping the wrong infrastructure layer.\" — Amara Okonkwo\n\n\"The teams turning capital formation itself into an agentic workflow are defining the next operating system for venture.\" — Aaref Hilaly · Bain Capital Ventures\n\n#AgenticAI #SeriesB #EnterpriseAI #VentureCapital #StartupNews",
+    "image": "/images/startups/amara-okonkwo.jpg"
+  },
+  {
+    "id": "gymora-2026-07",
+    "date": "2026-07-11",
+    "companyName": "Gymora",
+    "headline": "Gymora Raises $48M Series A to Build Sandbox Gyms Where AI Agents Fail Before Production",
+    "round": "$48M Series A",
+    "description": "Large-scale simulation environments where multi-agent systems rehearse tool use, edge cases, and rollback paths against replica enterprise stacks before touching live systems.",
+    "founderName": "Eitan Mizrahi",
+    "founderTitle": "ex-Unit 8200",
+    "founderQuote": "Pointing agents at production and hoping is not a reliability strategy. We built the gym where they learn to not break the world.",
+    "investorQuote": "Agent reliability infrastructure is becoming as fundable as the agents themselves—and Gymora is the clear training fabric.",
+    "investorName": "Sarah Tavel",
+    "investorFirm": "Benchmark",
+    "verticals": [
+      "Agent Infra",
+      "Simulation",
+      "Reliability"
+    ],
+    "hashtags": [
+      "#AgentGym",
+      "#AgenticAI",
+      "#SeriesA",
+      "#AIInfrastructure",
+      "#Sim2Real"
+    ],
+    "xPost": "Gymora raises $48M Series A. Large-scale simulation environments where multi-agent systems rehearse tool use, edge cases, and rollback paths against replica enterprise stacks before touching live systems.\n\n\"Pointing agents at production and hoping is not a reliability strategy. We built the gym where they learn to not break the world.\" — Eitan Mizrahi\n\n\"Agent reliability infrastructure is becoming as fundable as the agents themselves—and Gymora is the clear training fabric.\" — Sarah Tavel · Benchmark\n\n#AgentGym #AgenticAI #SeriesA #AIInfrastructure #Sim2Real",
+    "image": "/images/startups/eitan-mizrahi.jpg"
+  },
+  {
+    "id": "trialex-2026-07",
+    "date": "2026-07-11",
+    "companyName": "Trialex",
+    "headline": "Trialex Raises $14M Seed to Bring Agentic Data Cleaning to Clinical Development Workflows",
+    "round": "$14M Seed",
+    "description": "Persistent agents that automate clinical trial data review, reconciliation, query resolution, and sponsor reporting with full audit trails for regulated pharma sponsors.",
+    "founderName": "Priya Natarajan",
+    "founderTitle": "ex-Flatiron Health",
+    "founderQuote": "Manual data cleaning is still the silent tax on every protocol. We are turning that tax into an always-on agent fabric.",
+    "investorQuote": "Life-science operators who ship agent-native trial ops will compress timelines competitors still staff with spreadsheets.",
+    "investorName": "Vijay Pande",
+    "investorFirm": "a16z Bio + Health",
+    "verticals": [
+      "Healthtech",
+      "Clinical Ops",
+      "Agentic Automation"
+    ],
+    "hashtags": [
+      "#Healthtech",
+      "#AgenticAI",
+      "#ClinicalTrials",
+      "#SeedRound",
+      "#PharmaAI"
+    ],
+    "xPost": "Trialex raises $14M Seed. Persistent agents that automate clinical trial data review, reconciliation, query resolution, and sponsor reporting with full audit trails for regulated pharma sponsors.\n\n\"Manual data cleaning is still the silent tax on every protocol. We are turning that tax into an always-on agent fabric.\" — Priya Natarajan\n\n\"Life-science operators who ship agent-native trial ops will compress timelines competitors still staff with spreadsheets.\" — Vijay Pande · a16z Bio + Health\n\n#Healthtech #AgenticAI #ClinicalTrials #SeedRound #PharmaAI",
+    "image": "/images/startups/priya-natarajan.jpg"
+  },
+  {
+    "id": "allocix-2026-07",
+    "date": "2026-07-10",
+    "companyName": "Allocix",
+    "headline": "Allocix Raises $32M Series A to Scale Agentic Investing Across Live Portfolio Execution",
+    "round": "$32M Series A",
+    "description": "Multi-agent system that researches, sizes, and routes capital with continuous risk equilibrium—designed for funds that want non-human identity layers in the investment loop.",
+    "founderName": "Wei-Ning Zhang",
+    "founderTitle": "ex-Two Sigma",
+    "founderQuote": "Once agents can hold mandate context for days, portfolio construction stops being a weekly ritual and becomes a living process.",
+    "investorQuote": "Agentic capital allocation is the unlock for funds that need speed without abandoning fiduciary-grade controls.",
+    "investorName": "Ann Miura-Ko",
+    "investorFirm": "Floodgate",
+    "verticals": [
+      "Fintech",
+      "Agentic Investing",
+      "Capital Markets"
+    ],
+    "hashtags": [
+      "#Fintech",
+      "#AgenticAI",
+      "#SeriesA",
+      "#Investing",
+      "#CapitalMarkets"
+    ],
+    "xPost": "Allocix raises $32M Series A. Multi-agent system that researches, sizes, and routes capital with continuous risk equilibrium—designed for funds that want non-human identity layers in the investment loop.\n\n\"Once agents can hold mandate context for days, portfolio construction stops being a weekly ritual and becomes a living process.\" — Wei-Ning Zhang\n\n\"Agentic capital allocation is the unlock for funds that need speed without abandoning fiduciary-grade controls.\" — Ann Miura-Ko · Floodgate\n\n#Fintech #AgenticAI #SeriesA #Investing #CapitalMarkets",
+    "image": "/images/startups/wei-ning-zhang.jpg"
+  },
+  {
+    "id": "decisara-2026-07",
+    "date": "2026-07-10",
+    "companyName": "Decisara",
+    "headline": "Decisara Raises $125M Series C Led by Thrive for Agentic Decisioning in Regulated Finance",
+    "round": "$125M Series C",
+    "description": "Agentic decision platform for banks and insurers—loan approvals, fraud triage, claims orchestration, and onboarding with human oversight, policy graphs, and immutable audit trails.",
+    "founderName": "Kofi Mensah",
+    "founderTitle": "ex-Goldman Sachs",
+    "founderQuote": "Regulated decisions are not a chat problem. They are a persistent policy-and-proof problem, and that is the stack we ship.",
+    "investorQuote": "The institutions that industrialize agentic decisioning with real auditability will redefine operating leverage in financial services.",
+    "investorName": "Joshua Kushner",
+    "investorFirm": "Thrive Capital",
+    "verticals": [
+      "Insurtech",
+      "Fintech",
+      "Agentic Decisioning"
+    ],
+    "hashtags": [
+      "#Insurtech",
+      "#Fintech",
+      "#SeriesC",
+      "#AgenticAI",
+      "#RegTech"
+    ],
+    "xPost": "Decisara raises $125M Series C. Agentic decision platform for banks and insurers—loan approvals, fraud triage, claims orchestration, and onboarding with human oversight, policy graphs, and immutable audit trails.\n\n\"Regulated decisions are not a chat problem. They are a persistent policy-and-proof problem, and that is the stack we ship.\" — Kofi Mensah\n\n\"The institutions that industrialize agentic decisioning with real auditability will redefine operating leverage in financial services.\" — Joshua Kushner · Thrive Capital\n\n#Insurtech #Fintech #SeriesC #AgenticAI #RegTech",
+    "image": "/images/startups/kofi-mensah.jpg"
+  },
+  {
+    "id": "swarmix-2026-07",
+    "date": "2026-07-10",
+    "companyName": "Swarmix",
+    "headline": "Swarmix Raises $380M Series C at $4.1B Valuation for Multi-Domain Autonomous Defense Swarms",
+    "round": "$380M Series C",
+    "description": "Agent-orchestrated autonomous systems for ISR, counter-UAS, and edge mission planning—self-healing C2 fabrics designed for contested, GPS-denied environments.",
+    "founderName": "Noa Ben-David",
+    "founderTitle": "ex-Israeli Defense Forces tech unit",
+    "founderQuote": "Physical autonomy without an agentic command layer is just expensive hardware. We fuse both at the edge.",
+    "investorQuote": "Dual-use swarm velocity with real production discipline is the defense wedge we underwrite aggressively.",
+    "investorName": "Katherine Boyle",
+    "investorFirm": "a16z American Dynamism",
+    "verticals": [
+      "Defense",
+      "Autonomous Systems",
+      "Agentic C2"
+    ],
+    "hashtags": [
+      "#DefenseTech",
+      "#Autonomy",
+      "#SeriesC",
+      "#AgenticAI",
+      "#DualUse"
+    ],
+    "xPost": "Swarmix raises $380M Series C. Agent-orchestrated autonomous systems for ISR, counter-UAS, and edge mission planning—self-healing C2 fabrics designed for contested, GPS-denied environments.\n\n\"Physical autonomy without an agentic command layer is just expensive hardware. We fuse both at the edge.\" — Noa Ben-David\n\n\"Dual-use swarm velocity with real production discipline is the defense wedge we underwrite aggressively.\" — Katherine Boyle · a16z American Dynamism\n\n#DefenseTech #Autonomy #SeriesC #AgenticAI #DualUse",
+    "image": "/images/startups/noa-ben-david.jpg"
+  },
+  {
+    "id": "simulith-2026-07",
+    "date": "2026-07-09",
+    "companyName": "Simulith",
+    "headline": "Simulith Raises $58M Series B to Stress-Test AI Agents Inside Digital World Replicas",
+    "round": "$58M Series B",
+    "description": "Digital world models that clone websites and internal systems so agents can be evaluated, red-teamed, and hardened against failure modes before enterprise deployment.",
+    "founderName": "Maya Krishnan",
+    "founderTitle": "ex-Meta AI",
+    "founderQuote": "You cannot govern what you cannot rehearse. We give every agent a world that looks like production and bleeds like a staging environment.",
+    "investorQuote": "Agent evaluation is moving from unit tests to full world models—Simulith is building the standard stress fabric.",
+    "investorName": "Reid Hoffman",
+    "investorFirm": "Greylock",
+    "verticals": [
+      "Agent Eval",
+      "Safety",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#AISafety",
+      "#AgenticAI",
+      "#SeriesB",
+      "#MLOps",
+      "#EnterpriseAI"
+    ],
+    "xPost": "Simulith raises $58M Series B. Digital world models that clone websites and internal systems so agents can be evaluated, red-teamed, and hardened against failure modes before enterprise deployment.\n\n\"You cannot govern what you cannot rehearse. We give every agent a world that looks like production and bleeds like a staging environment.\" — Maya Krishnan\n\n\"Agent evaluation is moving from unit tests to full world models—Simulith is building the standard stress fabric.\" — Reid Hoffman · Greylock\n\n#AISafety #AgenticAI #SeriesB #MLOps #EnterpriseAI",
+    "image": "/images/startups/maya-krishnan.jpg"
+  },
+  {
     "id": "aine ko-sentinel-2026-05",
     "date": "2026-05-12",
     "companyName": "Aineko Sentinel",
@@ -10,8 +402,22 @@
     "founderTitle": "ex-Meta AI",
     "founderQuote": "We're turning the world's most paper-heavy regulated processes into living agent-native infrastructure.",
     "investorQuote": "This is the exact kind of high-leverage vertical agent stack we look for.",
-    "verticals": ["Escrow", "Real Estate", "Agentic Automation"],
-    "image": "/images/startups/elara-voss.jpg"
+    "investorName": "Priya Menon",
+    "investorFirm": "Menlo Ventures",
+    "verticals": [
+      "Escrow",
+      "Real Estate",
+      "Agentic Automation"
+    ],
+    "image": "/images/startups/elara-voss.jpg",
+    "hashtags": [
+      "#Proptech",
+      "#Escrow",
+      "#AgenticAI",
+      "#SeriesA",
+      "#RealEstate"
+    ],
+    "xPost": "Aineko Sentinel raises $48M Series A. Persistent multi-agent systems that automate title, escrow, and compliance workflows with continuous equilibrium and full audit trails.\n\n\"We're turning the world's most paper-heavy regulated processes into living agent-native infrastructure.\" — Elara Voss\n\n\"This is the exact kind of high-leverage vertical agent stack we look for.\" — Priya Menon · Menlo Ventures\n\n#Proptech #Escrow #AgenticAI #SeriesA #RealEstate"
   },
   {
     "id": "seraphix-2026-05",
@@ -24,8 +430,22 @@
     "founderTitle": "ex-Google DeepMind",
     "founderQuote": "The founding team can stay extremely small and still move at hyperspeed once the agent layer is this strong.",
     "investorQuote": "When agents become first-class economic actors, everything changes.",
-    "verticals": ["Sovereign Entities", "Agentic", "Multi-Vertical"],
-    "image": "/images/startups/sahil-reddy.jpg"
+    "investorName": "Marcus Chen",
+    "investorFirm": "a16z",
+    "verticals": [
+      "Sovereign Entities",
+      "Agentic",
+      "Multi-Vertical"
+    ],
+    "image": "/images/startups/sahil-reddy.jpg",
+    "hashtags": [
+      "#SovereignAI",
+      "#AgenticAI",
+      "#SeriesA",
+      "#MultiAgent",
+      "#StartupNews"
+    ],
+    "xPost": "Seraphix raises $67M Series A. AI entities that can form, fund, and operate across insurance, defense, and capital markets with shared persistent context.\n\n\"The founding team can stay extremely small and still move at hyperspeed once the agent layer is this strong.\" — Sahil Reddy\n\n\"When agents become first-class economic actors, everything changes.\" — Marcus Chen · a16z\n\n#SovereignAI #AgenticAI #SeriesA #MultiAgent #StartupNews"
   },
   {
     "id": "quantara-2026-07",
@@ -38,8 +458,22 @@
     "founderTitle": "ex-Google Quantum AI",
     "founderQuote": "Our neutral-atom arrays combined with persistent multi-agent orchestration deliver exponential speedups for regulated industries.",
     "investorQuote": "When agents can actually perform actions on top of fault-tolerant quantum substrates, the leverage becomes generational.",
-    "verticals": ["Quantum", "Agentic Simulation", "Hybrid Compute"],
-    "image": "/images/startups/arjun-vora.jpg"
+    "investorName": "Vinod Khosla",
+    "investorFirm": "Khosla Ventures",
+    "verticals": [
+      "Quantum",
+      "Agentic Simulation",
+      "Hybrid Compute"
+    ],
+    "image": "/images/startups/arjun-vora.jpg",
+    "hashtags": [
+      "#Quantum",
+      "#AgenticAI",
+      "#SeriesA",
+      "#HybridCompute",
+      "#DeepTech"
+    ],
+    "xPost": "Quantara raises $285M Series A. Fault-tolerant quantum-classical agents that deliver practical utility-scale speedups for complex modeling in finance, aerospace, and drug discovery.\n\n\"Our neutral-atom arrays combined with persistent multi-agent orchestration deliver exponential speedups for regulated industries.\" — Arjun Vora\n\n\"When agents can actually perform actions on top of fault-tolerant quantum substrates, the leverage becomes generational.\" — Vinod Khosla · Khosla Ventures\n\n#Quantum #AgenticAI #SeriesA #HybridCompute #DeepTech"
   },
   {
     "id": "aegisforge-2026-07",
@@ -52,8 +486,22 @@
     "founderTitle": "ex-Israeli Defense Forces tech unit",
     "founderQuote": "Physical autonomy layered with quantum decision layers is where defense leverage compounds fastest.",
     "investorQuote": "This is the dual-use agent velocity we look for across physical and digital domains.",
-    "verticals": ["Defense", "Autonomous Systems", "Quantum Command"],
-    "image": "/images/startups/liora-shalev.jpg"
+    "investorName": "Trae Stephens",
+    "investorFirm": "Founders Fund",
+    "verticals": [
+      "Defense",
+      "Autonomous Systems",
+      "Quantum Command"
+    ],
+    "image": "/images/startups/liora-shalev.jpg",
+    "hashtags": [
+      "#DefenseTech",
+      "#Quantum",
+      "#SeriesD",
+      "#Autonomy",
+      "#AgenticAI"
+    ],
+    "xPost": "AegisForge raises $1.15B Series D. Guardian agents that fuse real-time ISR, counter-UAS, and hybrid quantum simulation for mission planning at the edge.\n\n\"Physical autonomy layered with quantum decision layers is where defense leverage compounds fastest.\" — Liora Shalev\n\n\"This is the dual-use agent velocity we look for across physical and digital domains.\" — Trae Stephens · Founders Fund\n\n#DefenseTech #Quantum #SeriesD #Autonomy #AgenticAI"
   },
   {
     "id": "claimara-2026-07",
@@ -66,8 +514,22 @@
     "founderTitle": "ex-Meta AI",
     "founderQuote": "We're turning regulated insurance processes into fully agent-native systems.",
     "investorQuote": "The teams shipping agent-native infrastructure in regulated verticals are pulling away from the pack.",
-    "verticals": ["Insurtech", "Agentic Decisioning", "Compliance"],
-    "image": "/images/startups/saanvi-reddy.jpg"
+    "investorName": "Emily Kirsch",
+    "investorFirm": "Salesforce Ventures",
+    "verticals": [
+      "Insurtech",
+      "Agentic Decisioning",
+      "Compliance"
+    ],
+    "image": "/images/startups/saanvi-reddy.jpg",
+    "hashtags": [
+      "#Insurtech",
+      "#AgenticAI",
+      "#SeriesB",
+      "#Underwriting",
+      "#Compliance"
+    ],
+    "xPost": "Claimara raises $105M Series B. Persistent agents that handle end-to-end risk scoring, policy orchestration, and regulatory compliance with zero human touchpoints.\n\n\"We're turning regulated insurance processes into fully agent-native systems.\" — Saanvi Reddy\n\n\"The teams shipping agent-native infrastructure in regulated verticals are pulling away from the pack.\" — Emily Kirsch · Salesforce Ventures\n\n#Insurtech #AgenticAI #SeriesB #Underwriting #Compliance"
   },
   {
     "id": "devora-2026-07",
@@ -80,8 +542,22 @@
     "founderTitle": "ex-Salesforce",
     "founderQuote": "This is the infrastructure shift enterprises have been waiting for in a post-copilot world.",
     "investorQuote": "The shift from copilots to agentic software factories in regulated environments is where the next wave of leverage sits.",
-    "verticals": ["Dev Tools", "Agentic Coding", "Software Forge"],
-    "image": "/images/startups/ishaan-patel.jpg"
+    "investorName": "Shaun Maguire",
+    "investorFirm": "Sequoia Capital",
+    "verticals": [
+      "Dev Tools",
+      "Agentic Coding",
+      "Software Forge"
+    ],
+    "image": "/images/startups/ishaan-patel.jpg",
+    "hashtags": [
+      "#DevTools",
+      "#AgenticCoding",
+      "#SeriesB",
+      "#SoftwareForge",
+      "#EnterpriseAI"
+    ],
+    "xPost": "Devora raises $95M Series B. Teams move from business intent to production code with full audit trails using persistent shared context across multi-agent workflows.\n\n\"This is the infrastructure shift enterprises have been waiting for in a post-copilot world.\" — Ishaan Patel\n\n\"The shift from copilots to agentic software factories in regulated environments is where the next wave of leverage sits.\" — Shaun Maguire · Sequoia Capital\n\n#DevTools #AgenticCoding #SeriesB #SoftwareForge #EnterpriseAI"
   },
   {
     "id": "terraquant-2026-07",
@@ -94,8 +570,22 @@
     "founderTitle": "ex-Anthropic",
     "founderQuote": "Turning the world’s largest asset class into live agentic financial infrastructure creates unfair compounding advantages.",
     "investorQuote": "Physical-world data streams meeting agent-native compliance produces leverage few teams can ship.",
-    "verticals": ["Proptech", "Escrow", "Quantum Risk"],
-    "image": "/images/startups/lina-zhou.jpg"
+    "investorName": "Josh Kopelman",
+    "investorFirm": "First Round Capital",
+    "verticals": [
+      "Proptech",
+      "Escrow",
+      "Quantum Risk"
+    ],
+    "image": "/images/startups/lina-zhou.jpg",
+    "hashtags": [
+      "#Proptech",
+      "#Quantum",
+      "#SeriesA",
+      "#Escrow",
+      "#AgenticFinance"
+    ],
+    "xPost": "TerraQuant raises $48M Series A. Satellite mapping, title automation, and agent-orchestrated capital flows now run inside one sovereign persistent context layer.\n\n\"Turning the world’s largest asset class into live agentic financial infrastructure creates unfair compounding advantages.\" — Lina Zhou\n\n\"Physical-world data streams meeting agent-native compliance produces leverage few teams can ship.\" — Josh Kopelman · First Round Capital\n\n#Proptech #Quantum #SeriesA #Escrow #AgenticFinance"
   },
   {
     "id": "voxforge-2026-07",
@@ -108,8 +598,22 @@
     "founderTitle": null,
     "founderQuote": "High-velocity mashups between everyday physical services and always-on agent fabrics unlock the biggest step-function improvements.",
     "investorQuote": "This is where agentic systems meet real-world labor and claims at scale.",
-    "verticals": ["Voice AI", "Home Services", "Agentic Orchestration"],
-    "image": "/images/startups/jamal-okoro.jpg"
+    "investorName": "Kirsten Green",
+    "investorFirm": "Forerunner Ventures",
+    "verticals": [
+      "Voice AI",
+      "Home Services",
+      "Agentic Orchestration"
+    ],
+    "image": "/images/startups/jamal-okoro.jpg",
+    "hashtags": [
+      "#VoiceAI",
+      "#HomeServices",
+      "#SeriesB",
+      "#AgenticAI",
+      "#LaborTech"
+    ],
+    "xPost": "VoxForge raises $62M Series B. Persistent agents coordinate claims processing, talent matching, social signals, and SOC2-compliant treasury functions across consumer verticals.\n\n\"High-velocity mashups between everyday physical services and always-on agent fabrics unlock the biggest step-function improvements.\" — Jamal Okoro\n\n\"This is where agentic systems meet real-world labor and claims at scale.\" — Kirsten Green · Forerunner Ventures\n\n#VoiceAI #HomeServices #SeriesB #AgenticAI #LaborTech"
   },
   {
     "id": "sovereignnexus-2026-07",
@@ -122,8 +626,22 @@
     "founderTitle": "ex-Meta executive",
     "founderQuote": "Small teams shipping this breadth of agent-native infrastructure across physical and regulated verticals keep redefining what’s possible.",
     "investorQuote": "This is the multi-vertical agent fabric that turns non-human identities into first-class economic actors.",
-    "verticals": ["Sovereign Entities", "Multi-Agent", "Cross-Vertical"],
-    "image": "/images/startups/diya-kapoor.jpg"
+    "investorName": "Hemant Taneja",
+    "investorFirm": "General Catalyst",
+    "verticals": [
+      "Sovereign Entities",
+      "Multi-Agent",
+      "Cross-Vertical"
+    ],
+    "image": "/images/startups/diya-kapoor.jpg",
+    "hashtags": [
+      "#SovereignAI",
+      "#MultiAgent",
+      "#SeriesA",
+      "#AgenticAI",
+      "#CrossVertical"
+    ],
+    "xPost": "SovereignNexus raises $78M Series A. AI entities now autonomously form, fund, and operate across quantum simulation, insurance automation, defense C2, and real estate capital allocation with shared persistent context.\n\n\"Small teams shipping this breadth of agent-native infrastructure across physical and regulated verticals keep redefining what’s possible.\" — Diya Kapoor\n\n\"This is the multi-vertical agent fabric that turns non-human identities into first-class economic actors.\" — Hemant Taneja · General Catalyst\n\n#SovereignAI #MultiAgent #SeriesA #AgenticAI #CrossVertical"
   },
   {
     "id": "nexlify-2026-06",
@@ -136,8 +654,22 @@
     "founderTitle": "ex-Social Capital",
     "founderQuote": "Our AI-enabled Software Forge lets enterprise teams collaborate with persistent agents to design, refactor, and deploy complex systems with full audit trails.",
     "investorQuote": "This is the infrastructure layer for regulated organizations that need to move at agent velocity while staying compliant.",
-    "verticals": ["Agentic Dev Tools", "Software Forge", "Enterprise AI"],
-    "image": "/images/startups/chaman-palitapitiya.jpg"
+    "investorName": "Chamath Palihapitiya",
+    "investorFirm": "Social Capital",
+    "verticals": [
+      "Agentic Dev Tools",
+      "Software Forge",
+      "Enterprise AI"
+    ],
+    "image": "/images/startups/chaman-palitapitiya.jpg",
+    "hashtags": [
+      "#DevTools",
+      "#SoftwareForge",
+      "#SeriesA",
+      "#EnterpriseAI",
+      "#AgenticAI"
+    ],
+    "xPost": "Nexlify raises $128M Series A. AI-enabled Software Forge that lets enterprise teams collaborate with persistent agents to design, refactor, and deploy complex systems end-to-end with full audit trails.\n\n\"Our AI-enabled Software Forge lets enterprise teams collaborate with persistent agents to design, refactor, and deploy complex systems with full audit trails.\" — Chaman Palitapitiya\n\n\"This is the infrastructure layer for regulated organizations that need to move at agent velocity while staying compliant.\" — Chamath Palihapitiya · Social Capital\n\n#DevTools #SoftwareForge #SeriesA #EnterpriseAI #AgenticAI"
   },
   {
     "id": "autonomix-2026-06",
@@ -150,8 +682,22 @@
     "founderTitle": "ex-Israeli Defense Forces tech unit",
     "founderQuote": "Physical autonomy plus agentic software layers is where the next decade of defense leverage gets built.",
     "investorQuote": "Dual-use agent velocity across physical assets and digital channels is the exact unfair advantage we look for.",
-    "verticals": ["Defense", "Autonomous Systems", "Agentic C2"],
-    "image": "/images/startups/talya-cohen.jpg"
+    "investorName": "Joe Lonsdale",
+    "investorFirm": "8VC",
+    "verticals": [
+      "Defense",
+      "Autonomous Systems",
+      "Agentic C2"
+    ],
+    "image": "/images/startups/talya-cohen.jpg",
+    "hashtags": [
+      "#DefenseTech",
+      "#Drones",
+      "#SeriesC",
+      "#AgenticC2",
+      "#Autonomy"
+    ],
+    "xPost": "Autonomix raises $285M Series C. Multi-agent Lattice-style systems that coordinate real-time ISR, counter-UAS, and production-scale deployment with self-healing decision fabrics.\n\n\"Physical autonomy plus agentic software layers is where the next decade of defense leverage gets built.\" — Talya Cohen\n\n\"Dual-use agent velocity across physical assets and digital channels is the exact unfair advantage we look for.\" — Joe Lonsdale · 8VC\n\n#DefenseTech #Drones #SeriesC #AgenticC2 #Autonomy"
   },
   {
     "id": "forgebridge-2026-06",
@@ -164,7 +710,21 @@
     "founderTitle": "ex-Anthropic",
     "founderQuote": "Turning physical real estate into live agent-native financial infrastructure creates compounding advantages few teams can ship.",
     "investorQuote": "This is the proptech agent stack that finally makes capital and compliance move at the same velocity.",
-    "verticals": ["Proptech", "Escrow Automation", "Agentic Finance"],
-    "image": "/images/startups/li-wei-chen.jpg"
+    "investorName": "Niko Bonatsos",
+    "investorFirm": "General Catalyst",
+    "verticals": [
+      "Proptech",
+      "Escrow Automation",
+      "Agentic Finance"
+    ],
+    "image": "/images/startups/li-wei-chen.jpg",
+    "hashtags": [
+      "#Proptech",
+      "#Escrow",
+      "#SeriesA",
+      "#AgenticFinance",
+      "#RealEstate"
+    ],
+    "xPost": "ForgeBridge raises $47M Series A. Satellite mapping, title automation, and agent-orchestrated capital flows now run in one persistent context layer for the world’s largest asset class.\n\n\"Turning physical real estate into live agent-native financial infrastructure creates compounding advantages few teams can ship.\" — Li Wei Chen\n\n\"This is the proptech agent stack that finally makes capital and compliance move at the same velocity.\" — Niko Bonatsos · General Catalyst\n\n#Proptech #Escrow #SeriesA #AgenticFinance #RealEstate"
   }
 ]

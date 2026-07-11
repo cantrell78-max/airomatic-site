@@ -113,7 +113,11 @@ const ctaLabel = href ? "Open archive →" : "Read announcement →";
             founderTitle: startup.founderTitle,
             founderQuote: startup.founderQuote,
             investorQuote: startup.investorQuote,
+            investorName: startup.investorName ?? null,
+            investorFirm: startup.investorFirm ?? null,
             verticals: startup.verticals,
+            hashtags: startup.hashtags ?? [],
+            xPost: startup.xPost ?? "",
             image: startup.image,
           })}
         />

@@ -1,5 +1,201 @@
 [
   {
+    "id": "procurith-2026-07",
+    "date": "2026-07-13",
+    "companyName": "Procurith",
+    "headline": "Procurith Raises $72M Series B Led by Nexus for Multi-Function Agent OS Across Procurement, HR, and Sales",
+    "round": "$72M Series B",
+    "description": "Enterprise agent production fabric that deploys cross-function agents for purchase orders, onboarding workflows, and GTM ops with shared policy graphs and human-in-the-loop gates.",
+    "founderName": "Vikram Subramanian",
+    "founderTitle": "ex-Stripe",
+    "founderQuote": "Enterprises do not need another chatbot. They need agents that open POs, provision seats, and close pipeline inside the systems of record.",
+    "investorQuote": "The production layer for multi-function agents is the new application platform—Procurith is shipping that fabric with governance built in.",
+    "investorName": "Anurag Ramachandran",
+    "investorFirm": "Nexus Venture Partners",
+    "verticals": [
+      "Enterprise AI",
+      "Agentic Automation",
+      "Procurement"
+    ],
+    "hashtags": [
+      "#EnterpriseAI",
+      "#AgenticAutomation",
+      "#SeriesB",
+      "#Procurement",
+      "#AgentOS"
+    ],
+    "image": "/images/startups/vikram-subramanian.jpg",
+    "xPost": "Procurith raises $72M Series B. Enterprise agent production fabric that deploys cross-function agents for purchase orders, onboarding workflows, and GTM ops with shared policy graphs and human-in-the-loop gates.\n\n\"Enterprises do not need another chatbot. They need agents that open POs, provision seats, and close pipeline inside the systems of record.\" — Vikram Subramanian\n\n\"The production layer for multi-function agents is the new application platform—Procurith is shipping that fabric with governance built in.\" — Anurag Ramachandran · Nexus Venture Partners\n\n#EnterpriseAI #AgenticAutomation #SeriesB #Procurement #AgentOS"
+  },
+  {
+    "id": "holdara-2026-07",
+    "date": "2026-07-13",
+    "companyName": "Holdara",
+    "headline": "Holdara Raises $28M Series A from Menlo for Agentic Escrow and Title Automation Across Residential Closings",
+    "round": "$28M Series A",
+    "description": "Proptech agents that orchestrate escrow, title search, wire instructions, and exception handling with immutable audit trails for brokers, lenders, and title companies.",
+    "founderName": "Hanae Nakamura",
+    "founderTitle": "ex-DocuSign",
+    "founderQuote": "Closing is still a fax-and-hope workflow. Our agents carry context from offer acceptance to funded wire without losing the liability chain.",
+    "investorQuote": "Real estate capital moves when paperwork does—Holdara turns the closing stack into an accountable multi-agent system.",
+    "investorName": "Matt Murphy",
+    "investorFirm": "Menlo Ventures",
+    "verticals": [
+      "Proptech",
+      "Escrow",
+      "Agentic Automation"
+    ],
+    "hashtags": [
+      "#Proptech",
+      "#Escrow",
+      "#SeriesA",
+      "#AgenticAI",
+      "#RealEstate"
+    ],
+    "image": "/images/startups/hanae-nakamura.jpg",
+    "xPost": "Holdara raises $28M Series A. Proptech agents that orchestrate escrow, title search, wire instructions, and exception handling with immutable audit trails for brokers, lenders, and title companies.\n\n\"Closing is still a fax-and-hope workflow. Our agents carry context from offer acceptance to funded wire without losing the liability chain.\" — Hanae Nakamura\n\n\"Real estate capital moves when paperwork does—Holdara turns the closing stack into an accountable multi-agent system.\" — Matt Murphy · Menlo Ventures\n\n#Proptech #Escrow #SeriesA #AgenticAI #RealEstate"
+  },
+  {
+    "id": "callith-2026-07",
+    "date": "2026-07-12",
+    "companyName": "Callith",
+    "headline": "Callith Raises $19M Seed Led by Salesforce Ventures for Voice Agents That Dispatch Field Labor On Demand",
+    "round": "$19M Seed",
+    "description": "Voice-first agents that take service requests, match skilled labor, negotiate windows, and settle payouts—claims, HVAC, and home services in one orchestration loop.",
+    "founderName": "Rohan Iyer",
+    "founderTitle": "ex-Uber",
+    "founderQuote": "Field work is a voice problem first. We built agents that speak, schedule, and settle without a twelve-tab dispatcher.",
+    "investorQuote": "Voice plus labor marketplace is a wedge Salesforce sees every day in service clouds—Callith is agentizing the last mile.",
+    "investorName": "Emily Kirsch",
+    "investorFirm": "Salesforce Ventures",
+    "verticals": [
+      "Voice AI",
+      "Home Services",
+      "Agentic Orchestration"
+    ],
+    "hashtags": [
+      "#VoiceAI",
+      "#HomeServices",
+      "#SeedRound",
+      "#AgenticAI",
+      "#FieldOps"
+    ],
+    "image": "/images/startups/rohan-iyer.jpg",
+    "xPost": "Callith raises $19M Seed. Voice-first agents that take service requests, match skilled labor, negotiate windows, and settle payouts—claims, HVAC, and home services in one orchestration loop.\n\n\"Field work is a voice problem first. We built agents that speak, schedule, and settle without a twelve-tab dispatcher.\" — Rohan Iyer\n\n\"Voice plus labor marketplace is a wedge Salesforce sees every day in service clouds—Callith is agentizing the last mile.\" — Emily Kirsch · Salesforce Ventures\n\n#VoiceAI #HomeServices #SeedRound #AgenticAI #FieldOps"
+  },
+  {
+    "id": "equara-2026-07",
+    "date": "2026-07-12",
+    "companyName": "Equara",
+    "headline": "Equara Raises $14M Seed from First Round for Founding Team Building Policy Agents Across DEI, HR Compliance, and Continuous Audit Evidence",
+    "round": "$14M Seed",
+    "description": "Compliance agents from a multi-founder team that map policy to living workflows, collect evidence, flag drift, and produce board-ready packs across hiring, promotions, and vendor risk.",
+    "founderName": "Mei-Lin Tan",
+    "founderTitle": "ex-Salesforce",
+    "founderQuote": "Compliance is not a PDF. It is a continuous agent loop our whole founding team ships weekly—with receipts.",
+    "investorQuote": "Regulated people-ops is under-automated and over-audited—Equara turns policy into executable agents with receipts.",
+    "investorName": "Josh Kopelman",
+    "investorFirm": "First Round",
+    "verticals": [
+      "Compliance",
+      "HR Tech",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#Compliance",
+      "#HRTech",
+      "#SeedRound",
+      "#AgenticAI",
+      "#Governance"
+    ],
+    "image": "/images/startups/equara-team.jpg",
+    "xPost": "Equara raises $14M Seed. Compliance agents from a multi-founder team that map policy to living workflows, collect evidence, flag drift, and produce board-ready packs across hiring, promotions, and vendor risk.\n\n\"Compliance is not a PDF. It is a continuous agent loop our whole founding team ships weekly—with receipts.\" — Mei-Lin Tan\n\n\"Regulated people-ops is under-automated and over-audited—Equara turns policy into executable agents with receipts.\" — Josh Kopelman · First Round\n\n#Compliance #HRTech #SeedRound #AgenticAI #Governance"
+  },
+  {
+    "id": "commerix-2026-07",
+    "date": "2026-07-13",
+    "companyName": "Commerix",
+    "headline": "Commerix Raises $45M Series A Led by General Catalyst for Social Commerce Agents That Run Creator Campaigns End-to-End",
+    "round": "$45M Series A",
+    "description": "Marketing agents that source creators, negotiate briefs, generate variant creative, track attribution, and reallocate spend across social storefronts in real time.",
+    "founderName": "Abena Boateng",
+    "founderTitle": "ex-Meta",
+    "founderQuote": "Campaigns die in spreadsheets. Our agents treat creator commerce as a closed-loop system with ROI as the reward signal.",
+    "investorQuote": "Social commerce is the highest-velocity GTM surface for agentic systems—Commerix is productizing the entire spend loop.",
+    "investorName": "Hemant Taneja",
+    "investorFirm": "General Catalyst",
+    "verticals": [
+      "Marketing AI",
+      "Social Commerce",
+      "Agentic Automation"
+    ],
+    "hashtags": [
+      "#SocialCommerce",
+      "#MarketingAI",
+      "#SeriesA",
+      "#AgenticAI",
+      "#CreatorEconomy"
+    ],
+    "image": "/images/startups/abena-boateng.jpg",
+    "xPost": "Commerix raises $45M Series A. Marketing agents that source creators, negotiate briefs, generate variant creative, track attribution, and reallocate spend across social storefronts in real time.\n\n\"Campaigns die in spreadsheets. Our agents treat creator commerce as a closed-loop system with ROI as the reward signal.\" — Abena Boateng\n\n\"Social commerce is the highest-velocity GTM surface for agentic systems—Commerix is productizing the entire spend loop.\" — Hemant Taneja · General Catalyst\n\n#SocialCommerce #MarketingAI #SeriesA #AgenticAI #CreatorEconomy"
+  },
+  {
+    "id": "ledgera-2026-07",
+    "date": "2026-07-11",
+    "companyName": "Ledgera",
+    "headline": "Ledgera Raises $38M Series A from Khosla for Agentic Month-End Close Across Mid-Market Finance Stacks",
+    "round": "$38M Series A",
+    "description": "Finance agents that reconcile subledgers, draft close memos, chase exceptions, and push journal entries with controller-grade audit trails inside NetSuite and Sage.",
+    "founderName": "Aditya Krishnamurthy",
+    "founderTitle": "ex-Intuit",
+    "founderQuote": "Close is a multi-agent investigation, not a checklist. We productized the controller loop with every decision logged.",
+    "investorQuote": "Agentic finance ops is where accuracy compounds—Ledgera is the production system for continuous close.",
+    "investorName": "Samir Kaul",
+    "investorFirm": "Khosla Ventures",
+    "verticals": [
+      "Fintech",
+      "Agentic Finance",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#Fintech",
+      "#AgenticFinance",
+      "#SeriesA",
+      "#Accounting",
+      "#AgenticAI"
+    ],
+    "image": "/images/startups/aditya-krishnamurthy.jpg",
+    "xPost": "Ledgera raises $38M Series A. Finance agents that reconcile subledgers, draft close memos, chase exceptions, and push journal entries with controller-grade audit trails inside NetSuite and Sage.\n\n\"Close is a multi-agent investigation, not a checklist. We productized the controller loop with every decision logged.\" — Aditya Krishnamurthy\n\n\"Agentic finance ops is where accuracy compounds—Ledgera is the production system for continuous close.\" — Samir Kaul · Khosla Ventures\n\n#Fintech #AgenticFinance #SeriesA #Accounting #AgenticAI"
+  },
+  {
+    "id": "huntora-2026-07",
+    "date": "2026-07-13",
+    "companyName": "Huntora",
+    "headline": "Huntora Raises $52M Series A Led by Shield Capital for Agentic OT Security That Hunts Across Industrial Control Networks",
+    "round": "$52M Series A",
+    "description": "Industrial AI SOC agents that triage OT alerts, correlate PLC and historian signals, and recommend isolation plays with plant-floor safety constraints always on.",
+    "founderName": "Ibrahim Al-Rashid",
+    "founderTitle": "ex-CrowdStrike",
+    "founderQuote": "IT SOC tools freeze when they meet PLCs. We built agents that understand plant physics and still close the investigation.",
+    "investorQuote": "OT is the next agentic security frontier—Huntora pairs industrial domain depth with autonomous hunt loops.",
+    "investorName": "Raj Shah",
+    "investorFirm": "Shield Capital",
+    "verticals": [
+      "AI SOC",
+      "Security",
+      "Industrial"
+    ],
+    "hashtags": [
+      "#OTSecurity",
+      "#AISOC",
+      "#SeriesA",
+      "#IndustrialAI",
+      "#Cybersecurity"
+    ],
+    "image": "/images/startups/ibrahim-al-rashid.jpg",
+    "xPost": "Huntora raises $52M Series A. Industrial AI SOC agents that triage OT alerts, correlate PLC and historian signals, and recommend isolation plays with plant-floor safety constraints always on.\n\n\"IT SOC tools freeze when they meet PLCs. We built agents that understand plant physics and still close the investigation.\" — Ibrahim Al-Rashid\n\n\"OT is the next agentic security frontier—Huntora pairs industrial domain depth with autonomous hunt loops.\" — Raj Shah · Shield Capital\n\n#OTSecurity #AISOC #SeriesA #IndustrialAI #Cybersecurity"
+  },
+  {
     "id": "triagix-2026-07",
     "date": "2026-07-11",
     "companyName": "Triagix",

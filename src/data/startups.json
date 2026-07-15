@@ -1,5 +1,397 @@
 [
   {
+    "id": "aether-2026-07",
+    "date": "2026-07-15",
+    "companyName": "Aether",
+    "headline": "Aether Raises $115M Series A Co-Led by Spark Capital for Hybrid Quantum-Agentic Simulation at Utility Scale",
+    "round": "$115M Series A",
+    "description": "Fault-tolerant quantum-classical agent runtimes that orchestrate multi-day molecular and ML simulations with error-corrected neutral-atom backends and full experiment audit trails.",
+    "founderName": "Rajesh Venkatesh",
+    "founderTitle": "ex-Google Quantum AI",
+    "founderQuote": "Agents that cannot sit on fault-tolerant substrates are still toys. We fuse both stacks until chemistry problems stop waiting in queues.",
+    "investorQuote": "Utility-scale quantum plus agentic orchestration is the rare deep-tech pair that rewrites timelines—Aether is that wedge.",
+    "investorName": "Alex Finkelstein",
+    "investorFirm": "Spark Capital",
+    "verticals": [
+      "Quantum",
+      "Hybrid Compute",
+      "Agentic Simulation"
+    ],
+    "hashtags": [
+      "#QuantumComputing",
+      "#AgenticAI",
+      "#SeriesA",
+      "#DeepTech",
+      "#HybridCompute"
+    ],
+    "image": "/images/startups/rajesh-venkatesh.jpg",
+    "xPost": "Aether raises $115M Series A. Fault-tolerant quantum-classical agent runtimes that orchestrate multi-day molecular and ML simulations with error-corrected neutral-atom backends and full experiment audit trails.\n\n\"Agents that cannot sit on fault-tolerant substrates are still toys. We fuse both stacks until chemistry problems stop waiting in queues.\" — Rajesh Venkatesh\n\n\"Utility-scale quantum plus agentic orchestration is the rare deep-tech pair that rewrites timelines—Aether is that wedge.\" — Alex Finkelstein · Spark Capital\n\n#QuantumComputing #AgenticAI #SeriesA #DeepTech #HybridCompute"
+  },
+  {
+    "id": "cipherloom-2026-07",
+    "date": "2026-07-15",
+    "companyName": "Cipherloom",
+    "headline": "Cipherloom Raises $52M Series A for Agentic Post-Quantum Cryptography Migration Across Enterprise Estates",
+    "round": "$52M Series A",
+    "description": "Agents that inventory crypto dependencies, plan PQC cutovers, and orchestrate certificate and key rotations with continuous compliance proof for regulated enterprises.",
+    "founderName": "Fatima Al-Hassan",
+    "founderTitle": "ex-Cloudflare",
+    "founderQuote": "Shor risk is not a white paper. It is a multi-year migration program, and agents are the only way to finish it before the deadline.",
+    "investorQuote": "Post-quantum migration is an enterprise program problem—Cipherloom productizes the agent workforce that actually executes it.",
+    "investorName": "Jan Hammer",
+    "investorFirm": "Index Ventures",
+    "verticals": [
+      "Post-Quantum Crypto",
+      "Security",
+      "Agentic Compliance"
+    ],
+    "hashtags": [
+      "#PostQuantum",
+      "#Cybersecurity",
+      "#SeriesA",
+      "#AgenticAI",
+      "#PQC"
+    ],
+    "image": "/images/startups/fatima-al-hassan.jpg",
+    "xPost": "Cipherloom raises $52M Series A. Agents that inventory crypto dependencies, plan PQC cutovers, and orchestrate certificate and key rotations with continuous compliance proof for regulated enterprises.\n\n\"Shor risk is not a white paper. It is a multi-year migration program, and agents are the only way to finish it before the deadline.\" — Fatima Al-Hassan\n\n\"Post-quantum migration is an enterprise program problem—Cipherloom productizes the agent workforce that actually executes it.\" — Jan Hammer · Index Ventures\n\n#PostQuantum #Cybersecurity #SeriesA #AgenticAI #PQC"
+  },
+  {
+    "id": "verdict-2026-07",
+    "date": "2026-07-14",
+    "companyName": "Verdict",
+    "headline": "Verdict Raises $98M Series B for Agentic SOC Platforms That Deliver Auditable Alert Verdicts in Minutes",
+    "round": "$98M Series B",
+    "description": "Full-lifecycle SOC agents for detect, triage, investigate, and respond—every alert closed with Tier-3 depth, human approval on irreversible actions, and SIEM-class correlation without parser hell.",
+    "founderName": "Talia Mizrahi",
+    "founderTitle": "ex-Unit 8200",
+    "founderQuote": "Autonomy without a verdict trail is malpractice. We ship agents that close tickets and leave proof.",
+    "investorQuote": "AI SOC is a procurement decision now—Verdict is the platform that makes staged autonomy measurable.",
+    "investorName": "Greg Clark",
+    "investorFirm": "Crosspoint Capital Partners",
+    "verticals": [
+      "AI SOC",
+      "Security",
+      "Agentic Investigation"
+    ],
+    "hashtags": [
+      "#AISOC",
+      "#Cybersecurity",
+      "#SeriesB",
+      "#AgenticAI",
+      "#SecurityOps"
+    ],
+    "image": "/images/startups/talia-mizrahi.jpg",
+    "xPost": "Verdict raises $98M Series B. Full-lifecycle SOC agents for detect, triage, investigate, and respond—every alert closed with Tier-3 depth, human approval on irreversible actions, and SIEM-class correlation without parser hell.\n\n\"Autonomy without a verdict trail is malpractice. We ship agents that close tickets and leave proof.\" — Talia Mizrahi\n\n\"AI SOC is a procurement decision now—Verdict is the platform that makes staged autonomy measurable.\" — Greg Clark · Crosspoint Capital Partners\n\n#AISOC #Cybersecurity #SeriesB #AgenticAI #SecurityOps"
+  },
+  {
+    "id": "shyft-2026-07",
+    "date": "2026-07-14",
+    "companyName": "Shyft",
+    "headline": "Shyft Raises $36M Series A for Agent Identity Governance That Treats Non-Human Actors Like Employees With Kill Switches",
+    "round": "$36M Series A",
+    "description": "Governance plane for agent fleets—provisioning, scoped tool access, continuous authorization, and one-click revocation when agents drift outside policy.",
+    "founderName": "James Whitaker",
+    "founderTitle": "ex-Okta",
+    "founderQuote": "If an agent can act, it needs a lifecycle. We made non-human identity as boring and enforceable as SSO.",
+    "investorQuote": "Agent identity without governance is shadow IT with GPUs—Shyft is the control plane enterprises will standardize on.",
+    "investorName": "Mamoon Hamid",
+    "investorFirm": "Kleiner Perkins",
+    "verticals": [
+      "Agent Identity",
+      "Governance",
+      "Security"
+    ],
+    "hashtags": [
+      "#Identity",
+      "#AgenticAI",
+      "#SeriesA",
+      "#Cybersecurity",
+      "#IAM"
+    ],
+    "image": "/images/startups/james-whitaker.jpg",
+    "xPost": "Shyft raises $36M Series A. Governance plane for agent fleets—provisioning, scoped tool access, continuous authorization, and one-click revocation when agents drift outside policy.\n\n\"If an agent can act, it needs a lifecycle. We made non-human identity as boring and enforceable as SSO.\" — James Whitaker\n\n\"Agent identity without governance is shadow IT with GPUs—Shyft is the control plane enterprises will standardize on.\" — Mamoon Hamid · Kleiner Perkins\n\n#Identity #AgenticAI #SeriesA #Cybersecurity #IAM"
+  },
+  {
+    "id": "meshora-2026-07",
+    "date": "2026-07-13",
+    "companyName": "Meshora",
+    "headline": "Meshora Raises $80M Series B as Co-Founders Scale Multi-Agent Enterprise OS Across Procurement, Support, and Finance Workflows",
+    "round": "$80M Series B",
+    "description": "Co-founded multi-agent operating system that deploys persistent agent teams across business functions with shared context, policy gates, and production-grade observability.",
+    "founderName": "Kiran Ramanathan & Hao Chen",
+    "founderTitle": "ex-Salesforce / ex-Meta AI",
+    "founderQuote": "Single agents die in enterprise edge cases. We ship meshes—teams of agents with one shared state and one kill path.",
+    "investorQuote": "Enterprise agent production needs an OS, not another chat window—Meshora is that infrastructure layer.",
+    "investorName": "Martin Casado",
+    "investorFirm": "a16z",
+    "verticals": [
+      "Enterprise AI",
+      "Multi-Agent",
+      "Agent Production"
+    ],
+    "hashtags": [
+      "#EnterpriseAI",
+      "#MultiAgent",
+      "#SeriesB",
+      "#AgenticAI",
+      "#Automation"
+    ],
+    "image": "/images/startups/meshora-duo.jpg",
+    "xPost": "Meshora raises $80M Series B. Co-founded multi-agent operating system that deploys persistent agent teams across business functions with shared context, policy gates, and production-grade observability.\n\n\"Single agents die in enterprise edge cases. We ship meshes—teams of agents with one shared state and one kill path.\" — Kiran Ramanathan & Hao Chen\n\n\"Enterprise agent production needs an OS, not another chat window—Meshora is that infrastructure layer.\" — Martin Casado · a16z\n\n#EnterpriseAI #MultiAgent #SeriesB #AgenticAI #Automation"
+  },
+  {
+    "id": "ravelin-2026-07",
+    "date": "2026-07-13",
+    "companyName": "Ravelin",
+    "headline": "Ravelin Raises $44M Series A for Offensive Agent Red-Teaming That Continuously Stress-Tests Customer-Facing AI Systems",
+    "round": "$44M Series A",
+    "description": "Red-teaming agents that probe customer-facing AI for prompt injection, tool abuse, and data exfiltration paths—continuous campaigns with fix tickets, not annual pen-test PDFs.",
+    "founderName": "Soo-yeon Park",
+    "founderTitle": "ex-CrowdStrike",
+    "founderQuote": "You cannot govern agents you have never attacked. We industrialize the adversary for every release train.",
+    "investorQuote": "Agent security is dual-use by nature—Ravelin productizes the defensive side of that arms race.",
+    "investorName": "Trae Stephens",
+    "investorFirm": "Founders Fund",
+    "verticals": [
+      "AI Security",
+      "Red Teaming",
+      "Agent Eval"
+    ],
+    "hashtags": [
+      "#AISecurity",
+      "#RedTeam",
+      "#SeriesA",
+      "#AgenticAI",
+      "#Cybersecurity"
+    ],
+    "image": "/images/startups/soo-yeon-park.jpg",
+    "xPost": "Ravelin raises $44M Series A. Red-teaming agents that probe customer-facing AI for prompt injection, tool abuse, and data exfiltration paths—continuous campaigns with fix tickets, not annual pen-test PDFs.\n\n\"You cannot govern agents you have never attacked. We industrialize the adversary for every release train.\" — Soo-yeon Park\n\n\"Agent security is dual-use by nature—Ravelin productizes the defensive side of that arms race.\" — Trae Stephens · Founders Fund\n\n#AISecurity #RedTeam #SeriesA #AgenticAI #Cybersecurity"
+  },
+  {
+    "id": "atomora-2026-07",
+    "date": "2026-07-12",
+    "companyName": "Atomora",
+    "headline": "Atomora Raises $180M Series A as Founding Team Pushes Neutral-Atom Fault-Tolerant Quantum Toward Utility-Scale Arrays",
+    "round": "$180M Series A",
+    "description": "Founding team building fault-tolerant neutral-atom quantum systems aimed at utility-scale error correction—expanding fabrication, cryogenic packaging, and physics engineering headcount after research arguing fewer qubits may unlock commercial utility.",
+    "founderName": "Suresh Iyer",
+    "founderTitle": "ex-Caltech Quantum",
+    "founderQuote": "We stopped believing useful quantum was decades away when the error-correction math flipped. Now we hire physicists like a product company ships sprints.",
+    "investorQuote": "This is the largest quantum initial check we have underwritten in years—fault tolerance plus a team that can actually fabricate.",
+    "investorName": "Vinod Khosla",
+    "investorFirm": "Khosla Ventures",
+    "verticals": [
+      "Quantum",
+      "Fault Tolerance",
+      "Deep Tech"
+    ],
+    "hashtags": [
+      "#QuantumComputing",
+      "#DeepTech",
+      "#SeriesA",
+      "#NeutralAtom",
+      "#FaultTolerance"
+    ],
+    "image": "/images/startups/atomora-team.jpg",
+    "xPost": "Atomora raises $180M Series A. Founding team building fault-tolerant neutral-atom quantum systems aimed at utility-scale error correction—expanding fabrication, cryogenic packaging, and physics engineering headcount after research arguing fewer qubits may unlock commercial utility.\n\n\"We stopped believing useful quantum was decades away when the error-correction math flipped. Now we hire physicists like a product company ships sprints.\" — Suresh Iyer\n\n\"This is the largest quantum initial check we have underwritten in years—fault tolerance plus a team that can actually fabricate.\" — Vinod Khosla · Khosla Ventures\n\n#QuantumComputing #DeepTech #SeriesA #NeutralAtom #FaultTolerance"
+  },
+  {
+    "id": "settly-2026-07",
+    "date": "2026-07-15",
+    "companyName": "Settly",
+    "headline": "Settly Raises $16M Seed for Usage-Based Payment Rails That Let AI Agents Discover, Access, and Pay for Digital Resources",
+    "round": "$16M Seed",
+    "description": "Unified transaction API for the agent economy—agents settle in fiat or stablecoins with usage metering, spend ceilings, and cryptographic receipts on every call.",
+    "founderName": "Zainab Okoro",
+    "founderTitle": "ex-Stripe",
+    "founderQuote": "Agents already try to buy compute and data. We make settlement a first-class primitive, not a human with a credit card.",
+    "investorQuote": "Payments is the missing pipe in the agent stack—Settly is early infrastructure for machine-to-machine commerce.",
+    "investorName": "Katie Haun",
+    "investorFirm": "Haun Ventures",
+    "verticals": [
+      "Agentic Economy",
+      "Payments",
+      "Agent Rails"
+    ],
+    "hashtags": [
+      "#AgenticEconomy",
+      "#Fintech",
+      "#SeedRound",
+      "#AgenticAI",
+      "#Payments"
+    ],
+    "image": "/images/startups/zainab-okoro.jpg",
+    "xPost": "Settly raises $16M Seed. Unified transaction API for the agent economy—agents settle in fiat or stablecoins with usage metering, spend ceilings, and cryptographic receipts on every call.\n\n\"Agents already try to buy compute and data. We make settlement a first-class primitive, not a human with a credit card.\" — Zainab Okoro\n\n\"Payments is the missing pipe in the agent stack—Settly is early infrastructure for machine-to-machine commerce.\" — Katie Haun · Haun Ventures\n\n#AgenticEconomy #Fintech #SeedRound #AgenticAI #Payments"
+  },
+  {
+    "id": "repyuta-2026-07",
+    "date": "2026-07-15",
+    "companyName": "Repyuta",
+    "headline": "Repyuta Raises $38M Series A to Turn Agent Action Histories Into Portable Reputation Scores Across Enterprises",
+    "round": "$38M Series A",
+    "description": "Reputation layer for autonomous agents—task completion, boundary adherence, and failure recovery become portable trust scores that gate tool access and counterparty risk.",
+    "founderName": "Ingrid Holm",
+    "founderTitle": "ex-Spotify",
+    "founderQuote": "Identity tells you who the agent is. Reputation tells you whether to let it touch production.",
+    "investorQuote": "Once agents act across orgs, reputation becomes as fundable as identity—Repyuta is writing that control plane.",
+    "investorName": "Josh Kopelman",
+    "investorFirm": "First Round Capital",
+    "verticals": [
+      "Agent Reputation",
+      "Trust Layer",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#AgenticAI",
+      "#Trust",
+      "#SeriesA",
+      "#EnterpriseAI",
+      "#Identity"
+    ],
+    "image": "/images/startups/ingrid-holm.jpg",
+    "xPost": "Repyuta raises $38M Series A. Reputation layer for autonomous agents—task completion, boundary adherence, and failure recovery become portable trust scores that gate tool access and counterparty risk.\n\n\"Identity tells you who the agent is. Reputation tells you whether to let it touch production.\" — Ingrid Holm\n\n\"Once agents act across orgs, reputation becomes as fundable as identity—Repyuta is writing that control plane.\" — Josh Kopelman · First Round Capital\n\n#AgenticAI #Trust #SeriesA #EnterpriseAI #Identity"
+  },
+  {
+    "id": "mergora-2026-07",
+    "date": "2026-07-15",
+    "companyName": "Mergora",
+    "headline": "Mergora Raises $105M Series B as Co-Founders Ship Merge Governance for Coding Agents That Write 180% More Code Than Lands in Prod",
+    "round": "$105M Series B",
+    "description": "Co-founded platform that sits between agent-generated diffs and production—policy gates, reviewer routing, ship-rate analytics, and full audit trails so volume does not outrun quality.",
+    "founderName": "Siddharth Venkatesh & Anand Balakrishnan",
+    "founderTitle": "ex-GitHub / ex-Google DeepMind",
+    "founderQuote": "The industry optimized for lines written. We productized lines that actually ship—with proof.",
+    "investorQuote": "Coding agents are a solved demo and an unsolved merge problem. Mergora is the enterprise answer to the ship gap.",
+    "investorName": "Martin Casado",
+    "investorFirm": "a16z",
+    "verticals": [
+      "Dev Tools",
+      "Agentic Coding",
+      "Ship Governance"
+    ],
+    "hashtags": [
+      "#DevTools",
+      "#AgenticCoding",
+      "#SeriesB",
+      "#SoftwareEngineering",
+      "#AgenticAI"
+    ],
+    "image": "/images/startups/mergora-duo.jpg",
+    "xPost": "Mergora raises $105M Series B. Co-founded platform that sits between agent-generated diffs and production—policy gates, reviewer routing, ship-rate analytics, and full audit trails so volume does not outrun quality.\n\n\"The industry optimized for lines written. We productized lines that actually ship—with proof.\" — Siddharth Venkatesh & Anand Balakrishnan\n\n\"Coding agents are a solved demo and an unsolved merge problem. Mergora is the enterprise answer to the ship gap.\" — Martin Casado · a16z\n\n#DevTools #AgenticCoding #SeriesB #SoftwareEngineering #AgenticAI"
+  },
+  {
+    "id": "signalmesh-2026-07",
+    "date": "2026-07-14",
+    "companyName": "Signalmesh",
+    "headline": "Signalmesh Raises $24M Series A for Buy-Side Research Agents That Mine Filings, Transcripts, and News for Hedge Funds",
+    "round": "$24M Series A",
+    "description": "Institutional research agents that process filings, earnings transcripts, and news into mandate-aware signals—built for multi-day context, not single-prompt chat.",
+    "founderName": "Elena Volkov",
+    "founderTitle": "ex-Bloomberg",
+    "founderQuote": "Buy-side research is a document graph problem. Agents only win when they keep mandate context for days, not tabs.",
+    "investorQuote": "Agentic research for institutions is a clean wedge—Signalmesh couples signal quality with compliance-grade logs.",
+    "investorName": "Alex Clayton",
+    "investorFirm": "Lightspeed Venture Partners",
+    "verticals": [
+      "Buy-Side Research",
+      "Fintech",
+      "Agentic Investing"
+    ],
+    "hashtags": [
+      "#Fintech",
+      "#HedgeFunds",
+      "#SeriesA",
+      "#AgenticAI",
+      "#Research"
+    ],
+    "image": "/images/startups/elena-volkov.jpg",
+    "xPost": "Signalmesh raises $24M Series A. Institutional research agents that process filings, earnings transcripts, and news into mandate-aware signals—built for multi-day context, not single-prompt chat.\n\n\"Buy-side research is a document graph problem. Agents only win when they keep mandate context for days, not tabs.\" — Elena Volkov\n\n\"Agentic research for institutions is a clean wedge—Signalmesh couples signal quality with compliance-grade logs.\" — Alex Clayton · Lightspeed Venture Partners\n\n#Fintech #HedgeFunds #SeriesA #AgenticAI #Research"
+  },
+  {
+    "id": "pathora-2026-07",
+    "date": "2026-07-14",
+    "companyName": "Pathora",
+    "headline": "Pathora Raises $58M Series B for Patient-Journey Agents That Orchestrate Scheduling, Prior Auth, and Care Navigation",
+    "round": "$58M Series B",
+    "description": "Healthcare ops agents that own multi-step patient journeys—eligibility, prior authorization, scheduling, and follow-up—with PHI-aware audit trails and human escalation paths.",
+    "founderName": "Pranav Srinivasan",
+    "founderTitle": "ex-Epic Systems",
+    "founderQuote": "Patient journey is not a chatbot. It is a multi-day workflow with regulators in the loop, and that is the product we ship.",
+    "investorQuote": "Health ops agents with real auditability will compress cost structures incumbents still staff with call centers.",
+    "investorName": "Vijay Pande",
+    "investorFirm": "a16z Bio + Health",
+    "verticals": [
+      "Healthtech",
+      "Patient Journey",
+      "Agentic Ops"
+    ],
+    "hashtags": [
+      "#Healthtech",
+      "#DigitalHealth",
+      "#SeriesB",
+      "#AgenticAI",
+      "#PatientCare"
+    ],
+    "image": "/images/startups/pranav-srinivasan.jpg",
+    "xPost": "Pathora raises $58M Series B. Healthcare ops agents that own multi-step patient journeys—eligibility, prior authorization, scheduling, and follow-up—with PHI-aware audit trails and human escalation paths.\n\n\"Patient journey is not a chatbot. It is a multi-day workflow with regulators in the loop, and that is the product we ship.\" — Pranav Srinivasan\n\n\"Health ops agents with real auditability will compress cost structures incumbents still staff with call centers.\" — Vijay Pande · a16z Bio + Health\n\n#Healthtech #DigitalHealth #SeriesB #AgenticAI #PatientCare"
+  },
+  {
+    "id": "bastion-2026-07",
+    "date": "2026-07-14",
+    "companyName": "Bastion",
+    "headline": "Bastion Raises $45M Series A for Agentic Site Sourcing and Power Due Diligence Across Data Center Infrastructure",
+    "round": "$45M Series A",
+    "description": "Agents that source sites, run technical due diligence, model power and interconnect, and package early design packs for data-center and critical infrastructure projects.",
+    "founderName": "Marcus Hale",
+    "founderTitle": "ex-Palantir",
+    "founderQuote": "Infrastructure development is still a spreadsheet safari. We turned site, power, and diligence into an agent-native workflow.",
+    "investorQuote": "Physical-world agent workflows with real project volume are rare—Bastion is the infra planning layer capital wants.",
+    "investorName": "Jan Hammer",
+    "investorFirm": "Index Ventures",
+    "verticals": [
+      "Infra Agents",
+      "Data Centers",
+      "Physical AI"
+    ],
+    "hashtags": [
+      "#Infrastructure",
+      "#DataCenters",
+      "#SeriesA",
+      "#AgenticAI",
+      "#ClimateTech"
+    ],
+    "image": "/images/startups/marcus-hale.jpg",
+    "xPost": "Bastion raises $45M Series A. Agents that source sites, run technical due diligence, model power and interconnect, and package early design packs for data-center and critical infrastructure projects.\n\n\"Infrastructure development is still a spreadsheet safari. We turned site, power, and diligence into an agent-native workflow.\" — Marcus Hale\n\n\"Physical-world agent workflows with real project volume are rare—Bastion is the infra planning layer capital wants.\" — Jan Hammer · Index Ventures\n\n#Infrastructure #DataCenters #SeriesA #AgenticAI #ClimateTech"
+  },
+  {
+    "id": "volition-2026-07",
+    "date": "2026-07-13",
+    "companyName": "Volition",
+    "headline": "Volition Raises $88M Series B as Founding Team Scales Long-Horizon Agent Runtime for Multi-Day Autonomous Workflows",
+    "round": "$88M Series B",
+    "description": "Founding team shipping inference and orchestration infrastructure for agents that run hours to days—checkpointing, tool sandboxes, and recovery so long-horizon work survives production.",
+    "founderName": "Karthik Ramanathan",
+    "founderTitle": "ex-Anthropic",
+    "founderQuote": "Chat is a session. Enterprise work is a campaign. We built the runtime for agents that do not give up when the tab closes.",
+    "investorQuote": "Long-horizon agent infrastructure is the next bottleneck after models—Volition is building that fabric with a team that has shipped at scale.",
+    "investorName": "Sarah Guo",
+    "investorFirm": "Conviction",
+    "verticals": [
+      "Agent Infra",
+      "Long-Horizon Agents",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#AIInfrastructure",
+      "#AgenticAI",
+      "#SeriesB",
+      "#EnterpriseAI",
+      "#MLOps"
+    ],
+    "image": "/images/startups/volition-team.jpg",
+    "xPost": "Volition raises $88M Series B. Founding team shipping inference and orchestration infrastructure for agents that run hours to days—checkpointing, tool sandboxes, and recovery so long-horizon work survives production.\n\n\"Chat is a session. Enterprise work is a campaign. We built the runtime for agents that do not give up when the tab closes.\" — Karthik Ramanathan\n\n\"Long-horizon agent infrastructure is the next bottleneck after models—Volition is building that fabric with a team that has shipped at scale.\" — Sarah Guo · Conviction\n\n#AIInfrastructure #AgenticAI #SeriesB #EnterpriseAI #MLOps"
+  },
+  {
     "id": "procurith-2026-07",
     "date": "2026-07-13",
     "companyName": "Procurith",

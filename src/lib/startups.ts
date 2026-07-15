@@ -82,6 +82,9 @@ export const STARTUP_FILTERS = [
   "Healthtech",
   "Agent Infra",
   "Fincrime",
+  "Payments",
+  "Buy-Side Research",
+  "Ship Governance",
 ] as const;
 
 export type StartupFilter = (typeof STARTUP_FILTERS)[number];

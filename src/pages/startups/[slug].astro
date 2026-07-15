@@ -1,0 +1,332 @@
+---
+/**
+ * /startups/[slug] — Full announcement page for one archive startup (SEO).
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  getStartupsWithSlugs,
+  formatStartupDate,
+  formatInvestorAttribution,
+  type Startup,
+} from "../../lib/startups";
+
+export function getStaticPaths() {
+  return getStartupsWithSlugs().map(({ startup, slug }) => ({
+    params: { slug },
+    props: { startup, slug },
+  }));
+}
+
+interface Props {
+  startup: Startup;
+  slug: string;
+}
+
+const { startup, slug } = Astro.props;
+const founderLine = startup.founderTitle
+  ? `${startup.founderName} · ${startup.founderTitle}`
+  : startup.founderName;
+const investorAttr = formatInvestorAttribution(startup);
+const hashtags = (startup.hashtags ?? []).filter(Boolean);
+const xPost = (startup.xPost ?? "").trim();
+const pageDescription =
+  startup.headline ||
+  `${startup.companyName} — ${startup.round}. ${startup.description}`;
+---
+
+<BaseLayout
+  title={startup.companyName}
+  description={pageDescription.slice(0, 160)}
+  section="Startups"
+  ogImage={startup.image}
+  ogImageAlt={`${startup.founderName}, founder of ${startup.companyName}`}
+  ogType="article"
+>
+  <article class="section startup-detail">
+    <div class="container startup-detail__container">
+      <nav class="startup-detail__crumbs mono" aria-label="Breadcrumb">
+        <a href="/startups/">Archive</a>
+        <span aria-hidden="true"> / </span>
+        <a href="/startups/all/">Directory</a>
+        <span aria-hidden="true"> / </span>
+        <span>{startup.companyName}</span>
+      </nav>
+
+      <div class="startup-detail__layout">
+        <div class="startup-detail__media">
+          <img
+            src={startup.image}
+            alt={`${startup.founderName}, founder of ${startup.companyName}`}
+            width="480"
+            height="480"
+            class="startup-detail__portrait"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+
+        <div class="startup-detail__body">
+          <p class="startup-detail__meta mono">
+            <span>{startup.round}</span>
+            <span aria-hidden="true"> · </span>
+            <time datetime={startup.date}>{formatStartupDate(startup.date)}</time>
+          </p>
+          <h1 class="startup-detail__name">{startup.companyName}</h1>
+          <p class="startup-detail__headline">{startup.headline}</p>
+
+          <ul class="startup-detail__tags" aria-label="Verticals">
+            {
+              startup.verticals.map((tag) => (
+                <li class="startup-detail__tag">{tag}</li>
+              ))
+            }
+          </ul>
+
+          <p class="startup-detail__desc">{startup.description}</p>
+          <p class="startup-detail__founder mono">{founderLine}</p>
+
+          <blockquote class="startup-detail__quote">
+            <p>“{startup.founderQuote}”</p>
+            <footer>— Founder</footer>
+          </blockquote>
+
+          <blockquote class="startup-detail__quote startup-detail__quote--investor">
+            <p>“{startup.investorQuote}”</p>
+            <footer>— {investorAttr}</footer>
+          </blockquote>
+
+          {
+            hashtags.length > 0 && (
+              <div class="startup-detail__social">
+                <p class="startup-detail__social-label mono">Hashtags</p>
+                <ul class="startup-detail__hashtags">
+                  {hashtags.map((tag) => (
+                    <li>{tag.startsWith("#") ? tag : `#${tag}`}</li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+
+          {
+            xPost && (
+              <div class="startup-detail__social">
+                <p class="startup-detail__social-label mono">X post</p>
+                <pre class="startup-detail__xpost" data-xpost>{xPost}</pre>
+                <button
+                  type="button"
+                  class="btn btn--ghost startup-detail__copy"
+                  data-copy-xpost
+                >
+                  Copy X post
+                </button>
+              </div>
+            )
+          }
+
+          <p class="startup-detail__footer-nav mono">
+            <a href="/startups/all/">← All startups</a>
+            <span aria-hidden="true"> · </span>
+            <a href="/startups/">Visual archive</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .startup-detail__crumbs {
+    margin: 0 0 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+  }
+
+  .startup-detail__crumbs a {
+    color: var(--text-muted);
+  }
+
+  .startup-detail__crumbs a:hover {
+    color: var(--accent);
+  }
+
+  .startup-detail__layout {
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  @media (min-width: 800px) {
+    .startup-detail__layout {
+      grid-template-columns: minmax(14rem, 18rem) 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+  }
+
+  .startup-detail__media {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .startup-detail__portrait {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .startup-detail__meta {
+    margin: 0 0 0.65rem;
+    font-size: 0.78rem;
+    color: var(--accent-secondary);
+  }
+
+  .startup-detail__name {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.75rem, 4vw, 2.35rem);
+  }
+
+  .startup-detail__headline {
+    margin: 0 0 1rem;
+    font-size: 1.05rem;
+    line-height: 1.45;
+    color: var(--text);
+  }
+
+  .startup-detail__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0 0 1.15rem;
+    padding: 0;
+  }
+
+  .startup-detail__tag {
+    padding: 0.2rem 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(139, 124, 248, 0.1);
+    border: 1px solid rgba(139, 124, 248, 0.28);
+  }
+
+  .startup-detail__desc {
+    margin: 0 0 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+  }
+
+  .startup-detail__founder {
+    margin: 0 0 1.25rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .startup-detail__quote {
+    margin: 0 0 1rem;
+    padding: 0.85rem 1rem;
+    border-left: 2px solid var(--accent);
+    background: var(--bg-elevated);
+  }
+
+  .startup-detail__quote p {
+    margin: 0 0 0.5rem;
+    font-size: 0.98rem;
+    font-style: italic;
+    color: var(--text);
+  }
+
+  .startup-detail__quote footer {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .startup-detail__quote--investor {
+    border-left-color: var(--accent-secondary);
+  }
+
+  .startup-detail__social {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .startup-detail__social-label {
+    margin: 0 0 0.45rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .startup-detail__hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .startup-detail__hashtags li {
+    padding: 0.15rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent-secondary);
+    background: rgba(94, 234, 212, 0.08);
+    border: 1px solid rgba(94, 234, 212, 0.25);
+  }
+
+  .startup-detail__xpost {
+    margin: 0 0 0.75rem;
+    padding: 0.75rem 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: var(--text);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    max-height: 14rem;
+    overflow-y: auto;
+  }
+
+  .startup-detail__copy {
+    font-size: 0.75rem;
+  }
+
+  .startup-detail__footer-nav {
+    margin: 2rem 0 0;
+    font-size: 0.85rem;
+  }
+</style>
+
+<script>
+  const btn = document.querySelector("[data-copy-xpost]");
+  const pre = document.querySelector("[data-xpost]");
+  if (btn && pre) {
+    btn.addEventListener("click", async () => {
+      const text = pre.textContent || "";
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        const prev = btn.textContent;
+        btn.textContent = "Copied";
+        setTimeout(() => {
+          btn.textContent = prev || "Copy X post";
+        }, 1400);
+      } catch {
+        btn.textContent = "Copy failed";
+      }
+    });
+  }
+</script>

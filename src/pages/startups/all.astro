@@ -1,0 +1,161 @@
+---
+/**
+ * /startups/all — Full text directory of archive startups (SEO-friendly index).
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  getStartupsWithSlugs,
+  formatStartupDate,
+} from "../../lib/startups";
+
+const entries = getStartupsWithSlugs();
+const count = entries.length;
+---
+
+<BaseLayout
+  title="All Startups in the Archive"
+  description={`Full directory of ${count} tech startups featured in Agentic AI Startup News on airomatic.ai — company, founder, and product description.`}
+>
+  <section class="section directory-page">
+    <div class="container">
+      <p class="eyebrow">Directory</p>
+      <h1>All startups in the archive</h1>
+      <p class="lead directory-page__intro">
+        Complete index of companies featured in
+        <a href="/startups/">Agentic AI Startup News</a>. Each entry links to a
+        full announcement page — built for readers and search engines.
+      </p>
+      <p class="directory-page__meta mono">
+        {count} startups · newest first
+      </p>
+      <p class="directory-page__nav mono">
+        <a href="/startups/">← Visual archive</a>
+      </p>
+
+      <ol class="directory-list">
+        {
+          entries.map(({ startup, slug }) => (
+            <li class="directory-list__item">
+              <a href={`/startups/${slug}/`} class="directory-list__link">
+                <span class="directory-list__name">{startup.companyName}</span>
+                <span class="directory-list__founder mono">
+                  {startup.founderName}
+                </span>
+                <span class="directory-list__desc">{startup.description}</span>
+                <span class="directory-list__meta mono">
+                  {startup.round}
+                  <span aria-hidden="true"> · </span>
+                  <time datetime={startup.date}>
+                    {formatStartupDate(startup.date)}
+                  </time>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .directory-page__intro {
+    margin-bottom: 0.75rem;
+  }
+
+  .directory-page__meta {
+    margin: 0 0 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .directory-page__nav {
+    margin: 0 0 2rem;
+    font-size: 0.85rem;
+  }
+
+  .directory-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .directory-list__item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .directory-list__link {
+    display: grid;
+    gap: 0.35rem;
+    padding: 1.15rem 0.15rem;
+    color: inherit;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+
+  .directory-list__link:hover {
+    background: rgba(139, 124, 248, 0.06);
+  }
+
+  .directory-list__link:hover .directory-list__name {
+    color: var(--accent);
+  }
+
+  .directory-list__name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    transition: color 0.15s ease;
+  }
+
+  .directory-list__founder {
+    font-size: 0.78rem;
+    color: var(--accent-secondary);
+    letter-spacing: 0.02em;
+  }
+
+  .directory-list__desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    max-width: 52rem;
+  }
+
+  .directory-list__meta {
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  @media (min-width: 720px) {
+    .directory-list__link {
+      grid-template-columns: minmax(8rem, 11rem) minmax(10rem, 14rem) 1fr auto;
+      grid-template-areas: "name founder desc meta";
+      align-items: baseline;
+      gap: 1rem 1.25rem;
+      padding: 1rem 0.5rem;
+    }
+
+    .directory-list__name {
+      grid-area: name;
+    }
+
+    .directory-list__founder {
+      grid-area: founder;
+    }
+
+    .directory-list__desc {
+      grid-area: desc;
+    }
+
+    .directory-list__meta {
+      grid-area: meta;
+      text-align: right;
+      white-space: nowrap;
+      margin-top: 0;
+    }
+  }
+</style>

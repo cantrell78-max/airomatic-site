@@ -33,6 +33,8 @@ const pageSize = 6;
       <p class="startups-page__count mono">
         <span data-visible-count>{Math.min(pageSize, allStartups.length)}</span>
         of <span data-total-count>{allStartups.length}</span> announcements
+        <span aria-hidden="true"> · </span>
+        <a href="/startups/all/">Full directory</a>
       </p>
 
       <div
@@ -124,6 +126,9 @@ const pageSize = 6;
               Copy X post
             </button>
           </div>
+          <p class="startup-modal__fullpage mono">
+            <a href="#" data-modal-fullpage>Open full page →</a>
+          </p>
         </div>
       </div>
     </div>
@@ -451,6 +456,17 @@ const pageSize = 6;
   .startup-modal__copy {
     font-size: 0.75rem;
   }
+
+  .startup-modal__fullpage {
+    margin: 1.15rem 0 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .startup-modal__fullpage a[hidden] {
+    display: none;
+  }
 </style>
 
 <script define:vars={{ pageSize }}>
@@ -543,6 +559,7 @@ const pageSize = 6;
     const modalHashtags = modal.querySelector("[data-modal-hashtags]");
     const modalXPost = modal.querySelector("[data-modal-xpost]");
     const modalCopyX = modal.querySelector("[data-modal-copy-x]");
+    const modalFullPage = modal.querySelector("[data-modal-fullpage]");
 
     function formatInvestorAttribution(data) {
       const name = (data.investorName || "").trim();
@@ -631,6 +648,11 @@ const pageSize = 6;
         });
       }
       if (modalXPost) modalXPost.textContent = xPost;
+      if (modalFullPage) {
+        const slug = data.slug || "";
+        modalFullPage.href = slug ? `/startups/${slug}/` : "/startups/all/";
+        modalFullPage.hidden = !slug;
+      }
 
       if (typeof modal.showModal === "function") {
         modal.showModal();

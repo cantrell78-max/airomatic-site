@@ -1,6 +1,6 @@
 ---
 import type { Startup } from "../lib/startups";
-import { formatStartupDate } from "../lib/startups";
+import { formatStartupDate, getStartupSlug } from "../lib/startups";
 
 interface Props {
   startup: Startup;
@@ -16,7 +16,8 @@ const tags = startup.verticals.slice(0, 3);
 const founderLine = startup.founderTitle
   ? `${startup.founderName} · ${startup.founderTitle}`
   : startup.founderName;
-const ctaLabel = href ? "Open archive →" : "Read announcement →";
+const detailHref = `/startups/${getStartupSlug(startup)}/`;
+const ctaLabel = href ? "Open archive →" : "Quick view →";
 ---
 
 <article
@@ -98,6 +99,9 @@ const ctaLabel = href ? "Open archive →" : "Read announcement →";
             <span class="startup-card__cta">{ctaLabel}</span>
           </div>
         </button>
+        <a href={detailHref} class="startup-card__fullpage mono">
+          Full page →
+        </a>
 
         <script
           type="application/json"
@@ -119,6 +123,7 @@ const ctaLabel = href ? "Open archive →" : "Read announcement →";
             hashtags: startup.hashtags ?? [],
             xPost: startup.xPost ?? "",
             image: startup.image,
+            slug: getStartupSlug(startup),
           })}
         />
       </>
@@ -129,38 +134,56 @@ const ctaLabel = href ? "Open archive →" : "Read announcement →";
 <style>
   .startup-card {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .startup-card:has(.startup-card__trigger:hover),
+  .startup-card:has(.startup-card__trigger:focus-visible),
+  .startup-card:has(.startup-card__fullpage:hover) {
+    border-color: var(--accent);
+    box-shadow: 0 0 28px var(--glow);
   }
 
   .startup-card__trigger {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    flex: 1;
     margin: 0;
     padding: 0;
     text-align: left;
     font: inherit;
     color: inherit;
     text-decoration: none;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: transparent;
+    border: none;
     cursor: pointer;
-    transition:
-      border-color 0.15s ease,
-      box-shadow 0.15s ease,
-      transform 0.15s ease;
-  }
-
-  .startup-card__trigger:hover,
-  .startup-card__trigger:focus-visible {
-    border-color: var(--accent);
-    box-shadow: 0 0 28px var(--glow);
-    outline: none;
+    transition: color 0.15s ease;
   }
 
   .startup-card__trigger:focus-visible {
     outline: 2px solid var(--accent);
-    outline-offset: 2px;
+    outline-offset: -2px;
+  }
+
+  .startup-card__fullpage {
+    display: block;
+    padding: 0.55rem 1.25rem 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  .startup-card__fullpage:hover {
+    color: var(--accent);
   }
 
   .startup-card__media {

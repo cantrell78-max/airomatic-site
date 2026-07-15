@@ -105,3 +105,24 @@ export function formatStartupDate(date: string): string {
     day: "numeric",
   });
 }
+
+/** URL slug from company name, e.g. "Baremesh" → "baremesh" */
+export function getStartupSlug(startup: Pick<Startup, "companyName">): string {
+  return startup.companyName
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function getStartupBySlug(slug: string): Startup | undefined {
+  return startups.find((s) => getStartupSlug(s) === slug);
+}
+
+/** All startups with their public slugs (for static paths / directory). */
+export function getStartupsWithSlugs(): { startup: Startup; slug: string }[] {
+  return getStartupsSorted().map((startup) => ({
+    startup,
+    slug: getStartupSlug(startup),
+  }));
+}

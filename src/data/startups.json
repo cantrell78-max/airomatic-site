@@ -1,5 +1,201 @@
 [
   {
+    "id": "aperture-2026-07",
+    "date": "2026-07-15",
+    "companyName": "Aperture",
+    "headline": "Aperture Raises $140M Series B as Co-Founders Scale Multimodal World Models for Enterprise Simulation",
+    "round": "$140M Series B",
+    "description": "Co-founded platform building multimodal world models that simulate real environments so agents can rehearse logistics, robotics, and ops workflows before touching production systems.",
+    "founderName": "Lin Wei & Chris Novak",
+    "founderTitle": "ex-DeepMind / ex-Waymo",
+    "founderQuote": "Agents that only train on text hallucinate the physical world. We give them a camera-ready universe with physics and failure modes.",
+    "investorQuote": "World models are the next infrastructure layer after foundation models—Aperture is shipping enterprise-grade simulation, not research demos.",
+    "investorName": "Sarah Tavel",
+    "investorFirm": "Benchmark",
+    "verticals": [
+      "World Models",
+      "Agent Eval",
+      "Simulation"
+    ],
+    "hashtags": [
+      "#WorldModels",
+      "#AgenticAI",
+      "#SeriesB",
+      "#Simulation",
+      "#EnterpriseAI"
+    ],
+    "image": "/images/startups/aperture-duo.jpg",
+    "xPost": "Aperture raises $140M Series B. Co-founded platform building multimodal world models that simulate real environments so agents can rehearse logistics, robotics, and ops workflows before touching production systems.\n\n\"Agents that only train on text hallucinate the physical world. We give them a camera-ready universe with physics and failure modes.\" — Lin Wei & Chris Novak\n\n\"World models are the next infrastructure layer after foundation models—Aperture is shipping enterprise-grade simulation, not research demos.\" — Sarah Tavel · Benchmark\n\n#WorldModels #AgenticAI #SeriesB #Simulation #EnterpriseAI"
+  },
+  {
+    "id": "baremesh-2026-07",
+    "date": "2026-07-15",
+    "companyName": "Baremesh",
+    "headline": "Baremesh Raises $90M Series A for Bare-Metal GPU Fabric That Routes Agent Workloads Across Distributed Racks",
+    "round": "$90M Series A",
+    "description": "Distributed bare-metal GPU platform that schedules long-running agent jobs across multi-tenant racks with isolation, telemetry, and kill-switch controls for production fleets.",
+    "founderName": "Vivek Subramanian",
+    "founderTitle": "ex-NVIDIA",
+    "founderQuote": "Agents do not want virtual machines. They want metal, meters, and a path to reclaim capacity when a run goes rogue.",
+    "investorQuote": "GPU scarcity is a marketplace problem—Baremesh is the fabric that makes agent compute liquid without surrendering control.",
+    "investorName": "Steve Jang",
+    "investorFirm": "Kindred Ventures",
+    "verticals": [
+      "AI Infrastructure",
+      "GPU Cloud",
+      "Agent Runtime"
+    ],
+    "hashtags": [
+      "#GPU",
+      "#AIInfrastructure",
+      "#SeriesA",
+      "#AgenticAI",
+      "#Cloud"
+    ],
+    "image": "/images/startups/vivek-subramanian.jpg",
+    "xPost": "Baremesh raises $90M Series A. Distributed bare-metal GPU platform that schedules long-running agent jobs across multi-tenant racks with isolation, telemetry, and kill-switch controls for production fleets.\n\n\"Agents do not want virtual machines. They want metal, meters, and a path to reclaim capacity when a run goes rogue.\" — Vivek Subramanian\n\n\"GPU scarcity is a marketplace problem—Baremesh is the fabric that makes agent compute liquid without surrendering control.\" — Steve Jang · Kindred Ventures\n\n#GPU #AIInfrastructure #SeriesA #AgenticAI #Cloud"
+  },
+  {
+    "id": "voxly-2026-07",
+    "date": "2026-07-14",
+    "companyName": "Voxly",
+    "headline": "Voxly Raises $48M Series B for Enterprise Voice Agents That Own Inbound and Outbound Call Workflows End-to-End",
+    "round": "$48M Series B",
+    "description": "Voice agents that automate enterprise phone conversations—routing, compliance recording, CRM writes, and human handoff—built for high-volume contact centers.",
+    "founderName": "Chloe Bennett",
+    "founderTitle": "ex-Twilio",
+    "founderQuote": "Phone is still the highest-intent channel. We turned it into an agent surface with audit trails, not a chatbot with a speaker.",
+    "investorQuote": "Voice agents are where agentic ROI shows up on the P&L first—Voxly is production infrastructure for that channel.",
+    "investorName": "Scott Lien",
+    "investorFirm": "Dell Technologies Capital",
+    "verticals": [
+      "Voice AI",
+      "Agentic CX",
+      "Contact Center"
+    ],
+    "hashtags": [
+      "#VoiceAI",
+      "#AgenticCX",
+      "#SeriesB",
+      "#ContactCenter",
+      "#AgenticAI"
+    ],
+    "image": "/images/startups/chloe-bennett.jpg",
+    "xPost": "Voxly raises $48M Series B. Voice agents that automate enterprise phone conversations—routing, compliance recording, CRM writes, and human handoff—built for high-volume contact centers.\n\n\"Phone is still the highest-intent channel. We turned it into an agent surface with audit trails, not a chatbot with a speaker.\" — Chloe Bennett\n\n\"Voice agents are where agentic ROI shows up on the P&L first—Voxly is production infrastructure for that channel.\" — Scott Lien · Dell Technologies Capital\n\n#VoiceAI #AgenticCX #SeriesB #ContactCenter #AgenticAI"
+  },
+  {
+    "id": "corrith-2026-07",
+    "date": "2026-07-14",
+    "companyName": "Corrith",
+    "headline": "Corrith Raises $65M Series B for Quantum Error-Correction Stacks That Make Fault Tolerance a Software Product",
+    "round": "$65M Series B",
+    "description": "Error-correction software and control layers for superconducting and neutral-atom systems—decoding, syndrome handling, and logical qubit orchestration as a deployable stack.",
+    "founderName": "Deepak Balakrishnan",
+    "founderTitle": "ex-IBM Quantum",
+    "founderQuote": "Hardware without a correction product is a science project. We ship the stack that turns noisy arrays into logical machines.",
+    "investorQuote": "Error correction is the bottleneck of the decade—Corrith is one of the few teams productizing it for multiple modalities.",
+    "investorName": "Robert Nelsen",
+    "investorFirm": "ARCH Venture Partners",
+    "verticals": [
+      "Quantum",
+      "Error Correction",
+      "Deep Tech"
+    ],
+    "hashtags": [
+      "#QuantumComputing",
+      "#ErrorCorrection",
+      "#SeriesB",
+      "#DeepTech",
+      "#FaultTolerance"
+    ],
+    "image": "/images/startups/deepak-balakrishnan.jpg",
+    "xPost": "Corrith raises $65M Series B. Error-correction software and control layers for superconducting and neutral-atom systems—decoding, syndrome handling, and logical qubit orchestration as a deployable stack.\n\n\"Hardware without a correction product is a science project. We ship the stack that turns noisy arrays into logical machines.\" — Deepak Balakrishnan\n\n\"Error correction is the bottleneck of the decade—Corrith is one of the few teams productizing it for multiple modalities.\" — Robert Nelsen · ARCH Venture Partners\n\n#QuantumComputing #ErrorCorrection #SeriesB #DeepTech #FaultTolerance"
+  },
+  {
+    "id": "stackora-2026-07",
+    "date": "2026-07-13",
+    "companyName": "Stackora",
+    "headline": "Stackora Raises $40M Series A for Agent Policy and Deploy Stacks That Gate Tools Before Production",
+    "round": "$40M Series A",
+    "description": "Deploy and policy plane for enterprise agents—environment promotion, tool allowlists, spend caps, and continuous authorization checks before any irreversible action.",
+    "founderName": "Hannah Cho",
+    "founderTitle": "ex-Stripe",
+    "founderQuote": "Shipping an agent is not npm publish. It is a controlled release with a kill path—and that is the product.",
+    "investorQuote": "Agent production needs CI/CD semantics—Stackora is the missing gate between demo and domain admin.",
+    "investorName": "Mamoon Hamid",
+    "investorFirm": "Kleiner Perkins",
+    "verticals": [
+      "Agent Production",
+      "Governance",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#MLOps",
+      "#AgenticAI",
+      "#SeriesA",
+      "#EnterpriseAI",
+      "#Governance"
+    ],
+    "image": "/images/startups/hannah-cho.jpg",
+    "xPost": "Stackora raises $40M Series A. Deploy and policy plane for enterprise agents—environment promotion, tool allowlists, spend caps, and continuous authorization checks before any irreversible action.\n\n\"Shipping an agent is not npm publish. It is a controlled release with a kill path—and that is the product.\" — Hannah Cho\n\n\"Agent production needs CI/CD semantics—Stackora is the missing gate between demo and domain admin.\" — Mamoon Hamid · Kleiner Perkins\n\n#MLOps #AgenticAI #SeriesA #EnterpriseAI #Governance"
+  },
+  {
+    "id": "briv-2026-07",
+    "date": "2026-07-13",
+    "companyName": "Briv",
+    "headline": "Briv Raises $22M Seed for Persistent Agent Memory Layers That Survive Multi-Day Workflows",
+    "round": "$22M Seed",
+    "description": "Memory and context fabric for long-horizon agents—episodic stores, retrieval policies, and forget gates so multi-day tasks keep mandate without leaking secrets.",
+    "founderName": "Amara Diallo",
+    "founderTitle": "ex-DeepMind",
+    "founderQuote": "Context windows are not memory. Memory is a product decision about what to keep, share, and erase.",
+    "investorQuote": "Long-horizon agents fail on forgetting—Briv is infrastructure for continuity with compliance.",
+    "investorName": "Josh Kopelman",
+    "investorFirm": "First Round Capital",
+    "verticals": [
+      "Agent Memory",
+      "Agent Infra",
+      "Long-Horizon Agents"
+    ],
+    "hashtags": [
+      "#AgentMemory",
+      "#AIInfrastructure",
+      "#SeedRound",
+      "#AgenticAI",
+      "#MLOps"
+    ],
+    "image": "/images/startups/amara-diallo.jpg",
+    "xPost": "Briv raises $22M Seed. Memory and context fabric for long-horizon agents—episodic stores, retrieval policies, and forget gates so multi-day tasks keep mandate without leaking secrets.\n\n\"Context windows are not memory. Memory is a product decision about what to keep, share, and erase.\" — Amara Diallo\n\n\"Long-horizon agents fail on forgetting—Briv is infrastructure for continuity with compliance.\" — Josh Kopelman · First Round Capital\n\n#AgentMemory #AIInfrastructure #SeedRound #AgenticAI #MLOps"
+  },
+  {
+    "id": "fluxa-2026-07",
+    "date": "2026-07-12",
+    "companyName": "Fluxa",
+    "headline": "Fluxa Raises $35M Series A as Founding Team Ships Agentic Growth Stack for Multi-Channel Campaign Orchestration",
+    "round": "$35M Series A",
+    "description": "Founding team building multi-agent growth systems that plan, create, and optimize campaigns across paid and owned channels with brand-safe guardrails and full experiment logs.",
+    "founderName": "Nikhil Raghavan",
+    "founderTitle": "ex-Meta Ads",
+    "founderQuote": "Growth teams do not need another copilot. They need an agent mesh that can spend, measure, and stop when brand risk spikes.",
+    "investorQuote": "Agentic GTM is where creative velocity meets governance—Fluxa is the stack operators will standardize on.",
+    "investorName": "Aydin Senkut",
+    "investorFirm": "Felicis",
+    "verticals": [
+      "Marketing AI",
+      "Agentic GTM",
+      "Multi-Agent"
+    ],
+    "hashtags": [
+      "#MarTech",
+      "#AgenticAI",
+      "#SeriesA",
+      "#Growth",
+      "#Marketing"
+    ],
+    "image": "/images/startups/fluxa-team.jpg",
+    "xPost": "Fluxa raises $35M Series A. Founding team building multi-agent growth systems that plan, create, and optimize campaigns across paid and owned channels with brand-safe guardrails and full experiment logs.\n\n\"Growth teams do not need another copilot. They need an agent mesh that can spend, measure, and stop when brand risk spikes.\" — Nikhil Raghavan\n\n\"Agentic GTM is where creative velocity meets governance—Fluxa is the stack operators will standardize on.\" — Aydin Senkut · Felicis\n\n#MarTech #AgenticAI #SeriesA #Growth #Marketing"
+  },
+  {
     "id": "aether-2026-07",
     "date": "2026-07-15",
     "companyName": "Aether",

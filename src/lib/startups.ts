@@ -12,21 +12,35 @@
 
 import startupsData from "../data/startups.json";
 
+/** Wire story shape — optional; missing/unknown → raise (legacy cards). */
+export type StartupNewsType =
+  | "raise"
+  | "stealth"
+  | "extension"
+  | "strategic"
+  | "acquisition";
+
 export interface Startup {
   id: string;
   date: string;
   companyName: string;
   headline: string;
+  /** Deal chip text, e.g. "$48M Series A" or "$52M · Emerged from stealth" */
   round: string;
   description: string;
   founderName: string;
   founderTitle: string | null;
   founderQuote: string;
   investorQuote: string;
-  /** Optional display name for the investor quote attribution */
+  /** Optional display name for the second-voice quote attribution */
   investorName?: string | null;
-  /** Optional firm for the investor quote attribution */
+  /** Optional firm for the second-voice quote attribution */
   investorFirm?: string | null;
+  /**
+   * Story type for chrome / second-voice role.
+   * Omit on legacy cards (treated as "raise").
+   */
+  newsType?: StartupNewsType | null;
   verticals: string[];
   /** Exactly 5 hashtags for social (include leading #) */
   hashtags?: string[];
@@ -35,17 +49,157 @@ export interface Startup {
   image: string;
 }
 
-/** Attribution line for the investor quote footer (modal). */
+export function resolveNewsType(
+  startup: Pick<Startup, "newsType"> | { newsType?: string | null }
+): StartupNewsType {
+  const t = (startup.newsType || "raise").toLowerCase();
+  if (
+    t === "stealth" ||
+    t === "extension" ||
+    t === "strategic" ||
+    t === "acquisition"
+  ) {
+    return t;
+  }
+  return "raise";
+}
+
+/** Short label for optional type chrome (empty for plain raises). */
+export function formatNewsTypeLabel(
+  startup: Pick<Startup, "newsType"> | { newsType?: string | null }
+): string {
+  switch (resolveNewsType(startup)) {
+    case "stealth":
+      return "Stealth";
+    case "extension":
+      return "Extension";
+    case "strategic":
+      return "Strategic";
+    case "acquisition":
+      return "M&A";
+    default:
+      return "";
+  }
+}
+
+/**
+ * Role word for the second blockquote when name/firm are missing.
+ * With name/firm present, prefer formatInvestorAttribution (name · firm).
+ */
+export function formatSecondVoiceRole(
+  startup: Pick<Startup, "newsType"> | { newsType?: string | null }
+): string {
+  switch (resolveNewsType(startup)) {
+    case "stealth":
+      return "Seed lead";
+    case "extension":
+      return "Returning investor";
+    case "strategic":
+      return "Strategic";
+    case "acquisition":
+      return "Acquirer";
+    default:
+      return "Investor";
+  }
+}
+
+/** Attribution line for the second quote footer (modal / detail). */
 export function formatInvestorAttribution(startup: {
   investorName?: string | null;
   investorFirm?: string | null;
+  newsType?: string | null;
 }): string {
   const name = startup.investorName?.trim() || "";
   const firm = startup.investorFirm?.trim() || "";
   if (name && firm) return `${name} · ${firm}`;
   if (name) return name;
   if (firm) return firm;
-  return "Investor";
+  return formatSecondVoiceRole(startup);
+}
+
+/** Parse `round` strings like "$98M Series B" / "$1.15B Series D" → USD millions. */
+export function parseRoundMillions(round: string): number | null {
+  if (!round) return null;
+  const m = round.match(/\$?\s*([\d,.]+)\s*([MmBb]|million|billion)?/i);
+  if (!m) return null;
+  const num = parseFloat(m[1].replace(/,/g, ""));
+  if (Number.isNaN(num)) return null;
+  const unit = (m[2] || "M").toLowerCase();
+  if (unit.startsWith("b")) return num * 1000;
+  return num;
+}
+
+export type ArchiveStats = {
+  count: number;
+  totalRaisedMillions: number;
+  totalRaisedLabel: string;
+  topVerticals: { label: string; count: number }[];
+  newsTypeCounts: { type: StartupNewsType; label: string; count: number }[];
+};
+
+function formatBillionsLabel(millions: number): string {
+  if (millions >= 1000) {
+    const b = millions / 1000;
+    const rounded = b >= 10 ? b.toFixed(1) : b.toFixed(2);
+    return `$${rounded.replace(/\.?0+$/, "")}B`;
+  }
+  return `$${Math.round(millions)}M`;
+}
+
+/** Desk chrome: totals and patterns (page-level, not per-card satire). */
+export function getArchiveStats(list: Startup[] = startups): ArchiveStats {
+  let total = 0;
+  const verticalCounts = new Map<string, number>();
+  const typeCounts: Record<StartupNewsType, number> = {
+    raise: 0,
+    stealth: 0,
+    extension: 0,
+    strategic: 0,
+    acquisition: 0,
+  };
+
+  for (const s of list) {
+    const mil = parseRoundMillions(s.round);
+    if (mil != null) total += mil;
+    for (const v of s.verticals || []) {
+      const key = v.trim();
+      if (!key) continue;
+      verticalCounts.set(key, (verticalCounts.get(key) || 0) + 1);
+    }
+    typeCounts[resolveNewsType(s)] += 1;
+  }
+
+  const topVerticals = [...verticalCounts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, 5)
+    .map(([label, count]) => ({ label, count }));
+
+  const typeLabels: Record<StartupNewsType, string> = {
+    raise: "Raises",
+    stealth: "Stealth",
+    extension: "Extensions",
+    strategic: "Strategic",
+    acquisition: "M&A",
+  };
+
+  const newsTypeCounts = (
+    Object.keys(typeCounts) as StartupNewsType[]
+  )
+    .filter((t) => typeCounts[t] > 0)
+    .map((type) => ({
+      type,
+      label: typeLabels[type],
+      count: typeCounts[type],
+    }))
+    .sort((a, b) => b.count - a.count);
+
+  return {
+    count: list.length,
+    totalRaisedMillions: total,
+    totalRaisedLabel: formatBillionsLabel(total),
+    topVerticals,
+    newsTypeCounts,
+  };
 }
 
 export const startups: Startup[] = startupsData as Startup[];

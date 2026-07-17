@@ -1,5 +1,208 @@
 [
   {
+    "id": "lintora-2026-07",
+    "date": "2026-07-16",
+    "companyName": "Lintora",
+    "headline": "Lintora raises $55M Series A to turn intent into production software with audit-ready agent forges",
+    "round": "$55M Series A",
+    "newsType": "raise",
+    "description": "Lintora runs multi-agent coding forges that ship production changes with full intent trails, policy gates, and human oversight only where risk scores demand it.",
+    "founderName": "Ravi Krishnamurthy",
+    "founderTitle": "ex-GitHub",
+    "founderQuote": "We do not sell another coding copilot. We sell merged, reviewed, and reversible work.",
+    "investorQuote": "Infrastructure categories mint durable franchises \u2014 intent-to-prod is becoming one.",
+    "investorName": "Marcus Chen",
+    "investorFirm": "Lightspeed Venture Partners",
+    "verticals": [
+      "Agentic Coding",
+      "Software Forge",
+      "Dev Tools"
+    ],
+    "hashtags": [
+      "#AgenticCoding",
+      "#SoftwareForge",
+      "#SeriesA",
+      "#DevTools",
+      "#Lintora"
+    ],
+    "xPost": "Lintora raises $55M Series A. Lintora runs multi-agent coding forges that ship production changes with full intent trails, policy gates, and human oversight only where risk scores demand it.\n\n\"We do not sell another coding copilot. We sell merged, reviewed, and reversible work.\" \u2014 Ravi Krishnamurthy\n\n\"Infrastructure categories mint durable franchises \u2014 intent-to-prod is becoming one.\" \u2014 Marcus Chen \u00b7 Lightspeed Venture Partners\n\n#AgenticCoding #SoftwareForge #SeriesA #DevTools #Lintora",
+    "image": "/images/startups/ravi-krishnamurthy.jpg"
+  },
+  {
+    "id": "polis-2026-07",
+    "date": "2026-07-16",
+    "companyName": "Polis",
+    "headline": "Polis emerges from stealth with $48M to automate E&S insurance with agent brokers",
+    "round": "$48M \u00b7 Emerged from stealth",
+    "newsType": "stealth",
+    "description": "Polis deploys underwriting and brokerage agents for surplus lines, turning manual submission chaos into policy-graph decisions with human review on exceptions.",
+    "founderName": "Nadia Kowalski",
+    "founderTitle": "ex-Lemonade",
+    "founderQuote": "Specialty insurance is still a fax-and-spreadsheet market. Agents only win if the board can defend every bind.",
+    "investorQuote": "Regulated buyers pay for systems that leave a trail \u2014 Polis was built for that constraint, not around it.",
+    "investorName": "Helen Cho",
+    "investorFirm": "Bain Capital Ventures",
+    "verticals": [
+      "Insurtech",
+      "Agentic Underwriting",
+      "Compliance"
+    ],
+    "hashtags": [
+      "#Insurtech",
+      "#Stealth",
+      "#Underwriting",
+      "#EandS",
+      "#Polis"
+    ],
+    "xPost": "Polis emerges from stealth with $48M. Polis deploys underwriting and brokerage agents for surplus lines, turning manual submission chaos into policy-graph decisions with human review on exceptions.\n\n\"Specialty insurance is still a fax-and-spreadsheet market. Agents only win if the board can defend every bind.\" \u2014 Nadia Kowalski\n\n\"Regulated buyers pay for systems that leave a trail \u2014 Polis was built for that constraint, not around it.\" \u2014 Helen Cho \u00b7 Bain Capital Ventures\n\n#Insurtech #Stealth #Underwriting #EandS #Polis",
+    "image": "/images/startups/nadia-kowalski.jpg"
+  },
+  {
+    "id": "quill-2026-07",
+    "date": "2026-07-15",
+    "companyName": "Quill",
+    "headline": "Quill raises $22M Seed for buy-side agents that read the market before humans open the terminal",
+    "round": "$22M Seed",
+    "newsType": "raise",
+    "description": "Quill builds research agents for funds that ingest filings, transcripts, and news, then surface mandate-aware signals with full provenance for PMs and risk.",
+    "founderName": "Sophie Berg",
+    "founderTitle": "ex-Two Sigma",
+    "founderQuote": "Autonomy without mandate context is just uncontrolled attention. We treat every alert as a fiduciary artifact.",
+    "investorQuote": "Boards will fund systems that make agent risk legible \u2014 Quill is already speaking that language to CIOs.",
+    "investorName": "Priya Nair",
+    "investorFirm": "General Catalyst",
+    "verticals": [
+      "Buy-Side Research",
+      "Agentic Investing",
+      "Fintech"
+    ],
+    "hashtags": [
+      "#BuySide",
+      "#AgenticInvesting",
+      "#Seed",
+      "#ResearchAgents",
+      "#Quill"
+    ],
+    "xPost": "Quill raises $22M Seed. Quill builds research agents for funds that ingest filings, transcripts, and news, then surface mandate-aware signals with full provenance for PMs and risk.\n\n\"Autonomy without mandate context is just uncontrolled attention. We treat every alert as a fiduciary artifact.\" \u2014 Sophie Berg\n\n\"Boards will fund systems that make agent risk legible \u2014 Quill is already speaking that language to CIOs.\" \u2014 Priya Nair \u00b7 General Catalyst\n\n#BuySide #AgenticInvesting #Seed #ResearchAgents #Quill",
+    "image": "/images/startups/sophie-berg.jpg"
+  },
+  {
+    "id": "gridpath-2026-07",
+    "date": "2026-07-15",
+    "companyName": "Gridpath",
+    "headline": "Gridpath raises $35M Series A to put agentic automation on the factory floor",
+    "round": "$35M Series A",
+    "newsType": "raise",
+    "description": "Gridpath orchestrates CNC and cell-level workflows with shop-floor agents that plan, verify, and escalate when metal, power, or safety constraints bite.",
+    "founderName": "Ashwin Ramanathan",
+    "founderTitle": "ex-Tesla Autopilot",
+    "founderQuote": "Physical AI is not a chatbot next to a lathe. It is a production surface with sensors, locks, and operator overrides.",
+    "investorQuote": "One process engineer overseeing what used to take a shift is the unit economics story we underwrite.",
+    "investorName": "Jordan Hale",
+    "investorFirm": "a16z",
+    "verticals": [
+      "Physical AI",
+      "Manufacturing",
+      "Agentic Automation"
+    ],
+    "hashtags": [
+      "#PhysicalAI",
+      "#Manufacturing",
+      "#SeriesA",
+      "#FactoryAI",
+      "#Gridpath"
+    ],
+    "xPost": "Gridpath raises $35M Series A. Gridpath orchestrates CNC and cell-level workflows with shop-floor agents that plan, verify, and escalate when metal, power, or safety constraints bite.\n\n\"Physical AI is not a chatbot next to a lathe. It is a production surface with sensors, locks, and operator overrides.\" \u2014 Ashwin Ramanathan\n\n\"One process engineer overseeing what used to take a shift is the unit economics story we underwrite.\" \u2014 Jordan Hale \u00b7 a16z\n\n#PhysicalAI #Manufacturing #SeriesA #FactoryAI #Gridpath",
+    "image": "/images/startups/ashwin-ramanathan.jpg"
+  },
+  {
+    "id": "veyra-2026-07",
+    "date": "2026-07-14",
+    "companyName": "Veyra",
+    "headline": "Veyra closes $30M extension as agentic CX resolution rates force a larger services bench",
+    "round": "$30M extension",
+    "newsType": "extension",
+    "description": "Veyra\u2019s CX agents handle end-to-end support resolution across voice and chat, with brand policy graphs and live handoff only when customer risk spikes.",
+    "founderName": "Diego Morales",
+    "founderTitle": "ex-Zendesk",
+    "founderQuote": "Unit economics only work when the agent closes the loop. Suggestions do not clear a queue.",
+    "investorQuote": "Copilot revenue is a feature; resolution revenue is a company \u2014 we doubled down for that reason.",
+    "investorName": "Nina Patel",
+    "investorFirm": "Salesforce Ventures",
+    "verticals": [
+      "Agentic CX",
+      "Voice AI",
+      "Support Resolution"
+    ],
+    "hashtags": [
+      "#AgenticCX",
+      "#Extension",
+      "#VoiceAI",
+      "#SupportAI",
+      "#Veyra"
+    ],
+    "xPost": "Veyra closes $30M extension. Veyra\u2019s CX agents handle end-to-end support resolution across voice and chat, with brand policy graphs and live handoff only when customer risk spikes.\n\n\"Unit economics only work when the agent closes the loop. Suggestions do not clear a queue.\" \u2014 Diego Morales\n\n\"Copilot revenue is a feature; resolution revenue is a company \u2014 we doubled down for that reason.\" \u2014 Nina Patel \u00b7 Salesforce Ventures\n\n#AgenticCX #Extension #VoiceAI #SupportAI #Veyra",
+    "image": "/images/startups/diego-morales.jpg"
+  },
+  {
+    "id": "simlayer-2026-07",
+    "date": "2026-07-13",
+    "companyName": "Simlayer",
+    "headline": "Simlayer co-founders raise $42M Series A for digital-world gyms that break agents before production does",
+    "round": "$42M Series A",
+    "newsType": "raise",
+    "description": "Co-founded by Lin Mei and Owen Briggs, Simlayer builds fail-first sim environments where multi-agent stacks are red-teamed against tool abuse, long-horizon drift, and policy violations.",
+    "founderName": "Lin Mei & Owen Briggs",
+    "founderTitle": "ex-Meta AI / ex-DeepMind",
+    "founderQuote": "If it only works in a demo, it is not an agent. It is a press release with a UI.",
+    "investorQuote": "Eval is consolidating into a control plane \u2014 Simlayer is shipping the gym enterprises will standardize on.",
+    "investorName": "Tom Reeves",
+    "investorFirm": "Greenfield Partners",
+    "verticals": [
+      "Agent Eval",
+      "Simulation",
+      "Multi-Agent"
+    ],
+    "hashtags": [
+      "#AgentEval",
+      "#Simulation",
+      "#SeriesA",
+      "#MultiAgent",
+      "#Simlayer"
+    ],
+    "xPost": "Simlayer raises $42M Series A. Co-founded by Lin Mei and Owen Briggs, Simlayer builds fail-first sim environments where multi-agent stacks are red-teamed against tool abuse, long-horizon drift, and policy violations.\n\n\"If it only works in a demo, it is not an agent. It is a press release with a UI.\" \u2014 Lin Mei & Owen Briggs\n\n\"Eval is consolidating into a control plane \u2014 Simlayer is shipping the gym enterprises will standardize on.\" \u2014 Tom Reeves \u00b7 Greenfield Partners\n\n#AgentEval #Simulation #SeriesA #MultiAgent #Simlayer",
+    "image": "/images/startups/simlayer-duo.jpg"
+  },
+  {
+    "id": "titlemesh-2026-07",
+    "date": "2026-07-12",
+    "companyName": "Titlemesh",
+    "headline": "Titlemesh raises $68M Series B to run escrow and title as a multi-agent capital OS",
+    "round": "$68M Series B",
+    "newsType": "raise",
+    "description": "Titlemesh coordinates title, escrow, and capital agents across residential and commercial closings with shared context, exception queues, and immutable audit for lenders and GCs.",
+    "founderName": "Sridhar Venkatraman",
+    "founderTitle": "ex-First American",
+    "founderQuote": "Closings are multi-party workflows pretending to be documents. We treat them as production systems.",
+    "investorQuote": "This is the layer the market consolidates on when proptech stops selling dashboards and starts moving money safely.",
+    "investorName": "Alex Rivera",
+    "investorFirm": "Founders Fund",
+    "verticals": [
+      "Proptech",
+      "Escrow",
+      "Agentic Orchestration"
+    ],
+    "hashtags": [
+      "#Proptech",
+      "#Escrow",
+      "#SeriesB",
+      "#TitleTech",
+      "#Titlemesh"
+    ],
+    "xPost": "Titlemesh raises $68M Series B. Titlemesh coordinates title, escrow, and capital agents across residential and commercial closings with shared context, exception queues, and immutable audit for lenders and GCs.\n\n\"Closings are multi-party workflows pretending to be documents. We treat them as production systems.\" \u2014 Sridhar Venkatraman\n\n\"This is the layer the market consolidates on when proptech stops selling dashboards and starts moving money safely.\" \u2014 Alex Rivera \u00b7 Founders Fund\n\n#Proptech #Escrow #SeriesB #TitleTech #Titlemesh",
+    "image": "/images/startups/titlemesh-team.jpg"
+  },
+  {
     "id": "huntmesh-2026-07",
     "date": "2026-07-16",
     "companyName": "Huntmesh",
@@ -90,7 +293,7 @@
     "headline": "Atrium lands $52M Series A to clean clinical trial data with sponsor-grade agents",
     "round": "$52M Series A",
     "description": "Atrium agents reconcile multi-site trial datasets, flag protocol drift, and package sponsor-ready packages so clinical ops teams stop living in spreadsheet purgatory.",
-    "founderName": "Camille Okonkwo",
+    "founderName": "Grace Liu",
     "founderTitle": "ex-Flatiron Health",
     "founderQuote": "Every delayed database lock is a delayed readout. We treat data hygiene as an always-on agent workflow, not a quarterly fire drill.",
     "investorQuote": "Trial ops is a multi-agent systems problem wearing a healthcare badge \u2014 Atrium is productizing that insight.",
@@ -108,8 +311,8 @@
       "#TrialOps",
       "#Atrium"
     ],
-    "xPost": "Atrium raises $52M Series A. Atrium agents reconcile multi-site trial datasets, flag protocol drift, and package sponsor-ready packages so clinical ops teams stop living in spreadsheet purgatory.\n\n\"Every delayed database lock is a delayed readout. We treat data hygiene as an always-on agent workflow, not a quarterly fire drill.\" \u2014 Camille Okonkwo\n\n\"Trial ops is a multi-agent systems problem wearing a healthcare badge \u2014 Atrium is productizing that insight.\" \u2014 Emily Chang \u00b7 Menlo Ventures\n\n#ClinicalAI #Healthtech #SeriesA #TrialOps #Atrium",
-    "image": "/images/startups/camille-okonkwo.jpg"
+    "xPost": "Atrium raises $52M Series A. Atrium agents reconcile multi-site trial datasets, flag protocol drift, and package sponsor-ready packages so clinical ops teams stop living in spreadsheet purgatory.\n\n\"Every delayed database lock is a delayed readout. We treat data hygiene as an always-on agent workflow, not a quarterly fire drill.\" \u2014 Grace Liu\n\n\"Trial ops is a multi-agent systems problem wearing a healthcare badge \u2014 Atrium is productizing that insight.\" \u2014 Emily Chang \u00b7 Menlo Ventures\n\n#ClinicalAI #Healthtech #SeriesA #TrialOps #Atrium",
+    "image": "/images/startups/grace-liu.jpg"
   },
   {
     "id": "redakt-2026-07",

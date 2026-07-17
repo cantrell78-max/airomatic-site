@@ -30,6 +30,7 @@ const pageSize = 6;
         watching the real funding feed too closely. Patterns detected. Deals
         riffed. Portraits generated.
       </p>
+
       <p class="startups-page__count mono">
         <span data-visible-count>{Math.min(pageSize, allStartups.length)}</span>
         of <span data-total-count>{allStartups.length}</span> announcements
@@ -100,6 +101,8 @@ const pageSize = 6;
         </div>
         <div class="startup-modal__content">
           <p class="startup-modal__meta mono">
+            <span data-modal-type hidden></span>
+            <span data-modal-type-sep aria-hidden="true" hidden> · </span>
             <span data-modal-round></span>
             <span aria-hidden="true"> · </span>
             <time data-modal-date></time>
@@ -545,6 +548,8 @@ const pageSize = 6;
 
     // —— Modal ——
     const modalImg = modal.querySelector("[data-modal-image]");
+    const modalType = modal.querySelector("[data-modal-type]");
+    const modalTypeSep = modal.querySelector("[data-modal-type-sep]");
     const modalRound = modal.querySelector("[data-modal-round]");
     const modalDate = modal.querySelector("[data-modal-date]");
     const modalCompany = modal.querySelector("[data-modal-company]");
@@ -561,13 +566,28 @@ const pageSize = 6;
     const modalCopyX = modal.querySelector("[data-modal-copy-x]");
     const modalFullPage = modal.querySelector("[data-modal-fullpage]");
 
+    function secondVoiceRole(newsType) {
+      switch ((newsType || "raise").toLowerCase()) {
+        case "stealth":
+          return "Seed lead";
+        case "extension":
+          return "Returning investor";
+        case "strategic":
+          return "Strategic";
+        case "acquisition":
+          return "Acquirer";
+        default:
+          return "Investor";
+      }
+    }
+
     function formatInvestorAttribution(data) {
       const name = (data.investorName || "").trim();
       const firm = (data.investorFirm || "").trim();
       if (name && firm) return `${name} · ${firm}`;
       if (name) return name;
       if (firm) return firm;
-      return "Investor";
+      return secondVoiceRole(data.newsType);
     }
 
     function formatDate(iso) {
@@ -601,6 +621,12 @@ const pageSize = 6;
           ? `${data.founderName}, founder of ${data.companyName || ""}`
           : data.companyName || "";
       }
+      const typeLabel = (data.newsTypeLabel || "").trim();
+      if (modalType) {
+        modalType.textContent = typeLabel;
+        modalType.hidden = !typeLabel;
+      }
+      if (modalTypeSep) modalTypeSep.hidden = !typeLabel;
       if (modalRound) modalRound.textContent = data.round || "";
       if (modalDate) {
         modalDate.textContent = formatDate(data.date || "");

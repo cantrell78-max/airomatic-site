@@ -1,5 +1,208 @@
 [
   {
+    "id": "wardmesh-2026-07",
+    "date": "2026-07-17",
+    "companyName": "Wardmesh",
+    "headline": "Wardmesh raises $45M Series A to put clinical ops agents on every hospital floor",
+    "round": "$45M Series A",
+    "newsType": "raise",
+    "description": "Wardmesh deploys bedside and back-office agents that schedule, triage, and reconcile inpatient workflows with human override on high-acuity paths and full audit for CMS readiness.",
+    "founderName": "Hye-rin Choi",
+    "founderTitle": "ex-Epic Systems",
+    "founderQuote": "Hospitals do not need another dashboard for nurses. They need agents that finish the shift work without inventing the chart.",
+    "investorQuote": "Unit economics only work when agents clear the queue that burns out clinical staff \u2014 Wardmesh is already proving that on live floors.",
+    "investorName": "Ananya Desai",
+    "investorFirm": "Khosla Ventures",
+    "verticals": [
+      "Healthtech",
+      "Clinical Ops",
+      "Hospital AI"
+    ],
+    "hashtags": [
+      "#HospitalAI",
+      "#ClinicalOps",
+      "#SeriesA",
+      "#HealthAgents",
+      "#Wardmesh"
+    ],
+    "xPost": "Wardmesh raises $45M Series A. Wardmesh deploys bedside and back-office agents that schedule, triage, and reconcile inpatient workflows with human override on high-acuity paths and full audit for CMS readiness.\n\n\"Hospitals do not need another dashboard for nurses. They need agents that finish the shift work without inventing the chart.\" \u2014 Hye-rin Choi\n\n\"Unit economics only work when agents clear the queue that burns out clinical staff \u2014 Wardmesh is already proving that on live floors.\" \u2014 Ananya Desai \u00b7 Khosla Ventures\n\n#HospitalAI #ClinicalOps #SeriesA #HealthAgents #Wardmesh",
+    "image": "/images/startups/hye-rin-choi.jpg"
+  },
+  {
+    "id": "klaim-2026-07",
+    "date": "2026-07-17",
+    "companyName": "Klaim",
+    "headline": "Klaim emerges from stealth with $22M to underwrite liability for deployed AI agents",
+    "round": "$22M \u00b7 Emerged from stealth",
+    "newsType": "stealth",
+    "description": "Klaim is a carrier-grade product for agent liability: policies that cover autonomous spend, messaging, and data actions traditional E&O and cyber carve out.",
+    "founderName": "Rachel Stein",
+    "founderTitle": "ex-Stripe",
+    "founderQuote": "If agents are going to act, someone has to price the downside. We treat coverage as production infrastructure, not a PDF afterthought.",
+    "investorQuote": "Regulated buyers will not scale agent fleets without a balance-sheet story \u2014 Klaim is building that product.",
+    "investorName": "David Rosen",
+    "investorFirm": "Bessemer Venture Partners",
+    "verticals": [
+      "Insurtech",
+      "Agent Liability",
+      "Trust Layer"
+    ],
+    "hashtags": [
+      "#AgentInsurance",
+      "#Liability",
+      "#StealthRound",
+      "#InsurtechAI",
+      "#Klaim"
+    ],
+    "xPost": "Klaim emerges from stealth with $22M. Klaim is a carrier-grade product for agent liability: policies that cover autonomous spend, messaging, and data actions traditional E&O and cyber carve out.\n\n\"If agents are going to act, someone has to price the downside. We treat coverage as production infrastructure, not a PDF afterthought.\" \u2014 Rachel Stein\n\n\"Regulated buyers will not scale agent fleets without a balance-sheet story \u2014 Klaim is building that product.\" \u2014 David Rosen \u00b7 Bessemer Venture Partners\n\n#AgentInsurance #Liability #StealthRound #InsurtechAI #Klaim",
+    "image": "/images/startups/rachel-stein.jpg"
+  },
+  {
+    "id": "valtrix-2026-07",
+    "date": "2026-07-16",
+    "companyName": "Valtrix",
+    "headline": "Valtrix raises $50M Series A for sovereign agent infrastructure outside the US cloud default",
+    "round": "$50M Series A",
+    "newsType": "raise",
+    "description": "Valtrix sells residency-controlled agent runtimes and model routing for governments and enterprises that need autonomous workflows without shipping context to hyperscale defaults.",
+    "founderName": "Oscar Lindqvist",
+    "founderTitle": "ex-Spotify",
+    "founderQuote": "Sovereignty is not a flag on a slide. It is where the agent\u2019s memory, tools, and logs are allowed to live.",
+    "investorQuote": "Infrastructure categories mint durable franchises \u2014 residency-aware agent fabric is one of them.",
+    "investorName": "Priya Menon",
+    "investorFirm": "NEA",
+    "verticals": [
+      "Sovereign Entities",
+      "Agent Infra",
+      "Hybrid Compute"
+    ],
+    "hashtags": [
+      "#SovereignAI",
+      "#AgentRuntime",
+      "#SeriesA",
+      "#Residency",
+      "#Valtrix"
+    ],
+    "xPost": "Valtrix raises $50M Series A. Valtrix sells residency-controlled agent runtimes and model routing for governments and enterprises that need autonomous workflows without shipping context to hyperscale defaults.\n\n\"Sovereignty is not a flag on a slide. It is where the agent\u2019s memory, tools, and logs are allowed to live.\" \u2014 Oscar Lindqvist\n\n\"Infrastructure categories mint durable franchises \u2014 residency-aware agent fabric is one of them.\" \u2014 Priya Menon \u00b7 NEA\n\n#SovereignAI #AgentRuntime #SeriesA #Residency #Valtrix",
+    "image": "/images/startups/oscar-lindqvist.jpg"
+  },
+  {
+    "id": "routely-2026-07",
+    "date": "2026-07-16",
+    "companyName": "Routely",
+    "headline": "After Repyuta, Ingrid Holm raises $36M Series A for Routely\u2019s agentic travel desk",
+    "round": "$36M Series A",
+    "newsType": "raise",
+    "description": "Routely runs multi-agent planning and rebooking for complex trips, with policy graphs for corporate travel and human advisors only on exception paths \u2014 Holm\u2019s second company after selling Repyuta\u2019s reputation stack.",
+    "founderName": "Ingrid Holm",
+    "founderTitle": "ex-Spotify / founder of Repyuta",
+    "founderQuote": "Travel is still a dozen tools pretending to be a journey. We treat the trip as a production system with agents that replan when the world changes.",
+    "investorQuote": "Copilot revenue is a feature; closed itineraries are a company \u2014 Routely is the latter.",
+    "investorName": "Lauren Chu",
+    "investorFirm": "Forerunner Ventures",
+    "verticals": [
+      "Travel Tech",
+      "Agentic GTM",
+      "Consumer Agents"
+    ],
+    "hashtags": [
+      "#TravelAI",
+      "#AgenticGTM",
+      "#SeriesA",
+      "#ItineraryAgents",
+      "#Routely"
+    ],
+    "xPost": "Routely raises $36M Series A. Routely runs multi-agent planning and rebooking for complex trips, with policy graphs for corporate travel and human advisors only on exception paths \u2014 Holm\u2019s second company after selling Repyuta\u2019s reputation stack.\n\n\"Travel is still a dozen tools pretending to be a journey. We treat the trip as a production system with agents that replan when the world changes.\" \u2014 Ingrid Holm\n\n\"Copilot revenue is a feature; closed itineraries are a company \u2014 Routely is the latter.\" \u2014 Lauren Chu \u00b7 Forerunner Ventures\n\n#TravelAI #AgenticGTM #SeriesA #ItineraryAgents #Routely",
+    "image": "/images/startups/ingrid-holm-routely.jpg"
+  },
+  {
+    "id": "kernelith-2026-07",
+    "date": "2026-07-15",
+    "companyName": "Kernelith",
+    "headline": "Kernelith wins $3.1M grant to open-source agent tooling for device OS debugging",
+    "round": "$3.1M grant",
+    "newsType": "grant",
+    "description": "Kernelith builds agents that hunt bugs across kernel, modem, and firmware surfaces for Android and Linux devices \u2014 the grant funds public tooling and evaluation harnesses for device OEMs.",
+    "founderName": "Hari Subramanian",
+    "founderTitle": "ex-Qualcomm",
+    "founderQuote": "The code AI forgot is the code that boots the phone. We put agents where logcat still lives.",
+    "investorQuote": "Non-dilutive capital for dual-use device reliability is how you get open tools without waiting on a mega Series A.",
+    "investorName": "Elena Vogt",
+    "investorFirm": "Horizon Europe Digital",
+    "verticals": [
+      "Device OS",
+      "Firmware Agents",
+      "Dev Tools"
+    ],
+    "hashtags": [
+      "#FirmwareAI",
+      "#DeviceOS",
+      "#Grant",
+      "#OpenTooling",
+      "#Kernelith"
+    ],
+    "xPost": "Kernelith wins $3.1M grant. Kernelith builds agents that hunt bugs across kernel, modem, and firmware surfaces for Android and Linux devices \u2014 the grant funds public tooling and evaluation harnesses for device OEMs.\n\n\"The code AI forgot is the code that boots the phone. We put agents where logcat still lives.\" \u2014 Hari Subramanian\n\n\"Non-dilutive capital for dual-use device reliability is how you get open tools without waiting on a mega Series A.\" \u2014 Elena Vogt \u00b7 Horizon Europe Digital\n\n#FirmwareAI #DeviceOS #Grant #OpenTooling #Kernelith",
+    "image": "/images/startups/hari-subramanian.jpg"
+  },
+  {
+    "id": "buslayer-2026-07",
+    "date": "2026-07-14",
+    "companyName": "Buslayer",
+    "headline": "Buslayer co-founders raise $32M Series A for the message bus enterprises use to coordinate AI agents",
+    "round": "$32M Series A",
+    "newsType": "raise",
+    "description": "Co-founded by Aditya Raghavan and Bo Chen, Buslayer is a low-latency coordination fabric so multi-agent stacks can hand off tools, memory, and approvals without Slack archaeology.",
+    "founderName": "Aditya Raghavan & Bo Chen",
+    "founderTitle": "ex-Meta AI / ex-Alibaba Cloud",
+    "founderQuote": "If it only works in a demo thread, it is not an agent system. It is group chat with aspirations.",
+    "investorQuote": "Eval is useless without a control plane for messages \u2014 Buslayer is shipping the bus the category consolidates on.",
+    "investorName": "Michael Torres",
+    "investorFirm": "Accel",
+    "verticals": [
+      "Agent Rails",
+      "Multi-Agent",
+      "Agent Infra"
+    ],
+    "hashtags": [
+      "#AgentBus",
+      "#Coordination",
+      "#SeriesA",
+      "#MultiAgentSystems",
+      "#Buslayer"
+    ],
+    "xPost": "Buslayer raises $32M Series A. Co-founded by Aditya Raghavan and Bo Chen, Buslayer is a low-latency coordination fabric so multi-agent stacks can hand off tools, memory, and approvals without Slack archaeology.\n\n\"If it only works in a demo thread, it is not an agent system. It is group chat with aspirations.\" \u2014 Aditya Raghavan & Bo Chen\n\n\"Eval is useless without a control plane for messages \u2014 Buslayer is shipping the bus the category consolidates on.\" \u2014 Michael Torres \u00b7 Accel\n\n#AgentBus #Coordination #SeriesA #MultiAgentSystems #Buslayer",
+    "image": "/images/startups/buslayer-duo.jpg"
+  },
+  {
+    "id": "adjustix-2026-07",
+    "date": "2026-07-13",
+    "companyName": "Adjustix",
+    "headline": "Adjustix raises $70M Series B to run P&C claims with agent adjusters and human-in-loop gates",
+    "round": "$70M Series B",
+    "newsType": "raise",
+    "description": "Adjustix coordinates intake, investigation, and settlement agents for property claims, with FNOL-to-pay timelines measured in hours and immutable packages for reinsurers.",
+    "founderName": "Gopal Venkatesh",
+    "founderTitle": "ex-Guidewire",
+    "founderQuote": "Every delayed claim is a trust failure. We treat adjustment as an always-on agent workflow with humans only on edge cases \u2014 and SOC 2 for non-human adjusters is table stakes, not a punchline.",
+    "investorQuote": "Boards will fund systems that make agent risk legible \u2014 claims is where that thesis hits the balance sheet first.",
+    "investorName": "Sarah Kim",
+    "investorFirm": "Insight Partners",
+    "verticals": [
+      "Insurtech",
+      "Claims",
+      "Agentic Ops"
+    ],
+    "hashtags": [
+      "#ClaimsAI",
+      "#PandC",
+      "#SeriesB",
+      "#Adjusters",
+      "#Adjustix"
+    ],
+    "xPost": "Adjustix raises $70M Series B. Adjustix coordinates intake, investigation, and settlement agents for property claims, with FNOL-to-pay timelines measured in hours and immutable packages for reinsurers.\n\n\"Every delayed claim is a trust failure. We treat adjustment as an always-on agent workflow with humans only on edge cases \u2014 and SOC 2 for non-human adjusters is table stakes, not a punchline.\" \u2014 Gopal Venkatesh\n\n\"Boards will fund systems that make agent risk legible \u2014 claims is where that thesis hits the balance sheet first.\" \u2014 Sarah Kim \u00b7 Insight Partners\n\n#ClaimsAI #PandC #SeriesB #Adjusters #Adjustix",
+    "image": "/images/startups/adjustix-team.jpg"
+  },
+  {
     "id": "lintora-2026-07",
     "date": "2026-07-16",
     "companyName": "Lintora",

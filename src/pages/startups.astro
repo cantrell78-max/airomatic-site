@@ -576,6 +576,13 @@ const pageSize = 6;
           return "Strategic";
         case "acquisition":
           return "Acquirer";
+        case "downround":
+          return "Investor";
+        case "secondary":
+        case "tender":
+          return "Secondary buyer";
+        case "grant":
+          return "Program lead";
         default:
           return "Investor";
       }

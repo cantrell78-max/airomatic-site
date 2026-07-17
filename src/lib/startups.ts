@@ -18,7 +18,10 @@ export type StartupNewsType =
   | "stealth"
   | "extension"
   | "strategic"
-  | "acquisition";
+  | "acquisition"
+  | "downround"
+  | "secondary"
+  | "grant";
 
 export interface Startup {
   id: string;
@@ -49,17 +52,25 @@ export interface Startup {
   image: string;
 }
 
+const NEWS_TYPES: readonly StartupNewsType[] = [
+  "raise",
+  "stealth",
+  "extension",
+  "strategic",
+  "acquisition",
+  "downround",
+  "secondary",
+  "grant",
+] as const;
+
 export function resolveNewsType(
   startup: Pick<Startup, "newsType"> | { newsType?: string | null }
 ): StartupNewsType {
   const t = (startup.newsType || "raise").toLowerCase();
-  if (
-    t === "stealth" ||
-    t === "extension" ||
-    t === "strategic" ||
-    t === "acquisition"
-  ) {
-    return t;
+  // tender → secondary alias
+  if (t === "tender") return "secondary";
+  if ((NEWS_TYPES as readonly string[]).includes(t)) {
+    return t as StartupNewsType;
   }
   return "raise";
 }
@@ -77,6 +88,12 @@ export function formatNewsTypeLabel(
       return "Strategic";
     case "acquisition":
       return "M&A";
+    case "downround":
+      return "Down round";
+    case "secondary":
+      return "Secondary";
+    case "grant":
+      return "Grant";
     default:
       return "";
   }
@@ -98,6 +115,12 @@ export function formatSecondVoiceRole(
       return "Strategic";
     case "acquisition":
       return "Acquirer";
+    case "downround":
+      return "Investor";
+    case "secondary":
+      return "Secondary buyer";
+    case "grant":
+      return "Program lead";
     default:
       return "Investor";
   }
@@ -156,6 +179,9 @@ export function getArchiveStats(list: Startup[] = startups): ArchiveStats {
     extension: 0,
     strategic: 0,
     acquisition: 0,
+    downround: 0,
+    secondary: 0,
+    grant: 0,
   };
 
   for (const s of list) {
@@ -180,6 +206,9 @@ export function getArchiveStats(list: Startup[] = startups): ArchiveStats {
     extension: "Extensions",
     strategic: "Strategic",
     acquisition: "M&A",
+    downround: "Down rounds",
+    secondary: "Secondaries",
+    grant: "Grants",
   };
 
   const newsTypeCounts = (

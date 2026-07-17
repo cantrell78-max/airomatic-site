@@ -101,8 +101,6 @@ const pageSize = 6;
         </div>
         <div class="startup-modal__content">
           <p class="startup-modal__meta mono">
-            <span data-modal-type hidden></span>
-            <span data-modal-type-sep aria-hidden="true" hidden> · </span>
             <span data-modal-round></span>
             <span aria-hidden="true"> · </span>
             <time data-modal-date></time>
@@ -548,8 +546,6 @@ const pageSize = 6;
 
     // —— Modal ——
     const modalImg = modal.querySelector("[data-modal-image]");
-    const modalType = modal.querySelector("[data-modal-type]");
-    const modalTypeSep = modal.querySelector("[data-modal-type-sep]");
     const modalRound = modal.querySelector("[data-modal-round]");
     const modalDate = modal.querySelector("[data-modal-date]");
     const modalCompany = modal.querySelector("[data-modal-company]");
@@ -628,12 +624,6 @@ const pageSize = 6;
           ? `${data.founderName}, founder of ${data.companyName || ""}`
           : data.companyName || "";
       }
-      const typeLabel = (data.newsTypeLabel || "").trim();
-      if (modalType) {
-        modalType.textContent = typeLabel;
-        modalType.hidden = !typeLabel;
-      }
-      if (modalTypeSep) modalTypeSep.hidden = !typeLabel;
       if (modalRound) modalRound.textContent = data.round || "";
       if (modalDate) {
         modalDate.textContent = formatDate(data.date || "");

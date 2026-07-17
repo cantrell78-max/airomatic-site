@@ -7,7 +7,6 @@ import {
   getStartupsWithSlugs,
   formatStartupDate,
   formatInvestorAttribution,
-  formatNewsTypeLabel,
   type Startup,
 } from "../../lib/startups";
 
@@ -28,7 +27,6 @@ const founderLine = startup.founderTitle
   ? `${startup.founderName} · ${startup.founderTitle}`
   : startup.founderName;
 const investorAttr = formatInvestorAttribution(startup);
-const newsTypeLabel = formatNewsTypeLabel(startup);
 const hashtags = (startup.hashtags ?? []).filter(Boolean);
 const xPost = (startup.xPost ?? "").trim();
 const pageDescription =
@@ -69,14 +67,6 @@ const pageDescription =
 
         <div class="startup-detail__body">
           <p class="startup-detail__meta mono">
-            {
-              newsTypeLabel ? (
-                <>
-                  <span class="startup-detail__type">{newsTypeLabel}</span>
-                  <span aria-hidden="true"> · </span>
-                </>
-              ) : null
-            }
             <span>{startup.round}</span>
             <span aria-hidden="true"> · </span>
             <time datetime={startup.date}>{formatStartupDate(startup.date)}</time>
@@ -191,12 +181,6 @@ const pageDescription =
     margin: 0 0 0.65rem;
     font-size: 0.78rem;
     color: var(--accent-secondary);
-  }
-
-  .startup-detail__type {
-    color: var(--accent);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
   }
 
   .startup-detail__name {

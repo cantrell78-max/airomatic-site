@@ -1,10 +1,6 @@
 ---
 import type { Startup } from "../lib/startups";
-import {
-  formatStartupDate,
-  formatNewsTypeLabel,
-  getStartupSlug,
-} from "../lib/startups";
+import { formatStartupDate, getStartupSlug } from "../lib/startups";
 
 interface Props {
   startup: Startup;
@@ -22,7 +18,6 @@ const founderLine = startup.founderTitle
   : startup.founderName;
 const detailHref = `/startups/${getStartupSlug(startup)}/`;
 const ctaLabel = href ? "Open archive →" : "Quick view →";
-const newsTypeLabel = formatNewsTypeLabel(startup);
 ---
 
 <article
@@ -53,14 +48,7 @@ const newsTypeLabel = formatNewsTypeLabel(startup);
             <time class="startup-card__date" datetime={startup.date}>
               {formatStartupDate(startup.date)}
             </time>
-            <span class="startup-card__deal">
-              {
-                newsTypeLabel ? (
-                  <span class="startup-card__type">{newsTypeLabel}</span>
-                ) : null
-              }
-              <span class="startup-card__round">{startup.round}</span>
-            </span>
+            <span class="startup-card__round">{startup.round}</span>
           </div>
           <h2 class="startup-card__name">{startup.companyName}</h2>
           <p class="startup-card__founder">{founderLine}</p>
@@ -98,14 +86,7 @@ const newsTypeLabel = formatNewsTypeLabel(startup);
               <time class="startup-card__date" datetime={startup.date}>
                 {formatStartupDate(startup.date)}
               </time>
-              <span class="startup-card__deal">
-                {
-                  newsTypeLabel ? (
-                    <span class="startup-card__type">{newsTypeLabel}</span>
-                  ) : null
-                }
-                <span class="startup-card__round">{startup.round}</span>
-              </span>
+              <span class="startup-card__round">{startup.round}</span>
             </div>
             <h2 class="startup-card__name">{startup.companyName}</h2>
             <p class="startup-card__founder">{founderLine}</p>
@@ -139,7 +120,6 @@ const newsTypeLabel = formatNewsTypeLabel(startup);
             investorName: startup.investorName ?? null,
             investorFirm: startup.investorFirm ?? null,
             newsType: startup.newsType ?? "raise",
-            newsTypeLabel,
             verticals: startup.verticals,
             hashtags: startup.hashtags ?? [],
             xPost: startup.xPost ?? "",
@@ -244,25 +224,6 @@ const newsTypeLabel = formatNewsTypeLabel(startup);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-muted);
-  }
-
-  .startup-card__deal {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0.4rem;
-  }
-
-  .startup-card__type {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    padding: 0.12rem 0.4rem;
-    border: 1px solid rgba(139, 124, 248, 0.35);
-    background: rgba(139, 124, 248, 0.08);
   }
 
   .startup-card__round {

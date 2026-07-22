@@ -45,9 +45,13 @@ export interface Startup {
    */
   newsType?: StartupNewsType | null;
   verticals: string[];
-  /** Exactly 5 hashtags for social (include leading #) */
+  /** Exactly 5 hashtags (include leading #); shown on modal/detail */
   hashtags?: string[];
-  /** Ready-to-post X copy for the Agentic AI Startup News account */
+  /**
+   * Ready-to-post X / LinkedIn body for future autopost.
+   * Stored on every new card; not rendered on the public site.
+   * Future: may move into per-startup update feeds on detail pages.
+   */
   xPost?: string;
   image: string;
 }

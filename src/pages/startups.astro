@@ -121,11 +121,6 @@ const pageSize = 6;
           <div class="startup-modal__social" data-modal-social hidden>
             <p class="startup-modal__social-label mono">Hashtags</p>
             <ul class="startup-modal__hashtags" data-modal-hashtags></ul>
-            <p class="startup-modal__social-label mono">X post</p>
-            <pre class="startup-modal__xpost" data-modal-xpost></pre>
-            <button type="button" class="btn btn--ghost startup-modal__copy" data-modal-copy-x>
-              Copy X post
-            </button>
           </div>
           <p class="startup-modal__fullpage mono">
             <a href="#" data-modal-fullpage>Open full page →</a>
@@ -415,11 +410,6 @@ const pageSize = 6;
     color: var(--text-muted);
   }
 
-  .startup-modal__social-label + .startup-modal__social-label,
-  .startup-modal__hashtags + .startup-modal__social-label {
-    margin-top: 0.85rem;
-  }
-
   .startup-modal__hashtags {
     display: flex;
     flex-wrap: wrap;
@@ -437,25 +427,6 @@ const pageSize = 6;
     color: var(--accent-secondary);
     background: rgba(94, 234, 212, 0.08);
     border: 1px solid rgba(94, 234, 212, 0.25);
-  }
-
-  .startup-modal__xpost {
-    margin: 0 0 0.75rem;
-    padding: 0.75rem 0.85rem;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    line-height: 1.45;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: var(--text);
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    max-height: 10rem;
-    overflow-y: auto;
-  }
-
-  .startup-modal__copy {
-    font-size: 0.75rem;
   }
 
   .startup-modal__fullpage {
@@ -558,8 +529,6 @@ const pageSize = 6;
     const modalInvestorAttr = modal.querySelector("[data-modal-investor-attr]");
     const modalSocial = modal.querySelector("[data-modal-social]");
     const modalHashtags = modal.querySelector("[data-modal-hashtags]");
-    const modalXPost = modal.querySelector("[data-modal-xpost]");
-    const modalCopyX = modal.querySelector("[data-modal-copy-x]");
     const modalFullPage = modal.querySelector("[data-modal-fullpage]");
 
     function secondVoiceRole(newsType) {
@@ -657,10 +626,8 @@ const pageSize = 6;
       }
 
       const tags = Array.isArray(data.hashtags) ? data.hashtags.filter(Boolean) : [];
-      const xPost = (data.xPost || "").trim();
       if (modalSocial) {
-        const showSocial = tags.length > 0 || xPost.length > 0;
-        modalSocial.hidden = !showSocial;
+        modalSocial.hidden = tags.length === 0;
       }
       if (modalHashtags) {
         modalHashtags.innerHTML = "";
@@ -670,7 +637,6 @@ const pageSize = 6;
           modalHashtags.appendChild(li);
         });
       }
-      if (modalXPost) modalXPost.textContent = xPost;
       if (modalFullPage) {
         const slug = data.slug || "";
         modalFullPage.href = slug ? `/startups/${slug}/` : "/startups/all/";
@@ -690,23 +656,6 @@ const pageSize = 6;
       } else {
         modal.removeAttribute("open");
       }
-    }
-
-    if (modalCopyX) {
-      modalCopyX.addEventListener("click", async () => {
-        const text = modalXPost?.textContent || "";
-        if (!text) return;
-        try {
-          await navigator.clipboard.writeText(text);
-          const prev = modalCopyX.textContent;
-          modalCopyX.textContent = "Copied";
-          setTimeout(() => {
-            modalCopyX.textContent = prev || "Copy X post";
-          }, 1400);
-        } catch {
-          modalCopyX.textContent = "Copy failed";
-        }
-      });
     }
 
     grid.addEventListener("click", (e) => {

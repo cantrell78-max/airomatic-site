@@ -28,7 +28,6 @@ const founderLine = startup.founderTitle
   : startup.founderName;
 const investorAttr = formatInvestorAttribution(startup);
 const hashtags = (startup.hashtags ?? []).filter(Boolean);
-const xPost = (startup.xPost ?? "").trim();
 const pageDescription =
   startup.headline ||
   `${startup.companyName} — ${startup.round}. ${startup.description}`;
@@ -104,22 +103,6 @@ const pageDescription =
                     <li>{tag.startsWith("#") ? tag : `#${tag}`}</li>
                   ))}
                 </ul>
-              </div>
-            )
-          }
-
-          {
-            xPost && (
-              <div class="startup-detail__social">
-                <p class="startup-detail__social-label mono">X post</p>
-                <pre class="startup-detail__xpost" data-xpost>{xPost}</pre>
-                <button
-                  type="button"
-                  class="btn btn--ghost startup-detail__copy"
-                  data-copy-xpost
-                >
-                  Copy X post
-                </button>
               </div>
             )
           }
@@ -285,48 +268,8 @@ const pageDescription =
     border: 1px solid rgba(94, 234, 212, 0.25);
   }
 
-  .startup-detail__xpost {
-    margin: 0 0 0.75rem;
-    padding: 0.75rem 0.85rem;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    line-height: 1.45;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: var(--text);
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    max-height: 14rem;
-    overflow-y: auto;
-  }
-
-  .startup-detail__copy {
-    font-size: 0.75rem;
-  }
-
   .startup-detail__footer-nav {
     margin: 2rem 0 0;
     font-size: 0.85rem;
   }
 </style>
-
-<script>
-  const btn = document.querySelector("[data-copy-xpost]");
-  const pre = document.querySelector("[data-xpost]");
-  if (btn && pre) {
-    btn.addEventListener("click", async () => {
-      const text = pre.textContent || "";
-      if (!text) return;
-      try {
-        await navigator.clipboard.writeText(text);
-        const prev = btn.textContent;
-        btn.textContent = "Copied";
-        setTimeout(() => {
-          btn.textContent = prev || "Copy X post";
-        }, 1400);
-      } catch {
-        btn.textContent = "Copy failed";
-      }
-    });
-  }
-</script>

@@ -1,5 +1,614 @@
 [
   {
+    "id": "meshpay-2026-07",
+    "date": "2026-07-24",
+    "companyName": "Meshpay",
+    "headline": "Meshpay Closes $22M Extension as Agent Payment Rails Add Multi-Currency Settlement and Dispute Graphs",
+    "round": "$22M extension",
+    "newsType": "extension",
+    "description": "Autonomous pay and collect for agent fleets—budgets, counterparties, and reverse paths with settlement proofs treasury teams can defend.",
+    "founderName": "Sam Adler",
+    "founderTitle": "ex-Stripe",
+    "founderQuote": "If agents are going to spend money, the rails have to treat them like employees with better audit logs.",
+    "investorQuote": "Agent commerce dies on compliance theater—Meshpay makes non-human spend boring enough for treasury to approve.",
+    "investorName": "Angela Strange",
+    "investorFirm": "Andreessen Horowitz",
+    "verticals": [
+      "Agent Payments",
+      "Fintech Infra",
+      "Agentic Economy"
+    ],
+    "hashtags": [
+      "#AgentPayments",
+      "#Fintech",
+      "#Extension",
+      "#AgentEconomy",
+      "#Meshpay"
+    ],
+    "image": "/images/startups/sam-adler.jpg",
+    "xPost": "Meshpay closes extension of $22M extension. Autonomous pay and collect for agent fleets—budgets, counterparties, and reverse paths with settlement proofs treasury teams can defend.\n\n\"If agents are going to spend money, the rails have to treat them like employees with better audit logs.\" — Sam Adler\n\n\"Agent commerce dies on compliance theater—Meshpay makes non-human spend boring enough for treasury to approve.\" — Angela Strange · Andreessen Horowitz\n\n#AgentPayments #Fintech #Extension #AgentEconomy #Meshpay"
+  },
+  {
+    "id": "guardora-2026-07",
+    "date": "2026-07-24",
+    "companyName": "Guardora",
+    "headline": "Guardora Raises $44M Series A for AI SOC Agents That Close Tier-1 Triage Without Another Dashboard",
+    "round": "$44M Series A",
+    "newsType": "raise",
+    "description": "Security agents that hunt, correlate, and open tickets with full decision logs—human analysts only when blast radius spikes.",
+    "founderName": "Aditya Pillai",
+    "founderTitle": "ex-CrowdStrike",
+    "founderQuote": "The modern SOC does not need another dashboard. It needs a workforce that never sleeps and never loses the thread.",
+    "investorQuote": "Agentic MDR is where security headcount stops being the only lever—Guardora is that control plane.",
+    "investorName": "Deepak Jeevankumar",
+    "investorFirm": "Mayfield",
+    "verticals": [
+      "AI SOC",
+      "Security",
+      "MDR"
+    ],
+    "hashtags": [
+      "#AISOC",
+      "#Cybersecurity",
+      "#SeriesA",
+      "#MDR",
+      "#Guardora"
+    ],
+    "image": "/images/startups/aditya-pillai.jpg",
+    "xPost": "Guardora raises $44M Series A. Security agents that hunt, correlate, and open tickets with full decision logs—human analysts only when blast radius spikes.\n\n\"The modern SOC does not need another dashboard. It needs a workforce that never sleeps and never loses the thread.\" — Aditya Pillai\n\n\"Agentic MDR is where security headcount stops being the only lever—Guardora is that control plane.\" — Deepak Jeevankumar · Mayfield\n\n#AISOC #Cybersecurity #SeriesA #MDR #Guardora"
+  },
+  {
+    "id": "evalora-2026-07",
+    "date": "2026-07-23",
+    "companyName": "Evalora",
+    "headline": "Evalora Raises $31M Series A for Agent Gyms That Fail Autonomy in Staging Before Customers Do",
+    "round": "$31M Series A",
+    "newsType": "raise",
+    "description": "Scenario libraries, tool sandboxes, and ship gates so teams break multi-agent systems on purpose—with reproducible failure packs.",
+    "founderName": "Wei Zhao",
+    "founderTitle": "ex-OpenAI",
+    "founderQuote": "If it only works in a demo, it is not an agent. It is a press release with a UI—and we productized the opposite.",
+    "investorQuote": "Eval is becoming the CI of autonomy—Evalora is the gym serious teams will rent.",
+    "investorName": "Sonya Huang",
+    "investorFirm": "Sequoia Capital",
+    "verticals": [
+      "Agent Eval",
+      "MLOps",
+      "Agent Infra"
+    ],
+    "hashtags": [
+      "#AgentEval",
+      "#MLOps",
+      "#SeriesA",
+      "#AITesting",
+      "#Evalora"
+    ],
+    "image": "/images/startups/wei-zhao.jpg",
+    "xPost": "Evalora raises $31M Series A. Scenario libraries, tool sandboxes, and ship gates so teams break multi-agent systems on purpose—with reproducible failure packs.\n\n\"If it only works in a demo, it is not an agent. It is a press release with a UI—and we productized the opposite.\" — Wei Zhao\n\n\"Eval is becoming the CI of autonomy—Evalora is the gym serious teams will rent.\" — Sonya Huang · Sequoia Capital\n\n#AgentEval #MLOps #SeriesA #AITesting #Evalora"
+  },
+  {
+    "id": "docuforge-2026-07",
+    "date": "2026-07-23",
+    "companyName": "Docuforge",
+    "headline": "Docuforge Co-Founders Raise $38M Series A for Document Agents That Draft, Redline, and File With Privilege-Aware Audit",
+    "round": "$38M Series A",
+    "newsType": "raise",
+    "description": "Co-founded document-native agents that extract, draft, and route contracts across systems of record with human approval on outbound sends.",
+    "founderName": "Rohan Sharma & Jia Chen",
+    "founderTitle": "ex-Dropbox / ex-Google DeepMind",
+    "founderQuote": "Documents are still where enterprises hide their workflows. We turned every PDF into an agent surface.",
+    "investorQuote": "Document agents with real system-of-record writes are where knowledge work automation gets paid—Docuforge is that wedge.",
+    "investorName": "Aydin Senkut",
+    "investorFirm": "Felicis",
+    "verticals": [
+      "Document AI",
+      "Enterprise AI",
+      "Agentic Work"
+    ],
+    "hashtags": [
+      "#DocumentAI",
+      "#EnterpriseAI",
+      "#SeriesA",
+      "#Productivity",
+      "#Docuforge"
+    ],
+    "image": "/images/startups/docuforge-duo.jpg",
+    "xPost": "Docuforge raises $38M Series A. Co-founded document-native agents that extract, draft, and route contracts across systems of record with human approval on outbound sends.\n\n\"Documents are still where enterprises hide their workflows. We turned every PDF into an agent surface.\" — Rohan Sharma & Jia Chen\n\n\"Document agents with real system-of-record writes are where knowledge work automation gets paid—Docuforge is that wedge.\" — Aydin Senkut · Felicis\n\n#DocumentAI #EnterpriseAI #SeriesA #Productivity #Docuforge"
+  },
+  {
+    "id": "tracebind-2026-07",
+    "date": "2026-07-22",
+    "companyName": "Tracebind",
+    "headline": "Tracebind Takes $20M Strategic From Cloud Observability Vendor to Standardize Agent Span Telemetry",
+    "round": "$20M strategic",
+    "newsType": "strategic",
+    "description": "End-to-end traces for agent fleets—tool spans, model steps, cost, and human handoffs in one timeline sold as a co-engineered control plane with a major observability partner.",
+    "founderName": "Ethan Rosenberg",
+    "founderTitle": "ex-Datadog",
+    "founderQuote": "When an agent fails, the question is not which model. It is which span. We made that queryable.",
+    "investorQuote": "Agent tracing is table stakes for production—Tracebind is the OpenTelemetry moment for autonomy, with distribution attached.",
+    "investorName": "Olivier Pomel",
+    "investorFirm": "Datadog Ventures",
+    "verticals": [
+      "Agent Observability",
+      "Agent Infra",
+      "Dev Tools"
+    ],
+    "hashtags": [
+      "#Observability",
+      "#AgentOps",
+      "#Strategic",
+      "#DevTools",
+      "#Tracebind"
+    ],
+    "image": "/images/startups/ethan-rosenberg.jpg",
+    "xPost": "Tracebind takes strategic $20M strategic. End-to-end traces for agent fleets—tool spans, model steps, cost, and human handoffs in one timeline sold as a co-engineered control plane with a major observability partner.\n\n\"When an agent fails, the question is not which model. It is which span. We made that queryable.\" — Ethan Rosenberg\n\n\"Agent tracing is table stakes for production—Tracebind is the OpenTelemetry moment for autonomy, with distribution attached.\" — Olivier Pomel · Datadog Ventures\n\n#Observability #AgentOps #Strategic #DevTools #Tracebind"
+  },
+  {
+    "id": "shipmesh-2026-07",
+    "date": "2026-07-22",
+    "companyName": "Shipmesh",
+    "headline": "Shipmesh, Founded by 20-Year-Old Arjun Deshmukh, Raises $12M Seed for Multi-Agent Logistics Across Warehouses and Carriers",
+    "round": "$12M Seed",
+    "newsType": "raise",
+    "description": "Young founder shipping agent mesh for slotting, routing, and exception handling with continuous ETA equilibrium and full decision logs.",
+    "founderName": "Arjun Deshmukh",
+    "founderTitle": "dropout / ex-intern Flexport",
+    "founderQuote": "Logistics is a multi-agent problem pretending to be a dashboard. We staff the problem with agents and keep humans on exceptions.",
+    "investorQuote": "Physical-world agent workflows with real volume are rare—Shipmesh is shipping that OS, founder age included.",
+    "investorName": "Ann Miura-Ko",
+    "investorFirm": "Floodgate",
+    "verticals": [
+      "Logistics",
+      "Physical AI",
+      "Multi-Agent"
+    ],
+    "hashtags": [
+      "#Logistics",
+      "#SupplyChain",
+      "#SeedRound",
+      "#PhysicalAI",
+      "#Shipmesh"
+    ],
+    "image": "/images/startups/arjun-deshmukh.jpg",
+    "xPost": "Shipmesh raises $12M Seed. Young founder shipping agent mesh for slotting, routing, and exception handling with continuous ETA equilibrium and full decision logs.\n\n\"Logistics is a multi-agent problem pretending to be a dashboard. We staff the problem with agents and keep humans on exceptions.\" — Arjun Deshmukh\n\n\"Physical-world agent workflows with real volume are rare—Shipmesh is shipping that OS, founder age included.\" — Ann Miura-Ko · Floodgate\n\n#Logistics #SupplyChain #SeedRound #PhysicalAI #Shipmesh"
+  },
+  {
+    "id": "sovera-2026-07",
+    "date": "2026-07-21",
+    "companyName": "Sovera",
+    "headline": "Sovera Founding Team Raises $52M Series A for Multi-Agent Enterprise OS Across Support, Ops, and Finance",
+    "round": "$52M Series A",
+    "newsType": "raise",
+    "description": "Founding team shipping shared-state agent meshes with role graphs and one kill path so enterprises stop piloting single-task bots that die at the edge case.",
+    "founderName": "Priya Nair",
+    "founderTitle": "ex-Salesforce",
+    "founderQuote": "Single agents die in enterprise edge cases. We ship meshes—teams of agents with one shared state and one kill path.",
+    "investorQuote": "The market consolidates on the work OS—Sovera is the surface operators will actually run.",
+    "investorName": "Jan Hammer",
+    "investorFirm": "Index Ventures",
+    "verticals": [
+      "Multi-Agent",
+      "Enterprise AI",
+      "Agentic Work"
+    ],
+    "hashtags": [
+      "#MultiAgent",
+      "#WorkOS",
+      "#SeriesA",
+      "#EnterpriseAI",
+      "#Sovera"
+    ],
+    "image": "/images/startups/sovera-team.jpg",
+    "xPost": "Sovera raises $52M Series A. Founding team shipping shared-state agent meshes with role graphs and one kill path so enterprises stop piloting single-task bots that die at the edge case.\n\n\"Single agents die in enterprise edge cases. We ship meshes—teams of agents with one shared state and one kill path.\" — Priya Nair\n\n\"The market consolidates on the work OS—Sovera is the surface operators will actually run.\" — Jan Hammer · Index Ventures\n\n#MultiAgent #WorkOS #SeriesA #EnterpriseAI #Sovera"
+  },
+  {
+    "id": "agentrail-2026-07",
+    "date": "2026-07-23",
+    "companyName": "Agentrail",
+    "headline": "Agentrail Raises $28M Series A for Autonomous Agent Payments Across Fiat and Stablecoin Rails",
+    "round": "$28M Series A",
+    "newsType": "raise",
+    "description": "Payment infrastructure so production agents can discover, authorize, and settle spend with budgets, counterparties, and reverse paths—without a human on every checkout.",
+    "founderName": "Noah Stein",
+    "founderTitle": "ex-Square",
+    "founderQuote": "Agents do not need another wallet UI. They need rails that treat non-human spenders like employees with better audit logs.",
+    "investorQuote": "Agent commerce dies when authorization still requires a thumb—Agentrail is building the settlement layer at computer speed.",
+    "investorName": "Philippe Laffont",
+    "investorFirm": "Coatue",
+    "verticals": [
+      "Agent Payments",
+      "Fintech Infra",
+      "Agentic Economy"
+    ],
+    "hashtags": [
+      "#AgentPayments",
+      "#Stablecoins",
+      "#SeriesA",
+      "#AgentEconomy",
+      "#Agentrail"
+    ],
+    "image": "/images/startups/noah-stein.jpg",
+    "xPost": "Agentrail raises $28M Series A. Payment infrastructure so production agents can discover, authorize, and settle spend with budgets, counterparties, and reverse paths—without a human on every checkout.\n\n\"Agents do not need another wallet UI. They need rails that treat non-human spenders like employees with better audit logs.\" — Noah Stein\n\n\"Agent commerce dies when authorization still requires a thumb—Agentrail is building the settlement layer at computer speed.\" — Philippe Laffont · Coatue\n\n#AgentPayments #Stablecoins #SeriesA #AgentEconomy #Agentrail"
+  },
+  {
+    "id": "vaultmesh-2026-07",
+    "date": "2026-07-23",
+    "companyName": "Vaultmesh",
+    "headline": "Vaultmesh Raises $40M Series A for Long-Horizon Agent Memory With Forget Gates Enterprises Can Defend",
+    "round": "$40M Series A",
+    "newsType": "raise",
+    "description": "Memory and context fabric for multi-day agent campaigns—episodic stores, retrieval policies, and erase controls so mandate context survives without leaking secrets.",
+    "founderName": "Vikram Nair",
+    "founderTitle": "ex-Databricks",
+    "founderQuote": "Context windows are not memory. Memory is a product decision about what to keep, share, and erase.",
+    "investorQuote": "Long-horizon agents fail on forgetting—Vaultmesh is infrastructure for continuity with compliance.",
+    "investorName": "Ilya Fushman",
+    "investorFirm": "Kleiner Perkins",
+    "verticals": [
+      "Agent Memory",
+      "Agent Infra",
+      "MLOps"
+    ],
+    "hashtags": [
+      "#AgentMemory",
+      "#AIInfra",
+      "#SeriesA",
+      "#Context",
+      "#Vaultmesh"
+    ],
+    "image": "/images/startups/vikram-nair.jpg",
+    "xPost": "Vaultmesh raises $40M Series A. Memory and context fabric for multi-day agent campaigns—episodic stores, retrieval policies, and erase controls so mandate context survives without leaking secrets.\n\n\"Context windows are not memory. Memory is a product decision about what to keep, share, and erase.\" — Vikram Nair\n\n\"Long-horizon agents fail on forgetting—Vaultmesh is infrastructure for continuity with compliance.\" — Ilya Fushman · Kleiner Perkins\n\n#AgentMemory #AIInfra #SeriesA #Context #Vaultmesh"
+  },
+  {
+    "id": "redteamix-2026-07",
+    "date": "2026-07-22",
+    "companyName": "Redteamix",
+    "headline": "Redteamix Raises $36M Series A for Continuous Red-Team Agents That Attack Customer AI Before Attackers Do",
+    "round": "$36M Series A",
+    "newsType": "raise",
+    "description": "Adversarial agent campaigns that probe for prompt injection, tool abuse, and exfiltration paths—continuous tickets, not annual pen-test PDFs.",
+    "founderName": "Hao Wang",
+    "founderTitle": "ex-CrowdStrike",
+    "founderQuote": "You cannot govern agents you have never attacked. We industrialize the adversary for every release train.",
+    "investorQuote": "Agent security is dual-use by nature—Redteamix productizes the defensive side of that arms race.",
+    "investorName": "Lonne Jaffe",
+    "investorFirm": "Insight Partners",
+    "verticals": [
+      "AI Security",
+      "Red Team",
+      "Agent Security"
+    ],
+    "hashtags": [
+      "#AISecurity",
+      "#RedTeam",
+      "#SeriesA",
+      "#Cybersecurity",
+      "#Redteamix"
+    ],
+    "image": "/images/startups/hao-wang.jpg",
+    "xPost": "Redteamix raises $36M Series A. Adversarial agent campaigns that probe for prompt injection, tool abuse, and exfiltration paths—continuous tickets, not annual pen-test PDFs.\n\n\"You cannot govern agents you have never attacked. We industrialize the adversary for every release train.\" — Hao Wang\n\n\"Agent security is dual-use by nature—Redteamix productizes the defensive side of that arms race.\" — Lonne Jaffe · Insight Partners\n\n#AISecurity #RedTeam #SeriesA #Cybersecurity #Redteamix"
+  },
+  {
+    "id": "lexora-2026-07",
+    "date": "2026-07-22",
+    "companyName": "Lexora",
+    "headline": "Lexora Co-Founders Raise $42M Series A for Matter Agents That Survive Partner Review",
+    "round": "$42M Series A",
+    "newsType": "raise",
+    "description": "Co-founded legal agents that keep matter context for weeks—document review, deadline graphs, and privilege-aware work product with defensible audit trails.",
+    "founderName": "Mei Lin & Daniel Klein",
+    "founderTitle": "ex-Cooley / ex-Google DeepMind",
+    "founderQuote": "Law firms do not buy copilots. They buy agents that survive partner review and leave a defensible record.",
+    "investorQuote": "Matter work is multi-day liability—Lexora productizes that runtime with receipts partners actually trust.",
+    "investorName": "Sarah Kunst",
+    "investorFirm": "Cleo Capital",
+    "verticals": [
+      "LegalTech",
+      "Matter Agents",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#LegalTech",
+      "#MatterAI",
+      "#SeriesA",
+      "#LawFirm",
+      "#Lexora"
+    ],
+    "image": "/images/startups/lexora-duo.jpg",
+    "xPost": "Lexora raises $42M Series A. Co-founded legal agents that keep matter context for weeks—document review, deadline graphs, and privilege-aware work product with defensible audit trails.\n\n\"Law firms do not buy copilots. They buy agents that survive partner review and leave a defensible record.\" — Mei Lin & Daniel Klein\n\n\"Matter work is multi-day liability—Lexora productizes that runtime with receipts partners actually trust.\" — Sarah Kunst · Cleo Capital\n\n#LegalTech #MatterAI #SeriesA #LawFirm #Lexora"
+  },
+  {
+    "id": "clearbind-2026-07",
+    "date": "2026-07-21",
+    "companyName": "Clearbind",
+    "headline": "Clearbind Emerges From Stealth With $30M to Run Fincrime Investigation Agents Across SAR and Case Queues",
+    "round": "$30M · Emerged from stealth",
+    "newsType": "stealth",
+    "description": "Investigation agents that assemble evidence, draft narratives, and route exceptions for AML and fraud teams—human analysts only on high-liability edges.",
+    "founderName": "Karthik Menon",
+    "founderTitle": "ex-Palantir",
+    "founderQuote": "Compliance teams drown in alerts that are 90% noise. Our agents build the case before a human ever opens it.",
+    "investorQuote": "Fincrime is agent-ready if you respect the audit—Clearbind is the investigation fabric banks will buy.",
+    "investorName": "Matt Murphy",
+    "investorFirm": "Menlo Ventures",
+    "verticals": [
+      "Fincrime",
+      "Compliance",
+      "Investigation Agents"
+    ],
+    "hashtags": [
+      "#Fincrime",
+      "#AML",
+      "#Stealth",
+      "#Compliance",
+      "#Clearbind"
+    ],
+    "image": "/images/startups/karthik-menon.jpg",
+    "xPost": "Clearbind emerges from stealth with $30M · Emerged from stealth. Investigation agents that assemble evidence, draft narratives, and route exceptions for AML and fraud teams—human analysts only on high-liability edges.\n\n\"Compliance teams drown in alerts that are 90% noise. Our agents build the case before a human ever opens it.\" — Karthik Menon\n\n\"Fincrime is agent-ready if you respect the audit—Clearbind is the investigation fabric banks will buy.\" — Matt Murphy · Menlo Ventures\n\n#Fincrime #AML #Stealth #Compliance #Clearbind"
+  },
+  {
+    "id": "siteform-2026-07",
+    "date": "2026-07-21",
+    "companyName": "Siteform",
+    "headline": "Siteform Raises $32M Series A for Proptech Agents Across Tours, Leases, and Maintenance Work Orders",
+    "round": "$32M Series A",
+    "newsType": "raise",
+    "description": "Property-ops agents that schedule tours, draft leases, and route work orders with shared building context and audit logs landlords can hand to counsel.",
+    "founderName": "Siddharth Banerjee",
+    "founderTitle": "ex-Airbnb",
+    "founderQuote": "Buildings are still a dozen tools pretending to be an OS. We staff the building with agents and keep humans on exceptions.",
+    "investorQuote": "Proptech gets serious when agents move the lease and the work order—Siteform is that production surface.",
+    "investorName": "Asheem Chandna",
+    "investorFirm": "Greylock",
+    "verticals": [
+      "Proptech",
+      "Agentic Ops",
+      "Real Estate"
+    ],
+    "hashtags": [
+      "#Proptech",
+      "#RealEstate",
+      "#SeriesA",
+      "#PropertyOps",
+      "#Siteform"
+    ],
+    "image": "/images/startups/siddharth-banerjee.jpg",
+    "xPost": "Siteform raises $32M Series A. Property-ops agents that schedule tours, draft leases, and route work orders with shared building context and audit logs landlords can hand to counsel.\n\n\"Buildings are still a dozen tools pretending to be an OS. We staff the building with agents and keep humans on exceptions.\" — Siddharth Banerjee\n\n\"Proptech gets serious when agents move the lease and the work order—Siteform is that production surface.\" — Asheem Chandna · Greylock\n\n#Proptech #RealEstate #SeriesA #PropertyOps #Siteform"
+  },
+  {
+    "id": "relaypath-2026-07",
+    "date": "2026-07-20",
+    "companyName": "Relaypath",
+    "headline": "Relaypath Founding Team Raises $48M Series A for Multi-Agent Orchestration Across Support, Ops, and Finance",
+    "round": "$48M Series A",
+    "newsType": "raise",
+    "description": "Founding team shipping shared-state agent meshes with role graphs and one kill path so enterprises stop piloting single-task bots that die at the edge case.",
+    "founderName": "Ananya Reddy",
+    "founderTitle": "ex-Salesforce",
+    "founderQuote": "Single agents die in enterprise edge cases. We ship meshes—teams of agents with one shared state and one kill path.",
+    "investorQuote": "The market consolidates on the orchestration layer—Relaypath is the surface operators will run.",
+    "investorName": "Ravi Mhatre",
+    "investorFirm": "Lightspeed Venture Partners",
+    "verticals": [
+      "Multi-Agent",
+      "Enterprise AI",
+      "Agentic Work"
+    ],
+    "hashtags": [
+      "#MultiAgent",
+      "#Orchestration",
+      "#SeriesA",
+      "#EnterpriseAI",
+      "#Relaypath"
+    ],
+    "image": "/images/startups/relaypath-team.jpg",
+    "xPost": "Relaypath raises $48M Series A. Founding team shipping shared-state agent meshes with role graphs and one kill path so enterprises stop piloting single-task bots that die at the edge case.\n\n\"Single agents die in enterprise edge cases. We ship meshes—teams of agents with one shared state and one kill path.\" — Ananya Reddy\n\n\"The market consolidates on the orchestration layer—Relaypath is the surface operators will run.\" — Ravi Mhatre · Lightspeed Venture Partners\n\n#MultiAgent #Orchestration #SeriesA #EnterpriseAI #Relaypath"
+  },
+  {
+    "id": "paymesh-2026-07",
+    "date": "2026-07-22",
+    "companyName": "Paymesh",
+    "headline": "Paymesh Raises $32M Series A to Rebuild Payment Rails for Autonomous Agents—and Challenge Incumbent Checkout Giants",
+    "round": "$32M Series A",
+    "newsType": "raise",
+    "description": "Agent orchestration for funds—autonomous pay, collect, and agent-to-agent settlement with dispute redesign so production agents stop waiting on human card auth.",
+    "founderName": "Daniel Goldberg",
+    "founderTitle": "ex-Stripe",
+    "founderQuote": "Financial rails were built for humans with thumbs. Agents need a control plane that can spend, collect, and reverse with receipts.",
+    "investorQuote": "Agentic payments are structurally the next commerce layer—Paymesh is productizing rails at computer speed, not checkout demos.",
+    "investorName": "Kirsten Green",
+    "investorFirm": "Forerunner Ventures",
+    "verticals": [
+      "Agent Payments",
+      "Fintech Infra",
+      "Agentic Economy"
+    ],
+    "hashtags": [
+      "#AgentPayments",
+      "#Fintech",
+      "#SeriesA",
+      "#AgentEconomy",
+      "#Paymesh"
+    ],
+    "image": "/images/startups/daniel-goldberg.jpg",
+    "xPost": "Paymesh raises $32M Series A. Agent orchestration for funds—autonomous pay, collect, and agent-to-agent settlement with dispute redesign so production agents stop waiting on human card auth.\n\n\"Financial rails were built for humans with thumbs. Agents need a control plane that can spend, collect, and reverse with receipts.\" — Daniel Goldberg\n\n\"Agentic payments are structurally the next commerce layer—Paymesh is productizing rails at computer speed, not checkout demos.\" — Kirsten Green · Forerunner Ventures\n\n#AgentPayments #Fintech #SeriesA #AgentEconomy #Paymesh"
+  },
+  {
+    "id": "authspan-2026-07",
+    "date": "2026-07-22",
+    "companyName": "Authspan",
+    "headline": "Authspan Raises $45M Series A for Non-Human Identity That Treats Agents Like Employees With Better Logs",
+    "round": "$45M Series A",
+    "newsType": "raise",
+    "description": "Identity and tool auth for agent fleets—lifecycle, least privilege, and kill paths so enterprises stop shipping shadow IT with a language model.",
+    "founderName": "Aditya Narayanan",
+    "founderTitle": "ex-Okta",
+    "founderQuote": "You cannot govern what you cannot name. Agents without identity are just shadow IT with a model card.",
+    "investorQuote": "Non-human identity is table stakes for production autonomy—Authspan is the control plane CISOs will standardize on.",
+    "investorName": "Scott Sandell",
+    "investorFirm": "NEA",
+    "verticals": [
+      "Agent Identity",
+      "Security",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#NonHumanIdentity",
+      "#AISecurity",
+      "#SeriesA",
+      "#ZeroTrust",
+      "#Authspan"
+    ],
+    "image": "/images/startups/aditya-narayanan.jpg",
+    "xPost": "Authspan raises $45M Series A. Identity and tool auth for agent fleets—lifecycle, least privilege, and kill paths so enterprises stop shipping shadow IT with a language model.\n\n\"You cannot govern what you cannot name. Agents without identity are just shadow IT with a model card.\" — Aditya Narayanan\n\n\"Non-human identity is table stakes for production autonomy—Authspan is the control plane CISOs will standardize on.\" — Scott Sandell · NEA\n\n#NonHumanIdentity #AISecurity #SeriesA #ZeroTrust #Authspan"
+  },
+  {
+    "id": "workora-2026-07",
+    "date": "2026-07-21",
+    "companyName": "Workora",
+    "headline": "Workora Raises $55M Series B for a Multi-Function Agent OS Across Support, Ops, and Finance Workflows",
+    "round": "$55M Series B",
+    "newsType": "raise",
+    "description": "Production agent fabric with shared context, role graphs, and one kill path so enterprises stop piloting single-task bots that die at the edge case.",
+    "founderName": "Ming Xu",
+    "founderTitle": "ex-Salesforce",
+    "founderQuote": "Enterprises do not need fifty single-task bots. They need one production surface where agents share context and compliance.",
+    "investorQuote": "The market consolidates on the work OS—Workora is building the surface operators will actually run.",
+    "investorName": "Martin Casado",
+    "investorFirm": "a16z",
+    "verticals": [
+      "Multi-Agent",
+      "Enterprise AI",
+      "Agentic Work"
+    ],
+    "hashtags": [
+      "#MultiAgent",
+      "#WorkOS",
+      "#SeriesB",
+      "#EnterpriseAI",
+      "#Workora"
+    ],
+    "image": "/images/startups/ming-xu.jpg",
+    "xPost": "Workora raises $55M Series B. Production agent fabric with shared context, role graphs, and one kill path so enterprises stop piloting single-task bots that die at the edge case.\n\n\"Enterprises do not need fifty single-task bots. They need one production surface where agents share context and compliance.\" — Ming Xu\n\n\"The market consolidates on the work OS—Workora is building the surface operators will actually run.\" — Martin Casado · a16z\n\n#MultiAgent #WorkOS #SeriesB #EnterpriseAI #Workora"
+  },
+  {
+    "id": "fluxmesh-2026-07",
+    "date": "2026-07-21",
+    "companyName": "Fluxmesh",
+    "headline": "Fluxmesh Co-Founders Raise $48M Series A for Coding Agents Measured on Merged, Reviewed, Reversible Work",
+    "round": "$48M Series A",
+    "newsType": "raise",
+    "description": "Co-founded software forge where agent PRs ship with review policies, rollback paths, and cost attribution—optimizing for lines that land.",
+    "founderName": "Rohan Desai & Bo Lin",
+    "founderTitle": "ex-GitHub / ex-Meta AI",
+    "founderQuote": "We do not sell another coding copilot. We sell merged, reviewed, and reversible work.",
+    "investorQuote": "Ship rate with governance is the product—Fluxmesh productized what every enterprise team is bolting on by hand.",
+    "investorName": "Murat Akcayli",
+    "investorFirm": "IVP",
+    "verticals": [
+      "Coding Agents",
+      "Dev Tools",
+      "Software Forge"
+    ],
+    "hashtags": [
+      "#CodingAgents",
+      "#DevTools",
+      "#SeriesA",
+      "#SoftwareForge",
+      "#Fluxmesh"
+    ],
+    "image": "/images/startups/fluxmesh-duo.jpg",
+    "xPost": "Fluxmesh raises $48M Series A. Co-founded software forge where agent PRs ship with review policies, rollback paths, and cost attribution—optimizing for lines that land.\n\n\"We do not sell another coding copilot. We sell merged, reviewed, and reversible work.\" — Rohan Desai & Bo Lin\n\n\"Ship rate with governance is the product—Fluxmesh productized what every enterprise team is bolting on by hand.\" — Murat Akcayli · IVP\n\n#CodingAgents #DevTools #SeriesA #SoftwareForge #Fluxmesh"
+  },
+  {
+    "id": "policylane-2026-07",
+    "date": "2026-07-20",
+    "companyName": "Policylane",
+    "headline": "Policylane Raises $34M Series A for Regulated Decision Agents With Policy Graphs and Immutable Audit",
+    "round": "$34M Series A",
+    "newsType": "raise",
+    "description": "Credit, fraud, and claims decisioning agents that execute policy graphs with human-in-loop on edge cases and audit packs boards can defend.",
+    "founderName": "Priya Mehta",
+    "founderTitle": "ex-Stripe Risk",
+    "founderQuote": "Autonomy without mandate context is just uncontrolled attention. We treat every decision as a fiduciary artifact.",
+    "investorQuote": "Regulated decisioning is where agents get paid—Policylane is the policy runtime lenders will buy.",
+    "investorName": "Aaref Hilaly",
+    "investorFirm": "Bain Capital Ventures",
+    "verticals": [
+      "Regulated AI",
+      "Fintech",
+      "Decisioning"
+    ],
+    "hashtags": [
+      "#RegTech",
+      "#Decisioning",
+      "#SeriesA",
+      "#Fintech",
+      "#Policylane"
+    ],
+    "image": "/images/startups/priya-mehta.jpg",
+    "xPost": "Policylane raises $34M Series A. Credit, fraud, and claims decisioning agents that execute policy graphs with human-in-loop on edge cases and audit packs boards can defend.\n\n\"Autonomy without mandate context is just uncontrolled attention. We treat every decision as a fiduciary artifact.\" — Priya Mehta\n\n\"Regulated decisioning is where agents get paid—Policylane is the policy runtime lenders will buy.\" — Aaref Hilaly · Bain Capital Ventures\n\n#RegTech #Decisioning #SeriesA #Fintech #Policylane"
+  },
+  {
+    "id": "atriumx-2026-07",
+    "date": "2026-07-20",
+    "companyName": "Atriumx",
+    "headline": "Atriumx Founding Team Raises $50M Series A for Multi-Agent Claims Adjustment From FNOL to Pay",
+    "round": "$50M Series A",
+    "newsType": "raise",
+    "description": "Founding team shipping claims agents that assemble evidence, estimate liability, and draft settlements with immutable logs carriers can defend to regulators.",
+    "founderName": "Jake Berman",
+    "founderTitle": "ex-Ramp",
+    "founderQuote": "Every delayed claim is a trust failure. We treat adjustment as an always-on agent workflow—not a quarterly backlog purge.",
+    "investorQuote": "Specialty claims is still spreadsheet theater—Atriumx is where agentic insurance gets operational.",
+    "investorName": "Neeraj Agrawal",
+    "investorFirm": "Battery Ventures",
+    "verticals": [
+      "Insurtech",
+      "Claims",
+      "Multi-Agent"
+    ],
+    "hashtags": [
+      "#Insurtech",
+      "#ClaimsAI",
+      "#SeriesA",
+      "#InsuranceTech",
+      "#Atriumx"
+    ],
+    "image": "/images/startups/atriumx-team.jpg",
+    "xPost": "Atriumx raises $50M Series A. Founding team shipping claims agents that assemble evidence, estimate liability, and draft settlements with immutable logs carriers can defend to regulators.\n\n\"Every delayed claim is a trust failure. We treat adjustment as an always-on agent workflow—not a quarterly backlog purge.\" — Jake Berman\n\n\"Specialty claims is still spreadsheet theater—Atriumx is where agentic insurance gets operational.\" — Neeraj Agrawal · Battery Ventures\n\n#Insurtech #ClaimsAI #SeriesA #InsuranceTech #Atriumx"
+  },
+  {
+    "id": "prodgym-2026-07",
+    "date": "2026-07-19",
+    "companyName": "Prodgym",
+    "headline": "Prodgym, Founded by 20-Year-Old Arjun Pai, Raises $14M Seed for Agent Gyms That Break Autonomy Before Production Does",
+    "round": "$14M Seed",
+    "newsType": "raise",
+    "description": "Digital-world stress tests and ship gates from a young founding operator—scenario libraries and tool sandboxes so teams fail agents on purpose first.",
+    "founderName": "Arjun Pai",
+    "founderTitle": "dropout / ex-intern Meta AI",
+    "founderQuote": "If it only works in a demo, it is not an agent. It is a press release with a UI—and we productized the opposite.",
+    "investorQuote": "Eval is becoming the CI of autonomy—Prodgym is the gym serious teams will rent, founder age included.",
+    "investorName": "Josh Kopelman",
+    "investorFirm": "First Round",
+    "verticals": [
+      "Agent Eval",
+      "MLOps",
+      "Dev Tools"
+    ],
+    "hashtags": [
+      "#AgentEval",
+      "#SeedRound",
+      "#MLOps",
+      "#AITesting",
+      "#Prodgym"
+    ],
+    "image": "/images/startups/arjun-pai.jpg",
+    "xPost": "Prodgym raises $14M Seed. Digital-world stress tests and ship gates from a young founding operator—scenario libraries and tool sandboxes so teams fail agents on purpose first.\n\n\"If it only works in a demo, it is not an agent. It is a press release with a UI—and we productized the opposite.\" — Arjun Pai\n\n\"Eval is becoming the CI of autonomy—Prodgym is the gym serious teams will rent, founder age included.\" — Josh Kopelman · First Round\n\n#AgentEval #SeedRound #MLOps #AITesting #Prodgym"
+  },
+  {
     "id": "slotwise-2026-07",
     "date": "2026-07-20",
     "companyName": "Slotwise",

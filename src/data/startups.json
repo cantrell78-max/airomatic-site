@@ -1,5 +1,208 @@
 [
   {
+    "id": "cluecut-2026-07",
+    "date": "2026-07-25",
+    "companyName": "Cluecut",
+    "headline": "Cluecut Raises $16M Seed as 20-Year-Old IIT Madras Dropout Turns Screen Recordings Into Studio Product Videos and Docs",
+    "round": "$16M Seed",
+    "newsType": "raise",
+    "description": "Agentic video and documentation stack that transforms raw Loom-style captures into launch demos, help-center walkthroughs, and step-by-step articles with screenshots—shipping whenever product ships.",
+    "founderName": "Kabir Nair",
+    "founderTitle": "IIT Madras dropout",
+    "founderQuote": "Founders do not need another timeline editor. They need agents that ship product video whenever the feature ships.",
+    "investorQuote": "Product storytelling is still a headcount problem—Cluecut productizes studio output from a screen recording.",
+    "investorName": "Gustaf Alstromer",
+    "investorFirm": "Y Combinator",
+    "verticals": [
+      "Product Video",
+      "Agentic Content",
+      "DevRel"
+    ],
+    "hashtags": [
+      "#ProductVideo",
+      "#AgenticAI",
+      "#SeedRound",
+      "#SaaS",
+      "#Cluecut"
+    ],
+    "image": "/images/startups/kabir-nair.jpg",
+    "xPost": "Cluecut raises $16M Seed. Agentic video and documentation stack that transforms raw Loom-style captures into launch demos, help-center walkthroughs, and step-by-step articles with screenshots—shipping whenever product ships.\n\n\"Founders do not need another timeline editor. They need agents that ship product video whenever the feature ships.\" — Kabir Nair\n\n\"Product storytelling is still a headcount problem—Cluecut productizes studio output from a screen recording.\" — Gustaf Alstromer · Y Combinator\n\n#ProductVideo #AgenticAI #SeedRound #SaaS #Cluecut"
+  },
+  {
+    "id": "onboardix-2026-07",
+    "date": "2026-07-25",
+    "companyName": "Onboardix",
+    "headline": "Onboardix Raises $28M Series A for Support Agents That Close Onboarding Loops Inside Systems of Record",
+    "round": "$28M Series A",
+    "newsType": "raise",
+    "description": "CX agents that provision seats, complete setup checklists, and resolve first-week tickets with policy graphs and human gates only on high-liability paths.",
+    "founderName": "Aditya Hegde",
+    "founderTitle": "Stanford dropout",
+    "founderQuote": "Drafting a welcome email is a feature. Closing the onboarding loop is a company—and that is the only metric we sell.",
+    "investorQuote": "Activation unit economics only flip when agents act with audit trails—Onboardix is that operating system.",
+    "investorName": "Byron Deeter",
+    "investorFirm": "Bessemer Venture Partners",
+    "verticals": [
+      "Agentic CX",
+      "Onboarding",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#CustomerSuccess",
+      "#AgenticCX",
+      "#SeriesA",
+      "#SaaS",
+      "#Onboardix"
+    ],
+    "image": "/images/startups/aditya-hegde.jpg",
+    "xPost": "Onboardix raises $28M Series A. CX agents that provision seats, complete setup checklists, and resolve first-week tickets with policy graphs and human gates only on high-liability paths.\n\n\"Drafting a welcome email is a feature. Closing the onboarding loop is a company—and that is the only metric we sell.\" — Aditya Hegde\n\n\"Activation unit economics only flip when agents act with audit trails—Onboardix is that operating system.\" — Byron Deeter · Bessemer Venture Partners\n\n#CustomerSuccess #AgenticCX #SeriesA #SaaS #Onboardix"
+  },
+  {
+    "id": "vendmesh-2026-07",
+    "date": "2026-07-24",
+    "companyName": "Vendmesh",
+    "headline": "Vendmesh Raises $34M Series A for Procurement Agents From Intake to Signed Vendor Contracts",
+    "round": "$34M Series A",
+    "newsType": "raise",
+    "description": "Procurement agents that run research, negotiation drafts, and approval routing with policy graphs and immutable spend audit trails.",
+    "founderName": "Wei Sun",
+    "founderTitle": "Berkeley dropout",
+    "founderQuote": "Procurement is a multi-week negotiation wearing a form. We staffed the negotiation with agents and left the signature to humans.",
+    "investorQuote": "Agentic spend with real controls is enterprise gold—Vendmesh is the OS for that workflow.",
+    "investorName": "Ping Li",
+    "investorFirm": "Accel",
+    "verticals": [
+      "Procurement",
+      "Enterprise AI",
+      "Agentic Finance"
+    ],
+    "hashtags": [
+      "#Procurement",
+      "#EnterpriseAI",
+      "#SeriesA",
+      "#FinOps",
+      "#Vendmesh"
+    ],
+    "image": "/images/startups/wei-sun.jpg",
+    "xPost": "Vendmesh raises $34M Series A. Procurement agents that run research, negotiation drafts, and approval routing with policy graphs and immutable spend audit trails.\n\n\"Procurement is a multi-week negotiation wearing a form. We staffed the negotiation with agents and left the signature to humans.\" — Wei Sun\n\n\"Agentic spend with real controls is enterprise gold—Vendmesh is the OS for that workflow.\" — Ping Li · Accel\n\n#Procurement #EnterpriseAI #SeriesA #FinOps #Vendmesh"
+  },
+  {
+    "id": "bindpath-2026-07",
+    "date": "2026-07-24",
+    "companyName": "Bindpath",
+    "headline": "Bindpath Co-Founders Raise $40M Series A for Non-Human Identity That Treats Agents Like Employees",
+    "round": "$40M Series A",
+    "newsType": "raise",
+    "description": "Co-founded identity and tool auth for agent fleets—lifecycle, least privilege, and kill paths so enterprises stop shipping shadow IT with a language model.",
+    "founderName": "Rohan Pillai & Jia Wang",
+    "founderTitle": "MIT dropout / Berkeley dropout",
+    "founderQuote": "You cannot govern what you cannot name. Agents without identity are just shadow IT with a model card.",
+    "investorQuote": "Non-human identity is table stakes for production autonomy—Bindpath is the control plane CISOs will standardize on.",
+    "investorName": "Matt Murphy",
+    "investorFirm": "Menlo Ventures",
+    "verticals": [
+      "Agent Identity",
+      "Security",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#NonHumanIdentity",
+      "#AISecurity",
+      "#SeriesA",
+      "#ZeroTrust",
+      "#Bindpath"
+    ],
+    "image": "/images/startups/bindpath-duo.jpg",
+    "xPost": "Bindpath raises $40M Series A. Co-founded identity and tool auth for agent fleets—lifecycle, least privilege, and kill paths so enterprises stop shipping shadow IT with a language model.\n\n\"You cannot govern what you cannot name. Agents without identity are just shadow IT with a model card.\" — Rohan Pillai & Jia Wang\n\n\"Non-human identity is table stakes for production autonomy—Bindpath is the control plane CISOs will standardize on.\" — Matt Murphy · Menlo Ventures\n\n#NonHumanIdentity #AISecurity #SeriesA #ZeroTrust #Bindpath"
+  },
+  {
+    "id": "claimstack-2026-07",
+    "date": "2026-07-23",
+    "companyName": "Claimstack",
+    "headline": "Claimstack Raises $48M Series B for Multi-Agent Claims Adjustment With Human Review Only on Edge Cases",
+    "round": "$48M Series B",
+    "newsType": "raise",
+    "description": "Claims agents that assemble evidence, estimate liability, and draft settlements across FNOL-to-pay with immutable decision logs carriers can defend to regulators.",
+    "founderName": "Noah Kaplan",
+    "founderTitle": "ex-Ramp",
+    "founderQuote": "Every delayed claim is a trust failure. We treat adjustment as an always-on agent workflow—not a quarterly backlog purge.",
+    "investorQuote": "Specialty claims is still spreadsheet theater—Claimstack is where agentic insurance gets operational.",
+    "investorName": "Neeraj Agrawal",
+    "investorFirm": "Battery Ventures",
+    "verticals": [
+      "Insurtech",
+      "Claims",
+      "Multi-Agent"
+    ],
+    "hashtags": [
+      "#Insurtech",
+      "#ClaimsAI",
+      "#SeriesB",
+      "#InsuranceTech",
+      "#Claimstack"
+    ],
+    "image": "/images/startups/noah-kaplan.jpg",
+    "xPost": "Claimstack raises $48M Series B. Claims agents that assemble evidence, estimate liability, and draft settlements across FNOL-to-pay with immutable decision logs carriers can defend to regulators.\n\n\"Every delayed claim is a trust failure. We treat adjustment as an always-on agent workflow—not a quarterly backlog purge.\" — Noah Kaplan\n\n\"Specialty claims is still spreadsheet theater—Claimstack is where agentic insurance gets operational.\" — Neeraj Agrawal · Battery Ventures\n\n#Insurtech #ClaimsAI #SeriesB #InsuranceTech #Claimstack"
+  },
+  {
+    "id": "rackmend-2026-07",
+    "date": "2026-07-23",
+    "companyName": "Rackmend",
+    "headline": "Rackmend Raises $36M Series A as Caltech Dropout Ships GPU-Cluster Agents for Capacity Recovery and Coolant Discipline",
+    "round": "$36M Series A",
+    "newsType": "raise",
+    "description": "Infra agents that reclaim idle GPU capacity, balance thermal envelopes, and open tickets with full decision logs for AI cluster operators.",
+    "founderName": "Arjun Kulkarni",
+    "founderTitle": "Caltech dropout",
+    "founderQuote": "Agents do not want virtual machines. They want metal, meters, and a path to reclaim capacity when a run goes rogue.",
+    "investorQuote": "GPU ops is an agent problem wearing a spreadsheet—Rackmend productizes recovery at cluster scale.",
+    "investorName": "Ilya Fushman",
+    "investorFirm": "Kleiner Perkins",
+    "verticals": [
+      "GPU Infra",
+      "Agent Infra",
+      "Cloud Ops"
+    ],
+    "hashtags": [
+      "#GPU",
+      "#AIInfra",
+      "#SeriesA",
+      "#CloudOps",
+      "#Rackmend"
+    ],
+    "image": "/images/startups/arjun-kulkarni.jpg",
+    "xPost": "Rackmend raises $36M Series A. Infra agents that reclaim idle GPU capacity, balance thermal envelopes, and open tickets with full decision logs for AI cluster operators.\n\n\"Agents do not want virtual machines. They want metal, meters, and a path to reclaim capacity when a run goes rogue.\" — Arjun Kulkarni\n\n\"GPU ops is an agent problem wearing a spreadsheet—Rackmend productizes recovery at cluster scale.\" — Ilya Fushman · Kleiner Perkins\n\n#GPU #AIInfra #SeriesA #CloudOps #Rackmend"
+  },
+  {
+    "id": "workpath-2026-07",
+    "date": "2026-07-22",
+    "companyName": "Workpath",
+    "headline": "Workpath Founding Team Raises $55M Series A for Multi-Agent Enterprise OS Across Support, Ops, and Finance",
+    "round": "$55M Series A",
+    "newsType": "raise",
+    "description": "Founding team shipping shared-state agent meshes with role graphs and one kill path so enterprises stop piloting single-task bots that die at the edge case.",
+    "founderName": "Priya Reddy",
+    "founderTitle": "IIT Bombay dropout",
+    "founderQuote": "Single agents die in enterprise edge cases. We ship meshes—teams of agents with one shared state and one kill path.",
+    "investorQuote": "The market consolidates on the work OS—Workpath is the surface operators will actually run.",
+    "investorName": "Ravi Mhatre",
+    "investorFirm": "Lightspeed Venture Partners",
+    "verticals": [
+      "Multi-Agent",
+      "Enterprise AI",
+      "Agentic Work"
+    ],
+    "hashtags": [
+      "#MultiAgent",
+      "#WorkOS",
+      "#SeriesA",
+      "#EnterpriseAI",
+      "#Workpath"
+    ],
+    "image": "/images/startups/workpath-team.jpg",
+    "xPost": "Workpath raises $55M Series A. Founding team shipping shared-state agent meshes with role graphs and one kill path so enterprises stop piloting single-task bots that die at the edge case.\n\n\"Single agents die in enterprise edge cases. We ship meshes—teams of agents with one shared state and one kill path.\" — Priya Reddy\n\n\"The market consolidates on the work OS—Workpath is the surface operators will actually run.\" — Ravi Mhatre · Lightspeed Venture Partners\n\n#MultiAgent #WorkOS #SeriesA #EnterpriseAI #Workpath"
+  },
+  {
     "id": "meshpay-2026-07",
     "date": "2026-07-24",
     "companyName": "Meshpay",

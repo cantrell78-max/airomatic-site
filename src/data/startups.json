@@ -1,5 +1,34 @@
 [
   {
+    "id": "klueklaw-2026-07",
+    "date": "2026-07-25",
+    "companyName": "KlueKlaw",
+    "headline": "KlueKlaw Raises $12M Seed for the AI Agent That Auto-Applies to Jobs From Your Messages",
+    "round": "$12M Seed",
+    "newsType": "raise",
+    "description": "Agentic job-search stack that pulls intent from chats and email, tailors resumes per role, autofills applications, and submits at volume—so candidates stop spending 5–10 hours a week on the same form fields.",
+    "founderName": "Rui Chen",
+    "founderTitle": "UW dropout / ex-intern Databricks",
+    "founderQuote": "We do not sell another job board. We sell closed applications while you build the skills that actually get the offer.",
+    "investorQuote": "Unit economics only work when the agent does the volume work—two hundred tailored apps is a product, not a weekend.",
+    "investorName": "Sarah Guo",
+    "investorFirm": "Conviction",
+    "verticals": [
+      "Recruiting",
+      "Agentic Job Search",
+      "Career Agents"
+    ],
+    "hashtags": [
+      "#KlueKlaw",
+      "#JobAgents",
+      "#AIJobSearch",
+      "#SeedRound",
+      "#CareerOS"
+    ],
+    "xPost": "KlueKlaw raises $12M Seed. Agentic job-search stack that pulls intent from chats and email, tailors resumes per role, autofills applications, and submits at volume—so candidates stop spending 5–10 hours a week on the same form fields.\n\n\"We do not sell another job board. We sell closed applications while you build the skills that actually get the offer.\" — Rui Chen\n\n\"Unit economics only work when the agent does the volume work—two hundred tailored apps is a product, not a weekend.\" — Sarah Guo · Conviction\n\n#KlueKlaw #JobAgents #AIJobSearch #SeedRound #CareerOS",
+    "image": "/images/startups/rui-chen.jpg"
+  },
+  {
     "id": "ledgr-2026-07",
     "date": "2026-07-24",
     "companyName": "Ledgr",

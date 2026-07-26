@@ -1,5 +1,34 @@
 [
   {
+    "id": "polygrok-2026-07",
+    "date": "2026-07-26",
+    "companyName": "Polygrok",
+    "headline": "Polygrok Raises $8M Seed to Turn Your Entire Database Into a Context Window",
+    "round": "$8M Seed",
+    "newsType": "raise",
+    "description": "Agentic data layer that streams live relational state into LLM context so production agents query, join, and reason over the full database without brittle ETL or mystery embeddings.",
+    "founderName": "Dave Ernest",
+    "founderTitle": "ex-Meta AI / YC W26",
+    "founderQuote": "Agents do not need another chat box. They need the production database as one continuous context window.",
+    "investorQuote": "Infrastructure categories mint the durable franchises—and database-as-context is becoming one.",
+    "investorName": "Garry Tan",
+    "investorFirm": "Y Combinator",
+    "verticals": [
+      "Agent Infra",
+      "Data Platform",
+      "Developer Tools"
+    ],
+    "hashtags": [
+      "#Polygrok",
+      "#ContextWindow",
+      "#AgentInfra",
+      "#SeedRound",
+      "#Databases"
+    ],
+    "xPost": "Polygrok raises $8M Seed. Agentic data layer that streams live relational state into LLM context so production agents query, join, and reason over the full database without brittle ETL or mystery embeddings.\n\n\"Agents do not need another chat box. They need the production database as one continuous context window.\" — Dave Ernest\n\n\"Infrastructure categories mint the durable franchises—and database-as-context is becoming one.\" — Garry Tan · Y Combinator\n\n#Polygrok #ContextWindow #AgentInfra #SeedRound #Databases",
+    "image": "/images/startups/polygrok-team.jpg"
+  },
+  {
     "id": "bhadde-2026-07",
     "date": "2026-07-25",
     "companyName": "Bhadde'",

@@ -1,5 +1,208 @@
 [
   {
+    "id": "rovix-2026-07",
+    "date": "2026-07-27",
+    "companyName": "Rovix",
+    "headline": "Rovix Raises $58M Seed to Ship Foundation Models That Make Warehouse Robots Actually Deployable",
+    "round": "$58M Seed",
+    "newsType": "raise",
+    "description": "Physical-AI stack that trains robot policies on digital-twin stress runs and fleet telemetry so manufacturers stop rewriting motion stacks for every arm, aisle, and SKU change.",
+    "founderName": "Yifan Li",
+    "founderTitle": "ex-intern Waymo / Berkeley dropout",
+    "founderQuote": "Enterprises do not need another demo robot video. They need one production surface that ships policies to the floor.",
+    "investorQuote": "Physical AI is consolidating around the teams that close the sim-to-deploy loop—not the fiftieth teleop dashboard.",
+    "investorName": "Trae Stephens",
+    "investorFirm": "Founders Fund",
+    "verticals": [
+      "Physical AI",
+      "Robotics",
+      "Autonomous Systems"
+    ],
+    "hashtags": [
+      "#Rovix",
+      "#PhysicalAI",
+      "#Robotics",
+      "#SeedRound",
+      "#FoundationModels"
+    ],
+    "xPost": "Rovix raises $58M Seed. Physical-AI stack that trains robot policies on digital-twin stress runs and fleet telemetry so manufacturers stop rewriting motion stacks for every arm, aisle, and SKU change.\n\n\"Enterprises do not need another demo robot video. They need one production surface that ships policies to the floor.\" — Yifan Li\n\n\"Physical AI is consolidating around the teams that close the sim-to-deploy loop—not the fiftieth teleop dashboard.\" — Trae Stephens · Founders Fund\n\n#Rovix #PhysicalAI #Robotics #SeedRound #FoundationModels",
+    "image": "/images/startups/rovix-team.jpg"
+  },
+  {
+    "id": "bryef-2026-07",
+    "date": "2026-07-27",
+    "companyName": "Bryef",
+    "headline": "Bryef Raises $32M Series A for Matter Agents That Draft, File, and Survive Partner Review",
+    "round": "$32M Series A",
+    "newsType": "raise",
+    "description": "Legal work OS where agents assemble dockets, redline playbooks, and produce examiner-ready briefs—partners keep the judgment call, not the 40-hour cite hunt.",
+    "founderName": "Pranav Ramaswamy",
+    "founderTitle": "Stanford dropout",
+    "founderQuote": "If the brief cannot survive partner review and a court filing window, it is still a demo—even if the agent looks clever.",
+    "investorQuote": "Boards will fund systems that make legal risk legible before they fund the next copilot that highlights contracts.",
+    "investorName": "Alfred Lin",
+    "investorFirm": "Sequoia Capital",
+    "verticals": [
+      "LegalTech",
+      "Matter Agents",
+      "Regulated AI"
+    ],
+    "hashtags": [
+      "#Bryef",
+      "#LegalTech",
+      "#MatterAgents",
+      "#SeriesA",
+      "#LawFirmAI"
+    ],
+    "xPost": "Bryef raises $32M Series A. Legal work OS where agents assemble dockets, redline playbooks, and produce examiner-ready briefs—partners keep the judgment call, not the 40-hour cite hunt.\n\n\"If the brief cannot survive partner review and a court filing window, it is still a demo—even if the agent looks clever.\" — Pranav Ramaswamy\n\n\"Boards will fund systems that make legal risk legible before they fund the next copilot that highlights contracts.\" — Alfred Lin · Sequoia Capital\n\n#Bryef #LegalTech #MatterAgents #SeriesA #LawFirmAI",
+    "image": "/images/startups/pranav-ramaswamy.jpg"
+  },
+  {
+    "id": "nurm-2026-07",
+    "date": "2026-07-27",
+    "companyName": "Nurm",
+    "headline": "Nurm Takes $40M Strategic From Pharma to Build a Foundation Model for Human Neural Dynamics",
+    "round": "$40M strategic",
+    "newsType": "strategic",
+    "description": "Neuro foundation model trained on multi-modal brain and trial signals so sponsors simulate patient trajectories and protocol risk before the first site opens—not after the interim analysis fails.",
+    "founderName": "Wei Liu",
+    "founderTitle": "Caltech dropout",
+    "founderQuote": "One neural simulator oversees what used to take three translational teams and a year of failed arms.",
+    "investorQuote": "This is the layer clinical development consolidates on before every therapeutic franchise invents its own brain-data stack.",
+    "investorName": "David Park",
+    "investorFirm": "Amgen Ventures",
+    "verticals": [
+      "NeuroAI",
+      "Clinical Ops",
+      "Deep Tech"
+    ],
+    "hashtags": [
+      "#Nurm",
+      "#NeuroAI",
+      "#ClinicalAI",
+      "#Strategic",
+      "#FoundationModel"
+    ],
+    "xPost": "Nurm takes strategic $40M from Amgen Ventures. Neuro foundation model trained on multi-modal brain and trial signals so sponsors simulate patient trajectories and protocol risk before the first site opens—not after the interim analysis fails.\n\n\"One neural simulator oversees what used to take three translational teams and a year of failed arms.\" — Wei Liu\n\n\"This is the layer clinical development consolidates on before every therapeutic franchise invents its own brain-data stack.\" — David Park · Amgen Ventures\n\n#Nurm #NeuroAI #ClinicalAI #Strategic #FoundationModel",
+    "image": "/images/startups/wei-liu.jpg"
+  },
+  {
+    "id": "keyspan-2026-07",
+    "date": "2026-07-27",
+    "companyName": "Keyspan",
+    "headline": "Keyspan Raises $28M Series A to Issue Identity—and SOC 2—for Non-Human Employees",
+    "round": "$28M Series A",
+    "newsType": "raise",
+    "description": "Agent identity fabric that provisions keys, scopes tool access, and attests continuous compliance for machine workers so security teams stop treating every bot as a shared service account.",
+    "founderName": "Kabir Menon",
+    "founderTitle": "ex-intern Okta",
+    "founderQuote": "Autonomy without mandate context is just uncontrolled spend—and uncontrolled spend without an identity is an incident ticket.",
+    "investorQuote": "Regulated buyers pay for systems that leave a trail when the employee is not a human.",
+    "investorName": "Aydin Senkut",
+    "investorFirm": "Felicis",
+    "verticals": [
+      "Agent Identity",
+      "Auth",
+      "Trust Layer"
+    ],
+    "hashtags": [
+      "#Keyspan",
+      "#AgentIdentity",
+      "#NHI",
+      "#SeriesA",
+      "#ZeroTrust"
+    ],
+    "xPost": "Keyspan raises $28M Series A. Agent identity fabric that provisions keys, scopes tool access, and attests continuous compliance for machine workers so security teams stop treating every bot as a shared service account.\n\n\"Autonomy without mandate context is just uncontrolled spend—and uncontrolled spend without an identity is an incident ticket.\" — Kabir Menon\n\n\"Regulated buyers pay for systems that leave a trail when the employee is not a human.\" — Aydin Senkut · Felicis\n\n#Keyspan #AgentIdentity #NHI #SeriesA #ZeroTrust",
+    "image": "/images/startups/kabir-menon.jpg"
+  },
+  {
+    "id": "deskly-2026-07",
+    "date": "2026-07-27",
+    "companyName": "Deskly",
+    "headline": "Deskly Raises $18M Seed for Support Agents That Close Tickets Instead of Ranking Them",
+    "round": "$18M Seed",
+    "newsType": "raise",
+    "description": "Agentic CX stack that resolves refunds, account changes, and policy exceptions end-to-end inside the helpdesk—humans escalate exceptions, not every password reset.",
+    "founderName": "Hui Lin & Tyler Marsh",
+    "founderTitle": "ex-Zendesk / ex-Intercom",
+    "founderQuote": "We do not sell another CSAT dashboard. We sell closed tickets while the queue still sleeps.",
+    "investorQuote": "Unit economics only work when the agent does the volume work—ten thousand resolved contacts is a product, not a pilot.",
+    "investorName": "Bill Trenchard",
+    "investorFirm": "First Round Capital",
+    "verticals": [
+      "Agentic CX",
+      "Support Resolution",
+      "Customer Support"
+    ],
+    "hashtags": [
+      "#Deskly",
+      "#AgenticCX",
+      "#SupportAgents",
+      "#SeedRound",
+      "#Helpdesk"
+    ],
+    "xPost": "Deskly raises $18M Seed. Agentic CX stack that resolves refunds, account changes, and policy exceptions end-to-end inside the helpdesk—humans escalate exceptions, not every password reset.\n\n\"We do not sell another CSAT dashboard. We sell closed tickets while the queue still sleeps.\" — Hui Lin & Tyler Marsh\n\n\"Unit economics only work when the agent does the volume work—ten thousand resolved contacts is a product, not a pilot.\" — Bill Trenchard · First Round Capital\n\n#Deskly #AgenticCX #SupportAgents #SeedRound #Helpdesk",
+    "image": "/images/startups/deskly-duo.jpg"
+  },
+  {
+    "id": "clasp-2026-07",
+    "date": "2026-07-27",
+    "companyName": "Clasp",
+    "headline": "Clasp Announces $35M Secondary as Clinical Trial Ops Agents Hit Multi-Sponsor Scale",
+    "round": "$35M secondary",
+    "newsType": "secondary",
+    "description": "Trial operations agents that chase queries, reconcile EDC drift, and keep site binders exam-ready so CROs stop staffing every amendment like a new company.",
+    "founderName": "Noah Adler",
+    "founderTitle": "ex-Flatiron Health",
+    "founderQuote": "One operator oversees what used to take a floor of clinical data associates—and the audit trail still has to look human.",
+    "investorQuote": "Copilot revenue is a feature; closed queries with a defensible trail are a company—secondary buyers already know the difference.",
+    "investorName": "Ryan Cotton",
+    "investorFirm": "Dragoneer Investment Group",
+    "verticals": [
+      "Clinical Trials",
+      "Clinical Ops",
+      "Healthtech"
+    ],
+    "hashtags": [
+      "#Clasp",
+      "#ClinicalTrials",
+      "#TrialOps",
+      "#Secondary",
+      "#HealthAI"
+    ],
+    "xPost": "Clasp announces a secondary of $35M. Trial operations agents that chase queries, reconcile EDC drift, and keep site binders exam-ready so CROs stop staffing every amendment like a new company.\n\n\"One operator oversees what used to take a floor of clinical data associates—and the audit trail still has to look human.\" — Noah Adler\n\n\"Copilot revenue is a feature; closed queries with a defensible trail are a company—secondary buyers already know the difference.\" — Ryan Cotton · Dragoneer Investment Group\n\n#Clasp #ClinicalTrials #TrialOps #Secondary #HealthAI",
+    "image": "/images/startups/noah-adler.jpg"
+  },
+  {
+    "id": "wryt-2026-07",
+    "date": "2026-07-27",
+    "companyName": "Wryt",
+    "headline": "Wryt Raises $22M Seed for Coding Agents That Ship PRs Against Real Repo Policy",
+    "round": "$22M Seed",
+    "newsType": "raise",
+    "description": "Software forge agents that open, test, and land pull requests under org lint, ownership, and review rules—so engineering leads stop babysitting autocomplete that never opens the PR.",
+    "founderName": "Aditya Krishnan",
+    "founderTitle": "MIT dropout",
+    "founderQuote": "We do not sell another chat pane in the IDE. We sell merged PRs that pass the same gates a junior would.",
+    "investorQuote": "Infrastructure categories mint the durable franchises—and agentic shipping against policy is becoming one.",
+    "investorName": "Eric Vishria",
+    "investorFirm": "Benchmark",
+    "verticals": [
+      "Agentic Coding",
+      "Dev Tools",
+      "Software Forge"
+    ],
+    "hashtags": [
+      "#Wryt",
+      "#CodingAgents",
+      "#DevTools",
+      "#SeedRound",
+      "#SoftwareForge"
+    ],
+    "xPost": "Wryt raises $22M Seed. Software forge agents that open, test, and land pull requests under org lint, ownership, and review rules—so engineering leads stop babysitting autocomplete that never opens the PR.\n\n\"We do not sell another chat pane in the IDE. We sell merged PRs that pass the same gates a junior would.\" — Aditya Krishnan\n\n\"Infrastructure categories mint the durable franchises—and agentic shipping against policy is becoming one.\" — Eric Vishria · Benchmark\n\n#Wryt #CodingAgents #DevTools #SeedRound #SoftwareForge",
+    "image": "/images/startups/aditya-krishnan.jpg"
+  },
+  {
     "id": "polygrok-2026-07",
     "date": "2026-07-26",
     "companyName": "Polygrok",

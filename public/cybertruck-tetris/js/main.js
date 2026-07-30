@@ -1,5 +1,5 @@
 /**
- * Boot: input + loop + music
+ * Boot: input + loop + music + touch controls
  */
 
 import { Game } from "./game.js";
@@ -24,12 +24,22 @@ const els = {
   overlayMsg: document.getElementById("overlay-msg"),
   overlayBtn: document.getElementById("overlay-btn"),
   muteBtn: document.getElementById("mute-btn"),
+  touchPad: document.getElementById("touch-pad"),
 };
 
 const game = new Game();
 let last = performance.now();
 let started = false;
 const keys = new Set();
+
+/** Prefer touch UI on phones / coarse pointers / narrow screens */
+function isTouchUi() {
+  return (
+    window.matchMedia("(pointer: coarse)").matches ||
+    window.matchMedia("(max-width: 900px)").matches ||
+    "ontouchstart" in window
+  );
+}
 
 function showOverlay(title, msg, btn) {
   els.overlay.classList.remove("hidden");
@@ -42,13 +52,16 @@ function hideOverlay() {
   els.overlay.classList.add("hidden");
 }
 
+function touchHint() {
+  if (isTouchUi()) {
+    return "Drag the part left/right · tap it to rotate · or use the buttons under the board. Drop when aligned.";
+  }
+  return "Match color + type, rotate to fit, snap on. Guides teach each new part once, then drop off by level 4.";
+}
+
 function refreshOverlay() {
   if (!started) {
-    showOverlay(
-      "Assembly Line",
-      "Three painted chassis. Match color + type, rotate to fit, snap on. Guides teach each new part once, then drop off by level 4.",
-      "Start Line"
-    );
+    showOverlay("Assembly Line", touchHint(), "Start Line");
     return;
   }
   if (game.state === "paused") {
@@ -102,6 +115,7 @@ function isPlaying() {
   return started && game.state === "playing";
 }
 
+// ——— Keyboard ———
 window.addEventListener("keydown", async (e) => {
   const k = e.key;
   keys.add(k);
@@ -171,6 +185,140 @@ window.addEventListener("keyup", (e) => {
 function held(name) {
   return keys.has(name);
 }
+
+// ——— Canvas coords (CSS size → game resolution) ———
+function canvasPoint(e) {
+  const rect = canvas.getBoundingClientRect();
+  const clientX = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
+  const clientY = e.clientY ?? e.touches?.[0]?.clientY ?? 0;
+  return {
+    x: ((clientX - rect.left) / rect.width) * CANVAS.width,
+    y: ((clientY - rect.top) / rect.height) * CANVAS.height,
+  };
+}
+
+// Drag to move · short tap on part to rotate · swipe down to soft/hard drop
+let drag = null;
+const TAP_PX = 14;
+const TAP_MS = 280;
+
+canvas.style.touchAction = "none";
+
+canvas.addEventListener("pointerdown", (e) => {
+  if (!isPlaying() || !game.current) return;
+  e.preventDefault();
+  const p = canvasPoint(e);
+  drag = {
+    id: e.pointerId,
+    startX: p.x,
+    startY: p.y,
+    startPartX: game.current.x,
+    t0: performance.now(),
+    moved: false,
+  };
+  try {
+    canvas.setPointerCapture(e.pointerId);
+  } catch {
+    /* ignore */
+  }
+});
+
+canvas.addEventListener("pointermove", (e) => {
+  if (!drag || drag.id !== e.pointerId || !isPlaying()) return;
+  e.preventDefault();
+  const p = canvasPoint(e);
+  const dx = p.x - drag.startX;
+  const dy = p.y - drag.startY;
+  if (Math.hypot(dx, dy) > TAP_PX) drag.moved = true;
+
+  // Horizontal drag steers the part
+  game.setPartX(drag.startPartX + dx);
+
+  // Swipe down = soft drop while dragging
+  if (dy > 40) {
+    game.softDrop();
+    drag.startY = p.y; // reset so we don't spam too hard
+  }
+});
+
+function endDrag(e) {
+  if (!drag || (e.pointerId != null && drag.id !== e.pointerId)) return;
+  const p = canvasPoint(e);
+  const dt = performance.now() - drag.t0;
+  const dist = Math.hypot(p.x - drag.startX, p.y - drag.startY);
+  const dy = p.y - drag.startY;
+
+  if (!drag.moved && dist < TAP_PX && dt < TAP_MS && isPlaying()) {
+    // Tap → rotate
+    game.rotate(1);
+  } else if (dy > 120 && dt < 400 && isPlaying()) {
+    // Fast swipe down → hard drop
+    game.hardDrop();
+  }
+
+  drag = null;
+}
+
+canvas.addEventListener("pointerup", endDrag);
+canvas.addEventListener("pointercancel", () => {
+  drag = null;
+});
+
+// ——— On-screen buttons ———
+function bindHoldButton(btn, onPulse) {
+  if (!btn) return;
+  let timer = null;
+  let active = false;
+
+  const start = (e) => {
+    e.preventDefault();
+    if (!isPlaying()) return;
+    active = true;
+    onPulse();
+    timer = setInterval(() => {
+      if (active && isPlaying()) onPulse();
+    }, 90);
+  };
+  const stop = () => {
+    active = false;
+    if (timer) clearInterval(timer);
+    timer = null;
+  };
+
+  btn.addEventListener("pointerdown", start);
+  btn.addEventListener("pointerup", stop);
+  btn.addEventListener("pointerleave", stop);
+  btn.addEventListener("pointercancel", stop);
+}
+
+const btnLeft = document.getElementById("btn-left");
+const btnRight = document.getElementById("btn-right");
+const btnRot = document.getElementById("btn-rotate");
+const btnDrop = document.getElementById("btn-drop");
+
+bindHoldButton(btnLeft, () => game.move(-1));
+bindHoldButton(btnRight, () => game.move(1));
+if (btnRot) {
+  btnRot.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
+    if (isPlaying()) game.rotate(1);
+  });
+}
+if (btnDrop) {
+  btnDrop.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
+    if (isPlaying()) game.hardDrop();
+  });
+}
+
+// Show/hide touch pad with viewport
+function syncTouchPad() {
+  if (!els.touchPad) return;
+  els.touchPad.hidden = !isTouchUi();
+  document.body.classList.toggle("touch-ui", isTouchUi());
+}
+syncTouchPad();
+window.addEventListener("resize", syncTouchPad);
 
 function frame(now) {
   const dt = Math.min(40, now - last);

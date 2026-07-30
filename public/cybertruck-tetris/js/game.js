@@ -215,6 +215,12 @@ export class Game {
     this.current.x = Math.max(40, Math.min(CANVAS.width - 40, this.current.x));
   }
 
+  /** Absolute X (canvas space) — used by touch drag */
+  setPartX(x) {
+    if (this.state !== "playing" || !this.current) return;
+    this.current.x = Math.max(40, Math.min(CANVAS.width - 40, x));
+  }
+
   rotate(dir = 1) {
     if (this.state !== "playing" || !this.current) return;
     this.current.rot = normRot(this.current.rot + dir * 90);
@@ -269,6 +275,7 @@ export class Game {
     }
 
     if (this.current) {
+      this._maybeFlashNewPart(this.current);
       this.current.y += (this.cfg.fallSpeed * dt) / 1000;
       this._magnet(dt);
       this._trySnapOrMiss(false);
@@ -276,7 +283,24 @@ export class Game {
       // Resume after all-driving edge case
       this.current = this._newPart();
       this.next = this.next || this._newPart();
+      if (this.current) this._maybeFlashNewPart(this.current);
     }
+  }
+
+  /**
+   * First time canopy or bumper is on the crane — simple 2s flash.
+   */
+  _maybeFlashNewPart(part) {
+    if (!part) return;
+    const labels = { canopy: "Canopy", bumper: "Bumper" };
+    const label = labels[part.type];
+    if (!label) return;
+    if (this._seenPartTypes.has(part.type)) return;
+    this._seenPartTypes.add(part.type);
+    this.announcement = {
+      text: `NEW PART: ${label}`,
+      life: 2000,
+    };
   }
 
   _magnet(dt) {
@@ -423,23 +447,7 @@ export class Game {
     this.state = "playing";
     this.message = "";
     this._float(`LEVEL ${this.level}`, CANVAS.width / 2, 200, "#00e0b0");
-    this._flashNewPartForLevel(this.level);
-  }
-
-  /** Intro flash when a part type is first unlocked */
-  _flashNewPartForLevel(level) {
-    const intros = {
-      2: "NEW PART: Canopy",
-      3: "NEW PART: Bumper",
-    };
-    const text = intros[level];
-    if (!text) return;
-    this.announcement = {
-      text,
-      sub: "Training guides active for this part",
-      life: 2800,
-      maxLife: 2800,
-    };
+    if (this.current) this._maybeFlashNewPart(this.current);
   }
 
   _spawnNext() {
@@ -460,6 +468,7 @@ export class Game {
     if (this.current) {
       this.current.x = CANVAS.width / 2 + (Math.random() - 0.5) * 120;
       this.current.y = 64;
+      this._maybeFlashNewPart(this.current);
     }
     this.next = this._newPart();
   }

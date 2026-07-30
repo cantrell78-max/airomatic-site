@@ -63,15 +63,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
         </aside>
 
-        <div class="canvas-wrap">
-          <canvas id="game" width="960" height="700"></canvas>
-          <div id="overlay" class="overlay hidden">
-            <div class="overlay-card">
-              <h2 id="overlay-title">Paused</h2>
-              <p id="overlay-msg"></p>
-              <button id="overlay-btn" type="button">Resume</button>
+        <div class="play-column">
+          <div class="canvas-wrap">
+            <canvas id="game" width="960" height="700"></canvas>
+            <div id="overlay" class="overlay hidden">
+              <div class="overlay-card">
+                <h2 id="overlay-title">Paused</h2>
+                <p id="overlay-msg"></p>
+                <button id="overlay-btn" type="button">Resume</button>
+              </div>
             </div>
           </div>
+          <div id="touch-pad" class="touch-pad" hidden>
+            <button type="button" class="touch-btn" id="btn-left" aria-label="Move left">◀</button>
+            <button type="button" class="touch-btn touch-btn--rot" id="btn-rotate" aria-label="Rotate">⟳</button>
+            <button type="button" class="touch-btn" id="btn-right" aria-label="Move right">▶</button>
+            <button type="button" class="touch-btn touch-btn--drop" id="btn-drop" aria-label="Drop">DROP</button>
+          </div>
+          <p class="touch-hint">Drag part to move · tap to rotate · swipe down to drop</p>
         </div>
 
         <aside class="panel right-panel">
@@ -82,7 +91,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               <li>Parts are <strong>color + type</strong> (e.g. TEAL CAB).</li>
               <li>Every part has a home — aim for the <strong>matching color bay</strong>.</li>
               <li><strong>Move + rotate</strong>, then snap onto the ghost.</li>
-              <li><strong>Guides:</strong> L1 base · L2 canopy · L3 bumper · L4+ none.</li>
+              <li><strong>Phone:</strong> drag · tap to rotate · or use the buttons.</li>
               <li>Finished truck <strong>drives forward</strong>; a new color rolls in.</li>
             </ol>
           </div>

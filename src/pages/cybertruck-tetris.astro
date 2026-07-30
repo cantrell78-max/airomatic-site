@@ -11,15 +11,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <link slot="head" rel="stylesheet" href="/cybertruck-tetris/css/style.css" />
 
   <section class="game-page">
-    <div class="game-page__intro container">
-      <p class="eyebrow">Play</p>
-      <h1 class="game-page__title">Cybertruck Assembly Line</h1>
-      <p class="game-page__lead">
-        Three painted chassis. Match color + type, rotate to fit, snap on.
-        <a href="/blog/cybertruck-assembly-line-live/">Read the build log →</a>
-      </p>
-    </div>
-
     <div id="app" class="game-shell">
       <header class="top-bar">
         <div class="brand">
@@ -109,36 +100,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <style>
   .game-page {
-    padding-bottom: 2rem;
-  }
-
-  .game-page__intro {
-    padding-top: 1.5rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .game-page__title {
-    margin: 0.25rem 0 0.5rem;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-  }
-
-  .game-page__lead {
-    margin: 0;
-    max-width: 40rem;
-    color: var(--text-muted);
-    font-size: 0.98rem;
-    line-height: 1.5;
-  }
-
-  .game-page__lead a {
-    color: var(--accent, #00d4aa);
+    padding: 0.75rem 0 1.5rem;
   }
 
   /* Isolate game chrome from site body styles */
   .game-shell {
     max-width: 1100px;
-    margin: 0.75rem auto 0;
-    padding: 0 12px 8px;
+    margin: 0 auto;
+    padding: 0 12px;
   }
 
   .game-shell :global(.top-bar) {

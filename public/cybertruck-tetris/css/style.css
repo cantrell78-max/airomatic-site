@@ -209,6 +209,54 @@ html, body {
   margin-bottom: 4px;
 }
 
+.controls-wasd {
+  list-style: none;
+  margin: 10px 0 0;
+  margin-left: -1.1rem;
+  padding: 8px 8px 6px;
+  border-radius: 8px;
+  border: 1px solid var(--panel-border);
+  background: #0a0e14;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.controls-wasd__label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+}
+
+.wasd-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1.6rem);
+  grid-template-rows: repeat(2, 1.5rem);
+  gap: 3px;
+  justify-items: center;
+  align-items: center;
+}
+
+.wasd-pad kbd {
+  margin: 0;
+  min-width: 1.45rem;
+  text-align: center;
+  font-size: 0.7rem;
+  padding: 2px 0;
+}
+
+.wasd-pad__spacer {
+  width: 1.45rem;
+  height: 1.2rem;
+}
+
+.controls-wasd__hint {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
 .howto strong {
   color: var(--text);
 }

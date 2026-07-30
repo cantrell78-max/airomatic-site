@@ -124,6 +124,8 @@ export class Game {
     this.floaters = [];
     this.pulse = 0;
     this.softDropHeld = 0;
+    /** Big on-screen flash: { text, life, maxLife } */
+    this.announcement = null;
   }
 
   /**
@@ -242,6 +244,10 @@ export class Game {
   update(dt) {
     this.pulse += dt * 0.004;
     this._updateFx(dt);
+    if (this.announcement) {
+      this.announcement.life -= dt;
+      if (this.announcement.life <= 0) this.announcement = null;
+    }
 
     if (this.state === "levelup") {
       this.levelUpTimer -= dt;

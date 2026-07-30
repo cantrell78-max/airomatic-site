@@ -183,7 +183,52 @@ export function renderGame(ctx, game) {
     ctx.fillText(`LEVEL ${game.level} COMPLETE`, width / 2, height / 2);
     ctx.fillStyle = "#c5ccd6";
     ctx.font = "14px system-ui";
-    ctx.fillText("Faster line · more sockets…", width / 2, height / 2 + 30);
+    const nextHint =
+      game.level === 1
+        ? "Next: NEW PART — Canopy"
+        : game.level === 2
+          ? "Next: NEW PART — Bumper"
+          : "Faster line · more sockets…";
+    ctx.fillText(nextHint, width / 2, height / 2 + 30);
+  }
+
+  // NEW PART banner (levels 2 & 3 intro)
+  if (game.announcement) {
+    const a = game.announcement;
+    const t = Math.min(1, a.life / a.maxLife);
+    // fade in first 15%, hold, fade out last 25%
+    let alpha = 1;
+    const elapsed = 1 - t;
+    if (elapsed < 0.12) alpha = elapsed / 0.12;
+    else if (t < 0.25) alpha = t / 0.25;
+
+    const bx = width / 2;
+    const by = height * 0.28;
+    const bw = Math.min(420, width - 40);
+    const bh = 72;
+
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, Math.min(1, alpha)) * 0.92;
+    ctx.fillStyle = "rgba(6, 10, 16, 0.88)";
+    roundRect(ctx, bx - bw / 2, by - bh / 2, bw, bh, 10);
+    ctx.fill();
+    ctx.strokeStyle = "#f0b429";
+    ctx.lineWidth = 2.5;
+    ctx.stroke();
+
+    ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
+    ctx.fillStyle = "#f0b429";
+    ctx.font = "bold 26px system-ui";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(a.text, bx, by - (a.sub ? 8 : 0));
+    if (a.sub) {
+      ctx.fillStyle = "#c5ccd6";
+      ctx.font = "13px system-ui";
+      ctx.fillText(a.sub, bx, by + 18);
+    }
+    ctx.textBaseline = "alphabetic";
+    ctx.restore();
   }
 }
 

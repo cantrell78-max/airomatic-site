@@ -1,5 +1,34 @@
 [
   {
+    "id": "idli-2026-07",
+    "date": "2026-07-30",
+    "companyName": "Idli",
+    "headline": "Idli Raises $15M Series A for AI Compliance Across America's Infrastructure Boom",
+    "round": "$15M Series A",
+    "newsType": "raise",
+    "description": "Agentic compliance, monitoring, and audit for capital projects\u2014prevailing-wage and labor rules, portfolio visibility, and immutable evidence packs so Fortune 500 builders and EPCs stop losing months to missed requirements.",
+    "founderName": "Karthik Subramanian",
+    "founderTitle": "ex-Coinbase",
+    "founderQuote": "One missed compliance requirement can put hundreds of millions at risk. We treat every project as an always-on agent workflow with a defensible audit trail.",
+    "investorQuote": "Infrastructure is an agent-ready surface if you respect the audit\u2014Idli is the compliance layer builders will standardize on during the buildout.",
+    "investorName": "Darren Bechtel",
+    "investorFirm": "Brick & Mortar Ventures",
+    "verticals": [
+      "Infra Compliance",
+      "Construction AI",
+      "RegTech"
+    ],
+    "hashtags": [
+      "#InfraCompliance",
+      "#ConstructionAI",
+      "#SeriesA",
+      "#RegTech",
+      "#Idli"
+    ],
+    "image": "/images/startups/karthik-subramanian.jpg",
+    "xPost": "Idli raises $15M Series A. Agentic compliance, monitoring, and audit for capital projects\u2014prevailing-wage and labor rules, portfolio visibility, and immutable evidence packs so Fortune 500 builders and EPCs stop losing months to missed requirements.\n\n\"One missed compliance requirement can put hundreds of millions at risk. We treat every project as an always-on agent workflow with a defensible audit trail.\" \u2014 Karthik Subramanian\n\n\"Infrastructure is an agent-ready surface if you respect the audit\u2014Idli is the compliance layer builders will standardize on during the buildout.\" \u2014 Darren Bechtel \u00b7 Brick & Mortar Ventures\n\n#InfraCompliance #ConstructionAI #SeriesA #RegTech #Idli"
+  },
+  {
     "id": "stanlee-2026-07",
     "date": "2026-07-30",
     "companyName": "Stanlee",

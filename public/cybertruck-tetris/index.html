@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cybertruck Assembly Line</title>
+  <link rel="stylesheet" href="/cybertruck-tetris/css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="top-bar">
+      <div class="brand">
+        <span class="brand-mark">CT</span>
+        <div>
+          <h1>Assembly Line</h1>
+          <p class="tagline">Three trucks · match color · snap to fit</p>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img
+          src="/cybertruck-tetris/assets/cybertruck-header.jpg"
+          alt="Tesla Cybertruck side profile"
+          width="1200"
+          height="250"
+        />
+      </figure>
+      <div class="hud">
+        <div class="stat"><span class="label">Score</span><span id="score">0</span></div>
+        <div class="stat"><span class="label">Level</span><span id="level">1</span></div>
+        <div class="stat"><span class="label">Built</span><span id="built">0</span></div>
+        <div class="stat"><span class="label">Goal</span><span id="goal">3</span></div>
+      </div>
+    </header>
+
+    <main class="stage">
+      <aside class="panel left-panel">
+        <div class="panel-block">
+          <h2>Next</h2>
+          <canvas id="next-canvas" width="120" height="100"></canvas>
+        </div>
+        <div class="panel-block">
+          <h2>Audio</h2>
+          <button id="mute-btn" type="button" class="panel-btn" aria-pressed="false">
+            Music: On
+          </button>
+          <p class="hint">M to mute</p>
+        </div>
+        <div class="panel-block controls">
+          <h2>Controls</h2>
+          <ul>
+            <li><kbd>←</kbd><kbd>→</kbd> Move part</li>
+            <li><kbd>↑</kbd> / <kbd>X</kbd> Rotate</li>
+            <li><kbd>Z</kbd> Rotate CCW</li>
+            <li><kbd>↓</kbd> Soft drop</li>
+            <li><kbd>Space</kbd> Hard drop</li>
+            <li><kbd>P</kbd> Pause · <kbd>R</kbd> Restart</li>
+            <li><kbd>M</kbd> Mute music</li>
+          </ul>
+        </div>
+      </aside>
+
+      <div class="canvas-wrap">
+        <canvas id="game" width="960" height="700"></canvas>
+        <div id="overlay" class="overlay hidden">
+          <div class="overlay-card">
+            <h2 id="overlay-title">Paused</h2>
+            <p id="overlay-msg"></p>
+            <button id="overlay-btn" type="button">Resume</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel right-panel">
+        <div class="panel-block">
+          <h2>How to play</h2>
+          <ol class="howto">
+            <li><strong>Three chassis</strong>, each a different paint.</li>
+            <li>Parts are <strong>color + type</strong> (e.g. TEAL CAB).</li>
+            <li>Every part has a home — aim for the <strong>matching color bay</strong>.</li>
+            <li><strong>Move + rotate</strong>, then snap onto the ghost.</li>
+            <li><strong>Guides:</strong> L1 all base parts · L2 canopy only · L3 bumper only · L4+ none.</li>
+            <li>Finished truck <strong>drives off</strong>; a new color rolls in.</li>
+          </ol>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <span>v0.4 · Korobeiniki-style factory chiptune · Cybertruck Games</span>
+    </footer>
+  </div>
+  <script type="module" src="/cybertruck-tetris/js/main.js"></script>
+</body>
+</html>

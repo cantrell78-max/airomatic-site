@@ -1,5 +1,208 @@
 [
   {
+    "id": "stanlee-2026-07",
+    "date": "2026-07-30",
+    "companyName": "Stanlee",
+    "headline": "Stanlee Raises $42M Series A for an AI Head of Content That Doomscrolls So Founders Don't Have To",
+    "round": "$42M Series A",
+    "newsType": "raise",
+    "description": "Always-on content agents that study a founder's voice, plug into Slack and calendars, and schedule multi-platform posts from voice notes\u2014specialized doomscroll research agents included.",
+    "founderName": "John Who",
+    "founderTitle": "Stanford dropout",
+    "founderQuote": "Generic model output is slop because it is not actively consuming culture. We staffed a team of agents that never log off the feed.",
+    "investorQuote": "Creator infrastructure is becoming an agent workforce problem\u2014Stanlee productizes the head of content role with receipts.",
+    "investorName": "Eurie Kim",
+    "investorFirm": "Forerunner Ventures",
+    "verticals": [
+      "Agentic Content",
+      "Creator Tools",
+      "Social AI"
+    ],
+    "hashtags": [
+      "#AgenticContent",
+      "#CreatorTools",
+      "#SeriesA",
+      "#SocialAI",
+      "#Stanlee"
+    ],
+    "image": "/images/startups/stanlee-team.jpg",
+    "xPost": "Stanlee raises $42M Series A. Always-on content agents that study a founder's voice, plug into Slack and calendars, and schedule multi-platform posts from voice notes\u2014specialized doomscroll research agents included.\n\n\"Generic model output is slop because it is not actively consuming culture. We staffed a team of agents that never log off the feed.\" \u2014 John Who\n\n\"Creator infrastructure is becoming an agent workforce problem\u2014Stanlee productizes the head of content role with receipts.\" \u2014 Eurie Kim \u00b7 Forerunner Ventures\n\n#AgenticContent #CreatorTools #SeriesA #SocialAI #Stanlee"
+  },
+  {
+    "id": "similar-2026-07",
+    "date": "2026-07-30",
+    "companyName": "Similar",
+    "headline": "Similar Raises $200M Series B at $2B Valuation to Simulate All Eight Billion People\u2014and the Simulations of Those Simulations",
+    "round": "$200M Series B \u00b7 $2B val",
+    "newsType": "raise",
+    "description": "Foundation models for human behavior plus confidence scores and agentic simulation rails so enterprises can stress-test products, policies, and agent fleets against synthetic populations before they touch reality.",
+    "founderName": "Joon Who Park",
+    "founderTitle": "Stanford dropout",
+    "founderQuote": "The hard question is no longer whether you can build something. It is what happens when eight billion simulated buyers meet your agent mesh\u2014and then you simulate that.",
+    "investorQuote": "Behavior simulation at population scale is infrastructure for an agentic economy\u2014Similar is building the rails under the multiverse.",
+    "investorName": "Neil Mehta",
+    "investorFirm": "Greenoaks",
+    "verticals": [
+      "Agent Simulation",
+      "Behavior Models",
+      "Market Research"
+    ],
+    "hashtags": [
+      "#AgentSimulation",
+      "#SeriesB",
+      "#BehaviorAI",
+      "#SyntheticUsers",
+      "#Similar"
+    ],
+    "image": "/images/startups/joon-who-park.jpg",
+    "xPost": "Similar raises $200M Series B \u00b7 $2B val. Foundation models for human behavior plus confidence scores and agentic simulation rails so enterprises can stress-test products, policies, and agent fleets against synthetic populations before they touch reality.\n\n\"The hard question is no longer whether you can build something. It is what happens when eight billion simulated buyers meet your agent mesh\u2014and then you simulate that.\" \u2014 Joon Who Park\n\n\"Behavior simulation at population scale is infrastructure for an agentic economy\u2014Similar is building the rails under the multiverse.\" \u2014 Neil Mehta \u00b7 Greenoaks\n\n#AgentSimulation #SeriesB #BehaviorAI #SyntheticUsers #Similar"
+  },
+  {
+    "id": "dokkt-2026-07",
+    "date": "2026-07-30",
+    "companyName": "Dokkt",
+    "headline": "Dokkt Raises $38M Series A for Matter Agents That Survive Partner Review With Privilege-Aware Audit Trails",
+    "round": "$38M Series A",
+    "newsType": "raise",
+    "description": "Legal agents that keep multi-week matter context, draft work product, and route deadlines with defensible logs law firms can hand to counsel.",
+    "founderName": "Rohan Kapoor",
+    "founderTitle": "ex-Harvey Engineering",
+    "founderQuote": "Law firms do not buy copilots. They buy agents that leave a record partners can defend.",
+    "investorQuote": "Matter work is multi-day liability\u2014Dokkt productizes that runtime with receipts.",
+    "investorName": "Sarah Tavel",
+    "investorFirm": "Benchmark",
+    "verticals": [
+      "LegalTech",
+      "Matter AI",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#LegalTech",
+      "#MatterAI",
+      "#SeriesA",
+      "#EnterpriseAI",
+      "#Dokkt"
+    ],
+    "image": "/images/startups/rohan-kapoor.jpg",
+    "xPost": "Dokkt raises $38M Series A. Legal agents that keep multi-week matter context, draft work product, and route deadlines with defensible logs law firms can hand to counsel.\n\n\"Law firms do not buy copilots. They buy agents that leave a record partners can defend.\" \u2014 Rohan Kapoor\n\n\"Matter work is multi-day liability\u2014Dokkt productizes that runtime with receipts.\" \u2014 Sarah Tavel \u00b7 Benchmark\n\n#LegalTech #MatterAI #SeriesA #EnterpriseAI #Dokkt"
+  },
+  {
+    "id": "rivo-2026-07",
+    "date": "2026-07-30",
+    "companyName": "Rivo",
+    "headline": "Rivo Raises $26M Series A for Support Agents Measured on Closed Loops, Not Drafted Replies",
+    "round": "$26M Series A",
+    "newsType": "raise",
+    "description": "CX agents that refund, reschedule, and re-provision inside systems of record with policy graphs and human gates only on high-liability paths.",
+    "founderName": "Yifan Zhou",
+    "founderTitle": "Berkeley dropout",
+    "founderQuote": "Drafting a reply is a feature. Closing the loop is a company\u2014and that is the only metric we sell.",
+    "investorQuote": "CX unit economics flip when agents act with audit trails\u2014Rivo is that operating surface.",
+    "investorName": "Ping Li",
+    "investorFirm": "Accel",
+    "verticals": [
+      "Agentic CX",
+      "Customer Support",
+      "SaaS"
+    ],
+    "hashtags": [
+      "#AgenticCX",
+      "#CustomerSupport",
+      "#SeriesA",
+      "#SaaS",
+      "#Rivo"
+    ],
+    "image": "/images/startups/yifan-zhou.jpg",
+    "xPost": "Rivo raises $26M Series A. CX agents that refund, reschedule, and re-provision inside systems of record with policy graphs and human gates only on high-liability paths.\n\n\"Drafting a reply is a feature. Closing the loop is a company\u2014and that is the only metric we sell.\" \u2014 Yifan Zhou\n\n\"CX unit economics flip when agents act with audit trails\u2014Rivo is that operating surface.\" \u2014 Ping Li \u00b7 Accel\n\n#AgenticCX #CustomerSupport #SeriesA #SaaS #Rivo"
+  },
+  {
+    "id": "badge-2026-07",
+    "date": "2026-07-30",
+    "companyName": "Badge",
+    "headline": "Badge Raises $44M Series A as Co-Founders Ship Non-Human Identity for Agent Fleets",
+    "round": "$44M Series A",
+    "newsType": "raise",
+    "description": "Co-founded identity and tool auth for production agents\u2014lifecycle, least privilege, and kill paths so enterprises stop shipping shadow IT with a model card.",
+    "founderName": "Wei Lin & Tyler Nash",
+    "founderTitle": "ex-Okta / Stanford dropout",
+    "founderQuote": "You cannot govern what you cannot name. Agents without identity are just shadow IT with a language model.",
+    "investorQuote": "Non-human identity is table stakes for production autonomy\u2014Badge is the control plane CISOs will standardize on.",
+    "investorName": "Matt Murphy",
+    "investorFirm": "Menlo Ventures",
+    "verticals": [
+      "Non-Human Identity",
+      "AI Security",
+      "Zero Trust"
+    ],
+    "hashtags": [
+      "#NonHumanIdentity",
+      "#AISecurity",
+      "#SeriesA",
+      "#ZeroTrust",
+      "#Badge"
+    ],
+    "image": "/images/startups/badge-duo.jpg",
+    "xPost": "Badge raises $44M Series A. Co-founded identity and tool auth for production agents\u2014lifecycle, least privilege, and kill paths so enterprises stop shipping shadow IT with a model card.\n\n\"You cannot govern what you cannot name. Agents without identity are just shadow IT with a language model.\" \u2014 Wei Lin & Tyler Nash\n\n\"Non-human identity is table stakes for production autonomy\u2014Badge is the control plane CISOs will standardize on.\" \u2014 Matt Murphy \u00b7 Menlo Ventures\n\n#NonHumanIdentity #AISecurity #SeriesA #ZeroTrust #Badge"
+  },
+  {
+    "id": "cryon-2026-07",
+    "date": "2026-07-30",
+    "companyName": "Cryon",
+    "headline": "Cryon Raises $72M Series A for Scientific Agent Runtimes Across Hybrid Quantum-Classical Backends",
+    "round": "$72M Series A",
+    "newsType": "raise",
+    "description": "Agents that plan multi-day molecular campaigns on hybrid stacks with experiment-grade audit trails and human gates on wet-lab handoff.",
+    "founderName": "Qing Zhao",
+    "founderTitle": "ex-Google Quantum",
+    "founderQuote": "Chemistry is not a single prompt. It is a campaign\u2014and agents finally have a substrate that can keep up.",
+    "investorQuote": "Deep-tech agents on hybrid stacks are a multi-decade wedge\u2014Cryon is productizing it without the science-project tax.",
+    "investorName": "Vinod Khosla",
+    "investorFirm": "Khosla Ventures",
+    "verticals": [
+      "Quantum Computing",
+      "Deep Tech",
+      "Scientific AI"
+    ],
+    "hashtags": [
+      "#QuantumComputing",
+      "#DeepTech",
+      "#SeriesA",
+      "#ScientificAI",
+      "#Cryon"
+    ],
+    "image": "/images/startups/qing-zhao.jpg",
+    "xPost": "Cryon raises $72M Series A. Agents that plan multi-day molecular campaigns on hybrid stacks with experiment-grade audit trails and human gates on wet-lab handoff.\n\n\"Chemistry is not a single prompt. It is a campaign\u2014and agents finally have a substrate that can keep up.\" \u2014 Qing Zhao\n\n\"Deep-tech agents on hybrid stacks are a multi-decade wedge\u2014Cryon is productizing it without the science-project tax.\" \u2014 Vinod Khosla \u00b7 Khosla Ventures\n\n#QuantumComputing #DeepTech #SeriesA #ScientificAI #Cryon"
+  },
+  {
+    "id": "lintx-2026-07",
+    "date": "2026-07-30",
+    "companyName": "Lintx",
+    "headline": "Lintx Raises $48M Series A for a Software Forge Where Agent PRs Ship With Review Policies and Rollback Paths",
+    "round": "$48M Series A",
+    "newsType": "raise",
+    "description": "Multi-agent coding forge optimizing for merged, reviewed, reversible work with cost attribution\u2014not demo generation volume.",
+    "founderName": "Siddharth Bose",
+    "founderTitle": "MIT dropout",
+    "founderQuote": "We do not sell another coding copilot. We sell merged, reviewed, and reversible work.",
+    "investorQuote": "Ship rate with governance is the product\u2014Lintx productized what every enterprise team is bolting on by hand.",
+    "investorName": "Guru Chahal",
+    "investorFirm": "Lightspeed Venture Partners",
+    "verticals": [
+      "Coding Agents",
+      "Dev Tools",
+      "Software Forge"
+    ],
+    "hashtags": [
+      "#CodingAgents",
+      "#DevTools",
+      "#SeriesA",
+      "#SoftwareForge",
+      "#Lintx"
+    ],
+    "image": "/images/startups/siddharth-bose.jpg",
+    "xPost": "Lintx raises $48M Series A. Multi-agent coding forge optimizing for merged, reviewed, reversible work with cost attribution\u2014not demo generation volume.\n\n\"We do not sell another coding copilot. We sell merged, reviewed, and reversible work.\" \u2014 Siddharth Bose\n\n\"Ship rate with governance is the product\u2014Lintx productized what every enterprise team is bolting on by hand.\" \u2014 Guru Chahal \u00b7 Lightspeed Venture Partners\n\n#CodingAgents #DevTools #SeriesA #SoftwareForge #Lintx"
+  },
+  {
     "id": "mintly-2026-07",
     "date": "2026-07-28",
     "companyName": "Mintly",

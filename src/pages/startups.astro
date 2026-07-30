@@ -12,14 +12,42 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import StartupCard from "../components/StartupCard.astro";
 import { getStartupsSorted, STARTUP_FILTERS } from "../lib/startups";
+import { readFileSync, existsSync } from "node:fs";
+import path from "node:path";
 
 const allStartups = getStartupsSorted();
 const pageSize = 6;
+
+/** Built by `npm run og:startups` / prebuild — top-3 collage + cache-bust path */
+const ogMetaPath = path.join(process.cwd(), "public/og/startups-og.json");
+let ogImage = "/og/startups-latest.jpg";
+let ogImageAlt = "Agentic AI Startup News — latest announcements";
+let pageDescription =
+  "A living archive of satirical AI startup funding announcements — patterns detected, deals riffed, portraits generated.";
+
+if (existsSync(ogMetaPath)) {
+  try {
+    const meta = JSON.parse(readFileSync(ogMetaPath, "utf8"));
+    if (meta.ogImage) ogImage = meta.ogImage;
+    if (meta.ogImageAlt) ogImageAlt = meta.ogImageAlt;
+    if (meta.description) pageDescription = meta.description;
+  } catch {
+    /* keep defaults */
+  }
+} else {
+  const top3 = allStartups.slice(0, 3);
+  if (top3.length) {
+    pageDescription = `${top3.map((s) => `${s.companyName} (${s.round})`).join(" · ")}. Living archive of satirical AI startup funding announcements on Airomatic.`;
+    ogImageAlt = `Latest Agentic AI Startup News: ${top3.map((s) => s.companyName).join(" · ")}`;
+  }
+}
 ---
 
 <BaseLayout
   title="Agentic AI Startup News"
-  description="A living archive of satirical AI startup funding announcements — patterns detected, deals riffed, portraits generated."
+  description={pageDescription}
+  ogImage={ogImage}
+  ogImageAlt={ogImageAlt}
 >
   <section class="section startups-page">
     <div class="container">

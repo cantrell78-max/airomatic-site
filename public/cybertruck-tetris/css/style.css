@@ -1,4 +1,5 @@
-:root {
+/* Scoped game chrome — does not restyle the site html/body when embedded */
+#app {
   --bg: #0b0d10;
   --panel: #14181f;
   --panel-border: #2a3140;
@@ -9,25 +10,22 @@
   --danger: #e63946;
   --steel: #9aa3b2;
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-}
-
-* {
+  color: var(--text);
   box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  min-height: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 12px 20px;
   background:
     radial-gradient(ellipse 80% 50% at 50% -10%, #1a2433 0%, transparent 55%),
     var(--bg);
-  color: var(--text);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
 }
 
-#app {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 16px 20px 24px;
+#app *,
+#app *::before,
+#app *::after {
+  box-sizing: border-box;
 }
 
 .top-bar {

@@ -188,7 +188,8 @@ export function renderGame(ctx, game) {
 }
 
 function drawTruckBay(ctx, game, t, width) {
-  const driveX = t.driving ? t.driving.t * (width + 180) : 0;
+  // Drive forward (left) — cab faces left on the silhouette
+  const driveX = t.driving ? -t.driving.t * (width + 180) : 0;
 
   // bay paint pad under truck
   const p = paintOf(t.paintId);

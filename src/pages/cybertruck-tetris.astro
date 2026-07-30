@@ -1,0 +1,153 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Cybertruck Assembly Line"
+  description="Three color-coded Cybertruck chassis on the line. Match paint and part type, rotate, snap, drive off. Play free in the browser."
+  ogImage="/images/blog/cybertruck-assembly-line-og.jpg"
+  ogImageAlt="Cybertruck Assembly Line — three-truck snap puzzle on airomatic.ai"
+>
+  <link slot="head" rel="stylesheet" href="/cybertruck-tetris/css/style.css" />
+
+  <section class="game-page">
+    <div class="game-page__intro container">
+      <p class="eyebrow">Play</p>
+      <h1 class="game-page__title">Cybertruck Assembly Line</h1>
+      <p class="game-page__lead">
+        Three painted chassis. Match color + type, rotate to fit, snap on.
+        <a href="/blog/cybertruck-assembly-line-live/">Read the build log →</a>
+      </p>
+    </div>
+
+    <div id="app" class="game-shell">
+      <header class="top-bar">
+        <div class="brand">
+          <span class="brand-mark">CT</span>
+          <div>
+            <h1>Assembly Line</h1>
+            <p class="tagline">Three trucks · match color · snap to fit</p>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <img
+            src="/cybertruck-tetris/assets/cybertruck-header.jpg"
+            alt="Tesla Cybertruck side profile"
+            width="1200"
+            height="250"
+          />
+        </figure>
+        <div class="hud">
+          <div class="stat"><span class="label">Score</span><span id="score">0</span></div>
+          <div class="stat"><span class="label">Level</span><span id="level">1</span></div>
+          <div class="stat"><span class="label">Built</span><span id="built">0</span></div>
+          <div class="stat"><span class="label">Goal</span><span id="goal">3</span></div>
+        </div>
+      </header>
+
+      <div class="stage">
+        <aside class="panel left-panel">
+          <div class="panel-block">
+            <h2>Next</h2>
+            <canvas id="next-canvas" width="120" height="100"></canvas>
+          </div>
+          <div class="panel-block">
+            <h2>Audio</h2>
+            <button id="mute-btn" type="button" class="panel-btn" aria-pressed="false">
+              Music: On
+            </button>
+            <p class="hint">M to mute</p>
+          </div>
+          <div class="panel-block controls">
+            <h2>Controls</h2>
+            <ul>
+              <li><kbd>←</kbd><kbd>→</kbd> Move part</li>
+              <li><kbd>↑</kbd> / <kbd>X</kbd> Rotate</li>
+              <li><kbd>Z</kbd> Rotate CCW</li>
+              <li><kbd>↓</kbd> Soft drop</li>
+              <li><kbd>Space</kbd> Hard drop</li>
+              <li><kbd>P</kbd> Pause · <kbd>R</kbd> Restart</li>
+              <li><kbd>M</kbd> Mute music</li>
+            </ul>
+          </div>
+        </aside>
+
+        <div class="canvas-wrap">
+          <canvas id="game" width="960" height="700"></canvas>
+          <div id="overlay" class="overlay hidden">
+            <div class="overlay-card">
+              <h2 id="overlay-title">Paused</h2>
+              <p id="overlay-msg"></p>
+              <button id="overlay-btn" type="button">Resume</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel right-panel">
+          <div class="panel-block">
+            <h2>How to play</h2>
+            <ol class="howto">
+              <li><strong>Three chassis</strong>, each a different paint.</li>
+              <li>Parts are <strong>color + type</strong> (e.g. TEAL CAB).</li>
+              <li>Every part has a home — aim for the <strong>matching color bay</strong>.</li>
+              <li><strong>Move + rotate</strong>, then snap onto the ghost.</li>
+              <li><strong>Guides:</strong> L1 base · L2 canopy · L3 bumper · L4+ none.</li>
+              <li>Finished truck <strong>drives forward</strong>; a new color rolls in.</li>
+            </ol>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="footer">
+        <span>v0.4 · Korobeiniki-style factory chiptune · <a href="/blog/cybertruck-assembly-line-live/">Build log</a></span>
+      </footer>
+    </div>
+  </section>
+
+  <script type="module" src="/cybertruck-tetris/js/main.js"></script>
+</BaseLayout>
+
+<style>
+  .game-page {
+    padding-bottom: 2rem;
+  }
+
+  .game-page__intro {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .game-page__title {
+    margin: 0.25rem 0 0.5rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .game-page__lead {
+    margin: 0;
+    max-width: 40rem;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.5;
+  }
+
+  .game-page__lead a {
+    color: var(--accent, #00d4aa);
+  }
+
+  /* Isolate game chrome from site body styles */
+  .game-shell {
+    max-width: 1100px;
+    margin: 0.75rem auto 0;
+    padding: 0 12px 8px;
+  }
+
+  .game-shell :global(.top-bar) {
+    margin-bottom: 10px;
+  }
+
+  .game-shell :global(.footer a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>

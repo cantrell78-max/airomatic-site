@@ -124,8 +124,9 @@ export class Game {
     this.floaters = [];
     this.pulse = 0;
     this.softDropHeld = 0;
-    /** Big on-screen flash: { text, life, maxLife } */
+    /** First-time part drop banner: { text, life } — ~2s, same area as level-up */
     this.announcement = null;
+    this._seenPartTypes = new Set();
   }
 
   /**
@@ -422,6 +423,23 @@ export class Game {
     this.state = "playing";
     this.message = "";
     this._float(`LEVEL ${this.level}`, CANVAS.width / 2, 200, "#00e0b0");
+    this._flashNewPartForLevel(this.level);
+  }
+
+  /** Intro flash when a part type is first unlocked */
+  _flashNewPartForLevel(level) {
+    const intros = {
+      2: "NEW PART: Canopy",
+      3: "NEW PART: Bumper",
+    };
+    const text = intros[level];
+    if (!text) return;
+    this.announcement = {
+      text,
+      sub: "Training guides active for this part",
+      life: 2800,
+      maxLife: 2800,
+    };
   }
 
   _spawnNext() {

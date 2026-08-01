@@ -49,7 +49,10 @@
         <!-- Story panel -->
         <main class="story-panel">
           <header class="story-topbar">
-            <div class="brand-mini">STRIVE HARD</div>
+            <div class="topbar-left">
+              <div class="brand-mini">STRIVE HARD</div>
+              <button id="btn-menu" type="button" class="btn btn-sm btn-ghost topbar-menu">Menu</button>
+            </div>
             <div class="topbar-right">
               <div class="char-chip" id="char-chip" title="Your founder">
                 <span class="char-chip-emoji" id="char-chip-emoji">?</span>
@@ -73,11 +76,6 @@
             </div>
             <div id="choices" class="choices"></div>
           </div>
-
-          <footer class="story-footer">
-            <button id="btn-menu" class="btn btn-sm btn-ghost">Menu</button>
-            <span id="save-toast" class="save-toast" hidden>Progress autosaved</span>
-          </footer>
         </main>
 
         <!-- Phone sidebar -->
@@ -194,6 +192,7 @@
       <div class="modal-card">
         <h3>Pause the Grind</h3>
         <button id="btn-save" class="btn btn-primary btn-block">Save Progress</button>
+        <button id="btn-fullscreen" class="btn btn-ghost btn-block">Fullscreen</button>
         <button id="btn-title" class="btn btn-ghost btn-block">Quit to Title</button>
         <button id="btn-close-menu" class="btn btn-ghost btn-block">Resume</button>
       </div>

@@ -56,13 +56,6 @@ function handleChoice(choice) {
   }
   state = result.state;
   if (result.toast) showToast(result.toast, "good");
-  const toast = document.getElementById("save-toast");
-  if (toast) {
-    toast.hidden = false;
-    setTimeout(() => {
-      toast.hidden = true;
-    }, 1200);
-  }
   refresh();
 
   // "Open the Map / go somewhere" choices use next: null — pop open Map on the iHype
@@ -216,9 +209,47 @@ function bindPhone() {
   });
 }
 
+function isFullscreen() {
+  return !!(document.fullscreenElement || document.webkitFullscreenElement);
+}
+
+function updateFullscreenButton() {
+  const btn = document.getElementById("btn-fullscreen");
+  if (!btn) return;
+  btn.textContent = isFullscreen() ? "Exit Fullscreen" : "Fullscreen";
+}
+
+async function toggleFullscreen() {
+  try {
+    if (isFullscreen()) {
+      const exit = document.exitFullscreen || document.webkitExitFullscreen;
+      if (exit) await exit.call(document);
+    } else {
+      const el = document.documentElement;
+      const req = el.requestFullscreen || el.webkitRequestFullscreen;
+      if (req) {
+        await req.call(el);
+      } else {
+        showToast("Fullscreen not supported in this browser.", "bad");
+        return;
+      }
+    }
+  } catch {
+    // Iframe may block fullscreen; open standalone app as fallback when on site
+    if (window.location.pathname.includes("/strive-hard/") && !window.location.pathname.endsWith("app.html")) {
+      window.open("/strive-hard/app.html", "_blank", "noopener");
+      showToast("Opened fullscreen window.", "good");
+    } else {
+      showToast("Could not enter fullscreen.", "bad");
+    }
+  }
+  updateFullscreenButton();
+}
+
 function bindMenu() {
   const modal = document.getElementById("modal-menu");
   document.getElementById("btn-menu").addEventListener("click", () => {
+    updateFullscreenButton();
     modal.hidden = false;
   });
   document.getElementById("btn-close-menu").addEventListener("click", () => {
@@ -229,12 +260,18 @@ function bindMenu() {
     showToast("Progress saved to this browser.", "good");
     modal.hidden = true;
   });
+  document.getElementById("btn-fullscreen").addEventListener("click", async () => {
+    await toggleFullscreen();
+    // Keep menu open so user can resume; label already updated
+  });
   document.getElementById("btn-title").addEventListener("click", () => {
     modal.hidden = true;
     state = null;
     showScreen("screen-title");
     document.getElementById("btn-continue").hidden = !hasSave();
   });
+  document.addEventListener("fullscreenchange", updateFullscreenButton);
+  document.addEventListener("webkitfullscreenchange", updateFullscreenButton);
 }
 
 function init() {

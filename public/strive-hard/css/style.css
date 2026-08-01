@@ -361,12 +361,23 @@ button {
   z-index: 5;
 }
 
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
 .brand-mini {
   font-family: var(--display);
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.06em;
   color: var(--muted);
+  flex-shrink: 0;
+}
+
+.topbar-menu {
   flex-shrink: 0;
 }
 
@@ -523,19 +534,6 @@ button {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--gold);
-}
-
-.story-footer {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 1.25rem;
-  border-top: 1px solid var(--border);
-}
-
-.save-toast {
-  font-size: 0.8rem;
-  color: var(--green);
 }
 
 /* ---------- Phone ---------- */

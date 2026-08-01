@@ -55,7 +55,7 @@ No backend. No app store. Ship files, hit refresh, strive harder.
 
 ## Try it / source of truth
 
-- **Play:** [/strive-hard/](/strive-hard/) (or [fullscreen app](/strive-hard/app.html))
+- **Play:** [/strive-hard/](/strive-hard/) — use **Menu → Fullscreen** in-game for a larger play surface
 - **This write-up:** you’re reading it
 - **Build process:** Grok Build CLI — same public-shipping loop as Cybertruck Assembly Line, the startup archive, and the rest of the site
 

@@ -1,25 +1,25 @@
 {
-  "ogImage": "/og/startups-stanlee-similar-dokkt.jpg",
+  "ogImage": "/og/startups-skor-flote-cohrtx.jpg",
   "ogImageLatest": "/og/startups-latest.jpg",
-  "ogImageAlt": "Latest Agentic AI Startup News: Stanlee · Similar · Dokkt",
-  "description": "Stanlee ($42M Series A) · Similar ($200M Series B · $2B val) · Dokkt ($38M Series A). Living archive of satirical AI startup funding announcements on Airomatic.",
+  "ogImageAlt": "Latest Agentic AI Startup News: Skor · Flote · Cohrtx",
+  "description": "Skor ($34M Series A) · Flote ($38M Series A) · Cohrtx ($36M Series A). Living archive of satirical AI startup funding announcements on Airomatic.",
   "title": "Agentic AI Startup News",
   "companies": [
     {
-      "companyName": "Stanlee",
-      "round": "$42M Series A",
-      "id": "stanlee-2026-07"
+      "companyName": "Skor",
+      "round": "$34M Series A",
+      "id": "skor-2026-08"
     },
     {
-      "companyName": "Similar",
-      "round": "$200M Series B · $2B val",
-      "id": "similar-2026-07"
-    },
-    {
-      "companyName": "Dokkt",
+      "companyName": "Flote",
       "round": "$38M Series A",
-      "id": "dokkt-2026-07"
+      "id": "flote-2026-08"
+    },
+    {
+      "companyName": "Cohrtx",
+      "round": "$36M Series A",
+      "id": "cohrtx-2026-08"
     }
   ],
-  "generatedAt": "2026-07-30T20:13:51.469Z"
+  "generatedAt": "2026-08-01T21:05:37.806Z"
 }

@@ -1,5 +1,208 @@
 [
   {
+    "id": "millx-2026-08",
+    "date": "2026-08-03",
+    "companyName": "Millx",
+    "headline": "Millx Raises $72M Series B to Industrialize Multi-Agent Software Forges",
+    "round": "$72M Series B",
+    "newsType": "raise",
+    "description": "Founding team shipping a production mill for coding agents—intent intake, parallel merge lanes, and audit trails so engineering orgs stop treating multi-agent sprints as demo theater.",
+    "founderName": "Kai Luo",
+    "founderTitle": "ex-GitHub",
+    "founderQuote": "We do not sell another dashboard of suggestions. We sell closed PRs and shipped services with a trail legal can read.",
+    "investorQuote": "Infrastructure categories mint durable franchises—Millx is becoming the production surface for agent-built software.",
+    "investorName": "Asheem Chandna",
+    "investorFirm": "Greylock",
+    "verticals": [
+      "Dev Tools",
+      "Coding Agents",
+      "Software Forge"
+    ],
+    "hashtags": [
+      "#Millx",
+      "#CodingAgents",
+      "#GrowthRound",
+      "#SoftwareForge",
+      "#AgentBuilt"
+    ],
+    "xPost": "Millx raises $72M Series B. Founding team shipping a production mill for coding agents—intent intake, parallel merge lanes, and audit trails so engineering orgs stop treating multi-agent sprints as demo theater.\n\n\"We do not sell another dashboard of suggestions. We sell closed PRs and shipped services with a trail legal can read.\" — Kai Luo\n\n\"Infrastructure categories mint durable franchises—Millx is becoming the production surface for agent-built software.\" — Asheem Chandna · Greylock\n\n#Millx #CodingAgents #GrowthRound #SoftwareForge #AgentBuilt",
+    "image": "/images/startups/millx-team.jpg"
+  },
+  {
+    "id": "berth-2026-08",
+    "date": "2026-08-03",
+    "companyName": "Berth",
+    "headline": "Berth Raises $58M Series A for Agentic Berth Scheduling and Freight Yard Ops",
+    "round": "$58M Series A",
+    "newsType": "raise",
+    "description": "Yard and berth agents for ports and 3PLs—slot negotiation, dwell reduction, and exception chase that closes physical logistics loops instead of flooding dispatchers with more alerts.",
+    "founderName": "Arjun Joshi",
+    "founderTitle": "MIT dropout / ex-intern Flexport",
+    "founderQuote": "Enterprises do not need fifty routing bots—they need one production surface that owns the berth window end to end.",
+    "investorQuote": "Unit economics only work when the agent absorbs the volume work yard clerks already invented—Berth industrializes that muscle.",
+    "investorName": "Trae Stephens",
+    "investorFirm": "Founders Fund",
+    "verticals": [
+      "Logistics AI",
+      "Physical AI",
+      "Freight Ops"
+    ],
+    "hashtags": [
+      "#Berth",
+      "#LogisticsAI",
+      "#VentureRound",
+      "#PhysicalAI",
+      "#FreightAgents"
+    ],
+    "xPost": "Berth raises $58M Series A. Yard and berth agents for ports and 3PLs—slot negotiation, dwell reduction, and exception chase that closes physical logistics loops instead of flooding dispatchers with more alerts.\n\n\"Enterprises do not need fifty routing bots—they need one production surface that owns the berth window end to end.\" — Arjun Joshi\n\n\"Unit economics only work when the agent absorbs the volume work yard clerks already invented—Berth industrializes that muscle.\" — Trae Stephens · Founders Fund\n\n#Berth #LogisticsAI #VentureRound #PhysicalAI #FreightAgents",
+    "image": "/images/startups/arjun-joshi.jpg"
+  },
+  {
+    "id": "huntr-2026-08",
+    "date": "2026-08-03",
+    "companyName": "Huntr",
+    "headline": "Huntr Raises $45M Series A for Tier-1 Hunt Agents That Close SOC Cases",
+    "round": "$45M Series A",
+    "newsType": "raise",
+    "description": "Investigation agents for AI SOCs—alert triage, hypothesis chains, and containment drafts with immutable evidence so analysts stop living in queue theater.",
+    "founderName": "Pranav Nadkarni",
+    "founderTitle": "IIT Bombay dropout",
+    "founderQuote": "We do not sell another SIEM dashboard. We sell closed cases with a trail that survives partner review.",
+    "investorQuote": "Regulated buyers pay for systems that leave a trail—Huntr turns autonomous hunt into board-defensible production work.",
+    "investorName": "Teddie Wardi",
+    "investorFirm": "Crosspoint Capital Partners",
+    "verticals": [
+      "AI SOC",
+      "Security Ops",
+      "Agentic MDR"
+    ],
+    "hashtags": [
+      "#Huntr",
+      "#AISOC",
+      "#VentureRound",
+      "#SecurityOps",
+      "#HuntAgents"
+    ],
+    "xPost": "Huntr raises $45M Series A. Investigation agents for AI SOCs—alert triage, hypothesis chains, and containment drafts with immutable evidence so analysts stop living in queue theater.\n\n\"We do not sell another SIEM dashboard. We sell closed cases with a trail that survives partner review.\" — Pranav Nadkarni\n\n\"Regulated buyers pay for systems that leave a trail—Huntr turns autonomous hunt into board-defensible production work.\" — Teddie Wardi · Crosspoint Capital Partners\n\n#Huntr #AISOC #VentureRound #SecurityOps #HuntAgents",
+    "image": "/images/startups/pranav-nadkarni.jpg"
+  },
+  {
+    "id": "loopr-2026-08",
+    "date": "2026-08-03",
+    "companyName": "Loopr",
+    "headline": "Loopr Raises $41M Series A as Co-Founders Ship CX Agents That Close Tickets, Not Threads",
+    "round": "$41M Series A",
+    "newsType": "raise",
+    "description": "Co-founded resolution runtime for support and success—policy-aware agents that own the full loop from intake to closed ticket with human escalation only on mandate edges.",
+    "founderName": "Mei Tang & Lucas Reed",
+    "founderTitle": "ex-Zendesk / ex-Intercom",
+    "founderQuote": "One operator oversees what used to take a floor. Loopr is the always-on seat that finishes the work.",
+    "investorQuote": "Copilot revenue is a feature; resolution revenue is a company—Loopr sells closed tickets at computer speed.",
+    "investorName": "Kirsten Green",
+    "investorFirm": "Forerunner Ventures",
+    "verticals": [
+      "Agentic CX",
+      "Customer Support",
+      "Resolution AI"
+    ],
+    "hashtags": [
+      "#Loopr",
+      "#CXAgents",
+      "#VentureRound",
+      "#ResolutionAI",
+      "#ClosedTickets"
+    ],
+    "xPost": "Loopr raises $41M Series A. Co-founded resolution runtime for support and success—policy-aware agents that own the full loop from intake to closed ticket with human escalation only on mandate edges.\n\n\"One operator oversees what used to take a floor. Loopr is the always-on seat that finishes the work.\" — Mei Tang & Lucas Reed\n\n\"Copilot revenue is a feature; resolution revenue is a company—Loopr sells closed tickets at computer speed.\" — Kirsten Green · Forerunner Ventures\n\n#Loopr #CXAgents #VentureRound #ResolutionAI #ClosedTickets",
+    "image": "/images/startups/loopr-duo.jpg"
+  },
+  {
+    "id": "brev-2026-08",
+    "date": "2026-08-03",
+    "companyName": "Brev",
+    "headline": "Brev Raises $32M Series A for Matter Agents That Draft Briefs Worth Filing",
+    "round": "$32M Series A",
+    "newsType": "raise",
+    "description": "Matter-scoped agents for litigation and transactional teams—issue maps, draft briefs, and cite chains with firm-policy gates so associates stop shipping research theater.",
+    "founderName": "Ming Han",
+    "founderTitle": "Stanford dropout",
+    "founderQuote": "Legal work is not a feature race—it is how matter execution will run when every docket has an always-on owner.",
+    "investorQuote": "Boards will fund systems that make agent risk legible—Brev turns brief production into a governed mandate surface.",
+    "investorName": "Josh Kopelman",
+    "investorFirm": "First Round",
+    "verticals": [
+      "LegalTech",
+      "Matter AI",
+      "Litigation Ops"
+    ],
+    "hashtags": [
+      "#Brev",
+      "#MatterAI",
+      "#VentureRound",
+      "#LegalAgents",
+      "#BriefOps"
+    ],
+    "xPost": "Brev raises $32M Series A. Matter-scoped agents for litigation and transactional teams—issue maps, draft briefs, and cite chains with firm-policy gates so associates stop shipping research theater.\n\n\"Legal work is not a feature race—it is how matter execution will run when every docket has an always-on owner.\" — Ming Han\n\n\"Boards will fund systems that make agent risk legible—Brev turns brief production into a governed mandate surface.\" — Josh Kopelman · First Round\n\n#Brev #MatterAI #VentureRound #LegalAgents #BriefOps",
+    "image": "/images/startups/ming-han.jpg"
+  },
+  {
+    "id": "bondr-2026-08",
+    "date": "2026-08-03",
+    "companyName": "Bondr",
+    "headline": "Bondr Closes $30M Extension as Surety Agents Learn Fiduciary Claims Work",
+    "round": "$30M extension",
+    "newsType": "extension",
+    "description": "Returning capital for agentic surety and claims ops—policy graphs, loss narratives, and reserve recommendations with human-in-loop gates and fiduciary duty modeling for non-human adjusters.",
+    "founderName": "Rishi Thatte",
+    "founderTitle": "ex-Guidewire",
+    "founderQuote": "If it cannot survive actuarial review and partner audit, it is a demo. Every reserve move leaves a board-defensible trail.",
+    "investorQuote": "Infrastructure categories mint durable franchises when regulated buyers need an audit surface—Bondr is the claims control plane we re-up for.",
+    "investorName": "Jan Hammer",
+    "investorFirm": "Index Ventures",
+    "verticals": [
+      "Insurtech",
+      "Claims AI",
+      "Surety Ops"
+    ],
+    "hashtags": [
+      "#Bondr",
+      "#ClaimsAI",
+      "#ExtensionRound",
+      "#Insurtech",
+      "#SuretyAgents"
+    ],
+    "xPost": "Bondr closes extension of $30M extension. Returning capital for agentic surety and claims ops—policy graphs, loss narratives, and reserve recommendations with human-in-loop gates and fiduciary duty modeling for non-human adjusters.\n\n\"If it cannot survive actuarial review and partner audit, it is a demo. Every reserve move leaves a board-defensible trail.\" — Rishi Thatte\n\n\"Infrastructure categories mint durable franchises when regulated buyers need an audit surface—Bondr is the claims control plane we re-up for.\" — Jan Hammer · Index Ventures\n\n#Bondr #ClaimsAI #ExtensionRound #Insurtech #SuretyAgents",
+    "image": "/images/startups/rishi-thatte.jpg"
+  },
+  {
+    "id": "unitr-2026-08",
+    "date": "2026-08-03",
+    "companyName": "Unitr",
+    "headline": "Unitr Takes $25M Strategic from Fifth Wall to Automate Multifamily Unit Ops",
+    "round": "$25M strategic",
+    "newsType": "strategic",
+    "description": "Unit-level agents for multifamily operators—lease chase, turnover sequencing, and vendor dispatch with mandate-aware spend so property teams stop drowning in ticket soup.",
+    "founderName": "Ethan Silverman",
+    "founderTitle": "ex-Stripe",
+    "founderQuote": "Autonomy without mandate context is just uncontrolled spend. Unitr keeps unit capital allocation legible to the asset manager.",
+    "investorQuote": "Unit economics only work when agents close the physical loop—turnover, vendors, and collections—not another property dashboard.",
+    "investorName": "Brad Greiwe",
+    "investorFirm": "Fifth Wall",
+    "verticals": [
+      "Proptech",
+      "Multifamily Ops",
+      "Unit Automation"
+    ],
+    "hashtags": [
+      "#Unitr",
+      "#Proptech",
+      "#StrategicRound",
+      "#MultifamilyAI",
+      "#UnitOps"
+    ],
+    "xPost": "Unitr takes strategic $25M strategic. Unit-level agents for multifamily operators—lease chase, turnover sequencing, and vendor dispatch with mandate-aware spend so property teams stop drowning in ticket soup.\n\n\"Autonomy without mandate context is just uncontrolled spend. Unitr keeps unit capital allocation legible to the asset manager.\" — Ethan Silverman\n\n\"Unit economics only work when agents close the physical loop—turnover, vendors, and collections—not another property dashboard.\" — Brad Greiwe · Fifth Wall\n\n#Unitr #Proptech #StrategicRound #MultifamilyAI #UnitOps",
+    "image": "/images/startups/ethan-silverman.jpg"
+  },
+  {
     "id": "skor-2026-08",
     "date": "2026-08-01",
     "companyName": "Skor",

@@ -25,6 +25,13 @@ export function createNewState(characterId) {
     visitedLocations: ["tenderloin"],
     unreadTexts: 2, // roommate + mom
     stats: { ...character.stats },
+    flareup: {
+      liked: [],
+      passed: [],
+      matches: [],
+      // queue order = profile ids remaining to show; null = rebuild from all
+      queue: null,
+    },
   };
 }
 
@@ -46,6 +53,24 @@ export function loadState() {
     if (data.character?.id) {
       const fresh = getCharacter(data.character.id);
       if (fresh) data.character = { ...fresh, ...data.character };
+    }
+    // Migrate older saves
+    if (!data.flareup) {
+      data.flareup = { liked: [], passed: [], matches: [], queue: null };
+    }
+    if (!data.visitedLocations) data.visitedLocations = ["tenderloin"];
+    if (!data.threads) data.threads = buildInitialThreads(data.character);
+    // Ensure FlareUp NPC threads exist
+    for (const id of ["jules", "marisol", "vanessa", "kayla"]) {
+      if (!data.threads[id]) {
+        data.threads[id] = {
+          npcId: id,
+          unread: false,
+          locked: true,
+          messages: [],
+          replyOptions: [],
+        };
+      }
     }
     return data;
   } catch {

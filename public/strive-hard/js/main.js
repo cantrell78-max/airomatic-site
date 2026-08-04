@@ -13,6 +13,8 @@ import {
   postSelfie,
   sendTextReply,
   markThreadRead,
+  flareupSwipe,
+  flareupResetDeck,
 } from "./game.js";
 import {
   showScreen,
@@ -27,6 +29,7 @@ import {
   renderTextThreads,
   renderTextChat,
   renderSelfiePresets,
+  renderFlareUp,
   updatePhoneClock,
 } from "./ui.js";
 
@@ -45,7 +48,34 @@ function refresh() {
     const chatHidden = document.getElementById("text-chat").hidden;
     if (chatHidden) renderTextThreads(state, handleOpenThread);
   }
+  if (active?.id === "phone-flareup") renderFlareUp(state, flareHandlers);
   updatePhoneClock();
+}
+
+const flareHandlers = {
+  onLike: () => handleFlareSwipe("like"),
+  onPass: () => handleFlareSwipe("pass"),
+  onReset: () => {
+    const result = flareupResetDeck(state);
+    state = result.state;
+    if (result.toast) showToast(result.toast, "good");
+    renderFlareUp(state, flareHandlers);
+    renderPhoneHome(state);
+    updateStats(state);
+  },
+};
+
+function handleFlareSwipe(action) {
+  const result = flareupSwipe(state, action);
+  if (result.error) {
+    showToast(result.error, "bad");
+    return;
+  }
+  state = result.state;
+  if (result.toast) showToast(result.toast, result.matched ? "good" : "");
+  renderFlareUp(state, flareHandlers);
+  renderPhoneHome(state);
+  updateStats(state);
 }
 
 function handleChoice(choice) {
@@ -65,6 +95,7 @@ function handleChoice(choice) {
     if (app === "map") renderMap(state, handleTravel);
     if (app === "x") renderXApp(state);
     if (app === "texts") renderTextThreads(state, handleOpenThread);
+    if (app === "flareup") renderFlareUp(state, flareHandlers);
   }
 }
 
@@ -167,6 +198,7 @@ function bindPhone() {
       if (app === "x") renderXApp(state);
       if (app === "map") renderMap(state, handleTravel);
       if (app === "texts") renderTextThreads(state, handleOpenThread);
+      if (app === "flareup") renderFlareUp(state, flareHandlers);
       if (app === "selfie") {
         document.getElementById("selfie-caption").value = "";
         renderSelfiePresets((preset) => {

@@ -1,8 +1,15 @@
 import { CHARACTERS } from "./data/characters.js";
 import { LOCATIONS, isLocationUnlocked, getLocation } from "./data/locations.js";
-import { resolveText, choiceDisabled, npcName, npcEmoji } from "./game.js";
+import {
+  resolveText,
+  choiceDisabled,
+  npcName,
+  npcEmoji,
+  getFlareupCurrent,
+} from "./game.js";
 import { formatFollowers } from "./state.js";
 import { getScene } from "./data/scenarios.js";
+import { getFlareProfile } from "./data/flareup.js";
 
 /** @typedef {import('./state.js').createNewState extends (...a:any)=>infer R ? R : any} GameState */
 
@@ -69,6 +76,13 @@ export function updateStats(state) {
 
 export function renderScene(state, onChoice) {
   const scene = getScene(state.sceneId);
+  const storyBody = document.querySelector(".story-body");
+  const sceneArt = document.getElementById("scene-art");
+  const isCorgi = state.locationId === "corgi-cafe";
+  if (storyBody) storyBody.classList.toggle("corgi-seizure", isCorgi);
+  if (sceneArt) sceneArt.classList.toggle("corgi-seizure-bar", isCorgi);
+  document.body.classList.toggle("at-corgi-cafe", isCorgi);
+
   if (!scene) {
     document.getElementById("scene-title").textContent = "404: Scene not found";
     document.getElementById("scene-text").textContent =
@@ -130,6 +144,83 @@ export function renderPhoneHome(state) {
   } else {
     badgeTexts.hidden = true;
   }
+
+  const badgeFlare = document.getElementById("badge-flareup");
+  if (badgeFlare) {
+    const matches = state.flareup?.matches?.length || 0;
+    const liked = state.flareup?.liked?.length || 0;
+    // Nudge players who haven't opened the app yet
+    if (matches > 0) {
+      badgeFlare.hidden = false;
+      badgeFlare.textContent = String(matches);
+    } else if (!liked) {
+      badgeFlare.hidden = false;
+      badgeFlare.textContent = "!";
+    } else {
+      badgeFlare.hidden = true;
+    }
+  }
+}
+
+export function renderFlareUp(state, { onLike, onPass, onReset }) {
+  const deck = document.getElementById("flare-deck");
+  const empty = document.getElementById("flare-empty");
+  const matchesEl = document.getElementById("flare-matches");
+  if (!deck) return;
+
+  const { profile, remaining, matches } = getFlareupCurrent(state);
+
+  if (matchesEl) {
+    matchesEl.textContent =
+      matches.length > 0
+        ? `Matches: ${matches.map((id) => getFlareProfile(id)?.name || id).join(", ")}`
+        : "Matches: none yet — standards or algorithm, hard to say";
+  }
+
+  if (!profile) {
+    deck.hidden = true;
+    if (empty) {
+      empty.hidden = false;
+      empty.innerHTML = `
+        <p>No profiles left in the Bay (for now).</p>
+        <p class="flare-empty-sub">You can refresh the deck — matched people stay matched.</p>
+        <button type="button" class="btn btn-primary btn-block" id="btn-flare-reset">Refresh deck</button>
+      `;
+      const btn = document.getElementById("btn-flare-reset");
+      if (btn) btn.onclick = () => onReset();
+    }
+    return;
+  }
+
+  if (empty) empty.hidden = true;
+  deck.hidden = false;
+  deck.innerHTML = `
+    <article class="flare-card">
+      <div class="flare-card-hero">
+        <span class="flare-emoji">${profile.emoji}</span>
+        <div class="flare-card-title">
+          <strong>${escapeHtml(profile.name)}</strong><span class="flare-age">${profile.age}</span>
+          <div class="flare-job">${escapeHtml(profile.job)}</div>
+          <div class="flare-dist">${escapeHtml(profile.distance)}</div>
+        </div>
+      </div>
+      <p class="flare-tagline">${escapeHtml(profile.tagline)}</p>
+      <div class="flare-badges">
+        ${(profile.badges || []).map((b) => `<span class="flare-badge">${escapeHtml(b)}</span>`).join("")}
+      </div>
+      <p class="flare-bio">${escapeHtml(profile.bio)}</p>
+      <div class="flare-interests">
+        ${(profile.interests || []).map((i) => `<span class="flare-interest">${escapeHtml(i)}</span>`).join("")}
+      </div>
+      <p class="flare-remaining">${remaining} left in stack</p>
+    </article>
+    <div class="flare-actions">
+      <button type="button" class="flare-btn flare-pass" id="btn-flare-pass" title="Pass">✕</button>
+      <button type="button" class="flare-btn flare-like" id="btn-flare-like" title="Like">♥</button>
+    </div>
+  `;
+  document.getElementById("btn-flare-pass").onclick = () => onPass();
+  document.getElementById("btn-flare-like").onclick = () => onLike();
 }
 
 export function renderXApp(state) {

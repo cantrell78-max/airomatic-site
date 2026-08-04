@@ -8,6 +8,7 @@ import {
   saveState,
 } from "./state.js";
 import { NPCS } from "./data/messages.js";
+import { FLAREUP_PROFILES, getFlareProfile } from "./data/flareup.js";
 
 /**
  * Resolve scene text (string or function)
@@ -70,21 +71,7 @@ export function applyChoice(state, choice) {
 
   if (choice.next === null) {
     // Free roam — stay on a hub scene for current location
-    const hub = LOCATION_SCENES[next.locationId] || "home_hub";
-    // Prefer hub variants
-    const hubId =
-      next.locationId === "tenderloin"
-        ? "home_hub"
-        : next.locationId === "vibe-cafe"
-          ? "vibe_hub"
-          : next.locationId === "yc-school"
-            ? "yc_hub"
-            : next.locationId === "stanford"
-              ? "stanford_hub"
-              : next.locationId === "garry-sauna"
-                ? "sauna_hub"
-                : hub;
-    next.sceneId = hubId;
+    next.sceneId = hubSceneFor(next.locationId);
   } else if (choice.next) {
     next.sceneId = choice.next;
     const scene = getScene(choice.next);
@@ -127,6 +114,18 @@ function runDayHooks(state) {
   return next;
 }
 
+function hubSceneFor(locationId) {
+  const hubs = {
+    tenderloin: "home_hub",
+    "vibe-cafe": "vibe_hub",
+    "corgi-cafe": "corgi_hub",
+    "yc-school": "yc_hub",
+    stanford: "stanford_hub",
+    "garry-sauna": "sauna_hub",
+  };
+  return hubs[locationId] || LOCATION_SCENES[locationId] || "home_hub";
+}
+
 /**
  * Travel via map
  */
@@ -157,12 +156,13 @@ export function travelTo(state, locationId) {
   }
 
   const sceneId = LOCATION_SCENES[locationId] || "home_hub";
-  // If already visited location hubs, use hub for home/cafe etc. first visit = arrive
   const visited = state.visitedLocations.includes(locationId);
   if (visited && locationId === "tenderloin") {
     next.sceneId = "home_hub";
   } else if (visited && locationId === "vibe-cafe" && state.flags.hasMVP) {
     next.sceneId = "vibe_hub";
+  } else if (visited && locationId === "corgi-cafe" && state.flags.survivedCorgiCafe) {
+    next.sceneId = "corgi_hub";
   } else {
     next.sceneId = sceneId;
   }
@@ -183,6 +183,131 @@ export function travelTo(state, locationId) {
     state: next,
     toast: `Arrived: ${loc.name}`,
   };
+}
+
+/** Ensure flareup state shape */
+function ensureFlareup(state) {
+  if (state.flareup) return state;
+  return {
+    ...state,
+    flareup: { liked: [], passed: [], matches: [], queue: null },
+  };
+}
+
+function buildFlareQueue(flare) {
+  const done = new Set([...(flare.liked || []), ...(flare.passed || [])]);
+  if (flare.queue && flare.queue.length) {
+    return flare.queue.filter((id) => !done.has(id));
+  }
+  return FLAREUP_PROFILES.map((p) => p.id).filter((id) => !done.has(id));
+}
+
+/**
+ * Next profile to show on FlareUp (read-only view helper).
+ */
+export function getFlareupCurrent(state) {
+  const s = ensureFlareup(state);
+  const queue = buildFlareQueue(s.flareup);
+  const currentId = queue[0] || null;
+  return {
+    profile: currentId ? getFlareProfile(currentId) : null,
+    remaining: queue.length,
+    matches: s.flareup.matches || [],
+  };
+}
+
+/**
+ * Like or pass on current FlareUp profile.
+ * action: 'like' | 'pass'
+ */
+export function flareupSwipe(state, action) {
+  let s = ensureFlareup(state);
+  const queue = buildFlareQueue(s.flareup);
+  const profile = queue[0] ? getFlareProfile(queue[0]) : null;
+  if (!profile) {
+    return { state: s, error: "No more profiles. The Bay is finite. Refresh tomorrow (or never)." };
+  }
+
+  let flare = {
+    ...s.flareup,
+    liked: [...(s.flareup.liked || [])],
+    passed: [...(s.flareup.passed || [])],
+    matches: [...(s.flareup.matches || [])],
+    queue: queue.slice(1),
+  };
+
+  let next = { ...s, flareup: flare, flags: { ...s.flags } };
+  let toast = "";
+  let matched = false;
+
+  if (action === "pass") {
+    flare.passed.push(profile.id);
+    next.flareup = flare;
+    toast = `Passed on ${profile.name}. The algorithm notes your taste.`;
+  } else {
+    flare.liked.push(profile.id);
+    if (profile.effectsOnLike) {
+      next = applyEffects(next, profile.effectsOnLike);
+    }
+    let chance = profile.matchChance ?? 0.3;
+    if (typeof profile.matchBonus === "function") {
+      chance += profile.matchBonus(next);
+    }
+    chance = Math.max(0, Math.min(1, chance));
+    matched = Math.random() < chance;
+
+    // Kayla never matches from the app (story only)
+    if (profile.id === "kayla_gtm") matched = false;
+
+    if (matched) {
+      flare.matches.push(profile.id);
+      if (profile.effectsOnMatch) {
+        next = applyEffects(next, profile.effectsOnMatch);
+      }
+      if (profile.unlockThread) {
+        next = unlockThread(next, profile.unlockThread.npcId, profile.unlockThread.text);
+      }
+      toast = profile.matchMessage || `It's a match with ${profile.name}!`;
+    } else {
+      toast = profile.noMatchMessage || `${profile.name} is not feeling the funnel.`;
+      if (profile.id === "kayla_gtm" && !next.flags.kaylaRejectedText) {
+        next = applyEffects(next, { flags: { kaylaRejectedText: true } });
+        next = unlockThread(
+          next,
+          "kayla",
+          "saw you liked me on FlareUp. cute. my calendar is closed-won through Q4. try again after you have distribution 🐶"
+        );
+        toast += " · New text from Kayla (it's a no)";
+      }
+    }
+    next.flareup = flare;
+  }
+
+  saveState(next);
+  return { state: next, toast, matched, profile };
+}
+
+/** Reset FlareUp deck (show profiles again after all swiped) */
+export function flareupResetDeck(state) {
+  let s = ensureFlareup(state);
+  const matches = s.flareup.matches || [];
+  // Keep matches/likes history but rebuild queue from non-matched so you can re-like? 
+  // Better: only reshuffle people you passed; matched stay done; liked non-match can reappear
+  const liked = s.flareup.liked || [];
+  const matchedSet = new Set(matches);
+  const queue = FLAREUP_PROFILES.map((p) => p.id).filter((id) => !matchedSet.has(id));
+  const next = {
+    ...s,
+    flareup: {
+      ...s.flareup,
+      // clear passes so they reappear; keep likes that matched
+      passed: [],
+      liked: liked.filter((id) => matchedSet.has(id)),
+      queue,
+    },
+  };
+  saveState(next);
+  return { state: next, toast: "Deck refreshed. Hope is a renewable resource." };
 }
 
 export function postSelfie(state, caption) {

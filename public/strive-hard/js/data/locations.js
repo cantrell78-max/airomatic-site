@@ -22,6 +22,16 @@ export const LOCATIONS = [
     tags: ["social", "work"],
   },
   {
+    id: "corgi-cafe",
+    name: "Corgi Café",
+    short: "Corgi Café",
+    emoji: "🐶",
+    desc: "Official-adjacent hangout of the Corgi cult. Neon. Merch. Medical-grade branding.",
+    unlockDay: 1,
+    energyCost: 1,
+    tags: ["social", "surreal", "corgi"],
+  },
+  {
     id: "hackathon",
     name: "All-Nighter Hackathon",
     short: "Hackathon",

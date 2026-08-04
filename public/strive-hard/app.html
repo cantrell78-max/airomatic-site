@@ -106,6 +106,11 @@
                   <span class="app-label">Texts</span>
                   <span id="badge-texts" class="app-badge" hidden>0</span>
                 </button>
+                <button class="app-icon" data-app="flareup" title="FlareUp Dating">
+                  <span class="app-glyph app-flare">🔥</span>
+                  <span class="app-label">FlareUp</span>
+                  <span id="badge-flareup" class="app-badge" hidden>!</span>
+                </button>
                 <button class="app-icon" data-app="selfie" title="Camera">
                   <span class="app-glyph">📸</span>
                   <span class="app-label">Selfie</span>
@@ -165,6 +170,19 @@
                 <div id="chat-messages" class="chat-messages"></div>
                 <div id="chat-replies" class="chat-replies"></div>
               </div>
+            </div>
+
+            <!-- FlareUp dating -->
+            <div id="phone-flareup" class="phone-screen">
+              <div class="app-header flare-header">
+                <button class="app-back" data-back>‹</button>
+                <span class="app-title">FlareUp</span>
+                <span class="app-action-spacer"></span>
+              </div>
+              <p class="flare-hint">SF dating. Every profile is a pitch. Swipe like your cap table depends on it.</p>
+              <p id="flare-matches" class="flare-matches-line"></p>
+              <div id="flare-deck" class="flare-deck"></div>
+              <div id="flare-empty" class="flare-empty" hidden></div>
             </div>
 
             <!-- Selfie / compose post -->

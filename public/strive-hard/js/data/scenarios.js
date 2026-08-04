@@ -128,8 +128,8 @@ export const SCENES = {
     text:
       `Here's the game, founder:\n\n` +
       `Your **scoreboard is X** — followers, engagement, the dopamine that VCs mistake for traction.\n\n` +
-      `Your **weapon is the iHype** (yes, that's a Pear product). Open the **Map** to roam the Bay. Check **Texts** when love, lust, or limited partners slide in. Post **Selfies** when the vibes demand content.\n\n` +
-      `Start small. Vibe Code Café. A hackathon. Eventually: Startup School, Stanford, a certain VC's sauna, and a yacht that is absolutely not a metaphor.\n\n` +
+      `Your **weapon is the iHype** (yes, that's a Pear product). Open the **Map** to roam the Bay. Check **Texts** when love, lust, or limited partners slide in. Swipe **FlareUp** when loneliness looks like a growth channel. Post **Selfies** when the vibes demand content.\n\n` +
+      `Start small. Vibe Code Café. The illegal-neon **Corgi Café**. A hackathon. Eventually: Startup School, Stanford, a certain VC's sauna, and a yacht that is absolutely not a metaphor.\n\n` +
       `You have $47 and a face for… something.`,
     choices: [
       {
@@ -138,9 +138,20 @@ export const SCENES = {
         next: "vibe_arrive",
       },
       {
+        text: "Enter Corgi Café. Ignore the medical warnings.",
+        hint: "Brand. Merch. Mild neurological events.",
+        effects: { locationId: "corgi-cafe" },
+        next: "corgi_arrive",
+      },
+      {
         text: "Walk into a hackathon like you own the WiFi.",
         effects: { locationId: "hackathon" },
         next: "hack_arrive",
+      },
+      {
+        text: "Open FlareUp. Touch grass (metaphorically).",
+        openApp: "flareup",
+        next: "home_hub",
       },
       {
         text: "Stay home. \"Polish the deck.\" (Scroll X.)",
@@ -155,11 +166,22 @@ export const SCENES = {
     id: "home_hub",
     title: "Studio HQ",
     locationId: "tenderloin",
-    text: (s) =>
-      `Back in the box you call an apartment. Day ${s.day}. ` +
-      `@${s.character.handle} sits at ${s.followers} followers.\n\n` +
-      `The roommate is doing yoga on a stolen yoga mat while on a \"strategy call.\"\n\n` +
-      `What now? (Use the Map on your phone, or pick a move.)`,
+    text: (s) => {
+      const flare = s.flareup?.matches?.length
+        ? `\n\nFlareUp: **${s.flareup.matches.length}** match(es). Your dating life has product-market fit (barely).`
+        : `\n\nYour iHype has a new app: **FlareUp** — SF dating, but the swipe is a pitch.`;
+      const corgi = s.flags.survivedCorgiCafe
+        ? `\n\nYou still see orange spots when you blink. Corgi Café did that.`
+        : `\n\nThere's a neon dog on the Map you've been avoiding: **Corgi Café**.`;
+      return (
+        `Back in the box you call an apartment. Day ${s.day}. ` +
+        `@${s.character.handle} sits at ${s.followers} followers.\n\n` +
+        `The roommate is doing yoga on a stolen yoga mat while on a "strategy call."` +
+        flare +
+        corgi +
+        `\n\nWhat now? (Use the Map / FlareUp on your phone, or pick a move.)`
+      );
+    },
     choices: [
       {
         text: "Post a \"still grinding\" selfie from the mattress empire.",
@@ -170,6 +192,16 @@ export const SCENES = {
           reposts: 1,
         },
         next: "home_hub",
+      },
+      {
+        text: "Open FlareUp and touch grass (figuratively).",
+        hint: "Dating app on the iHype →",
+        openApp: "flareup",
+        next: "home_hub",
+      },
+      {
+        text: "Doomscroll founder drama instead of healing.",
+        next: "home_scroll",
       },
       {
         text: "Sleep. Let the markets cook overnight.",
@@ -228,6 +260,14 @@ export const SCENES = {
       if (s.day >= 4) {
         extra =
           "\n\n**Unlock:** The SUS Yacht afterparty is on someone's calendar. Not yours. Yet.";
+      }
+      if (s.flags.survivedCorgiCafe && s.day >= 2) {
+        extra +=
+          "\n\n**Side effect:** You dreamt in Corgi orange. A plush dog asked for your TAM.";
+      }
+      if ((s.flareup?.matches?.length || 0) > 0) {
+        extra +=
+          "\n\n**FlareUp:** Someone liked you back. That's either love or a growth hack.";
       }
       return (
         `You sleep four hours and call it recovery.\n\n` +
@@ -1146,6 +1186,313 @@ export const SCENES = {
     ],
   },
 
+  // ─── Corgi Café (surreal seizure-branding experience) ─────
+  corgi_arrive: {
+    id: "corgi_arrive",
+    title: "Corgi Café — Please Sign the Waiver",
+    locationId: "corgi-cafe",
+    text: (s) =>
+      `The door is shaped like a corgi. Not metaphorically. Your shoulder hits an ear.\n\n` +
+      `Inside: colors that should be illegal in twelve states. Neon orange. Safety-vest yellow. ` +
+      `A purple so aggressive it files its own patents. The walls pulse at roughly 12Hz — ` +
+      `a barista says it's "on-brand for retention."\n\n` +
+      `A sign: **WELCOME TO THE CORGI ECOSYSTEM** · *Merch is the product. Coffee is the Trojan horse.*\n\n` +
+      `Someone in a full dog onesie hands you a lanyard before you consent. ` +
+      `It says **FOUNDER (PRE-BELIEF)**.\n\n` +
+      `@${s.character.handle}, your pupils are already negotiating a term sheet with the lighting.`,
+    choices: [
+      {
+        text: "Order a \"Series A Cold Brew\" and accept your fate.",
+        hint: "Everything is a pitch. Even the ice.",
+        cost: { cash: 9 },
+        effects: { cash: -9, flags: { enteredCorgiCafe: true }, clout: 1 },
+        next: "corgi_menu",
+      },
+      {
+        text: "Try to sit in a quiet corner. There is no quiet corner.",
+        effects: { flags: { enteredCorgiCafe: true } },
+        next: "corgi_pitch_floor",
+      },
+      {
+        text: "Film a seizure-core selfie for the timeline.",
+        effects: { followers: 45, engagement: 18, clout: 3, flags: { enteredCorgiCafe: true, corgiContent: true } },
+        post: {
+          text: "inside Corgi Café. the brand guidelines just violated the Geneva Convention. still posting. 🐶⚡",
+          likes: 90,
+          reposts: 22,
+        },
+        next: "corgi_pitch_floor",
+      },
+      {
+        text: "Back out slowly. Protect the optic nerve.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
+  corgi_menu: {
+    id: "corgi_menu",
+    title: "The Menu Is a Deck",
+    locationId: "corgi-cafe",
+    text:
+      `Your drink arrives in a cup printed with a hockey-stick graph. The straw is branded. The napkin has a QR code to a waitlist for a waitlist.\n\n` +
+      `A floating hologram of a corgi (why) says: **"HAVE YOU THOUGHT ABOUT DISTRIBUTION?"**\n\n` +
+      `The person next to you is pitching a stranger on "Corgi-as-a-Service." ` +
+      `The stranger is also pitching. They are locked in mutual GTM combat. Nobody is drinking.\n\n` +
+      `Your cold brew tastes like ambition and orange dye #5.`,
+    choices: [
+      {
+        text: "Ask what Corgi actually does.",
+        hint: "Brave. Foolish. Content.",
+        next: "corgi_what_is",
+      },
+      {
+        text: "Join the mutual pitch. Speak only in acronyms.",
+        effects: { shameless: 2, clout: 2, engagement: 8 },
+        next: "corgi_pitch_floor",
+      },
+      {
+        text: "Steal a sticker pack and leave a review in your head.",
+        effects: { flags: { stoleCorgiStickers: true }, clout: 1 },
+        next: "corgi_hub",
+      },
+    ],
+  },
+
+  corgi_what_is: {
+    id: "corgi_what_is",
+    title: "What Is Corgi (Nobody Knows)",
+    locationId: "corgi-cafe",
+    text:
+      `Three employees answer at once.\n\n` +
+      `**Employee A:** "We're a lifestyle operating system for dogs who code."\n` +
+      `**Employee B:** "We're infrastructure for joy-as-a-service, dog-shaped."\n` +
+      `**Employee C:** "We're what happens when a Series B has a mascot and no moat."\n\n` +
+      `The lights strobe Corgi-orange → venture-violet → ambulance-yellow. ` +
+      `A mural of a corgi in a Patagonia vest blinks. You blink back. The mural wins.\n\n` +
+      `Someone presses a plush corgi into your hands. It whispers (speaker in the ear): ` +
+      `"Have you considered an enterprise seat?"`,
+    choices: [
+      {
+        text: "\"I'm in. Take my email. Take my blood type.\"",
+        effects: { flags: { corgiWaitlist: true, survivedCorgiCafe: true }, followers: 20, clout: 2 },
+        post: {
+          text: "joined the Corgi waitlist. don't know what it is. that's product-market fit baby",
+          likes: 35,
+          reposts: 8,
+        },
+        next: "corgi_deep_end",
+      },
+      {
+        text: "Politely say you're allergic to brand.",
+        effects: { clout: 1, flags: { survivedCorgiCafe: true } },
+        next: "corgi_deep_end",
+      },
+      {
+        text: "Challenge the plush to a debate on unit economics.",
+        effects: { shameless: 1, clout: 3, flags: { survivedCorgiCafe: true } },
+        next: "corgi_deep_end",
+      },
+    ],
+  },
+
+  corgi_pitch_floor: {
+    id: "corgi_pitch_floor",
+    title: "The Pitch Floor (No Escape)",
+    locationId: "corgi-cafe",
+    text:
+      `You cannot walk five feet without a soft close.\n\n` +
+      `A guy in LED dog ears: "We're not a café, we're a top-of-funnel experience."\n` +
+      `A woman with a clipboard: "Quick — if Corgi were a dating app, would you swipe right on yourself?"\n` +
+      `A child (intern?): "Synergy." He walks away. He has said enough.\n\n` +
+      `The floor is a giant touchscreen heat-map of "engagement." Someone has spilled oat milk on the Bay Area. ` +
+      `It looks like a successful launch.\n\n` +
+      `Your vision tunnels into pure brand. You hear a distant bark that might be a KPI.`,
+    choices: [
+      {
+        text: "Pitch THEM on your startup using only dog metaphors.",
+        effects: { clout: 4, followers: 30, engagement: 12, flags: { corgiPitchWin: true, survivedCorgiCafe: true } },
+        post: {
+          text: "just pitched at Corgi Café using only corgi metaphors. they asked for a deck. the deck is a dog. 🐶",
+          likes: 70,
+          reposts: 15,
+        },
+        next: "corgi_deep_end",
+      },
+      {
+        text: "Hide in the bathroom. The bathroom has a pitch.",
+        hint: "QR code on the mirror. Of course.",
+        effects: { flags: { survivedCorgiCafe: true } },
+        next: "corgi_bathroom",
+      },
+      {
+        text: "Buy merch to end the conversation ($28 hoodie).",
+        cost: { cash: 28 },
+        effects: { cash: -28, flags: { corgiMerch: true, survivedCorgiCafe: true }, clout: 2, followers: 15 },
+        next: "corgi_hub",
+      },
+    ],
+  },
+
+  corgi_bathroom: {
+    id: "corgi_bathroom",
+    title: "Restroom = Growth Loop",
+    locationId: "corgi-cafe",
+    text:
+      `The mirror asks you to rate your visit out of NPS.\n\n` +
+      `The soap dispenser says **WASH · RINSE · REFER**.\n` +
+      `The paper towels are printed with case studies.\n\n` +
+      `Under the stall door, a hand slides you a sticker: ` +
+      `**"I SURVIVED THE FUNNEL."**\n\n` +
+      `You feel oddly loyal. This is how cults and coffee shops work.`,
+    choices: [
+      {
+        text: "Leave a 10 NPS. Become the product.",
+        effects: { flags: { corgiNps10: true, survivedCorgiCafe: true }, engagement: 5 },
+        next: "corgi_deep_end",
+      },
+      {
+        text: "Leave a 6 and write a novel in the comment box.",
+        effects: { shameless: 1, flags: { survivedCorgiCafe: true } },
+        next: "corgi_hub",
+      },
+    ],
+  },
+
+  corgi_deep_end: {
+    id: "corgi_deep_end",
+    title: "Brand Hypnosis (Optional, Mandatory)",
+    locationId: "corgi-cafe",
+    text: (s) =>
+      `The lights go full rave-for-dogs. A short film plays on every surface: ` +
+      `corgis in hoodies shipping code, corgis on yachts, a corgi closing a seed round with a paw print.\n\n` +
+      `A voiceover: "Corgi isn't a company. Corgi is a feeling you can invoice."\n\n` +
+      `You come to on a beanbag that smells like new vinyl and venture debt. ` +
+      `Someone has put a temporary tattoo of a corgi on your wrist.\n\n` +
+      (s.flags.corgiWaitlist
+        ? `You are on seventeen waitlists. Your inbox will never recover.\n\n`
+        : `You escaped the waitlist. Barely.\n\n`) +
+      `Outside, San Francisco looks grayscale. Your eyes need a detox that doesn't exist.`,
+    choices: [
+      {
+        text: "Post: \"Corgi Café changed me (neurologically).\"",
+        effects: { followers: 40, engagement: 15, clout: 2, flags: { survivedCorgiCafe: true } },
+        post: {
+          text: "left Corgi Café seeing sounds. if your café doesn't induce mild synesthesia is it even GTM?",
+          likes: 110,
+          reposts: 28,
+        },
+        next: "corgi_hub",
+      },
+      {
+        text: "Find the exit like a traumatized raccoon.",
+        effects: { flags: { survivedCorgiCafe: true } },
+        next: "corgi_hub",
+      },
+      {
+        text: "Ask if Kayla from GTM is here (FlareUp made you weak).",
+        require: (s) => (s.flags.likedKayla ? true : "Like Kayla on FlareUp first"),
+        effects: { flags: { askedKaylaAtCorgi: true, survivedCorgiCafe: true } },
+        next: "corgi_kayla",
+      },
+    ],
+  },
+
+  corgi_kayla: {
+    id: "corgi_kayla",
+    title: "Kayla Sighting (Unverified)",
+    locationId: "corgi-cafe",
+    text:
+      `You ask three people. All of them are named something adjacent to growth.\n\n` +
+      `Finally: a woman who matches the FlareUp photos — lanyard, perfect hair, eyes that convert.\n\n` +
+      `"Hi!" she says, already mid-funnel. "Are you in our ICP? What's your ACV? Do you have budget this quarter?"\n\n` +
+      `You mention the dating app. She blinks in a way that says your pipeline is unclean.\n\n` +
+      `"FlareUp is for pipeline hygiene on weekends," she says. "I only close enterprise. Emotionally."\n\n` +
+      `She hands you a sticker and vanishes into a cloud of orange light. ` +
+      `You gain nothing except a story and a slight tremor.`,
+    choices: [
+      {
+        text: "Post about almost meeting a Corgi GTM in the wild.",
+        effects: { followers: 25, engagement: 10, shameless: 1 },
+        post: {
+          text: "almost closed a date with Corgi GTM. she asked for my ACV. I gave her my Venmo. different sport.",
+          likes: 55,
+          reposts: 11,
+        },
+        messages: [
+          {
+            npcId: "kayla",
+            text: "please don't put me in content without a mutual NDAs and a brand review. also you're still not ICP. 🐶",
+            unlock: true,
+          },
+        ],
+        next: "corgi_hub",
+      },
+      {
+        text: "Internalize the rejection as product feedback.",
+        effects: { clout: 1 },
+        next: "corgi_hub",
+      },
+    ],
+  },
+
+  corgi_hub: {
+    id: "corgi_hub",
+    title: "Still at Corgi Café (Why)",
+    locationId: "corgi-cafe",
+    text: (s) =>
+      `The colors have not calmed down. Your skeleton is vibrating at brand frequency.\n\n` +
+      `A chalkboard lists today's specials: **PITCH LATTE · RETENTION MATCHA · EQUITY ESPRESSO (COMPED IF YOU CRY)**.\n\n` +
+      (s.flags.corgiMerch ? `You're wearing the hoodie. You are the billboard now.\n\n` : "") +
+      `You can leave. Leaving is free. Staying costs your retinas.`,
+    choices: [
+      {
+        text: "One more lap of the pitch floor.",
+        next: "corgi_pitch_floor",
+      },
+      {
+        text: "Buy a \"I Closed My Eyes and Opened My Heart (and Wallet)\" pin ($6).",
+        cost: { cash: 6 },
+        effects: { cash: -6, clout: 1, followers: 5 },
+        next: "corgi_hub",
+      },
+      {
+        text: "Flee to the Map before the walls recruit you.",
+        next: null,
+      },
+      {
+        text: "Go home and let your cones and rods file a complaint.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
+  // ─── FlareUp-adjacent story beat ───────────────────────────
+  flare_afterglow: {
+    id: "flare_afterglow",
+    title: "Dating App Hangover",
+    locationId: "tenderloin",
+    text: (s) => {
+      const n = s.flareup?.matches?.length || 0;
+      return (
+        `You put the phone down. The ceiling stares back.\n\n` +
+        (n
+          ? `You have **${n}** FlareUp match${n === 1 ? "" : "es"}. ` +
+            `Somewhere in the Bay, someone thinks you're a viable long-term strategy.\n\n`
+          : `Zero matches. The algorithm of love has a strict funnel.\n\n`) +
+        `Your roommate yells from the other room: "STOP SIGHING, IT'S KILLING MY CALL."`
+      );
+    },
+    choices: [
+      {
+        text: "Back to the grind.",
+        next: "home_hub",
+      },
+    ],
+  },
+
   // ─── Generic locked / travel ───────────────────────────────
   travel: {
     id: "travel",
@@ -1164,6 +1511,7 @@ export function getScene(id) {
 export const LOCATION_SCENES = {
   tenderloin: "home_hub",
   "vibe-cafe": "vibe_arrive",
+  "corgi-cafe": "corgi_arrive",
   hackathon: "hack_arrive",
   "yc-school": "yc_arrive",
   stanford: "stanford_arrive",

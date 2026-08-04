@@ -52,6 +52,38 @@ export const NPCS = {
     gender: "unknown",
     spicy: false,
   },
+  jules: {
+    id: "jules",
+    name: "Jules",
+    emoji: "🌙",
+    role: "FlareUp match · vibes ops",
+    gender: "fluid",
+    spicy: false,
+  },
+  marisol: {
+    id: "marisol",
+    name: "Marisol",
+    emoji: "👩‍👧",
+    role: "FlareUp match · single mom",
+    gender: "female",
+    spicy: false,
+  },
+  vanessa: {
+    id: "vanessa",
+    name: "Vanessa",
+    emoji: "🍷",
+    role: "FlareUp match · ready to settle",
+    gender: "female",
+    spicy: false,
+  },
+  kayla: {
+    id: "kayla",
+    name: "Kayla (Corgi GTM)",
+    emoji: "🐶",
+    role: "Unreachable FlareUp crush",
+    gender: "female",
+    spicy: false,
+  },
 };
 
 /**
@@ -153,6 +185,17 @@ export function buildInitialThreads(character) {
     messages: [],
     replyOptions: [],
   };
+
+  // FlareUp matches unlock these later
+  for (const id of ["jules", "marisol", "vanessa", "kayla"]) {
+    threads[id] = {
+      npcId: id,
+      unread: false,
+      locked: true,
+      messages: [],
+      replyOptions: [],
+    };
+  }
 
   return threads;
 }

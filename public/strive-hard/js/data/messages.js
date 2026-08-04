@@ -84,6 +84,22 @@ export const NPCS = {
     gender: "female",
     spicy: false,
   },
+  dylan: {
+    id: "dylan",
+    name: "Dylan (K)",
+    emoji: "🦊",
+    role: "Oakland ketamine / mushroom guy",
+    gender: "male",
+    spicy: false,
+  },
+  karp: {
+    id: "karp",
+    name: "Alex Karp",
+    emoji: "👁️",
+    role: "Paranoid bunker CEO (alleged)",
+    gender: "male",
+    spicy: false,
+  },
 };
 
 /**
@@ -186,8 +202,8 @@ export function buildInitialThreads(character) {
     replyOptions: [],
   };
 
-  // FlareUp matches unlock these later
-  for (const id of ["jules", "marisol", "vanessa", "kayla"]) {
+  // FlareUp matches + later arcs unlock these
+  for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp"]) {
     threads[id] = {
       npcId: id,
       unread: false,

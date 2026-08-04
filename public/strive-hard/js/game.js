@@ -122,6 +122,8 @@ function hubSceneFor(locationId) {
     "yc-school": "yc_hub",
     stanford: "stanford_hub",
     "garry-sauna": "sauna_hub",
+    "ketamine-dealer": "dylan_hub",
+    "palantir-bunker": "palantir_hub",
   };
   return hubs[locationId] || LOCATION_SCENES[locationId] || "home_hub";
 }
@@ -144,6 +146,15 @@ export function travelTo(state, locationId) {
   if (locationId === "garry-sauna" && state.day < 3) {
     return { state, error: "Garry's people haven't texted yet." };
   }
+  if (locationId === "ketamine-dealer" && !state.flags.metDylan) {
+    return { state, error: "Unknown address. Meet the fox on the yacht first." };
+  }
+  if (locationId === "palantir-bunker" && !state.flags.alienContact) {
+    return {
+      state,
+      error: "No clearance. The lattice hasn't called your number yet (Mt. Shasta).",
+    };
+  }
 
   let next = { ...state, locationId };
   if (!next.visitedLocations.includes(locationId)) {
@@ -163,6 +174,10 @@ export function travelTo(state, locationId) {
     next.sceneId = "vibe_hub";
   } else if (visited && locationId === "corgi-cafe" && state.flags.survivedCorgiCafe) {
     next.sceneId = "corgi_hub";
+  } else if (visited && locationId === "ketamine-dealer" && state.flags.visitedDylan) {
+    next.sceneId = "dylan_hub";
+  } else if (visited && locationId === "palantir-bunker" && state.flags.enteredPalantir) {
+    next.sceneId = "palantir_hub";
   } else {
     next.sceneId = sceneId;
   }

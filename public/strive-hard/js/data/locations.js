@@ -81,22 +81,57 @@ export const LOCATIONS = [
     energyCost: 2,
     tags: ["party", "network", "spicy"],
   },
+  {
+    id: "ketamine-dealer",
+    name: "Ketamine Dealer",
+    short: "K Dealer",
+    emoji: "🦊",
+    desc: "Oakland. Plush toys. Mushroom bins. Furry onesie optional (for him, not optional).",
+    unlockDay: 1,
+    energyCost: 2,
+    tags: ["oakland", "weird", "k"],
+  },
+  {
+    id: "palantir-bunker",
+    name: "Palantir HQ (Marin Bunker)",
+    short: "Palantir",
+    emoji: "👁️",
+    desc: "Secret underground campus. Tunnels to Aspen silos. Alex Karp is not okay.",
+    unlockDay: 1,
+    energyCost: 3,
+    tags: ["marin", "surveillance", "fever-dream"],
+  },
 ];
 
 export function getLocation(id) {
   return LOCATIONS.find((l) => l.id === id) ?? null;
 }
 
+/** Human-readable lock reason for Map UI (null if unlocked) */
+export function locationLockReason(loc, state) {
+  if (isLocationUnlocked(loc, state)) return null;
+  if (loc.id === "yc-yacht") return "Invite only (or day 5 chaos)";
+  if (loc.id === "ketamine-dealer") return "Meet Dylan on the yacht first";
+  if (loc.id === "palantir-bunker") return "Requires alien contact (Mt. Shasta)";
+  if (state.day < loc.unlockDay) return `Unlocks day ${loc.unlockDay}+`;
+  return "Locked";
+}
+
 export function isLocationUnlocked(loc, state) {
   if (state.day < loc.unlockDay) return false;
   if (loc.id === "yc-yacht") {
-    // Invite, late chaos, or raised enough noise
     return (
       state.flags.yachtInvite ||
       state.flags.metGarry ||
       state.day >= 5 ||
       state.followers >= 150
     );
+  }
+  if (loc.id === "ketamine-dealer") {
+    return !!state.flags.metDylan;
+  }
+  if (loc.id === "palantir-bunker") {
+    return !!state.flags.alienContact;
   }
   return true;
 }

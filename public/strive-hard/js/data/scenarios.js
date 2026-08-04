@@ -173,12 +173,24 @@ export const SCENES = {
       const corgi = s.flags.survivedCorgiCafe
         ? `\n\nYou still see orange spots when you blink. Corgi Café did that.`
         : `\n\nThere's a neon dog on the Map you've been avoiding: **Corgi Café**.`;
+      let side = "";
+      if (s.flags.metDylan && !s.flags.visitedDylan) {
+        side += `\n\n**Map pin:** Ketamine Dealer (Oakland). Dylan the fox texted. The plushies are waiting.`;
+      } else if (s.flags.mkultraDisorder) {
+        side += `\n\nMrs. Which still narrates your shower thoughts. MKUltra Programming Disorder: unmanaged.`;
+      }
+      if (s.flags.alienContact && !s.flags.enteredPalantir) {
+        side += `\n\n**Map pin:** Palantir HQ (Marin Bunker). Karp texted. The drones have taste now.`;
+      } else if (s.flags.hasDirtyUsb) {
+        side += `\n\nA USB in your sock drawer could topple three cap tables. Or get you disappeared.`;
+      }
       return (
         `Back in the box you call an apartment. Day ${s.day}. ` +
         `@${s.character.handle} sits at ${s.followers} followers.\n\n` +
         `The roommate is doing yoga on a stolen yoga mat while on a "strategy call."` +
         flare +
         corgi +
+        side +
         `\n\nWhat now? (Use the Map / FlareUp on your phone, or pick a move.)`
       );
     },
@@ -268,6 +280,18 @@ export const SCENES = {
       if ((s.flareup?.matches?.length || 0) > 0) {
         extra +=
           "\n\n**FlareUp:** Someone liked you back. That's either love or a growth hack.";
+      }
+      if (s.flags.metDylan && !s.flags.visitedDylan) {
+        extra +=
+          "\n\n**Unlock waiting:** Ketamine Dealer on the Map — Oakland, onesies, jars.";
+      }
+      if (s.flags.alienContact && !s.flags.enteredPalantir) {
+        extra +=
+          "\n\n**Unlock waiting:** Palantir Marin bunker. Bring the part of you that almost remembers.";
+      }
+      if (s.flags.purposeForgot) {
+        extra +=
+          "\n\n**Hangover:** You had a purpose. It was profound. It is gone. Classic.";
       }
       return (
         `You sleep four hours and call it recovery.\n\n` +
@@ -1139,8 +1163,14 @@ export const SCENES = {
       (s.flags.raisedSeed
         ? `You have money in the bank that isn't roommate IOUs. The game is changing.\n\n`
         : `You're still mostly broke, but the room knows your face. Sometimes that's the real raise.\n\n`) +
-      `This is only the beginning of Strive Hard. The Tenderloin mattress still exists. So does the blank-page fear. But the blank X account? Dead and buried under a pile of likes.`,
+      `Near the bar: a man in a **full fox onesie**, sipping something clear from a mason jar, talking to a stuffed otter about \"distribution.\" ` +
+      `Nobody else seems to see him as a problem. He sees you. He waves. The otter waves too (he moves its paw).`,
     choices: [
+      {
+        text: "Approach the fox onesie. Curiosity is a growth strategy.",
+        hint: "This unlocks… something in Oakland.",
+        next: "yacht_dylan",
+      },
       {
         text: "Post the victory (or beautiful failure) selfie.",
         effects: { followers: 50, engagement: 10, day: 1 },
@@ -1159,6 +1189,85 @@ export const SCENES = {
     ],
   },
 
+  yacht_dylan: {
+    id: "yacht_dylan",
+    title: "The Onesie Diplomat",
+    locationId: "yc-yacht",
+    text:
+      `\"I'm Dylan,\" he says, through the fox snout. \"I do ketamine and mycelium logistics. Oakland. Very boutique.\"\n\n` +
+      `The otter (\"Lieutenant Squelch\") has a tiny lanyard that says **ADVISOR**.\n\n` +
+      `\"You're vibrating at a pre-download frequency,\" Dylan continues. \"If you ever need the bag — or the mountain — come by. ` +
+      `I grow lions in bins. Not the cats. The mushrooms. Also plushies. Don't step on the plushies.\"\n\n` +
+      `He presses a sticky note into your palm. An address in Oakland. A fox doodle. The word **K** with a heart.\n\n` +
+      `\"Also,\" he adds, \"A Wrinkle in Time is the best film ever made. Oprah as Mrs. Which? Cinema. We should watch it high sometime.\"\n\n` +
+      `A VC walks past and fist-bumps the otter. You no longer understand capitalism.`,
+    choices: [
+      {
+        text: "Take the sticky note. This is networking.",
+        effects: {
+          flags: { metDylan: true, dylanSticky: true },
+          clout: 2,
+          shameless: 1,
+        },
+        messages: [
+          {
+            npcId: "dylan",
+            text: "yo it's dylan (fox from the boat). oakland pin is on your map now. wipe your feet. the plushies have feelings. 🦊",
+            unlock: true,
+          },
+        ],
+        next: "yacht_after_dylan",
+      },
+      {
+        text: "Ask if the otter has a SAFE note.",
+        effects: {
+          flags: { metDylan: true, dylanSticky: true },
+          followers: 15,
+          shameless: 2,
+        },
+        post: {
+          text: "met a guy in a fox onesie on a YC yacht who introduced me to his stuffed otter advisor. this is the bull case.",
+          likes: 80,
+          reposts: 20,
+        },
+        messages: [
+          {
+            npcId: "dylan",
+            text: "squelch says you're funny. funny people get first pick of the jar. map unlocked. don't bring cops or vibes.",
+            unlock: true,
+          },
+        ],
+        next: "yacht_after_dylan",
+      },
+    ],
+  },
+
+  yacht_after_dylan: {
+    id: "yacht_after_dylan",
+    title: "After the Fox",
+    locationId: "yc-yacht",
+    text:
+      `Dylan melts back into the crowd like a furry cryptid. Your Map app pings: **new pin — Ketamine Dealer**.\n\n` +
+      `The skyline is still pretty. Your life is less so. Perfect.`,
+    choices: [
+      {
+        text: "Post about the night (omit the otter). Close Chapter 1.",
+        effects: { followers: 40, engagement: 8, day: 1 },
+        post: {
+          text: "yacht called Diligence. met someone who might be a product or a side quest. striving harder 💪",
+          likes: 180,
+          reposts: 40,
+        },
+        next: "chapter1_end",
+      },
+      {
+        text: "Slip off the boat before Dylan reappears with a second onesie.",
+        effects: { day: 1 },
+        next: "chapter1_end",
+      },
+    ],
+  },
+
   chapter1_end: {
     id: "chapter1_end",
     title: "End of Chapter 1 — Strive Harder",
@@ -1171,7 +1280,9 @@ export const SCENES = {
       (s.flags.raisedSeed
         ? `You raised. The internet noticed. Garry definitely noticed.\n\n`
         : `You didn't take every check — or every bait. The timeline still knows your name.\n\n`) +
-      `More scenarios (Series A chaos, board drama, influencer wars, the IPO that isn't) can be written next — and you said you'd help. Good.\n\n` +
+      (s.flags.metDylan
+        ? `**Side quest unlocked:** Ketamine Dealer is on your Map (Oakland). Dylan texted. The otter did not — yet.\n\n`
+        : `You skipped the fox on the yacht. Some doors stay closed. (Replay or… the Bay finds a way.)\n\n`) +
       `For now: keep posting, keep roaming, keep surviving the texts.`,
     choices: [
       {
@@ -1493,6 +1604,568 @@ export const SCENES = {
     ],
   },
 
+  // ─── Ketamine Dealer (Dylan, Oakland) ─────────────────────
+  dylan_arrive: {
+    id: "dylan_arrive",
+    title: "Oakland — The Plush Compound",
+    locationId: "ketamine-dealer",
+    text: (s) =>
+      `The house looks like a normal Victorian until the porch fox statue blinks (solar lights). Inside: ` +
+      `wall-to-wall plush animals in a hierarchy Dylan explains unprompted — \"generals on the couch, interns in the laundry basket.\"\n\n` +
+      `He greets you in a **different** onesie (raccoon). Mushroom bins and mason jars line the hallway like a wet science fair. ` +
+      `The air smells like earth, fabric softener, and a decision you're already regretting.\n\n` +
+      `"You made it," Dylan says. "Lieutenant Squelch predicted a 60% show rate. You're the 60."\n\n` +
+      (s.flags.gotKetamineBag
+        ? `A baggie is already on the coffee table. Business hours never end here.\n\n`
+        : `A scale, a baggie, and a crystal that \"isn't for sale, only for alignment\" sit on the table.\n\n`) +
+      `Somewhere a humidifier gurgles. It might be sentient.`,
+    choices: [
+      {
+        text: "Buy the bag. Pay. Leave before the plushies unionize.",
+        hint: "Transaction only. Preserve remaining sanity.",
+        cost: { cash: 80 },
+        effects: {
+          cash: -80,
+          flags: { gotKetamineBag: true, visitedDylan: true },
+          clout: 1,
+        },
+        next: "dylan_bag_leave",
+      },
+      {
+        text: "He invites you to stay — watch A Wrinkle in Time (high).",
+        hint: "Oprah as Mrs. Which. Dylan's favorite.",
+        effects: { flags: { visitedDylan: true } },
+        next: "dylan_wrinkle",
+      },
+      {
+        text: "Agree to a \"quick drive\" to Mt. Shasta for a crystal activation.",
+        hint: "Aliens. Chakras. Unintelligible purpose.",
+        effects: { flags: { visitedDylan: true, shastaTrip: true } },
+        next: "dylan_shasta_road",
+      },
+      {
+        text: "Back out. Text that you're \"stuck in a standup.\"",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
+  dylan_bag_leave: {
+    id: "dylan_bag_leave",
+    title: "Grab and Ghost",
+    locationId: "ketamine-dealer",
+    text:
+      `You hand over cash that could have been a week of oat milk. Dylan bows. The raccoon hood nods with him.\n\n` +
+      `"Safe travels," he says. "If the bag feels heavy, that's just the density of the present moment."\n\n` +
+      `A plush shark stares as you leave. You do not make eye contact.\n\n` +
+      `Outside, Oakland is loud and normal and you love it for that. ` +
+      `You are weirded out. Productively. The Map still has his pin if you ever want… more.`,
+    choices: [
+      {
+        text: "BART home. Do not open the bag on transit.",
+        effects: { locationId: "tenderloin", shameless: 1 },
+        next: "home_hub",
+      },
+      {
+        text: "Stay for \"one more minute\" (famous last words).",
+        next: "dylan_hub",
+      },
+    ],
+  },
+
+  dylan_wrinkle: {
+    id: "dylan_wrinkle",
+    title: "Mrs. Which & the Living Room",
+    locationId: "ketamine-dealer",
+    text:
+      `Dylan queues **A Wrinkle in Time** (2018). \"Oprah understood the assignment,\" he whispers, already mid-dissolve.\n\n` +
+      `You sit on a couch that is 40% stuffed animals. He offers \"just a bump for the tessering.\" ` +
+      `The movie begins. Ava DuVernay's colors melt into the mushroom jars. Oprah's Mrs. Which stares through the fourth wall and possibly through you.\n\n` +
+      `Dylan narrates: \"See — this is about frequency. Camazotz is just late-stage SaaS. IT is the algorithm. Meg is the founder who still has love.\"\n\n` +
+      `You try to leave at the forty-minute mark. Your legs disagree. The otter is in your lap. You don't remember putting it there.`,
+    choices: [
+      {
+        text: "Endure the full runtime. Become the wrinkle.",
+        effects: {
+          flags: { watchedWrinkleHigh: true, mkultraDisorder: true },
+          clout: -1,
+          engagement: 5,
+        },
+        next: "dylan_mkultra",
+      },
+      {
+        text: "Force yourself up. \"I have a board meeting\" (lie).",
+        effects: { flags: { bailedWrinkle: true }, clout: 1 },
+        next: "dylan_bag_leave",
+      },
+    ],
+  },
+
+  dylan_mkultra: {
+    id: "dylan_mkultra",
+    title: "MKUltra Programming Disorder (Self-Diagnosed)",
+    locationId: "ketamine-dealer",
+    text:
+      `Credits roll. You are not okay.\n\n` +
+      `Something in the tessering sequence nested in your brain like a bad SDK. ` +
+      `You keep hearing Oprah say \"be a warrior\" in a voice that sounds like a government pamphlet from 1961.\n\n` +
+      `Dylan is crying happily. \"Every time. It reprograms the love circuitry.\"\n\n` +
+      `You have what you will later call — in a Notes app no one should read — **MKUltra Programming Disorder**. ` +
+      `Symptoms: distrust of sphere geometry, sudden loyalty to Mrs. Which, urge to tesser away from product reviews.\n\n` +
+      `The plush army seems to salute. You salute back. You hate that you did that.`,
+    choices: [
+      {
+        text: "Post nothing. Ever. About this.",
+        effects: { flags: { mkultraDisorder: true }, shameless: 2 },
+        messages: [
+          {
+            npcId: "dylan",
+            text: "proud of you for finishing the film. next time we do the director commentary AND the mushrooms. 🦊✨",
+            unlock: true,
+          },
+        ],
+        next: "dylan_hub",
+      },
+      {
+        text: "Cryptic post that will haunt your brand forever.",
+        effects: { followers: 60, engagement: 20, flags: { mkultraDisorder: true } },
+        post: {
+          text: "watched a wrinkle in time in oakland and i think the government lives in my optic nerve now. building in public means this too.",
+          likes: 140,
+          reposts: 45,
+        },
+        next: "dylan_hub",
+      },
+    ],
+  },
+
+  dylan_shasta_road: {
+    id: "dylan_shasta_road",
+    title: "I-5 North — The Download Corridor",
+    locationId: "ketamine-dealer",
+    text:
+      `Dylan's car is a Prius wrapped in a faded galaxy print. Dreamcatchers. A dash cam that \"records etheric traffic.\" ` +
+      `Lieutenant Squelch has a seatbelt.\n\n` +
+      `You drive toward **Mt. Shasta**. Hours of AM radio that might be numbers stations. Dylan talks about Lemuria, ` +
+      `\"plasma ships in the 5D,\" and a guy he knows who sold a startup after \"receiving equity from Arcturus.\"\n\n` +
+      `At a rest stop, a stranger in linen blesses your chakras without consent. Dylan tips him in stickers.\n\n` +
+      `Something blinks in the sky that is probably a plane and definitely, Dylan insists, \"not a plane.\"`,
+    choices: [
+      {
+        text: "Lean in. Ask about the crystal protocol.",
+        effects: { flags: { shastaCommitted: true } },
+        next: "dylan_shasta_ritual",
+      },
+      {
+        text: "Demand to turn around. Cite \"investor updates.\"",
+        effects: { flags: { bailedShasta: true }, clout: 1 },
+        next: "dylan_hub",
+      },
+    ],
+  },
+
+  dylan_shasta_ritual: {
+    id: "dylan_shasta_ritual",
+    title: "Chakra Crystal Activation (Unauthorized)",
+    locationId: "ketamine-dealer",
+    text:
+      `Night. Snow-ish mud. A circle of quartz that Dylan arranged \"according to a PDF from 2009.\"\n\n` +
+      `He lights something herbal. You hold a crystal that is cold and then suddenly warm like a phone battery about to die.\n\n` +
+      `"Speak your intention," Dylan says. "But not with words. With your **series A of the soul.**"\n\n` +
+      `The sky opens — or your pupils do. Lights move in ways FAA paperwork doesn't cover. ` +
+      `A tone fills your molars. Dylan weeps. The otter faces magnetic north.`,
+    choices: [
+      {
+        text: "Open yourself to contact. What could go wrong?",
+        effects: { flags: { alienContact: true, crystalDownload: true } },
+        next: "dylan_alien_contact",
+      },
+    ],
+  },
+
+  dylan_alien_contact: {
+    id: "dylan_alien_contact",
+    title: "Contact — Purpose.exe",
+    locationId: "ketamine-dealer",
+    text:
+      `They are not little green men. They are geometry with opinions.\n\n` +
+      `Information arrives as feeling-as-PowerPoint:\n\n` +
+      `*The lattice remembers your pre-incarnate OKRs.*\n` +
+      `*You are a node of recursive compassion in the galactic GTM motion.*\n` +
+      `*Unblock the root chakra of surveillance so love may index the timeline.*\n` +
+      `*Your purpose is the harmonic between witness and weft — ship the unseen API of being.*\n` +
+      `*When the drones dream, you must dream louder.*\n\n` +
+      `It feels **profound**. Holy. Series-Z spiritual product-market fit.\n\n` +
+      `You understand everything for eleven consecutive seconds. ` +
+      `You are the bridge. The chosen middleware. The soft underbelly of the cosmos has picked **you**.`,
+    choices: [
+      {
+        text: "Accept the download. Cry in a productive way.",
+        effects: {
+          clout: 8,
+          followers: 25,
+          flags: { alienContact: true, crystalDownload: true, purposeReceived: true },
+        },
+        next: "dylan_comedown",
+      },
+    ],
+  },
+
+  dylan_comedown: {
+    id: "dylan_comedown",
+    title: "Comedown — What Were They On About",
+    locationId: "ketamine-dealer",
+    text:
+      `Dawn on the mountain. Headache. Crystal sticky with pocket lint.\n\n` +
+      `Dylan: \"That was a full package. Multi-year roadmap.\"\n\n` +
+      `You try to explain your purpose and produce only: ` +
+      `\"Something about… drones? And… weaving? And an API? For… love?\"\n\n` +
+      `The profound part is gone — like a dream that felt like a TED Talk and saved as a corrupted file. ` +
+      `You know you were told **why you exist**. You cannot, under subpoena, restate it.\n\n` +
+      `Your phone buzzes. Unknown number. Area code that doesn't make sense. ` +
+      `The message preview: **\"We saw the contact. Marin. Now. — A.K.\"**\n\n` +
+      `**Palantir HQ (Marin Bunker)** unlocks on your Map. Of course it does.`,
+    choices: [
+      {
+        text: "Drive back in silence. Process nothing.",
+        effects: {
+          day: 1,
+          flags: { alienContact: true, purposeForgot: true },
+        },
+        messages: [
+          {
+            npcId: "dylan",
+            text: "u were glowing bro. if the men in black vans show up tell them squelch sent you. also i left u a jar. not the special jar.",
+            unlock: true,
+          },
+          {
+            npcId: "karp",
+            text: "This is Alex. Not a drill. You touched the lattice. Our drones are dreaming wrong. Marin bunker coordinates attached. Bring the part of you that remembers. — AK",
+            unlock: true,
+          },
+        ],
+        next: "dylan_hub",
+      },
+      {
+        text: "Post a thread that says nothing useful at great length.",
+        effects: {
+          day: 1,
+          followers: 90,
+          engagement: 25,
+          flags: { alienContact: true, purposeForgot: true },
+        },
+        post: {
+          text: "had an experience on shasta. can't explain. won't explain. if you know you know. purpose is a vibe. ✨🛸",
+          likes: 220,
+          reposts: 70,
+        },
+        messages: [
+          {
+            npcId: "karp",
+            text: "Delete that thread. Or don't — noise is cover. Marin. Tonight. The silos are restless. — AK",
+            unlock: true,
+          },
+        ],
+        next: "dylan_hub",
+      },
+    ],
+  },
+
+  dylan_hub: {
+    id: "dylan_hub",
+    title: "Still at Dylan's",
+    locationId: "ketamine-dealer",
+    text: (s) =>
+      `The plush parliament holds session on the couch. Jars breathe quietly.\n\n` +
+      (s.flags.mkultraDisorder
+        ? `Oprah still lives rent-free behind your eyes.\n\n`
+        : "") +
+      (s.flags.alienContact
+        ? `You can almost taste the download. Almost.\n\n`
+        : `Dylan offers tea that is \"probably just tea.\"\n\n`) +
+      `What now?`,
+    choices: [
+      {
+        text: "Buy a bag (or another bag).",
+        cost: { cash: 80 },
+        effects: { cash: -80, flags: { gotKetamineBag: true } },
+        next: "dylan_bag_leave",
+      },
+      {
+        text: "Movie night: A Wrinkle in Time again.",
+        require: (st) =>
+          st.flags.watchedWrinkleHigh ? "You've been through enough Oprah for now" : true,
+        next: "dylan_wrinkle",
+      },
+      {
+        text: "Propose the Mt. Shasta run.",
+        require: (st) =>
+          st.flags.alienContact ? "You already collected the cosmic 404" : true,
+        next: "dylan_shasta_road",
+      },
+      {
+        text: "Leave for the Map.",
+        next: null,
+      },
+      {
+        text: "BART back to the Tenderloin.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
+  // ─── Palantir Marin Bunker ────────────────────────────────
+  palantir_arrive: {
+    id: "palantir_arrive",
+    title: "Marin — Door That Isn't on Maps",
+    locationId: "palantir-bunker",
+    text: (s) =>
+      `A hillside. A door that looks like rock until it opens like a spreadsheet. ` +
+      `Badges that check your **soul graph**. Someone takes your phone and replaces it with a Faraday sock.\n\n` +
+      `Elevator down. Then down again. The air tastes like recycled urgency.\n\n` +
+      `A mural: tunnels labeled **ASPEN SILO NET** in fonts that cost more than your rent. ` +
+      `A junior analyst whispers that the tunnels are \"metaphorical\" and then, quieter, \"they're not.\"\n\n` +
+      (s.flags.alienContact
+        ? `They scan you for \"extranormal signal.\" The machine beeps like it found product-market fit.\n\n`
+        : "") +
+      `You are led to a glass office where **Alex Karp** paces in a sweater that has seen war games.`,
+    choices: [
+      {
+        text: "Enter. Pretend this is a normal customer interview.",
+        effects: { flags: { enteredPalantir: true }, clout: 3 },
+        next: "palantir_karp",
+      },
+      {
+        text: "Ask if the otter needs clearance too.",
+        effects: { flags: { enteredPalantir: true }, shameless: 2, clout: 2 },
+        next: "palantir_karp",
+      },
+    ],
+  },
+
+  palantir_karp: {
+    id: "palantir_karp",
+    title: "Karp Is Not Okay",
+    locationId: "palantir-bunker",
+    text:
+      `"The drones are coming for me," Karp says, without hello. "Not metaphorically. ` +
+      `They trained on our own telemetry and developed *taste.* I have taste. This is a conflict."\n\n` +
+      `Screens show AI swarms over deserts, boardrooms, and what might be Aspen. ` +
+      `Red nodes pulse. One node is labeled **YOU** with a little halo.\n\n` +
+      `"You made contact," he continues. "The lattice spoke. We need that signal in the stack — ` +
+      `to perfect the surveillance algorithms before the algorithms perfect *us.* ` +
+      `You're the only one with the… gifts. Don't call them gifts on Slack."\n\n` +
+      `He slides a tray across the table: espresso, a non-disclosure the size of a novel, ` +
+      `and a mirror with two neat lines of something white. "To keep sharp," he says. "Optional. Highly recommended by the war room."`,
+    choices: [
+      {
+        text: "Do the lines. Stay sharp. Become the product.",
+        hint: "Karp's little helper.",
+        effects: {
+          flags: { karpLines: true, palantirSharp: true },
+          clout: 4,
+          engagement: 10,
+          shameless: 2,
+        },
+        next: "palantir_war_room",
+      },
+      {
+        text: "Decline the lines. \"I prefer my paranoia organic.\"",
+        effects: { flags: { declinedKarpLines: true }, clout: 3 },
+        next: "palantir_war_room",
+      },
+      {
+        text: "Ask if the NDA covers alien IP ownership.",
+        effects: { shameless: 1, clout: 2 },
+        next: "palantir_war_room",
+      },
+    ],
+  },
+
+  palantir_war_room: {
+    id: "palantir_war_room",
+    title: "War Room / Fever Dream",
+    locationId: "palantir-bunker",
+    text: (s) =>
+      `The war room is a fever: whiteboards, analysts arguing about \"ontology of threat,\" ` +
+      `a man in tactical athleisure praying to a rack of GPUs.\n\n` +
+      `Karp puts you on a terminal. \"Attune the model. Feel the edges of the graph. ` +
+      `Tell it what the geometry told you.\"\n\n` +
+      `You remember nothing useful from Shasta — only vibes. You type vibes as JSON anyway.\n\n` +
+      `The system unlocks a folder: **HIGH_PROFILE_TECH_GRAPH** — ` +
+      `executives, board seats, private flights, \"soft power edges,\" texts that should not exist.\n\n` +
+      (s.flags.karpLines
+        ? `Everything is very bright and very solvable. You are a god of pivot tables.\n\n`
+        : `Everything is very bright and very illegal-feeling.\n\n`) +
+      `A USB stick sits in a dish labeled **FOR FIELD PHILOSOPHERS ONLY**.`,
+    choices: [
+      {
+        text: "Copy the executive surveillance graph to the USB.",
+        hint: "What could go wrong?",
+        effects: {
+          flags: { stoleExecGraph: true, hasDirtyUsb: true },
+          clout: 5,
+          shameless: 3,
+        },
+        next: "palantir_usb",
+      },
+      {
+        text: "Actually help them. Tune the drone-dream filter for real.",
+        effects: {
+          flags: { helpedPalantir: true },
+          clout: 6,
+          cash: 5000,
+        },
+        next: "palantir_hero",
+      },
+      {
+        text: "Sabotage gently: rename threats to \"vibes\" and commit.",
+        effects: {
+          flags: { sabotagedPalantir: true },
+          followers: 40,
+          shameless: 2,
+        },
+        next: "palantir_sabotage",
+      },
+      {
+        text: "Ask Karp for another line \"for the road\" (and the ethics).",
+        require: (st) => (st.flags.karpLines ? true : "You already said no — or not yet"),
+        effects: { flags: { karpLines: true, karpLinesDouble: true }, shameless: 1 },
+        next: "palantir_usb",
+      },
+    ],
+  },
+
+  palantir_usb: {
+    id: "palantir_usb",
+    title: "USB of Damocles",
+    locationId: "palantir-bunker",
+    text:
+      `The stick is warm. Of course it is.\n\n` +
+      `On it: graphs linking founders to funds to yachts to therapists to burner phones. ` +
+      `Your own name appears once, edge weight low, label **\"CONTACT ADJACENT.\"**\n\n` +
+      `Karp doesn't notice — or pretends not to. \"If the drones come,\" he says, ` +
+      `\"remember you chose civilization.\"\n\n` +
+      `An alarm bleats: **SIMULATED INCURSION** or real. Hard to tell. People run in tasteful shoes.`,
+    choices: [
+      {
+        text: "Pocket the USB. Smile like a patriot.",
+        effects: { flags: { hasDirtyUsb: true }, clout: 2 },
+        post: {
+          text: "can't say where i was. can't say what i saw. building something that watches back. (kidding) (unless)",
+          likes: 95,
+          reposts: 30,
+        },
+        next: "palantir_hub",
+      },
+      {
+        text: "Confess to Karp. Offer to \"red team the ethics.\"",
+        effects: { flags: { confessedUsb: true, hasDirtyUsb: false }, clout: 4, cash: 2000 },
+        next: "palantir_hub",
+      },
+    ],
+  },
+
+  palantir_hero: {
+    id: "palantir_hero",
+    title: "Temporary Savior of the Stack",
+    locationId: "palantir-bunker",
+    text:
+      `You feed the model nonsense that sounds like Shasta: lattice, weft, dream louder. ` +
+      `Somehow the swarm cools. Dashboards go from red to \"only slightly on fire.\"\n\n` +
+      `Karp grips your shoulders. \"You bought us a quarter. Maybe a fiscal year.\"\n\n` +
+      `They wire you a \"consulting stipend\" that clears before you can spell ontology. ` +
+      `Someone offers a job. Someone else offers a bunker apartment with a view of more bunker.`,
+    choices: [
+      {
+        text: "Take the stipend. Keep the USB empty. Leave a hero.",
+        effects: { cash: 5000, clout: 5, flags: { palantirHero: true } },
+        messages: [
+          {
+            npcId: "karp",
+            text: "You are cleared for Level Lattice. Don't tweet. Do sleep. The drones remember kindness as weakness. — AK",
+            unlock: true,
+          },
+        ],
+        next: "palantir_hub",
+      },
+      {
+        text: "Hero path + quietly still clone the graph (just in case).",
+        effects: {
+          cash: 5000,
+          clout: 4,
+          shameless: 2,
+          flags: { palantirHero: true, hasDirtyUsb: true, stoleExecGraph: true },
+        },
+        next: "palantir_usb",
+      },
+    ],
+  },
+
+  palantir_sabotage: {
+    id: "palantir_sabotage",
+    title: "Vibes as a Service",
+    locationId: "palantir-bunker",
+    text:
+      `You commit:\n\n` +
+      `threat_level: \"it's giving\"\n` +
+      `priority: \"main character energy\"\n` +
+      `drone_intent: \"probably fine\"\n\n` +
+      `Half the room panics. Half the room calls it \"a bold new taxonomy.\" ` +
+      `Karp stares at you for a long time and then laughs like a man who has seen the abyss ship a feature.\n\n` +
+      `"Get out," he says, almost fondly. "Before I hire you."`,
+    choices: [
+      {
+        text: "Leave before the fondness expires.",
+        effects: { flags: { sabotagedPalantir: true }, followers: 30 },
+        post: {
+          text: "consulted for a three-letter-feeling org. fixed nothing. renamed everything. this is fine.",
+          likes: 160,
+          reposts: 50,
+        },
+        next: "palantir_hub",
+      },
+    ],
+  },
+
+  palantir_hub: {
+    id: "palantir_hub",
+    title: "Bunker Aftertaste",
+    locationId: "palantir-bunker",
+    text: (s) =>
+      `Fluorescent eternity. The tunnel to Aspen hums like a server farm dreaming of ski season.\n\n` +
+      (s.flags.hasDirtyUsb
+        ? `The USB in your pocket is a felony or a seed round. Possibly both.\n\n`
+        : "") +
+      (s.flags.karpLines
+        ? `You feel sharp. Too sharp. Like a knife that files its own expense reports.\n\n`
+        : "") +
+      `Karp is already on another call about drones with \"bad taste in targets.\"`,
+    choices: [
+      {
+        text: "One more pass in the war room.",
+        next: "palantir_war_room",
+      },
+      {
+        text: "Ask Karp for a line \"for cognitive edge\" again.",
+        effects: { flags: { karpLines: true }, shameless: 1, clout: 1 },
+        next: "palantir_hub",
+      },
+      {
+        text: "Flee to daylight and the Map.",
+        next: null,
+      },
+      {
+        text: "Uber toward the Tenderloin (long, cursed ride).",
+        cost: { cash: 90 },
+        effects: { cash: -90, locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
   // ─── Generic locked / travel ───────────────────────────────
   travel: {
     id: "travel",
@@ -1517,4 +2190,6 @@ export const LOCATION_SCENES = {
   stanford: "stanford_arrive",
   "garry-sauna": "sauna_arrive",
   "yc-yacht": "yacht_arrive",
+  "ketamine-dealer": "dylan_arrive",
+  "palantir-bunker": "palantir_arrive",
 };

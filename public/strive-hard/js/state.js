@@ -60,8 +60,8 @@ export function loadState() {
     }
     if (!data.visitedLocations) data.visitedLocations = ["tenderloin"];
     if (!data.threads) data.threads = buildInitialThreads(data.character);
-    // Ensure FlareUp NPC threads exist
-    for (const id of ["jules", "marisol", "vanessa", "kayla"]) {
+    // Ensure optional NPC threads exist
+    for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp"]) {
       if (!data.threads[id]) {
         data.threads[id] = {
           npcId: id,

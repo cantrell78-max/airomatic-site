@@ -1,5 +1,10 @@
 import { CHARACTERS } from "./data/characters.js";
-import { LOCATIONS, isLocationUnlocked, getLocation } from "./data/locations.js";
+import {
+  LOCATIONS,
+  isLocationUnlocked,
+  getLocation,
+  locationLockReason,
+} from "./data/locations.js";
 import {
   resolveText,
   choiceDisabled,
@@ -261,19 +266,17 @@ export function renderMap(state, onTravel) {
   list.innerHTML = "";
   LOCATIONS.forEach((loc) => {
     const unlocked = isLocationUnlocked(loc, state);
-    let yachtBlocked =
-      loc.id === "yc-yacht" && !state.flags.yachtInvite && state.day < 5;
+    const lockReason = locationLockReason(loc, state);
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "map-pin" + (state.locationId === loc.id ? " here" : "");
-    btn.disabled = !unlocked || yachtBlocked;
+    btn.disabled = !unlocked;
 
     let meta = unlocked
       ? loc.energyCost
         ? `Transit ~$${loc.energyCost * 3}`
         : "Free"
-      : `Unlocks day ${loc.unlockDay}+`;
-    if (yachtBlocked) meta = "Invite only (or day 5 chaos)";
+      : lockReason || `Unlocks day ${loc.unlockDay}+`;
     if (state.locationId === loc.id) meta = "You are here";
 
     btn.innerHTML = `

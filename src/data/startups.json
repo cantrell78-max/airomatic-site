@@ -1,5 +1,208 @@
 [
   {
+    "id": "lumo-2026-08",
+    "date": "2026-08-06",
+    "companyName": "Lumo",
+    "headline": "Lumo raises $28M Series A to give multi-agent stacks a shared long-term memory plane",
+    "round": "$28M Series A",
+    "newsType": "raise",
+    "description": "Lumo sells a context retention layer that lets enterprise agent fleets keep mandate, customer, and tool history across sessions without stuffing every prompt full of stale tickets.",
+    "founderName": "Kai He",
+    "founderTitle": "Stanford dropout",
+    "founderQuote": "Enterprises do not need fifty bots with amnesia — they need one production memory surface agents can actually trust.",
+    "investorQuote": "Infrastructure categories mint the durable franchises, and agent memory is becoming table stakes for production deployments.",
+    "investorName": "Venky Ganesan",
+    "investorFirm": "Menlo Ventures",
+    "verticals": [
+      "Agent Memory",
+      "Multi-Agent",
+      "Agent Infra"
+    ],
+    "hashtags": [
+      "#Lumo",
+      "#AgentMemory",
+      "#SeriesA",
+      "#ContextLayer",
+      "#ProductionAgents"
+    ],
+    "xPost": "Lumo raises $28M Series A. Lumo sells a context retention layer that lets enterprise agent fleets keep mandate, customer, and tool history across sessions without stuffing every prompt full of stale tickets.\n\n\"Enterprises do not need fifty bots with amnesia — they need one production memory surface agents can actually trust.\" — Kai He\n\n\"Infrastructure categories mint the durable franchises, and agent memory is becoming table stakes for production deployments.\" — Venky Ganesan · Menlo Ventures\n\n#Lumo #AgentMemory #SeriesA #ContextLayer #ProductionAgents",
+    "image": "/images/startups/kai-he.jpg"
+  },
+  {
+    "id": "swyft-2026-08",
+    "date": "2026-08-06",
+    "companyName": "Swyft",
+    "headline": "Swyft raises $42M Series A for co-founded CX agents that close tickets instead of summarizing them",
+    "round": "$42M Series A",
+    "newsType": "raise",
+    "description": "Co-founded by Mei Fang and Ryan Holt, Swyft deploys resolution agents that own refunds, rebookings, and policy exceptions end to end, with human review only on edge cases.",
+    "founderName": "Mei Fang & Ryan Holt",
+    "founderTitle": "ex-Meta AI / ex-Intercom",
+    "founderQuote": "We do not sell another dashboard for support managers. We sell closed tickets at computer speed.",
+    "investorQuote": "Unit economics only work when the agent does the volume work and the human stays on exceptions.",
+    "investorName": "Sarah Tavel",
+    "investorFirm": "Benchmark",
+    "verticals": [
+      "Agentic CX",
+      "Support Ops",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#Swyft",
+      "#AgenticCX",
+      "#SeriesA",
+      "#TicketClosure",
+      "#SupportAgents"
+    ],
+    "xPost": "Swyft raises $42M Series A. Co-founded by Mei Fang and Ryan Holt, Swyft deploys resolution agents that own refunds, rebookings, and policy exceptions end to end, with human review only on edge cases.\n\n\"We do not sell another dashboard for support managers. We sell closed tickets at computer speed.\" — Mei Fang & Ryan Holt\n\n\"Unit economics only work when the agent does the volume work and the human stays on exceptions.\" — Sarah Tavel · Benchmark\n\n#Swyft #AgenticCX #SeriesA #TicketClosure #SupportAgents",
+    "image": "/images/startups/swyft-duo.jpg"
+  },
+  {
+    "id": "docketloom-2026-08",
+    "date": "2026-08-06",
+    "companyName": "Docketloom",
+    "headline": "Docketloom raises $55M Series B to weave multi-agent matter workflows for law firms",
+    "round": "$55M Series B",
+    "newsType": "raise",
+    "description": "Docketloom runs coordinated matter agents across intake, research, drafting, and partner review so firms can move work without standing up a separate bot for every practice area.",
+    "founderName": "Varun Jayaraman",
+    "founderTitle": "IIT Madras dropout",
+    "founderQuote": "If a matter agent cannot survive partner review and leave an audit trail, it is still a demo.",
+    "investorQuote": "Boards will fund legal systems that make agent risk legible — immutability is the product.",
+    "investorName": "Joshua Kushner",
+    "investorFirm": "Thrive Capital",
+    "verticals": [
+      "Legal Tech",
+      "Matter Agents",
+      "Multi-Agent"
+    ],
+    "hashtags": [
+      "#Docketloom",
+      "#LegalTech",
+      "#SeriesB",
+      "#MatterAgents",
+      "#AuditTrail"
+    ],
+    "xPost": "Docketloom raises $55M Series B. Docketloom runs coordinated matter agents across intake, research, drafting, and partner review so firms can move work without standing up a separate bot for every practice area.\n\n\"If a matter agent cannot survive partner review and leave an audit trail, it is still a demo.\" — Varun Jayaraman\n\n\"Boards will fund legal systems that make agent risk legible — immutability is the product.\" — Joshua Kushner · Thrive Capital\n\n#Docketloom #LegalTech #SeriesB #MatterAgents #AuditTrail",
+    "image": "/images/startups/varun-jayaraman.jpg"
+  },
+  {
+    "id": "rubric-2026-08",
+    "date": "2026-08-06",
+    "companyName": "Rubric",
+    "headline": "Rubric raises $18M Seed to clear public-sector backlogs with adjudicator agents",
+    "round": "$18M Seed",
+    "newsType": "raise",
+    "description": "Rubric agents plan, execute, and pre-score licenses, benefits, and permit files against agency rubrics, keeping a human adjudicator in the loop — including a human in the loop for the human in the loop on high-stakes denials.",
+    "founderName": "Aakash Bhatia",
+    "founderTitle": "ex-Palantir",
+    "founderQuote": "One operator oversees what used to take a floor of contractors — the agent does the volume; the adjudicator owns the signature.",
+    "investorQuote": "Regulated buyers pay for systems that leave a trail when an agent recommends a denial.",
+    "investorName": "Peter Wagner",
+    "investorFirm": "Wing Venture Capital",
+    "verticals": [
+      "GovTech",
+      "Compliance",
+      "Public Sector AI"
+    ],
+    "hashtags": [
+      "#Rubric",
+      "#GovTechAI",
+      "#SeedRound",
+      "#Adjudication",
+      "#BacklogAgents"
+    ],
+    "xPost": "Rubric raises $18M Seed. Rubric agents plan, execute, and pre-score licenses, benefits, and permit files against agency rubrics, keeping a human adjudicator in the loop — including a human in the loop for the human in the loop on high-stakes denials.\n\n\"One operator oversees what used to take a floor of contractors — the agent does the volume; the adjudicator owns the signature.\" — Aakash Bhatia\n\n\"Regulated buyers pay for systems that leave a trail when an agent recommends a denial.\" — Peter Wagner · Wing Venture Capital\n\n#Rubric #GovTechAI #SeedRound #Adjudication #BacklogAgents",
+    "image": "/images/startups/aakash-bhatia.jpg"
+  },
+  {
+    "id": "resolvix-2026-08",
+    "date": "2026-08-06",
+    "companyName": "Resolvix",
+    "headline": "Resolvix closes $40M extension as enterprise CX agents expand into post-sale ops",
+    "round": "$40M extension",
+    "newsType": "extension",
+    "description": "Returning investors topped up Resolvix as the company extends resolution agents from Tier-1 support into renewals, entitlements, and customer success workflows inside Salesforce-heavy stacks.",
+    "founderName": "Jian Guo",
+    "founderTitle": "MIT dropout",
+    "founderQuote": "Customer work is not a chatbot feature — it is how post-sale operations will run.",
+    "investorQuote": "This is the resolution layer the market consolidates on inside the systems of record enterprises already trust.",
+    "investorName": "Matt Garratt",
+    "investorFirm": "Salesforce Ventures",
+    "verticals": [
+      "Agentic CX",
+      "Customer Success",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#Resolvix",
+      "#ExtensionRound",
+      "#AgenticCX",
+      "#PostSaleOps",
+      "#EnterpriseAgents"
+    ],
+    "xPost": "Resolvix closes extension of $40M. Returning investors topped up Resolvix as the company extends resolution agents from Tier-1 support into renewals, entitlements, and customer success workflows inside Salesforce-heavy stacks.\n\n\"Customer work is not a chatbot feature — it is how post-sale operations will run.\" — Jian Guo\n\n\"This is the resolution layer the market consolidates on inside the systems of record enterprises already trust.\" — Matt Garratt · Salesforce Ventures\n\n#Resolvix #ExtensionRound #AgenticCX #PostSaleOps #EnterpriseAgents",
+    "image": "/images/startups/jian-guo.jpg"
+  },
+  {
+    "id": "ionfoundry-2026-08",
+    "date": "2026-08-06",
+    "companyName": "Ionfoundry",
+    "headline": "Ionfoundry raises $120M Series A to couple fault-tolerant quantum sims with agentic orchestration",
+    "round": "$120M Series A",
+    "newsType": "raise",
+    "description": "The Ionfoundry founding team is building hybrid stacks where multi-agent planners schedule error-corrected quantum workloads for chemistry and materials, with classical agents owning job packaging and result routing.",
+    "founderName": "Harshil Swaminathan",
+    "founderTitle": "Caltech dropout / ex-Google Quantum",
+    "founderQuote": "Utility-scale quantum without a production control plane is just an expensive lab demo.",
+    "investorQuote": "Boards funding deep tech want agent risk and qubit risk both legible — hybrid orchestration is how that ships.",
+    "investorName": "Robert Nelsen",
+    "investorFirm": "ARCH Venture Partners",
+    "verticals": [
+      "Quantum",
+      "Deep Tech",
+      "Hybrid Compute"
+    ],
+    "hashtags": [
+      "#Ionfoundry",
+      "#QuantumAI",
+      "#SeriesA",
+      "#HybridCompute",
+      "#DeepTech"
+    ],
+    "xPost": "Ionfoundry raises $120M Series A. The Ionfoundry founding team is building hybrid stacks where multi-agent planners schedule error-corrected quantum workloads for chemistry and materials, with classical agents owning job packaging and result routing.\n\n\"Utility-scale quantum without a production control plane is just an expensive lab demo.\" — Harshil Swaminathan\n\n\"Boards funding deep tech want agent risk and qubit risk both legible — hybrid orchestration is how that ships.\" — Robert Nelsen · ARCH Venture Partners\n\n#Ionfoundry #QuantumAI #SeriesA #HybridCompute #DeepTech",
+    "image": "/images/startups/ionfoundry-team.jpg"
+  },
+  {
+    "id": "torque-2026-08",
+    "date": "2026-08-06",
+    "companyName": "Torque",
+    "headline": "Torque emerges from stealth with $52M to put agentic control on the factory floor",
+    "round": "$52M · Emerged from stealth",
+    "newsType": "stealth",
+    "description": "Torque builds Physical AI agents that interpret plant telemetry, propose machine adjustments, and coordinate human technicians across cell-level robotics without a separate dashboard for every line.",
+    "founderName": "Tao Zhu",
+    "founderTitle": "ex-Cruise",
+    "founderQuote": "We do not sell another twin that only visualizes downtime. We sell closed work orders on the floor.",
+    "investorQuote": "American industrial capacity needs software that finishes the loop — copilots do not retool a line.",
+    "investorName": "Katherine Boyle",
+    "investorFirm": "a16z American Dynamism",
+    "verticals": [
+      "Physical AI",
+      "Robotics",
+      "Industrial Agents"
+    ],
+    "hashtags": [
+      "#Torque",
+      "#PhysicalAI",
+      "#StealthLaunch",
+      "#FactoryAgents",
+      "#IndustrialAI"
+    ],
+    "xPost": "Torque emerges from stealth with $52M. Torque builds Physical AI agents that interpret plant telemetry, propose machine adjustments, and coordinate human technicians across cell-level robotics without a separate dashboard for every line.\n\n\"We do not sell another twin that only visualizes downtime. We sell closed work orders on the floor.\" — Tao Zhu\n\n\"American industrial capacity needs software that finishes the loop — copilots do not retool a line.\" — Katherine Boyle · a16z American Dynamism\n\n#Torque #PhysicalAI #StealthLaunch #FactoryAgents #IndustrialAI",
+    "image": "/images/startups/tao-zhu.jpg"
+  },
+  {
     "id": "millx-2026-08",
     "date": "2026-08-03",
     "companyName": "Millx",

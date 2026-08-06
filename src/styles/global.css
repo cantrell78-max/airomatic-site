@@ -197,6 +197,7 @@ p {
 
 .prose {
   max-width: 42rem;
+  overflow-x: auto; /* wide markdown tables scroll within the column */
 }
 
 .prose :global(h2) {
@@ -233,6 +234,54 @@ p {
 .prose :global(img) {
   border: 1px solid var(--border);
   margin: 1.5rem 0;
+}
+
+/*
+ * Markdown tables — bordered cells so dense funding tables stay readable.
+ * Note: plain selectors only. Do NOT use :global() here — global.css is not
+ * scoped, and an invalid :global() in a comma-separated list drops the whole rule.
+ */
+.prose table {
+  width: 100%;
+  margin: 1.25rem 0 1.75rem;
+  border-collapse: collapse;
+  border: 1px solid #3a4254;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  background: var(--bg-elevated);
+}
+
+.prose thead {
+  background: var(--surface);
+}
+
+.prose th,
+.prose td {
+  border: 1px solid #3a4254;
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.prose td {
+  color: var(--text);
+}
+
+.prose tbody tr:nth-child(even) {
+  background: rgba(18, 21, 30, 0.85);
+}
+
+.prose tbody tr:hover {
+  background: rgba(139, 124, 248, 0.08);
 }
 
 .grid-2 {

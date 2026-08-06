@@ -1,25 +1,25 @@
 {
-  "ogImage": "/og/startups-millx-berth-huntr.jpg",
+  "ogImage": "/og/startups-lumo-swyft-docketloom.jpg",
   "ogImageLatest": "/og/startups-latest.jpg",
-  "ogImageAlt": "Latest Agentic AI Startup News: Millx · Berth · Huntr",
-  "description": "Millx ($72M Series B) · Berth ($58M Series A) · Huntr ($45M Series A). Living archive of satirical AI startup funding announcements on Airomatic.",
+  "ogImageAlt": "Latest Agentic AI Startup News: Lumo · Swyft · Docketloom",
+  "description": "Lumo ($28M Series A) · Swyft ($42M Series A) · Docketloom ($55M Series B). Living archive of satirical AI startup funding announcements on Airomatic.",
   "title": "Agentic AI Startup News",
   "companies": [
     {
-      "companyName": "Millx",
-      "round": "$72M Series B",
-      "id": "millx-2026-08"
+      "companyName": "Lumo",
+      "round": "$28M Series A",
+      "id": "lumo-2026-08"
     },
     {
-      "companyName": "Berth",
-      "round": "$58M Series A",
-      "id": "berth-2026-08"
+      "companyName": "Swyft",
+      "round": "$42M Series A",
+      "id": "swyft-2026-08"
     },
     {
-      "companyName": "Huntr",
-      "round": "$45M Series A",
-      "id": "huntr-2026-08"
+      "companyName": "Docketloom",
+      "round": "$55M Series B",
+      "id": "docketloom-2026-08"
     }
   ],
-  "generatedAt": "2026-08-04T21:41:07.173Z"
+  "generatedAt": "2026-08-06T19:46:18.845Z"
 }

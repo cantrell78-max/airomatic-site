@@ -53,23 +53,25 @@ Agentic AI is no longer a single “chatbot” trade. July 2026 agent funding wa
 
 ### Notable rounds / signals
 
+First column links out to company announcements or primary wire coverage (real market only — not parody cards). Follow those for full round context; sizes below are as reported in our research window.
+
 | Company / theme | Round / size (if known) | Why it matters for agentic parody |
 |-----------------|-------------------------|-----------------------------------|
-| **July 2026 agent tape** | ~\$1.8B / 12+ deals (sector recap) | Justifies dense multi-vertical batches, not one SOC week |
-| **Glean** | ~\$150M Series F · ~\$7.2B val (reported) | Enterprise “agents at scale” / horizontal agent environment narrative |
-| **Hippocratic AI** | ~\$126M Series C · multi‑\$B val (reported) | Clinical / regulated agent trust + big mid-stage checks |
-| **Hightouch** | ~\$150M Series D · ~\$2.75B (reported) | Data activation → agent ops adjacent to “systems of record” |
-| **Grace Investment Machine** | ~\$20M Series A (Jul 2026 lists) | Agentic *investing / live execution* vertical |
-| **Hadrius** | ~\$13M Series A (Jul lists) | Compliance automation for regulated financial firms |
-| **ChipAgents** | ~\$40M Series A (Jul lists) | Vertical agents into semiconductor / design workflows |
-| **Prime Intellect** | large Series A energy on agent lists | Multi-agent / training-infra narrative texture |
-| **YC Stratum-class gov backlog** | product physics (permits, benefits, patents) | Adjudicator agents + human-in-loop audit fuel |
-| **CTech IL H1’26** | ~\$8.4B / 129 rounds (reported) | Infra under AI, cyber Seed–A density; steal product physics, not Tel-Aviv casting |
-| **Enigma (IL Physical AI)** | ~\$71M Seed, emerged from stealth (reported) | Stealth + factory/robot agents as first-class deal shape |
-| **Onyx / Glow (AI security)** | \$113M B / \$180M stealth-class (reported) | Security still loud — pure SOC is capped when the archive is hunt-heavy |
-| **Photonic** | ~\$200M · ~\$2B val (2026 quantum) | Quantum as real mega-round category, not novelty |
-| **QuantWare / Quantum Motion** | ~\$178M B / ~\$160M C (reported) | Fab + silicon-qubit scale; hybrid control-plane language |
-| **Natural (agent payments)** | ~\$30M A (prior catalog) | Agent pay/collect rails still a standing desk theme |
+| **[July 2026 agent tape](https://buttondown.com/aaronyi/archive/ai-funding-ai-agent-startup-funding-july-2026/)** | ~\$1.8B / 12+ deals (sector recap) | Justifies dense multi-vertical batches, not one SOC week |
+| **[Glean](https://www.glean.com/blog/glean-series-f-announcement)** | ~\$150M Series F · ~\$7.2B val (reported) | Enterprise “agents at scale” / horizontal agent environment narrative |
+| **[Hippocratic AI](https://www.hippocraticai.com/)** | ~\$126M Series C · multi‑\$B val (reported) | Clinical / regulated agent trust + big mid-stage checks |
+| **[Hightouch](https://hightouch.com/blog/hightouch-funding-series-d)** | ~\$150M Series D · ~\$2.75B (reported) | Data activation → agent ops adjacent to “systems of record” |
+| **[Grace Investment Machine](https://www.prnewswire.com/news-releases/gim-raises-us20-million-series-a-as-agentic-investing-enters-live-execution-302821550.html)** | ~\$20M Series A (Jul 2026) | Agentic *investing / live execution* vertical |
+| **[Hadrius](https://aifunding.me/ai-agent-funding)** | ~\$13M Series A (Jul lists) | Compliance automation for regulated financial firms |
+| **[ChipAgents](https://evertiq.com/design/2026-02-19-chipagents-expands-funding-to-74m-for-ai-driven-ic-design)** | Series A / A1 class (agentic IC design) | Vertical agents into semiconductor / design workflows |
+| **[Prime Intellect](https://techcrunch.com/2026/07/08/prime-intellect-raises-130m-series-a-to-help-enterprises-build-their-own-ai-agents/)** | ~\$130M Series A (reported) | Multi-agent / training-infra narrative texture |
+| **[YC Stratum (gov backlog agents)](https://www.ycombinator.com/companies/stratum-industries)** | product physics (permits, benefits, patents) | Adjudicator agents + human-in-loop audit fuel |
+| **[CTech IL H1’26](https://www.calcalistech.com/ctechnews/article/hjyqukqqzx)** | ~\$8.4B / 129 rounds (reported) | Infra under AI, cyber Seed–A density; steal product physics, not Tel-Aviv casting |
+| **[Enigma (Physical AI)](https://techcrunch.com/2026/07/27/enigma-raises-70m-to-make-controlling-a-robot-as-easy-as-adjusting-the-volume/)** | ~\$71M Seed, emerged from stealth (reported) | Stealth + factory/robot agents as first-class deal shape |
+| **[Onyx](https://www.calcalistech.com/ctechnews/article/b1fsjydszg) / [Glow](https://www.cybersecuritytribe.com/cyber-security-announcements/glow-emerges-from-stealth-with-180-million-to-reinvent-endpoint-security-in-the-ai-era)** (AI security) | ~\$113M B / ~\$180M stealth-class (reported) | Security still loud — pure SOC is capped when the archive is hunt-heavy |
+| **[Photonic](https://www.hpcwire.com/off-the-wire/photonic-inc-announces-final-close-of-200m-funding-round-at-2b-valuation/)** | ~\$200M · ~\$2B val (2026 quantum) | Quantum as real mega-round category, not novelty |
+| **[QuantWare](https://www.quantware.com/news/quantware-raises-178-million) / [Quantum Motion](https://quantummotion.com/series-c-funding/)** | ~\$178M B / ~\$160M C (reported) | Fab + silicon-qubit scale; hybrid control-plane language |
+| **[Natural (agent payments)](https://techcrunch.com/2026/07/20/natural-raises-30m-to-reinvent-payments-for-ai-agents-and-take-on-stripe/)** | ~\$30M A (prior catalog) | Agent pay/collect rails still a standing desk theme |
 
 ### Vertical heat map
 

@@ -101,6 +101,16 @@ export const LOCATIONS = [
     energyCost: 3,
     tags: ["marin", "surveillance", "fever-dream"],
   },
+  {
+    id: "soft-hq",
+    name: "SoMa Soft HQ",
+    short: "Soft HQ",
+    emoji: "🏢",
+    desc: "Hot-desk cathedral. Where seed money goes to die stylishly. Unlocks after you raise.",
+    unlockDay: 1,
+    energyCost: 1,
+    tags: ["soma", "office", "seed-spend"],
+  },
 ];
 
 export function getLocation(id) {
@@ -113,6 +123,7 @@ export function locationLockReason(loc, state) {
   if (loc.id === "yc-yacht") return "Invite only (or day 5 chaos)";
   if (loc.id === "ketamine-dealer") return "Meet Dylan on the yacht first";
   if (loc.id === "palantir-bunker") return "Requires alien contact (Mt. Shasta)";
+  if (loc.id === "soft-hq") return "Raise a seed on the yacht first";
   if (state.day < loc.unlockDay) return `Unlocks day ${loc.unlockDay}+`;
   return "Locked";
 }
@@ -132,6 +143,9 @@ export function isLocationUnlocked(loc, state) {
   }
   if (loc.id === "palantir-bunker") {
     return !!state.flags.alienContact;
+  }
+  if (loc.id === "soft-hq") {
+    return !!state.flags.raisedSeed;
   }
   return true;
 }

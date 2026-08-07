@@ -100,6 +100,14 @@ export const NPCS = {
     gender: "male",
     spicy: false,
   },
+  cos: {
+    id: "cos",
+    name: "Avery (Chief of Staff)",
+    emoji: "📎",
+    role: "23, already dead inside, runs your calendar",
+    gender: "unknown",
+    spicy: false,
+  },
 };
 
 /**
@@ -203,7 +211,7 @@ export function buildInitialThreads(character) {
   };
 
   // FlareUp matches + later arcs unlock these
-  for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp"]) {
+  for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp", "cos"]) {
     threads[id] = {
       npcId: id,
       unread: false,

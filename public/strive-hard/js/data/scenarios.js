@@ -184,9 +184,18 @@ export const SCENES = {
       } else if (s.flags.hasDirtyUsb) {
         side += `\n\nA USB in your sock drawer could topple three cap tables. Or get you disappeared.`;
       }
+      if (s.flags.raisedSeed && !s.flags.hqLeased) {
+        side += `\n\n**Map pin:** SoMa Soft HQ — spend the seed before it spends you. Path toward **The Round**.`;
+      } else if (s.flags.theRoundUnlocked && !s.flags.theRoundStarted) {
+        side += `\n\n**The Round** is unlocked — Series A theater waits at Soft HQ or via the choice below.`;
+      } else if (s.flags.theRoundStarted) {
+        side += `\n\nYou're mid-**Round**. LPs are circling. The glass box is both HQ and cage.`;
+      }
       return (
         `Back in the box you call an apartment. Day ${s.day}. ` +
-        `@${s.character.handle} sits at ${s.followers} followers.\n\n` +
+        `@${s.character.handle} sits at ${s.followers} followers` +
+        (s.flags.raisedSeed ? ` with **$${s.cash.toLocaleString()}** in the war chest` : "") +
+        `.\n\n` +
         `The roommate is doing yoga on a stolen yoga mat while on a "strategy call."` +
         flare +
         corgi +
@@ -210,6 +219,21 @@ export const SCENES = {
         hint: "Dating app on the iHype →",
         openApp: "flareup",
         next: "home_hub",
+      },
+      {
+        text: "Head to SoMa Soft HQ (seed spend / company cosplay).",
+        require: (st) =>
+          st.flags.raisedSeed ? true : "Raise a seed on the yacht first",
+        effects: { locationId: "soft-hq" },
+        next: "hq_arrive",
+      },
+      {
+        text: "Enter The Round (Series A chapter).",
+        require: (st) =>
+          st.flags.theRoundUnlocked
+            ? true
+            : "Open Soft HQ and burn some seed first",
+        next: "round_open",
       },
       {
         text: "Doomscroll founder drama instead of healing.",
@@ -292,6 +316,14 @@ export const SCENES = {
       if (s.flags.purposeForgot) {
         extra +=
           "\n\n**Hangover:** You had a purpose. It was profound. It is gone. Classic.";
+      }
+      if (s.flags.raisedSeed && !s.flags.hqLeased) {
+        extra +=
+          "\n\n**Seed anxiety:** Money is burning a hole in checking. SoMa Soft HQ is waiting.";
+      }
+      if (s.flags.theRoundUnlocked && !s.flags.theRoundStarted) {
+        extra +=
+          "\n\n**The Round** is unlocked. Series A doesn't schedule itself (Avery would disagree).";
       }
       return (
         `You sleep four hours and call it recovery.\n\n` +
@@ -1028,14 +1060,20 @@ export const SCENES = {
     locationId: "yc-yacht",
     text: (s) =>
       `The boat is named **Diligence**. Of course it is.\n\n` +
-      `Champagne, founders, two people who definitely work in \"crypto adjacent wellness.\" A DJ plays a remix of a song about compound interest.\n\n` +
+      `Champagne, founders, two people who definitely work in "crypto adjacent wellness." A DJ plays a remix of a song about compound interest.\n\n` +
       (s.flags.metGarry
-        ? `Garry waves from the upper deck, linen shirt unbuttoned to a legally interesting degree.\n\n`
-        : `You don't know anyone. Perfect. Blank account energy, yacht edition.\n\n`) +
+        ? `Garry waves from the upper deck, linen shirt unbuttoned to a legally interesting degree. He mouths: *come up when you're ready to talk numbers.*\n\n`
+        : `A man who looks expensive is holding court upper deck. People keep saying "Garry." The money conversation will find you before the night ends — one way or another.\n\n`) +
       `Priya is here too, somehow. She mouths: *don't do anything I wouldn't livestream.*`,
     choices: [
       {
-        text: "Work the room. Collect handles like Pokémon.",
+        text: "Go straight upstairs. Talk money before the champagne does.",
+        hint: "Seed conversation — the real quest marker.",
+        effects: { clout: 3, flags: { metGarry: true } },
+        next: "yacht_garry",
+      },
+      {
+        text: "Work the room first. Collect handles like Pokémon.",
         effects: { followers: 80, clout: 5, engagement: 15 },
         post: {
           text: "on a yacht called Diligence. nobody is diligent. everybody is raising. send help or wire transfers.",
@@ -1043,12 +1081,6 @@ export const SCENES = {
           reposts: 45,
         },
         next: "yacht_peak",
-      },
-      {
-        text: "Find Garry. Talk terms before the champagne talks first.",
-        require: (st) => st.flags.metGarry || st.flags.yachtInvite || st.flags.metJordan,
-        effects: { clout: 4 },
-        next: "yacht_garry",
       },
       {
         text: "Hide near the hors d'oeuvres and make a friend.",
@@ -1076,38 +1108,77 @@ export const SCENES = {
           cash: 150000,
           followers: 200,
           clout: 15,
-          flags: { raisedSeed: true, endingTrack: "money" },
+          flags: { raisedSeed: true, seedDecided: true, endingTrack: "money" },
         },
         post: {
           text: "small announcement: we raised a seed 🌱 more soon. grateful for believers (and boats).",
           likes: 500,
           reposts: 120,
         },
-        next: "yacht_peak",
+        next: "yacht_after_money",
       },
       {
         text: "\"Mentorship sounds expensive. Show me the SAFE.\"",
         effects: {
           cash: 75000,
           clout: 10,
-          flags: { raisedSeed: true, endingTrack: "careful" },
+          flags: { raisedSeed: true, seedDecided: true, endingTrack: "careful" },
         },
         post: {
           text: "negotiated on a yacht. still standing. still solvent. SAFE signed with eyes open 👀",
           likes: 300,
           reposts: 60,
         },
-        next: "yacht_peak",
+        next: "yacht_after_money",
       },
       {
         text: "Decline the money. Keep the story.",
-        effects: { clout: 5, followers: 100, flags: { endingTrack: "story" } },
+        effects: {
+          clout: 5,
+          followers: 100,
+          flags: { declinedSeed: true, seedDecided: true, endingTrack: "story" },
+        },
         post: {
           text: "turned down a check on a yacht. either peak integrity or peak stupidity. thread soon.",
           likes: 400,
           reposts: 90,
         },
-        next: "yacht_peak",
+        next: "yacht_after_money",
+      },
+    ],
+  },
+
+  yacht_after_money: {
+    id: "yacht_after_money",
+    title: "After the Wire (Or the Walk-Away)",
+    locationId: "yc-yacht",
+    text: (s) =>
+      (s.flags.raisedSeed
+        ? `Your banking app glitches, then shows a number with too many zeros. Garry toasts "to alignment." Someone asks if you're hiring.\n\n` +
+          `**Map unlock: SoMa Soft HQ** — where seed capital goes to learn about burn rate. Garry's note: *Don't keep it in checking. Make it look like a company.*\n\n`
+        : `You leave the upper deck with your integrity, your brand, and still roughly mattress money. The party continues without a wire confirmation.\n\n`) +
+      `Below, the fox onesie is still holding court with an otter. The night isn't done being weird.`,
+    choices: [
+      {
+        text: "Approach the fox onesie before you sober up.",
+        hint: "Oakland side quest.",
+        require: (st) => (st.flags.metDylan ? "Already collected the sticky note" : true),
+        next: "yacht_dylan",
+      },
+      {
+        text: "Post the victory (or beautiful failure) selfie. End Chapter 1.",
+        effects: { followers: 50, engagement: 10, day: 1 },
+        post: {
+          text: "from 0 followers & a TL studio to a yacht called Diligence. still me. still striving. harder. 💪",
+          likes: 250,
+          reposts: 55,
+        },
+        next: "chapter1_end",
+      },
+      {
+        text: "Slip away. Myths (and wires) need mystery.",
+        effects: { clout: 2, day: 1 },
+        next: "chapter1_end",
       },
     ],
   },
@@ -1160,19 +1231,34 @@ export const SCENES = {
     text: (s) =>
       `The skyline glitter-bombs the water. Someone falls in (phone first). Someone else announces a pivot to climate.\n\n` +
       `Your follower count ticks: **${s.followers}**.\n\n` +
-      (s.flags.raisedSeed
-        ? `You have money in the bank that isn't roommate IOUs. The game is changing.\n\n`
-        : `You're still mostly broke, but the room knows your face. Sometimes that's the real raise.\n\n`) +
-      `Near the bar: a man in a **full fox onesie**, sipping something clear from a mason jar, talking to a stuffed otter about \"distribution.\" ` +
-      `Nobody else seems to see him as a problem. He sees you. He waves. The otter waves too (he moves its paw).`,
+      (s.flags.seedDecided
+        ? s.flags.raisedSeed
+          ? `You have money in the bank that isn't roommate IOUs. The game is changing.\n\n`
+          : `You walked from the check. Your brand is intact. Your runway is still a joke.\n\n`
+        : `You still haven't done the money conversation. Garry is circling like a friendly shark. The night won't let you ghost the term sheet forever.\n\n`) +
+      `Near the bar: a man in a **full fox onesie**, sipping something clear from a mason jar, talking to a stuffed otter about "distribution." ` +
+      `He waves. The otter waves too (he moves its paw).`,
     choices: [
+      {
+        text: "Garry finds you. Time for the actual deal.",
+        hint: "Seed offer — can't finish the yacht without deciding.",
+        require: (st) =>
+          st.flags.seedDecided ? "You already took or declined the check" : true,
+        effects: { flags: { metGarry: true } },
+        next: "yacht_garry",
+      },
       {
         text: "Approach the fox onesie. Curiosity is a growth strategy.",
         hint: "This unlocks… something in Oakland.",
+        require: (st) => (st.flags.metDylan ? "Already met Dylan" : true),
         next: "yacht_dylan",
       },
       {
         text: "Post the victory (or beautiful failure) selfie.",
+        require: (st) =>
+          st.flags.seedDecided
+            ? true
+            : "Garry wants a word before you leave the boat",
         effects: { followers: 50, engagement: 10, day: 1 },
         post: {
           text: "from 0 followers & a TL studio to a yacht called Diligence. still me. still striving. harder. 💪",
@@ -1183,6 +1269,10 @@ export const SCENES = {
       },
       {
         text: "Slip away quietly. Myths need mystery.",
+        require: (st) =>
+          st.flags.seedDecided
+            ? true
+            : "The money conversation finds you first — upper deck",
         effects: { clout: 2, day: 1 },
         next: "chapter1_end",
       },
@@ -1194,12 +1284,12 @@ export const SCENES = {
     title: "The Onesie Diplomat",
     locationId: "yc-yacht",
     text:
-      `\"I'm Dylan,\" he says, through the fox snout. \"I do ketamine and mycelium logistics. Oakland. Very boutique.\"\n\n` +
-      `The otter (\"Lieutenant Squelch\") has a tiny lanyard that says **ADVISOR**.\n\n` +
-      `\"You're vibrating at a pre-download frequency,\" Dylan continues. \"If you ever need the bag — or the mountain — come by. ` +
-      `I grow lions in bins. Not the cats. The mushrooms. Also plushies. Don't step on the plushies.\"\n\n` +
+      `"I'm Dylan," he says, through the fox snout. "I do ketamine and mycelium logistics. Oakland. Very boutique."\n\n` +
+      `The otter ("Lieutenant Squelch") has a tiny lanyard that says **ADVISOR**.\n\n` +
+      `"You're vibrating at a pre-download frequency," Dylan continues. "If you ever need the bag — or the mountain — come by. ` +
+      `I grow lions in bins. Not the cats. The mushrooms. Also plushies. Don't step on the plushies."\n\n` +
       `He presses a sticky note into your palm. An address in Oakland. A fox doodle. The word **K** with a heart.\n\n` +
-      `\"Also,\" he adds, \"A Wrinkle in Time is the best film ever made. Oprah as Mrs. Which? Cinema. We should watch it high sometime.\"\n\n` +
+      `"Also," he adds, "A Wrinkle in Time is the best film ever made. Oprah as Mrs. Which? Cinema. We should watch it high sometime."\n\n` +
       `A VC walks past and fist-bumps the otter. You no longer understand capitalism.`,
     choices: [
       {
@@ -1246,12 +1336,25 @@ export const SCENES = {
     id: "yacht_after_dylan",
     title: "After the Fox",
     locationId: "yc-yacht",
-    text:
+    text: (s) =>
       `Dylan melts back into the crowd like a furry cryptid. Your Map app pings: **new pin — Ketamine Dealer**.\n\n` +
-      `The skyline is still pretty. Your life is less so. Perfect.`,
+      (s.flags.seedDecided
+        ? `The skyline is still pretty. Your life is less so. Perfect.`
+        : `Garry appears at your elbow with two flutes and a smile that means paperwork. "Before you leave," he says.`),
     choices: [
       {
+        text: "Fine. Do the money conversation.",
+        require: (st) =>
+          st.flags.seedDecided ? "Already decided upstairs" : true,
+        effects: { flags: { metGarry: true } },
+        next: "yacht_garry",
+      },
+      {
         text: "Post about the night (omit the otter). Close Chapter 1.",
+        require: (st) =>
+          st.flags.seedDecided
+            ? true
+            : "Garry still needs a yes, a SAFE, or a no",
         effects: { followers: 40, engagement: 8, day: 1 },
         post: {
           text: "yacht called Diligence. met someone who might be a product or a side quest. striving harder 💪",
@@ -1262,6 +1365,10 @@ export const SCENES = {
       },
       {
         text: "Slip off the boat before Dylan reappears with a second onesie.",
+        require: (st) =>
+          st.flags.seedDecided
+            ? true
+            : "Not until you take, negotiate, or decline the check",
         effects: { day: 1 },
         next: "chapter1_end",
       },
@@ -1278,16 +1385,26 @@ export const SCENES = {
       `Followers: **${s.followers}** · Clout: **${s.clout}** · Cash: **$${s.cash.toLocaleString()}**\n\n` +
       `You started with nothing but a sticky note and a roommate who steals protein bars.\n\n` +
       (s.flags.raisedSeed
-        ? `You raised. The internet noticed. Garry definitely noticed.\n\n`
-        : `You didn't take every check — or every bait. The timeline still knows your name.\n\n`) +
+        ? `You raised. The internet noticed. Garry definitely noticed.\n\n` +
+          `**Next:** **SoMa Soft HQ** is on your Map — spend seed like a company before Series A smells blood (**The Round**).\n\n`
+        : s.flags.declinedSeed
+          ? `You declined the yacht check. Integrity is a strategy. Runway is still a personality trait.\n\n`
+          : `Somehow you left the boat without a money decision. The Bay is confused.\n\n`) +
       (s.flags.metDylan
-        ? `**Side quest unlocked:** Ketamine Dealer is on your Map (Oakland). Dylan texted. The otter did not — yet.\n\n`
-        : `You skipped the fox on the yacht. Some doors stay closed. (Replay or… the Bay finds a way.)\n\n`) +
-      `For now: keep posting, keep roaming, keep surviving the texts.`,
+        ? `**Side quest:** Ketamine Dealer (Oakland) is unlocked. Dylan texted.\n\n`
+        : `You skipped the fox. Some doors stay closed.\n\n`) +
+      `Keep posting. Keep roaming. The mattress still exists.`,
     choices: [
       {
         text: "Continue free roam — the Bay isn't done with you.",
         next: "home_hub",
+      },
+      {
+        text: "Go claim SoMa Soft HQ (if you raised).",
+        require: (st) =>
+          st.flags.raisedSeed ? true : "Need a seed wire first",
+        effects: { locationId: "soft-hq" },
+        next: "hq_arrive",
       },
       {
         text: "Sleep. Dream of liquidity events.",
@@ -2166,6 +2283,361 @@ export const SCENES = {
     ],
   },
 
+  // ─── SoMa Soft HQ (seed spend → unlock The Round) ────────
+  hq_arrive: {
+    id: "hq_arrive",
+    title: "SoMa Soft HQ — Day Zero",
+    locationId: "soft-hq",
+    text: (s) =>
+      s.flags.hqLeased
+        ? `Suite 4B still smells like ambition and toner. Cash: **$${s.cash.toLocaleString()}**. The glass box is yours.`
+        : `The building smells like oat milk and broken NDAs. A receptionist who is also an iPad asks if you're "the seed people."\n\n` +
+          `Your "office" is a glass box labeled **SUITE 4B — FLEX**. The furniture is a promise. The WiFi password is **Synergy2024!** with the exclamation point.\n\n` +
+          `Cash on hand: **$${s.cash.toLocaleString()}**. ` +
+          `Garry's voice in your head: *Make it look like a company before LPs ask for a tour.*\n\n` +
+          `A broker in Allbirds slides a tablet across. "Month-to-month. Culture included. Deposit due now."`,
+    choices: [
+      {
+        text: "Sign the Flex lease. Deposit $18,000.",
+        hint: "You're a real boy now.",
+        require: (st) => (st.flags.hqLeased ? "Already leased" : true),
+        cost: { cash: 18000 },
+        effects: {
+          cash: -18000,
+          flags: { hqLeased: true, enteredSoftHq: true },
+          clout: 3,
+        },
+        post: {
+          text: "we have an HQ 🏢 (it's a glass box in SoMa). building in public includes rent. dm for the wifi",
+          likes: 120,
+          reposts: 25,
+        },
+        next: "hq_furnish",
+      },
+      {
+        text: "Negotiate a \"founder discount\" (they laugh, then charge $14k).",
+        require: (st) => (st.flags.hqLeased ? "Already leased" : true),
+        cost: { cash: 14000 },
+        effects: {
+          cash: -14000,
+          flags: { hqLeased: true, enteredSoftHq: true, hqFrugal: true },
+          clout: 2,
+          shameless: 1,
+        },
+        next: "hq_furnish",
+      },
+      {
+        text: "Continue running the glass box.",
+        require: (st) => (st.flags.hqLeased ? true : "Sign a lease first"),
+        next: "hq_hub",
+      },
+      {
+        text: "Flee back to the Tenderloin. Seed can live in savings.",
+        require: (st) =>
+          st.flags.hqLeased ? "You're already on the lease, genius" : true,
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
+  hq_furnish: {
+    id: "hq_furnish",
+    title: "Aesthetics Are a Line Item",
+    locationId: "soft-hq",
+    text:
+      `Empty glass box energy. Your first all-hands will echo.\n\n` +
+      `A "workplace experience" person offers packages:\n` +
+      `• **Founder Frugal** — folding table, one monitor, shame\n` +
+      `• **Series-A Cosplay** — standing desks, neon logo, plant that will die\n\n` +
+      `They accept wire, Venmo, or "future equity in the plant."`,
+    choices: [
+      {
+        text: "Frugal: table + monitor ($4,000).",
+        cost: { cash: 4000 },
+        effects: { cash: -4000, flags: { hqFurnished: true, hqAesthetic: "frugal" }, clout: 1 },
+        next: "hq_hire",
+      },
+      {
+        text: "Cosplay: desks, neon, doomed fiddle-leaf ($12,000).",
+        cost: { cash: 12000 },
+        effects: {
+          cash: -12000,
+          flags: { hqFurnished: true, hqAesthetic: "cosplay" },
+          clout: 4,
+          followers: 30,
+        },
+        post: {
+          text: "office tour soon. the plant is named runway. if it dies we pivot 🌱",
+          likes: 90,
+          reposts: 15,
+        },
+        next: "hq_hire",
+      },
+      {
+        text: "Steal chairs from the shared lounge at 2am ($0, +shameless).",
+        effects: { flags: { hqFurnished: true, hqAesthetic: "stolen" }, shameless: 3, clout: 2 },
+        next: "hq_hire",
+      },
+    ],
+  },
+
+  hq_hire: {
+    id: "hq_hire",
+    title: "Your First Hire (God Help You)",
+    locationId: "soft-hq",
+    text:
+      `Applicants for "Chief of Staff / Ops / Sometimes Therapy":\n\n` +
+      `1. A 23-year-old named **Avery** who has managed three founders' calendars into early graves and still smiles.\n` +
+      `2. Your roommate, who wants to "DAO the org chart."\n` +
+      `3. Nobody — you keep grinding alone until the burn rate is just rent and ego.\n\n` +
+      `Avery's ask: signing bonus + first month. "I don't do equity-only. I have rent and a therapist."`,
+    choices: [
+      {
+        text: "Hire Avery. $12,000 to make you look real.",
+        cost: { cash: 12000 },
+        effects: {
+          cash: -12000,
+          flags: { hiredCos: true, hqStaffed: true },
+          clout: 5,
+        },
+        messages: [
+          {
+            npcId: "cos",
+            text: "calendar holds for 'deep work,' 'fake deep work,' and 'Garry.' don't make me chase invoices. — Avery 📎",
+            unlock: true,
+          },
+        ],
+        next: "hq_allhands",
+      },
+      {
+        text: "Hire the roommate for exposure + $2,000.",
+        cost: { cash: 2000 },
+        effects: {
+          cash: -2000,
+          flags: { hiredRoommate: true, hqStaffed: true },
+          shameless: 2,
+          clout: 1,
+        },
+        next: "hq_allhands",
+      },
+      {
+        text: "No hires. Founder mode is a headcount of one.",
+        effects: { flags: { hqSolo: true, hqStaffed: true }, clout: 2 },
+        next: "hq_allhands",
+      },
+    ],
+  },
+
+  hq_allhands: {
+    id: "hq_allhands",
+    title: "First All-Hands (Catastrophe Optional)",
+    locationId: "soft-hq",
+    text: (s) =>
+      `You stand in front of ` +
+      (s.flags.hiredCos
+        ? `Avery and a ring light.`
+        : s.flags.hiredRoommate
+          ? `your roommate and a half-eaten protein bar.`
+          : `a webcam and the void.`) +
+      `\n\n` +
+      `"Mission," you begin, "is to… ship… intelligence… that… smells success?"\n\n` +
+      `Someone (maybe you) cries. The fiddle-leaf, if present, judges silently.\n\n` +
+      `Avery (or the void) schedules a "launch toast" for Friday — LPs, fake LPs, and people who will screenshot your deck.`,
+    choices: [
+      {
+        text: "Host the launch toast. Burn $8,000 on natural wine & narrative.",
+        cost: { cash: 8000 },
+        effects: {
+          cash: -8000,
+          flags: { hqLaunchToast: true, hqOperational: true },
+          followers: 80,
+          clout: 6,
+          engagement: 15,
+        },
+        post: {
+          text: "HQ launch toast in the books. grateful for the team (singular optional). series A energy only (spiritually)",
+          likes: 200,
+          reposts: 40,
+        },
+        next: "hq_burn_check",
+      },
+      {
+        text: "Skip the party. Buy ads instead ($5,000).",
+        cost: { cash: 5000 },
+        effects: {
+          cash: -5000,
+          flags: { hqAds: true, hqOperational: true },
+          followers: 100,
+          engagement: 20,
+          clout: 3,
+        },
+        next: "hq_burn_check",
+      },
+      {
+        text: "Do nothing flashy. Sit in the glass box and feel the burn ($0).",
+        effects: { flags: { hqOperational: true, hqAusterity: true }, clout: 1 },
+        next: "hq_burn_check",
+      },
+    ],
+  },
+
+  hq_burn_check: {
+    id: "hq_burn_check",
+    title: "Runway Math (Emotional)",
+    locationId: "soft-hq",
+    text: (s) =>
+      `Spreadsheet time. The kind that makes champagne taste like fear.\n\n` +
+      `Cash left: **$${s.cash.toLocaleString()}**.\n` +
+      `You have: a glass box, ` +
+      (s.flags.hiredCos ? `a Chief of Staff, ` : "") +
+      (s.flags.hqLaunchToast ? `a toast hangover, ` : "") +
+      `and a company-shaped silhouette.\n\n` +
+      `Your phone lights up. Skylar (or a stranger who sounds like capital): ` +
+      `*"LPs noticed the SoMa pin. Ready to talk Series A theater?"*\n\n` +
+      `**The Round** is unlocked — the next chapter of money, masks, and board-shaped pain. ` +
+      `You've spent enough seed to look serious. Now they want a bigger story.`,
+    choices: [
+      {
+        text: "Unlock The Round. Step into Series A gravity.",
+        effects: { flags: { theRoundUnlocked: true, hqComplete: true }, clout: 4 },
+        messages: [
+          {
+            npcId: "skylar",
+            text: "soft circle Spaces soon — 'from seed to series (delusion optional).' wear the HQ. I'll boost. ✨",
+            unlock: true,
+          },
+          {
+            npcId: "garry",
+            text: "saw the office photos. cute burn. when you're ready for the real circus, I know partners who collect founders like pokemon. — G",
+            unlock: true,
+          },
+        ],
+        next: "round_open",
+      },
+      {
+        text: "Not yet. Sit in Soft HQ and doomscroll burn rate.",
+        effects: { flags: { theRoundUnlocked: true, hqComplete: true } },
+        next: "hq_hub",
+      },
+    ],
+  },
+
+  hq_hub: {
+    id: "hq_hub",
+    title: "Soft HQ — Operational-ish",
+    locationId: "soft-hq",
+    text: (s) =>
+      `Glass box. ${s.flags.hqAesthetic === "cosplay" ? "Neon hums." : "Furniture judges you."} ` +
+      `Cash: **$${s.cash.toLocaleString()}**.\n\n` +
+      (s.flags.theRoundUnlocked
+        ? `**The Round** is available from home or here — Series A theater when you are.\n\n`
+        : `Finish setting up the company if you haven't burned enough yet.\n\n`) +
+      (s.flags.hiredCos ? `Avery DMs: "you have 12 minutes of unstructured time. use them."\n\n` : ""),
+    choices: [
+      {
+        text: "Enter The Round (Series A chapter start).",
+        require: (st) =>
+          st.flags.theRoundUnlocked ? true : "Finish HQ setup / burn check first",
+        next: "round_open",
+      },
+      {
+        text: "Post a fake 'shipping' update from the standing desk.",
+        effects: { followers: 15, engagement: 5 },
+        post: {
+          text: "deep work at HQ. the mission has WiFi now. that's progress 🧠",
+          likes: 20,
+          reposts: 3,
+        },
+        next: "hq_hub",
+      },
+      {
+        text: "Map — leave the glass box.",
+        next: null,
+      },
+      {
+        text: "Tenderloin. The mattress misses you.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
+  // ─── The Round (chapter open — expand later) ───────────────
+  round_open: {
+    id: "round_open",
+    title: "The Round — Green Room",
+    locationId: "soft-hq",
+    text: (s) =>
+      `**CHAPTER 2 HOOK: THE ROUND**\n\n` +
+      `You are no longer "pre-seed with a dream." You are **post-seed with a burn rate** and a story LPs can underwrite.\n\n` +
+      `Cash: **$${s.cash.toLocaleString()}**. HQ: ${s.flags.hqLeased ? "leased" : "vibes"}. ` +
+      `Staff: ${s.flags.hiredCos ? "Avery" : s.flags.hiredRoommate ? "roommate (regrettable)" : "you vs god"}.\n\n` +
+      `What's coming (when we write more of it): Spaces as a boss fight, flaky term sheets, data-room dungeon, board with Mom on Zoom, USB temptation mid-diligence.\n\n` +
+      `For now: the door is open. The circus has your email.`,
+    choices: [
+      {
+        text: "Tease the Spaces. Announce you're 'exploring Series A.'",
+        effects: {
+          followers: 100,
+          engagement: 20,
+          clout: 5,
+          flags: { theRoundStarted: true, announcedSeriesA: true },
+        },
+        post: {
+          text: "small update: we're exploring a Series A. still building. still delusional. intentionally. 🚀",
+          likes: 400,
+          reposts: 90,
+        },
+        messages: [
+          {
+            npcId: "priya",
+            text: "gross. also good. don't let them own your board before you own your product.",
+            unlock: true,
+          },
+        ],
+        next: "round_hub",
+      },
+      {
+        text: "Stay quiet. Raise in stealth (cowardice as strategy).",
+        effects: { flags: { theRoundStarted: true, stealthRaise: true }, clout: 3 },
+        next: "round_hub",
+      },
+      {
+        text: "Back to Soft HQ hub. Not ready to perform.",
+        next: "hq_hub",
+      },
+    ],
+  },
+
+  round_hub: {
+    id: "round_hub",
+    title: "The Round — In Progress",
+    locationId: "soft-hq",
+    text: (s) =>
+      `Series A weather hangs over SoMa.\n\n` +
+      (s.flags.announcedSeriesA
+        ? `Your announcement is out. DMs are 40% congrats, 40% pitches, 20% Mom.\n\n`
+        : `Stealth mode: you pretend you're not raising while every coffee is a pitch.\n\n`) +
+      `**More Round beats (data room, board, full Spaces fight) are parked for the next writing pass.**\n\n` +
+      `You can still roam the Bay — Dylan, Palantir, FlareUp — with a company-shaped hole in your calendar.`,
+    choices: [
+      {
+        text: "Return to Soft HQ.",
+        next: "hq_hub",
+      },
+      {
+        text: "Home — process the existential invoice.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+      {
+        text: "Open the Map.",
+        next: null,
+      },
+    ],
+  },
+
   // ─── Generic locked / travel ───────────────────────────────
   travel: {
     id: "travel",
@@ -2192,4 +2664,5 @@ export const LOCATION_SCENES = {
   "yc-yacht": "yacht_arrive",
   "ketamine-dealer": "dylan_arrive",
   "palantir-bunker": "palantir_arrive",
+  "soft-hq": "hq_arrive",
 };

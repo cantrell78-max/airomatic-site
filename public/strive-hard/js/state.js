@@ -61,7 +61,7 @@ export function loadState() {
     if (!data.visitedLocations) data.visitedLocations = ["tenderloin"];
     if (!data.threads) data.threads = buildInitialThreads(data.character);
     // Ensure optional NPC threads exist
-    for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp"]) {
+    for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp", "cos"]) {
       if (!data.threads[id]) {
         data.threads[id] = {
           npcId: id,

@@ -124,6 +124,7 @@ function hubSceneFor(locationId) {
     "garry-sauna": "sauna_hub",
     "ketamine-dealer": "dylan_hub",
     "palantir-bunker": "palantir_hub",
+    "soft-hq": "hq_hub",
   };
   return hubs[locationId] || LOCATION_SCENES[locationId] || "home_hub";
 }
@@ -155,6 +156,12 @@ export function travelTo(state, locationId) {
       error: "No clearance. The lattice hasn't called your number yet (Mt. Shasta).",
     };
   }
+  if (locationId === "soft-hq" && !state.flags.raisedSeed) {
+    return {
+      state,
+      error: "No lease without a seed. Take (or negotiate) the yacht check first.",
+    };
+  }
 
   let next = { ...state, locationId };
   if (!next.visitedLocations.includes(locationId)) {
@@ -178,6 +185,11 @@ export function travelTo(state, locationId) {
     next.sceneId = "dylan_hub";
   } else if (visited && locationId === "palantir-bunker" && state.flags.enteredPalantir) {
     next.sceneId = "palantir_hub";
+  } else if (visited && locationId === "soft-hq" && state.flags.hqLeased) {
+    next.sceneId = state.flags.hqComplete ? "hq_hub" : "hq_furnish";
+    if (state.flags.hqFurnished && !state.flags.hqStaffed) next.sceneId = "hq_hire";
+    if (state.flags.hqStaffed && !state.flags.hqOperational) next.sceneId = "hq_allhands";
+    if (state.flags.hqOperational && !state.flags.hqComplete) next.sceneId = "hq_burn_check";
   } else {
     next.sceneId = sceneId;
   }

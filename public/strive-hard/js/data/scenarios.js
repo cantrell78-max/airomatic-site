@@ -184,7 +184,11 @@ export const SCENES = {
       } else if (s.flags.hasDirtyUsb) {
         side += `\n\nA USB in your sock drawer could topple three cap tables. Or get you disappeared.`;
       }
-      if (s.flags.raisedSeed && !s.flags.hqLeased) {
+      if (s.flags.raisedSeed && !s.flags.clawAccount) {
+        side += `\n\n**Map pin:** Mercury HQ — your seed is still in "vibes checking." Park the wire before Soft HQ burns it.`;
+      } else if (s.flags.clawAccount && !s.flags.hqLeased) {
+        side += `\n\n**Mercury:** treasury green. **Map:** SoMa Soft HQ — spend like a company toward **The Round**.`;
+      } else if (s.flags.raisedSeed && !s.flags.hqLeased) {
         side += `\n\n**Map pin:** SoMa Soft HQ — spend the seed before it spends you. Path toward **The Round**.`;
       } else if (s.flags.theRoundUnlocked && !s.flags.theRoundStarted) {
         side += `\n\n**The Round** is unlocked — Series A theater waits at Soft HQ or via the choice below.`;
@@ -219,6 +223,13 @@ export const SCENES = {
         hint: "Dating app on the iHype →",
         openApp: "flareup",
         next: "home_hub",
+      },
+      {
+        text: "Park seed at Mercury HQ (startup banking theater).",
+        require: (st) =>
+          st.flags.raisedSeed ? true : "Raise a seed on the yacht first",
+        effects: { locationId: "mercury-hq" },
+        next: "claw_arrive",
       },
       {
         text: "Head to SoMa Soft HQ (seed spend / company cosplay).",
@@ -317,9 +328,16 @@ export const SCENES = {
         extra +=
           "\n\n**Hangover:** You had a purpose. It was profound. It is gone. Classic.";
       }
-      if (s.flags.raisedSeed && !s.flags.hqLeased) {
+      if (s.flags.raisedSeed && !s.flags.clawAccount) {
         extra +=
-          "\n\n**Seed anxiety:** Money is burning a hole in checking. SoMa Soft HQ is waiting.";
+          "\n\n**Treasury anxiety:** Seed is still in civilian checking. Mercury HQ is on the Map — park it.";
+      } else if (s.flags.raisedSeed && !s.flags.hqLeased) {
+        extra +=
+          "\n\n**Seed anxiety:** Money wants a glass box. SoMa Soft HQ is waiting.";
+      }
+      if (s.flags.clawAccount && s.flags.clawYield) {
+        extra +=
+          "\n\n**Mercury push:** yield-theater notification — take +$40 if you believe the partner-bank poetry.";
       }
       if (s.flags.theRoundUnlocked && !s.flags.theRoundStarted) {
         extra +=
@@ -336,10 +354,16 @@ export const SCENES = {
       {
         text: "Seize the day (or at least seize a free bagel).",
         next: "home_hub",
-        messages: [
-          // Day-gated unlocks handled in effects via game engine hooks
-        ],
         effects: { flags: { dayRolled: true } },
+      },
+      {
+        text: "Collect Mercury's $40 \"yield theater\" and seize the day.",
+        require: (st) =>
+          st.flags.clawAccount && st.flags.clawYield
+            ? true
+            : "Enable Mercury yield upsell first (or open Mercury)",
+        effects: { cash: 40, flags: { dayRolled: true } },
+        next: "home_hub",
       },
     ],
   },
@@ -1155,7 +1179,10 @@ export const SCENES = {
     text: (s) =>
       (s.flags.raisedSeed
         ? `Your banking app glitches, then shows a number with too many zeros. Garry toasts "to alignment." Someone asks if you're hiring.\n\n` +
-          `**Map unlock: SoMa Soft HQ** — where seed capital goes to learn about burn rate. Garry's note: *Don't keep it in checking. Make it look like a company.*\n\n`
+          `**Map unlocks:**\n` +
+          `• **Mercury HQ** — where founders park the wire (startup banking, partner banks under the hood).\n` +
+          `• **SoMa Soft HQ** — glass-box company cosplay once the money has a grown-up home.\n\n` +
+          `Garry's note: *Don't keep seed in Chase checking. That's how LPs smell fear. Mercury. Not your roommate's Venmo.*\n\n`
         : `You leave the upper deck with your integrity, your brand, and still roughly mattress money. The party continues without a wire confirmation.\n\n`) +
       `Below, the fox onesie is still holding court with an otter. The night isn't done being weird.`,
     choices: [
@@ -1173,11 +1200,31 @@ export const SCENES = {
           likes: 250,
           reposts: 55,
         },
+        messages: [
+          {
+            npcId: "zane",
+            text: (st) =>
+              st.flags.raisedSeed
+                ? "congrats on the close 💳 Zane @ Mercury (not a real employee — in this game). your wire deserves better than Chase + a Google Sheet. SoMa office. leave Ramp and Slash in the group chat where they belong."
+                : "…wrong segment. reach out when you're post-seed.",
+            unlock: true,
+          },
+        ],
         next: "chapter1_end",
       },
       {
         text: "Slip away. Myths (and wires) need mystery.",
         effects: { clout: 2, day: 1 },
+        messages: [
+          {
+            npcId: "zane",
+            text: (st) =>
+              st.flags.raisedSeed
+                ? "saw the yacht energy. Mercury map pin live. we partner with real banks; we just make the UI founder-core. (Ramp is for people who think lunch is a P&L. Slash is for people who collect cards like Pokémon.) — Zane"
+                : "wrong ICP (pre-seed). come back when the wire clears 💳",
+            unlock: true,
+          },
+        ],
         next: "chapter1_end",
       },
     ],
@@ -1386,7 +1433,9 @@ export const SCENES = {
       `You started with nothing but a sticky note and a roommate who steals protein bars.\n\n` +
       (s.flags.raisedSeed
         ? `You raised. The internet noticed. Garry definitely noticed.\n\n` +
-          `**Next:** **SoMa Soft HQ** is on your Map — spend seed like a company before Series A smells blood (**The Round**).\n\n`
+          `**Next money ops:**\n` +
+          `1. **Mercury HQ** — park the wire (startup banking satire; do this before Soft HQ if you want the full ritual).\n` +
+          `2. **SoMa Soft HQ** — spend seed like a company before Series A smells blood (**The Round**).\n\n`
         : s.flags.declinedSeed
           ? `You declined the yacht check. Integrity is a strategy. Runway is still a personality trait.\n\n`
           : `Somehow you left the boat without a money decision. The Bay is confused.\n\n`) +
@@ -1398,6 +1447,13 @@ export const SCENES = {
       {
         text: "Continue free roam — the Bay isn't done with you.",
         next: "home_hub",
+      },
+      {
+        text: "Park the seed at Mercury HQ.",
+        require: (st) =>
+          st.flags.raisedSeed ? true : "Need a seed wire first",
+        effects: { locationId: "mercury-hq" },
+        next: "claw_arrive",
       },
       {
         text: "Go claim SoMa Soft HQ (if you raised).",
@@ -2283,6 +2339,275 @@ export const SCENES = {
     ],
   },
 
+  // ─── Mercury HQ (post-seed park the wire; Ramp/Slash roasted in dialogue) ─
+  // Scene ids keep claw_* prefixes for save/compat; location id is mercury-hq.
+  claw_arrive: {
+    id: "claw_arrive",
+    title: "Mercury HQ — Lobby as a Product",
+    locationId: "mercury-hq",
+    text: (s) =>
+      `SoMa (or SoMa-adjacent energy). Glass, plants that have never known soil, a wall monitor looping "customers who trust us with their runway."\n\n` +
+      `Reception tablet: **WELCOME TO MERCURY** · *Financial infrastructure for startups.*\n` +
+      `Fine print energy: partner banks under the hood; the UI is the product; your mom will still call it a bank.\n\n` +
+      `Cash you're about to "onboard": **$${s.cash.toLocaleString()}**.\n\n` +
+      `An AE named **Zane** (definitely not a real Mercury employee — pure parody) materializes with a cold brew.\n\n` +
+      `"You closed," he says. "Congrats. Please tell me that wire isn't sitting in a personal Chase account next to your DoorDash history."`,
+    choices: [
+      {
+        text: "Take the tour. Submit to the funnel.",
+        effects: { flags: { enteredClaw: true }, clout: 1 },
+        next: "claw_pitch",
+      },
+      {
+        text: "Ask if this is a bank.",
+        effects: { flags: { enteredClaw: true }, shameless: 1 },
+        next: "claw_pitch",
+      },
+      {
+        text: "Flee. Wire can live in a shoebox.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
+  claw_pitch: {
+    id: "claw_pitch",
+    title: "The Deck That Is Also a Mirror",
+    locationId: "mercury-hq",
+    text:
+      `Zane walks you past a logo wall and a kitchen that costs more than your first hire.\n\n` +
+      `"Mercury is where serious post-seed teams put operating cash," he says, already on slide 4. ` +
+      `"Checking, treasury, cards, wires that don't require a blood oath with a branch manager."\n\n` +
+      `He lowers his voice like he's sharing alpha:\n\n` +
+      `"Look — some of your batch will open **Ramp** because they want an AI that scolds them for lunch. ` +
+      `Cute. If your personality is a receipt photo, go be happy."\n\n` +
+      `"Others will try **Slash** because the brand is loud and the card metal photographs well. ` +
+      `Collecting fintechs is not a treasury strategy. It's a hobby."\n\n` +
+      `"You want the boring, correct, founder-default stack. That's us. Partner banks. Clean UI. ` +
+      `We don't need to win a meme war with a claw emoji."\n\n` +
+      `A slide appears: **NOT A BANK*** with an asterisk the size of a Series B.`,
+    choices: [
+      {
+        text: "\"Ship me the full stack. Park the seed.\"",
+        hint: "Mercury treasury + cards.",
+        next: "claw_onboard",
+      },
+      {
+        text: "Treasury only. Cards sound like a personality problem.",
+        next: "claw_onboard_treasury",
+      },
+      {
+        text: "Defend Ramp and Slash out of pure contrarianism.",
+        effects: { clout: 1, shameless: 2 },
+        next: "claw_float",
+      },
+    ],
+  },
+
+  claw_float: {
+    id: "claw_float",
+    title: "Competitive Roast (Complimentary)",
+    locationId: "mercury-hq",
+    text:
+      `Zane smiles like a man who has done this objection-handling loop 400 times.\n\n` +
+      `"Ramp is great if your love language is *policy engine.* ` +
+      `They'll optimize a $14 sandwich while your runway is a feeling. Respect the hustle. Wrong sacrament."\n\n` +
+      `"Slash is what you open when you want five cards and a vibe. ` +
+      `It's fintech as streetwear. I own a hoodie I won't name. I still wired my last company to Mercury."\n\n` +
+      `"We're not allergic to cards. We just don't pretend a Mastercard is a co-founder."\n\n` +
+      `He sips the cold brew. "Park the seed. Argue brands on X later."`,
+    choices: [
+      {
+        text: "Fine. Full stack. Take my wire.",
+        next: "claw_onboard",
+      },
+      {
+        text: "Treasury only. Minimum viable custody.",
+        next: "claw_onboard_treasury",
+      },
+    ],
+  },
+
+  claw_onboard: {
+    id: "claw_onboard",
+    title: "KYC but Make It Founder-Core",
+    locationId: "mercury-hq",
+    text: (s) =>
+      `You "onboard" by photographing your ID next to the term sheet selfie and agreeing to partner-bank language written by people who sleep.\n\n` +
+      `Zane: "You're live. Seed is in Mercury. Virtual cards spinning up for you, your future CoS, and 'misc chaos.' ` +
+      `If Ramp texts you a coupon for 'AI spend insights,' mute them. If Slash sends a drip about metal finishes, that's content, not custody."\n\n` +
+      `App notification: **MERCURY ≈ $${s.cash.toLocaleString()}** · *Welcome to infrastructure.*\n\n` +
+      `(Your in-game cash is still spendable — Mercury is where the *narrative* money lives. The dashboard just looks more adult.)\n\n` +
+      `He slides a card. "Debit. Not a personality. On purpose."`,
+    choices: [
+      {
+        text: "Accept the stack. Become legible to capital.",
+        effects: {
+          flags: {
+            clawAccount: true,
+            clawCards: true,
+            clawTreasury: true,
+            enteredClaw: true,
+          },
+          clout: 4,
+          followers: 20,
+        },
+        post: {
+          text: "moved the seed to Mercury 💳 startup banking era. told ramp and slash i'll see them in the meme folder",
+          likes: 150,
+          reposts: 35,
+        },
+        messages: [
+          {
+            npcId: "zane",
+            text: "you're live on Mercury (game version). memo your roommate Venmos or the ops channel will riot. ignore Ramp's 'you left savings on the table' email. — Zane 💳",
+            unlock: true,
+          },
+        ],
+        next: "claw_upsell",
+      },
+    ],
+  },
+
+  claw_onboard_treasury: {
+    id: "claw_onboard_treasury",
+    title: "Treasury-Only Path",
+    locationId: "mercury-hq",
+    text: (s) =>
+      `Zane looks briefly bereaved, then recovers.\n\n` +
+      `"Treasury without cards is valid. It's the 'I read the SAFE' energy. ` +
+      `Ramp people will say you're leaving rewards on the table. Slash people will say your wallet looks empty. Good."\n\n` +
+      `Wire instructions appear that look like a poem written by compliance.\n\n` +
+      `**MERCURY TREASURY ≈ $${s.cash.toLocaleString()}** · Cards: later.\n\n` +
+      `"When you're ready to empower the team," he says, "we'll issue plastic that doesn't need a keynote."`,
+    choices: [
+      {
+        text: "Park it. Cards later.",
+        effects: {
+          flags: {
+            clawAccount: true,
+            clawTreasury: true,
+            enteredClaw: true,
+          },
+          clout: 3,
+        },
+        post: {
+          text: "seed is in Mercury. not chase. not my mattress. (mom still says bank)",
+          likes: 80,
+          reposts: 12,
+        },
+        messages: [
+          {
+            npcId: "zane",
+            text: "treasury live. cards when you want them. Slash can keep the unboxing videos. — Z 💳",
+            unlock: true,
+          },
+        ],
+        next: "claw_hub",
+      },
+      {
+        text: "Actually… full stack. I fear missing out on metal.",
+        next: "claw_onboard",
+      },
+    ],
+  },
+
+  claw_upsell: {
+    id: "claw_upsell",
+    title: "The Soft Close After the Soft Close",
+    locationId: "mercury-hq",
+    text:
+      `Zane is not done.\n\n` +
+      `"While I have you — bill pay, accounting sync, yield products that are definitely not a savings account in a trench coat, ` +
+      `and weekly emails about runway that hit harder than your mom."\n\n` +
+      `A junior AE offers a sticker. "For the laptop. LPs love signals. Not Ramp stickers. That's a tell."\n\n` +
+      `You can feel Soft HQ calling. The glass box wants furniture. The wire wants purpose.`,
+    choices: [
+      {
+        text: "Enable yield / runway emails. Suffer productively.",
+        effects: { flags: { clawAiCfo: true, clawYield: true }, clout: 1 },
+        next: "claw_hub",
+      },
+      {
+        text: "Decline upsells. Escape with the card.",
+        effects: { clout: 1 },
+        next: "claw_hub",
+      },
+      {
+        text: "Ask if Mercury is hiring. (In the game, always.)",
+        effects: { shameless: 1, followers: 10 },
+        post: {
+          text: "just parked seed at mercury hq (satire edition). fintech offices smell like cold brew and SOC2",
+          likes: 40,
+          reposts: 5,
+        },
+        next: "claw_hub",
+      },
+    ],
+  },
+
+  claw_hub: {
+    id: "claw_hub",
+    title: "Mercury — Dashboard Consciousness",
+    locationId: "mercury-hq",
+    text: (s) =>
+      `Open office. Standing desks. Someone arguing about ACH cutoffs like it's philosophy.\n\n` +
+      (s.flags.clawAccount
+        ? `Your Mercury status: **${s.flags.clawCards ? "Treasury + Cards" : "Treasury"}** · Cash (game): **$${s.cash.toLocaleString()}**\n\n`
+        : `You still haven't onboarded. Zane can smell unhosted capital.\n\n`) +
+      (s.flags.clawAiCfo
+        ? `Email preview: "Your burn is a love language (but also a problem)."\n\n`
+        : "") +
+      `Zane, in passing: "If an LP asks why not Ramp — say you optimize for custody, not sandwich surveillance. ` +
+      `If they ask about Slash — say you don't collect fintechs."\n\n` +
+      `Next ritual: **SoMa Soft HQ** — spend what you just parked.`,
+    choices: [
+      {
+        text: "Onboard / open full stack (if you ghosted earlier).",
+        require: (st) =>
+          st.flags.clawAccount ? "Already on Mercury" : true,
+        next: "claw_pitch",
+      },
+      {
+        text: "Add cards to treasury-only account.",
+        require: (st) => {
+          if (!st.flags.clawAccount) return "Open Mercury first";
+          if (st.flags.clawCards) return "Cards already live";
+          return true;
+        },
+        effects: { flags: { clawCards: true }, clout: 1 },
+        next: "claw_hub",
+      },
+      {
+        text: "Go lease Soft HQ while the card is warm.",
+        require: (st) =>
+          st.flags.raisedSeed ? true : "Need seed (you shouldn't be here)",
+        effects: { locationId: "soft-hq" },
+        next: "hq_arrive",
+      },
+      {
+        text: "Post a fintech flex (roast optional).",
+        effects: { followers: 25, engagement: 8 },
+        post: {
+          text: "seed parked at mercury. ramp can keep the lunch AI. slash can keep the unboxings. i have wires to make 💳",
+          likes: 60,
+          reposts: 14,
+        },
+        next: "claw_hub",
+      },
+      {
+        text: "Map / leave the infrastructure cathedral.",
+        next: null,
+      },
+      {
+        text: "Home. Check that the wire wasn't a dream.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
   // ─── SoMa Soft HQ (seed spend → unlock The Round) ────────
   hq_arrive: {
     id: "hq_arrive",
@@ -2293,9 +2618,16 @@ export const SCENES = {
         ? `Suite 4B still smells like ambition and toner. Cash: **$${s.cash.toLocaleString()}**. The glass box is yours.`
         : `The building smells like oat milk and broken NDAs. A receptionist who is also an iPad asks if you're "the seed people."\n\n` +
           `Your "office" is a glass box labeled **SUITE 4B — FLEX**. The furniture is a promise. The WiFi password is **Synergy2024!** with the exclamation point.\n\n` +
-          `Cash on hand: **$${s.cash.toLocaleString()}**. ` +
+          `Cash on hand: **$${s.cash.toLocaleString()}**` +
+          (s.flags.clawAccount
+            ? ` (Mercury dashboard says the same number with better typography).`
+            : ` (still not parked at Mercury — Zane is disappointed in another tab).`) +
+          `\n\n` +
           `Garry's voice in your head: *Make it look like a company before LPs ask for a tour.*\n\n` +
-          `A broker in Allbirds slides a tablet across. "Month-to-month. Culture included. Deposit due now."`,
+          `A broker in Allbirds slides a tablet across. "Month-to-month. Culture included. Deposit due now."` +
+          (s.flags.clawCards
+            ? `\n\nYou can put the deposit on a Mercury card named **LEASE_FLEX_4B**. Ramp would have categorized it as 'real estate trauma.'`
+            : ""),
     choices: [
       {
         text: "Sign the Flex lease. Deposit $18,000.",
@@ -2665,4 +2997,5 @@ export const LOCATION_SCENES = {
   "ketamine-dealer": "dylan_arrive",
   "palantir-bunker": "palantir_arrive",
   "soft-hq": "hq_arrive",
+  "mercury-hq": "claw_arrive",
 };

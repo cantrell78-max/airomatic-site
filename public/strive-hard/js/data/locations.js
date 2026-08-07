@@ -111,6 +111,16 @@ export const LOCATIONS = [
     energyCost: 1,
     tags: ["soma", "office", "seed-spend"],
   },
+  {
+    id: "mercury-hq",
+    name: "Mercury HQ",
+    short: "Mercury",
+    emoji: "💳",
+    desc: "Where post-seed founders park the wire. Startup banking theater, partner banks under the hood. Not affiliated — pure satire.",
+    unlockDay: 1,
+    energyCost: 1,
+    tags: ["soma", "fintech", "treasury"],
+  },
 ];
 
 export function getLocation(id) {
@@ -124,6 +134,7 @@ export function locationLockReason(loc, state) {
   if (loc.id === "ketamine-dealer") return "Meet Dylan on the yacht first";
   if (loc.id === "palantir-bunker") return "Requires alien contact (Mt. Shasta)";
   if (loc.id === "soft-hq") return "Raise a seed on the yacht first";
+  if (loc.id === "mercury-hq") return "Raise a seed — then park it at Mercury";
   if (state.day < loc.unlockDay) return `Unlocks day ${loc.unlockDay}+`;
   return "Locked";
 }
@@ -145,6 +156,9 @@ export function isLocationUnlocked(loc, state) {
     return !!state.flags.alienContact;
   }
   if (loc.id === "soft-hq") {
+    return !!state.flags.raisedSeed;
+  }
+  if (loc.id === "mercury-hq") {
     return !!state.flags.raisedSeed;
   }
   return true;

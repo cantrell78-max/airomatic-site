@@ -125,6 +125,7 @@ function hubSceneFor(locationId) {
     "ketamine-dealer": "dylan_hub",
     "palantir-bunker": "palantir_hub",
     "soft-hq": "hq_hub",
+    "mercury-hq": "claw_hub",
   };
   return hubs[locationId] || LOCATION_SCENES[locationId] || "home_hub";
 }
@@ -162,6 +163,12 @@ export function travelTo(state, locationId) {
       error: "No lease without a seed. Take (or negotiate) the yacht check first.",
     };
   }
+  if (locationId === "mercury-hq" && !state.flags.raisedSeed) {
+    return {
+      state,
+      error: "Mercury only onboards post-seed (in this game). Raise first, then park the wire.",
+    };
+  }
 
   let next = { ...state, locationId };
   if (!next.visitedLocations.includes(locationId)) {
@@ -190,6 +197,8 @@ export function travelTo(state, locationId) {
     if (state.flags.hqFurnished && !state.flags.hqStaffed) next.sceneId = "hq_hire";
     if (state.flags.hqStaffed && !state.flags.hqOperational) next.sceneId = "hq_allhands";
     if (state.flags.hqOperational && !state.flags.hqComplete) next.sceneId = "hq_burn_check";
+  } else if (visited && locationId === "mercury-hq" && state.flags.enteredClaw) {
+    next.sceneId = state.flags.clawAccount ? "claw_hub" : "claw_pitch";
   } else {
     next.sceneId = sceneId;
   }

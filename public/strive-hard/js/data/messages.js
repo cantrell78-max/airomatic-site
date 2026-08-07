@@ -108,6 +108,14 @@ export const NPCS = {
     gender: "unknown",
     spicy: false,
   },
+  zane: {
+    id: "zane",
+    name: "Zane (Mercury)",
+    emoji: "💳",
+    role: "Startup banking AE · not a real Mercury employee",
+    gender: "male",
+    spicy: false,
+  },
 };
 
 /**
@@ -211,7 +219,7 @@ export function buildInitialThreads(character) {
   };
 
   // FlareUp matches + later arcs unlock these
-  for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp", "cos"]) {
+  for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp", "cos", "zane"]) {
     threads[id] = {
       npcId: id,
       unread: false,

@@ -61,7 +61,7 @@ export function loadState() {
     if (!data.visitedLocations) data.visitedLocations = ["tenderloin"];
     if (!data.threads) data.threads = buildInitialThreads(data.character);
     // Ensure optional NPC threads exist
-    for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp", "cos"]) {
+    for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp", "cos", "zane"]) {
       if (!data.threads[id]) {
         data.threads[id] = {
           npcId: id,
@@ -71,6 +71,13 @@ export function loadState() {
           replyOptions: [],
         };
       }
+    }
+    // Claw → Mercury location rename (flags keep claw* keys for save stability)
+    if (data.locationId === "claw-hq") data.locationId = "mercury-hq";
+    if (Array.isArray(data.visitedLocations)) {
+      data.visitedLocations = data.visitedLocations.map((id) =>
+        id === "claw-hq" ? "mercury-hq" : id
+      );
     }
     return data;
   } catch {

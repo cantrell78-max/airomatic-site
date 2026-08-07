@@ -112,7 +112,7 @@ export const NPCS = {
     id: "zane",
     name: "Zane (Mercury)",
     emoji: "💳",
-    role: "Startup banking AE · not a real Mercury employee",
+    role: "Startup banking AE",
     gender: "male",
     spicy: false,
   },

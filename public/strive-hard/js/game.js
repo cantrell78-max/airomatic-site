@@ -166,7 +166,7 @@ export function travelTo(state, locationId) {
   if (locationId === "mercury-hq" && !state.flags.raisedSeed) {
     return {
       state,
-      error: "Mercury only onboards post-seed (in this game). Raise first, then park the wire.",
+      error: "Mercury only onboards post-seed. Raise first, then park the wire.",
     };
   }
 

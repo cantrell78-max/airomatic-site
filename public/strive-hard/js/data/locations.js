@@ -116,7 +116,7 @@ export const LOCATIONS = [
     name: "Mercury HQ",
     short: "Mercury",
     emoji: "💳",
-    desc: "Where post-seed founders park the wire. Startup banking theater, partner banks under the hood. Not affiliated — pure satire.",
+    desc: "Where post-seed founders park the wire. Startup banking, partner banks under the hood.",
     unlockDay: 1,
     energyCost: 1,
     tags: ["soma", "fintech", "treasury"],

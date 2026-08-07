@@ -1205,7 +1205,7 @@ export const SCENES = {
             npcId: "zane",
             text: (st) =>
               st.flags.raisedSeed
-                ? "congrats on the close 💳 Zane @ Mercury (not a real employee — in this game). your wire deserves better than Chase + a Google Sheet. SoMa office. leave Ramp and Slash in the group chat where they belong."
+                ? "congrats on the close 💳 Zane @ Mercury. your wire deserves better than Chase + a Google Sheet. SoMa office. leave Ramp and Slash in the group chat where they belong."
                 : "…wrong segment. reach out when you're post-seed.",
             unlock: true,
           },
@@ -1434,7 +1434,7 @@ export const SCENES = {
       (s.flags.raisedSeed
         ? `You raised. The internet noticed. Garry definitely noticed.\n\n` +
           `**Next money ops:**\n` +
-          `1. **Mercury HQ** — park the wire (startup banking satire; do this before Soft HQ if you want the full ritual).\n` +
+          `1. **Mercury HQ** — park the wire (do this before Soft HQ if you want the full founder ritual).\n` +
           `2. **SoMa Soft HQ** — spend seed like a company before Series A smells blood (**The Round**).\n\n`
         : s.flags.declinedSeed
           ? `You declined the yacht check. Integrity is a strategy. Runway is still a personality trait.\n\n`
@@ -2350,7 +2350,7 @@ export const SCENES = {
       `Reception tablet: **WELCOME TO MERCURY** · *Financial infrastructure for startups.*\n` +
       `Fine print energy: partner banks under the hood; the UI is the product; your mom will still call it a bank.\n\n` +
       `Cash you're about to "onboard": **$${s.cash.toLocaleString()}**.\n\n` +
-      `An AE named **Zane** (definitely not a real Mercury employee — pure parody) materializes with a cold brew.\n\n` +
+      `An AE named **Zane** materializes with a cold brew.\n\n` +
       `"You closed," he says. "Congrats. Please tell me that wire isn't sitting in a personal Chase account next to your DoorDash history."`,
     choices: [
       {
@@ -2438,7 +2438,6 @@ export const SCENES = {
       `Zane: "You're live. Seed is in Mercury. Virtual cards spinning up for you, your future CoS, and 'misc chaos.' ` +
       `If Ramp texts you a coupon for 'AI spend insights,' mute them. If Slash sends a drip about metal finishes, that's content, not custody."\n\n` +
       `App notification: **MERCURY ≈ $${s.cash.toLocaleString()}** · *Welcome to infrastructure.*\n\n` +
-      `(Your in-game cash is still spendable — Mercury is where the *narrative* money lives. The dashboard just looks more adult.)\n\n` +
       `He slides a card. "Debit. Not a personality. On purpose."`,
     choices: [
       {
@@ -2461,7 +2460,7 @@ export const SCENES = {
         messages: [
           {
             npcId: "zane",
-            text: "you're live on Mercury (game version). memo your roommate Venmos or the ops channel will riot. ignore Ramp's 'you left savings on the table' email. — Zane 💳",
+            text: "you're live on Mercury. memo your roommate Venmos or the ops channel will riot. ignore Ramp's 'you left savings on the table' email. — Zane 💳",
             unlock: true,
           },
         ],
@@ -2535,10 +2534,10 @@ export const SCENES = {
         next: "claw_hub",
       },
       {
-        text: "Ask if Mercury is hiring. (In the game, always.)",
+        text: "Ask if Mercury is hiring. (They are. Always.)",
         effects: { shameless: 1, followers: 10 },
         post: {
-          text: "just parked seed at mercury hq (satire edition). fintech offices smell like cold brew and SOC2",
+          text: "just parked seed at mercury hq. fintech offices smell like cold brew and SOC2",
           likes: 40,
           reposts: 5,
         },
@@ -2554,7 +2553,7 @@ export const SCENES = {
     text: (s) =>
       `Open office. Standing desks. Someone arguing about ACH cutoffs like it's philosophy.\n\n` +
       (s.flags.clawAccount
-        ? `Your Mercury status: **${s.flags.clawCards ? "Treasury + Cards" : "Treasury"}** · Cash (game): **$${s.cash.toLocaleString()}**\n\n`
+        ? `Your Mercury status: **${s.flags.clawCards ? "Treasury + Cards" : "Treasury"}** · Cash: **$${s.cash.toLocaleString()}**\n\n`
         : `You still haven't onboarded. Zane can smell unhosted capital.\n\n`) +
       (s.flags.clawAiCfo
         ? `Email preview: "Your burn is a love language (but also a problem)."\n\n`

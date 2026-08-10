@@ -1,5 +1,208 @@
 [
   {
+    "id": "patchmill-2026-08",
+    "companyName": "Patchmill",
+    "headline": "Patchmill Raises $68M Series B as Founding Team Industrializes Agent Code Mills",
+    "round": "$68M Series B",
+    "newsType": "raise",
+    "description": "Founding team shipping a production mill for coding agents—intent intake, parallel patch lanes, and merge audits so eng orgs stop treating multi-agent sprints as demo theater.",
+    "founderName": "Wei Deng",
+    "founderTitle": "ex-GitHub",
+    "founderQuote": "We do not sell another dashboard of suggestions. We sell closed PRs with a trail legal can read.",
+    "investorQuote": "Infrastructure categories mint durable franchises—Patchmill is the production surface for agent-built software.",
+    "investorName": "Joe Lonsdale",
+    "investorFirm": "8VC",
+    "verticals": [
+      "Dev Tools",
+      "Coding Agents",
+      "Software Forge"
+    ],
+    "hashtags": [
+      "#Patchmill",
+      "#CodingAgents",
+      "#GrowthCapital",
+      "#SoftwareForge",
+      "#AgentBuiltCode"
+    ],
+    "image": "/images/startups/patchmill-team.jpg",
+    "date": "2026-08-10",
+    "xPost": "Patchmill raises $68M Series B. Founding team shipping a production mill for coding agents—intent intake, parallel patch lanes, and merge audits so eng orgs stop treating multi-agent sprints as demo theater.\n\n\"We do not sell another dashboard of suggestions. We sell closed PRs with a trail legal can read.\" — Wei Deng\n\n\"Infrastructure categories mint durable franchises—Patchmill is the production surface for agent-built software.\" — Joe Lonsdale · 8VC\n\n#Patchmill #CodingAgents #GrowthCapital #SoftwareForge #AgentBuiltCode"
+  },
+  {
+    "id": "spendstack-2026-08",
+    "companyName": "Spendstack",
+    "headline": "Spendstack Raises $51M Series A for Procurement Agents That Close POs, Not Queues",
+    "round": "$51M Series A",
+    "newsType": "raise",
+    "description": "Intake-to-PO agents for enterprise procurement—vendor triage, policy graphs, and exception chase that finish the buy cycle instead of flooding buyers with another approval dashboard.",
+    "founderName": "Tejas Venugopal",
+    "founderTitle": "MIT dropout",
+    "founderQuote": "One procurement operator should oversee what used to take a floor of buyers. Spendstack absorbs the volume work.",
+    "investorQuote": "Boards will fund systems that make agent spend risk legible—Spendstack turns purchase execution into a governed production surface.",
+    "investorName": "Aaref Hilaly",
+    "investorFirm": "Bain Capital Ventures",
+    "verticals": [
+      "Procurement AI",
+      "Spend Ops",
+      "Enterprise Agents"
+    ],
+    "hashtags": [
+      "#Spendstack",
+      "#ProcurementAI",
+      "#VentureRound",
+      "#SpendOps",
+      "#POAgents"
+    ],
+    "image": "/images/startups/tejas-venugopal.jpg",
+    "date": "2026-08-10",
+    "xPost": "Spendstack raises $51M Series A. Intake-to-PO agents for enterprise procurement—vendor triage, policy graphs, and exception chase that finish the buy cycle instead of flooding buyers with another approval dashboard.\n\n\"One procurement operator should oversee what used to take a floor of buyers. Spendstack absorbs the volume work.\" — Tejas Venugopal\n\n\"Boards will fund systems that make agent spend risk legible—Spendstack turns purchase execution into a governed production surface.\" — Aaref Hilaly · Bain Capital Ventures\n\n#Spendstack #ProcurementAI #VentureRound #SpendOps #POAgents"
+  },
+  {
+    "id": "sealith-2026-08",
+    "companyName": "Sealith",
+    "headline": "Sealith Emerges from Stealth with $48M to Identity-Bind Humans, Machines, and Agents",
+    "round": "$48M · Emerged from stealth",
+    "newsType": "stealth",
+    "description": "Identity and tool-auth fabric for non-human employees—badge, seal, and mandate bindings so agent fleets can act without becoming an unscoped privilege dump.",
+    "founderName": "Joel Kramer",
+    "founderTitle": "ex-Okta",
+    "founderQuote": "Autonomy without mandate context is just uncontrolled privilege. Sealith keeps agent identity board-defensible.",
+    "investorQuote": "Regulated buyers pay for systems that leave a trail—Sealith is the identity control plane for agent production.",
+    "investorName": "Vinod Khosla",
+    "investorFirm": "Khosla Ventures",
+    "verticals": [
+      "Non-Human Identity",
+      "Agent Auth",
+      "Zero Trust"
+    ],
+    "hashtags": [
+      "#Sealith",
+      "#NonHumanIdentity",
+      "#StealthDrop",
+      "#AgentAuth",
+      "#ZeroTrustAI"
+    ],
+    "image": "/images/startups/joel-kramer.jpg",
+    "date": "2026-08-10",
+    "xPost": "Sealith emerges from stealth with $48M · Emerged from stealth. Identity and tool-auth fabric for non-human employees—badge, seal, and mandate bindings so agent fleets can act without becoming an unscoped privilege dump.\n\n\"Autonomy without mandate context is just uncontrolled privilege. Sealith keeps agent identity board-defensible.\" — Joel Kramer\n\n\"Regulated buyers pay for systems that leave a trail—Sealith is the identity control plane for agent production.\" — Vinod Khosla · Khosla Ventures\n\n#Sealith #NonHumanIdentity #StealthDrop #AgentAuth #ZeroTrustAI"
+  },
+  {
+    "id": "fynt-2026-08",
+    "companyName": "Fynt",
+    "headline": "Fynt Raises $47M Series A for Investigation Agents That Close Fincrime Cases",
+    "round": "$47M Series A",
+    "newsType": "raise",
+    "description": "Investigation agents for fraud and AML desks—case assembly, evidence chains, and narrative drafts with immutable audit so analysts stop living in queue theater.",
+    "founderName": "Anirudh Hegde",
+    "founderTitle": "IIT Delhi dropout",
+    "founderQuote": "We do not sell another compliance dashboard. We sell closed cases with a trail that survives partner review.",
+    "investorQuote": "Copilot revenue is a feature; closed investigation packets are a company—Fynt sells resolution at computer speed.",
+    "investorName": "Sameer Gandhi",
+    "investorFirm": "Accel",
+    "verticals": [
+      "Fincrime",
+      "Investigation AI",
+      "Compliance Ops"
+    ],
+    "hashtags": [
+      "#Fynt",
+      "#FincrimeAI",
+      "#VentureRound",
+      "#InvestigationAgents",
+      "#AMLOps"
+    ],
+    "image": "/images/startups/anirudh-hegde.jpg",
+    "date": "2026-08-10",
+    "xPost": "Fynt raises $47M Series A. Investigation agents for fraud and AML desks—case assembly, evidence chains, and narrative drafts with immutable audit so analysts stop living in queue theater.\n\n\"We do not sell another compliance dashboard. We sell closed cases with a trail that survives partner review.\" — Anirudh Hegde\n\n\"Copilot revenue is a feature; closed investigation packets are a company—Fynt sells resolution at computer speed.\" — Sameer Gandhi · Accel\n\n#Fynt #FincrimeAI #VentureRound #InvestigationAgents #AMLOps"
+  },
+  {
+    "id": "voxx-2026-08",
+    "companyName": "Voxx",
+    "headline": "Voxx Raises $36M Series A as Co-Founders Ship Voice Agents for Multi-Unit Ops",
+    "round": "$36M Series A",
+    "newsType": "raise",
+    "description": "Co-founded voice-first agent OS for franchise and multi-unit brands—shift handoffs, vendor calls, and exception chase that close store loops instead of generating more tickets for regional managers.",
+    "founderName": "Kabir Apte & Rohan Sengupta",
+    "founderTitle": "ex-Uber / IIT Bombay dropout",
+    "founderQuote": "One regional operator oversees what used to take a call center floor. Voxx is the always-on seat that finishes the work.",
+    "investorQuote": "Unit economics only work when the agent absorbs store-level volume—Voxx industrializes multi-unit labor orchestration.",
+    "investorName": "Rajan Anandan",
+    "investorFirm": "Peak XV Partners",
+    "verticals": [
+      "Voice Agents",
+      "Franchise Ops",
+      "Multi-Unit AI"
+    ],
+    "hashtags": [
+      "#Voxx",
+      "#VoiceAgents",
+      "#VentureRound",
+      "#FranchiseAI",
+      "#MultiUnitOps"
+    ],
+    "image": "/images/startups/voxx-duo.jpg",
+    "date": "2026-08-10",
+    "xPost": "Voxx raises $36M Series A. Co-founded voice-first agent OS for franchise and multi-unit brands—shift handoffs, vendor calls, and exception chase that close store loops instead of generating more tickets for regional managers.\n\n\"One regional operator oversees what used to take a call center floor. Voxx is the always-on seat that finishes the work.\" — Kabir Apte & Rohan Sengupta\n\n\"Unit economics only work when the agent absorbs store-level volume—Voxx industrializes multi-unit labor orchestration.\" — Rajan Anandan · Peak XV Partners\n\n#Voxx #VoiceAgents #VentureRound #FranchiseAI #MultiUnitOps"
+  },
+  {
+    "id": "meld-2026-08",
+    "companyName": "Meld",
+    "headline": "Meld Raises $38M Series A for the Production Surface Multi-Agent Work Actually Needs",
+    "round": "$38M Series A",
+    "newsType": "raise",
+    "description": "Control plane for multi-function agent fleets—routing, memory handoff, and policy gates so enterprises stop running fifty disconnected bots as if they were a workforce.",
+    "founderName": "Lei Xu",
+    "founderTitle": "Stanford dropout",
+    "founderQuote": "Enterprises do not need fifty bots—they need one production surface that melds work across agents.",
+    "investorQuote": "This is the layer the market consolidates on when agent fleets leave the demo and enter production.",
+    "investorName": "Byron Deeter",
+    "investorFirm": "Bessemer Venture Partners",
+    "verticals": [
+      "Multi-Agent",
+      "Agent Runtime",
+      "Enterprise AI"
+    ],
+    "hashtags": [
+      "#Meld",
+      "#MultiAgent",
+      "#VentureRound",
+      "#AgentRuntime",
+      "#ProductionSurface"
+    ],
+    "image": "/images/startups/lei-xu.jpg",
+    "date": "2026-08-10",
+    "xPost": "Meld raises $38M Series A. Control plane for multi-function agent fleets—routing, memory handoff, and policy gates so enterprises stop running fifty disconnected bots as if they were a workforce.\n\n\"Enterprises do not need fifty bots—they need one production surface that melds work across agents.\" — Lei Xu\n\n\"This is the layer the market consolidates on when agent fleets leave the demo and enter production.\" — Byron Deeter · Bessemer Venture Partners\n\n#Meld #MultiAgent #VentureRound #AgentRuntime #ProductionSurface"
+  },
+  {
+    "id": "prym-2026-08",
+    "companyName": "Prym",
+    "headline": "Prym Raises $33M Series A to Put Mandate Context on Live Portfolio Agents",
+    "round": "$33M Series A",
+    "newsType": "raise",
+    "description": "Agentic investing runtime with mandate graphs, execution rails, and fiduciary controls so portfolio agents can act without turning capital allocation into uncontrolled spend.",
+    "founderName": "Neel Kher",
+    "founderTitle": "Berkeley dropout",
+    "founderQuote": "Autonomy without mandate context is just uncontrolled spend. Prym keeps agent capital allocation legible to the IC.",
+    "investorQuote": "Unit economics only work when the agent does the volume work under a board-readable mandate—Prym is that layer.",
+    "investorName": "Barry Eggers",
+    "investorFirm": "Lightspeed Venture Partners",
+    "verticals": [
+      "Agentic Investing",
+      "Portfolio Ops",
+      "Capital Markets"
+    ],
+    "hashtags": [
+      "#Prym",
+      "#AgenticInvesting",
+      "#VentureRound",
+      "#PortfolioAgents",
+      "#MandateContext"
+    ],
+    "image": "/images/startups/neel-kher.jpg",
+    "date": "2026-08-10",
+    "xPost": "Prym raises $33M Series A. Agentic investing runtime with mandate graphs, execution rails, and fiduciary controls so portfolio agents can act without turning capital allocation into uncontrolled spend.\n\n\"Autonomy without mandate context is just uncontrolled spend. Prym keeps agent capital allocation legible to the IC.\" — Neel Kher\n\n\"Unit economics only work when the agent does the volume work under a board-readable mandate—Prym is that layer.\" — Barry Eggers · Lightspeed Venture Partners\n\n#Prym #AgenticInvesting #VentureRound #PortfolioAgents #MandateContext"
+  },
+  {
     "id": "lumo-2026-08",
     "date": "2026-08-06",
     "companyName": "Lumo",

@@ -116,6 +116,14 @@ export const NPCS = {
     gender: "male",
     spicy: false,
   },
+  thiel: {
+    id: "thiel",
+    name: "Peter Thiel",
+    emoji: "♟️",
+    role: "Series A gravity · heard about your bunker performance",
+    gender: "male",
+    spicy: true,
+  },
 };
 
 /**
@@ -219,7 +227,7 @@ export function buildInitialThreads(character) {
   };
 
   // FlareUp matches + later arcs unlock these
-  for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp", "cos", "zane"]) {
+  for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp", "cos", "zane", "thiel"]) {
     threads[id] = {
       npcId: id,
       unread: false,

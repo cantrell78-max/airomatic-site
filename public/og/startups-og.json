@@ -1,25 +1,25 @@
 {
-  "ogImage": "/og/startups-lumo-swyft-docketloom.jpg",
+  "ogImage": "/og/startups-patchmill-spendstack-sealith.jpg",
   "ogImageLatest": "/og/startups-latest.jpg",
-  "ogImageAlt": "Latest Agentic AI Startup News: Lumo · Swyft · Docketloom",
-  "description": "Lumo ($28M Series A) · Swyft ($42M Series A) · Docketloom ($55M Series B). Living archive of satirical AI startup funding announcements on Airomatic.",
+  "ogImageAlt": "Latest Agentic AI Startup News: Patchmill · Spendstack · Sealith",
+  "description": "Patchmill ($68M Series B) · Spendstack ($51M Series A) · Sealith ($48M · Emerged from stealth). Living archive of satirical AI startup funding announcements on Airomatic.",
   "title": "Agentic AI Startup News",
   "companies": [
     {
-      "companyName": "Lumo",
-      "round": "$28M Series A",
-      "id": "lumo-2026-08"
+      "companyName": "Patchmill",
+      "round": "$68M Series B",
+      "id": "patchmill-2026-08"
     },
     {
-      "companyName": "Swyft",
-      "round": "$42M Series A",
-      "id": "swyft-2026-08"
+      "companyName": "Spendstack",
+      "round": "$51M Series A",
+      "id": "spendstack-2026-08"
     },
     {
-      "companyName": "Docketloom",
-      "round": "$55M Series B",
-      "id": "docketloom-2026-08"
+      "companyName": "Sealith",
+      "round": "$48M · Emerged from stealth",
+      "id": "sealith-2026-08"
     }
   ],
-  "generatedAt": "2026-08-07T20:12:14.397Z"
+  "generatedAt": "2026-08-10T23:30:10.577Z"
 }

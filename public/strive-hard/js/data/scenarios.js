@@ -190,8 +190,10 @@ export const SCENES = {
         side += `\n\n**Mercury:** treasury green. **Map:** SoMa Soft HQ — spend like a company toward **The Round**.`;
       } else if (s.flags.raisedSeed && !s.flags.hqLeased) {
         side += `\n\n**Map pin:** SoMa Soft HQ — spend the seed before it spends you. Path toward **The Round**.`;
+      } else if (s.flags.theRoundComplete) {
+        side += `\n\n**The Round** complete. Thiel weather continues. Agentic chaos is parked for later.`;
       } else if (s.flags.theRoundUnlocked && !s.flags.theRoundStarted) {
-        side += `\n\n**The Round** is unlocked — Series A theater waits at Soft HQ or via the choice below.`;
+        side += `\n\n**The Round** is unlocked — Series A theater (Spaces, flaky sheet, data room, board).`;
       } else if (s.flags.theRoundStarted) {
         side += `\n\nYou're mid-**Round**. LPs are circling. The glass box is both HQ and cage.`;
       }
@@ -245,6 +247,14 @@ export const SCENES = {
             ? true
             : "Open Soft HQ and burn some seed first",
         next: "round_open",
+      },
+      {
+        text: "Resume The Round campaign map.",
+        require: (st) =>
+          st.flags.theRoundStarted || st.flags.theRoundComplete
+            ? true
+            : "Start The Round first",
+        next: "round_hub",
       },
       {
         text: "Doomscroll founder drama instead of healing.",
@@ -2861,16 +2871,30 @@ export const SCENES = {
     text: (s) =>
       `Glass box. ${s.flags.hqAesthetic === "cosplay" ? "Neon hums." : "Furniture judges you."} ` +
       `Cash: **$${s.cash.toLocaleString()}**.\n\n` +
-      (s.flags.theRoundUnlocked
-        ? `**The Round** is available from home or here — Series A theater when you are.\n\n`
-        : `Finish setting up the company if you haven't burned enough yet.\n\n`) +
+      (s.flags.theRoundComplete
+        ? `**The Round** is complete. Thiel is in your texts. The plant is still dead.\n\n`
+        : s.flags.theRoundUnlocked
+          ? `**The Round** is available — Series A theater (Spaces → sheet → data room → board → crisis).\n\n`
+          : `Finish setting up the company if you haven't burned enough yet.\n\n`) +
       (s.flags.hiredCos ? `Avery DMs: "you have 12 minutes of unstructured time. use them."\n\n` : ""),
     choices: [
       {
-        text: "Enter The Round (Series A chapter start).",
+        text: "Enter The Round (Series A chapter).",
         require: (st) =>
-          st.flags.theRoundUnlocked ? true : "Finish HQ setup / burn check first",
+          st.flags.theRoundUnlocked
+            ? st.flags.theRoundComplete
+              ? "Already completed — use campaign map"
+              : true
+            : "Finish HQ setup / burn check first",
         next: "round_open",
+      },
+      {
+        text: "The Round campaign map (resume).",
+        require: (st) =>
+          st.flags.theRoundStarted || st.flags.theRoundComplete
+            ? true
+            : "Start The Round first",
+        next: "round_hub",
       },
       {
         text: "Post a fake 'shipping' update from the standing desk.",
@@ -2894,21 +2918,26 @@ export const SCENES = {
     ],
   },
 
-  // ─── The Round (chapter open — expand later) ───────────────
+  // ─── The Round (Chapter 2 — Series A theater) ─────────────
   round_open: {
     id: "round_open",
     title: "The Round — Green Room",
     locationId: "soft-hq",
     text: (s) =>
-      `**CHAPTER 2 HOOK: THE ROUND**\n\n` +
+      `**CHAPTER 2: THE ROUND**\n\n` +
       `You are no longer "pre-seed with a dream." You are **post-seed with a burn rate** and a story LPs can underwrite.\n\n` +
       `Cash: **$${s.cash.toLocaleString()}**. HQ: ${s.flags.hqLeased ? "leased" : "vibes"}. ` +
       `Staff: ${s.flags.hiredCos ? "Avery" : s.flags.hiredRoommate ? "roommate (regrettable)" : "you vs god"}.\n\n` +
-      `What's coming (when we write more of it): Spaces as a boss fight, flaky term sheets, data-room dungeon, board with Mom on Zoom, USB temptation mid-diligence.\n\n` +
-      `For now: the door is open. The circus has your email.`,
+      (s.flags.enteredPalantir || s.flags.palantirHero || s.flags.alienContact
+        ? `Your phone buzzes. Unknown number. Then a calendar hold appears without your consent:\n\n` +
+          `**P. Thiel — intro / "performance review" (informal)**\n\n` +
+          `Avery (or your gut): "Karp's people talk. Apparently your bunker… *delivery*… reached the partners who collect monopolies for sport."\n\n`
+        : `Avery (or the void) forwards an email chain ending in: **Thiel network wants a look.** Someone at a dinner said you had "interesting energy."\n\n`) +
+      `Skylar: Spaces first — print engagement, then they take the meeting seriously.\n` +
+      `Garry texts a peach and a paperclip. You don't ask.`,
     choices: [
       {
-        text: "Tease the Spaces. Announce you're 'exploring Series A.'",
+        text: "Announce the round on X. Feed the algorithm.",
         effects: {
           followers: 100,
           engagement: 20,
@@ -2926,44 +2955,540 @@ export const SCENES = {
             text: "gross. also good. don't let them own your board before you own your product.",
             unlock: true,
           },
+          {
+            npcId: "thiel",
+            text: (st) =>
+              st.flags.enteredPalantir || st.flags.palantirHero
+                ? "Karp mentioned a founder who performed under… unusual diligence conditions. I like unusual. We'll talk after you survive the timeline. — PT"
+                : "Heard you're raising. I prefer founders who understand competition is for losers — and fundraising is a sport. After Spaces. — PT",
+            unlock: true,
+          },
         ],
-        next: "round_hub",
+        next: "round_spaces",
       },
       {
-        text: "Stay quiet. Raise in stealth (cowardice as strategy).",
+        text: "Skip the public flex. Go straight to Spaces with Skylar.",
         effects: { flags: { theRoundStarted: true, stealthRaise: true }, clout: 3 },
-        next: "round_hub",
+        messages: [
+          {
+            npcId: "thiel",
+            text: (st) =>
+              st.flags.enteredPalantir || st.flags.palantirHero || st.flags.alienContact
+                ? "Stealth is fine. Karp still forwarded your 'lattice' anecdote. Curiosity is not commitment. Yet. — PT"
+                : "Stealth raises are either wisdom or fear. We'll find out which. — PT",
+            unlock: true,
+          },
+        ],
+        next: "round_spaces",
       },
       {
-        text: "Back to Soft HQ hub. Not ready to perform.",
+        text: "Back to Soft HQ hub. Need one more breath.",
         next: "hq_hub",
+      },
+    ],
+  },
+
+  round_spaces: {
+    id: "round_spaces",
+    title: "Spaces Boss Fight — Raising While Delusional",
+    locationId: "soft-hq",
+    text: (s) =>
+      `Skylar hits Go Live. Title: **From Seed to Series (Delusion Optional)**.\n\n` +
+      `Listeners: 12… 40… 200… a bot farm… then actual humans. Priya joins as "friendly opposition." ` +
+      `Garry lurks under a burner handle that is not subtle.\n\n` +
+      `"Tell them about product," Skylar prompts.\n\n` +
+      `You have ninety seconds before the ratio arrives.\n\n` +
+      (s.flags.enteredPalantir
+        ? `Someone in chat: *is this the bunker founder?* You pretend not to see it.\n\n`
+        : ""),
+    choices: [
+      {
+        text: "Perform founder mode: mission, TAM, 'we're pre-revenue on purpose.'",
+        effects: {
+          followers: 120,
+          engagement: 25,
+          clout: 6,
+          flags: { spacesDone: true, spacesTrack: "perform" },
+        },
+        post: {
+          text: "just spaces'd our series a narrative. if you listened you know. if you didn't, that's also a strategy",
+          likes: 300,
+          reposts: 70,
+        },
+        next: "round_term_sheet",
+      },
+      {
+        text: "Get chaotic: admit the mattress, the fox, the burn rate.",
+        effects: {
+          followers: 180,
+          engagement: 35,
+          shameless: 2,
+          clout: 4,
+          flags: { spacesDone: true, spacesTrack: "chaos" },
+        },
+        post: {
+          text: "said the quiet parts on spaces. investors love authenticity until it has receipts",
+          likes: 500,
+          reposts: 120,
+        },
+        next: "round_term_sheet",
+      },
+      {
+        text: "Let Skylar carry. You nod thoughtfully at the right timestamps.",
+        effects: {
+          followers: 80,
+          engagement: 15,
+          clout: 3,
+          flags: { spacesDone: true, spacesTrack: "skylar" },
+        },
+        next: "round_term_sheet",
+      },
+    ],
+  },
+
+  round_term_sheet: {
+    id: "round_term_sheet",
+    title: "The Flaky Term Sheet",
+    locationId: "soft-hq",
+    text: (s) =>
+      `DocuSign pings at 1:14 a.m. Subject: **Series A — Discussion Draft (Not Binding) (Unless It Is)**.\n\n` +
+      `Lead: a vehicle with too many LLCs. Signature block that eventually traces to **Peter Thiel**'s orbit — ` +
+      (s.flags.enteredPalantir || s.flags.palantirHero
+        ? `the same network that got Karp's note about your bunker *performance*.\n\n`
+        : `someone who "likes contrarian founders with soft power."\n\n`) +
+      `Highlights from the draft:\n` +
+      `• Valuation: "TBD pending chemistry"\n` +
+      `• Board: "observer rights that feel like hands"\n` +
+      `• Information rights: "full open-kimono access to data room, calendars, and founder psyche"\n` +
+      `• Protective provisions: "we can block anything that isn't hot"\n` +
+      `• Side letter (redacted): *"deeper engagement expected post-close; travel together optional but encouraged"*\n\n` +
+      `Garry DMs: "standard. also flaky. they ghost after they get what they want. negotiate the exclusivity — of the *deal*."\n\n` +
+      `The sheet expires in 72 hours or when someone gets bored.`,
+    choices: [
+      {
+        text: "Mark up the SAFE-adjacent language. Protect the company (and your evenings).",
+        effects: {
+          clout: 5,
+          flags: { termSheetMarked: true, termSheetTrack: "careful" },
+        },
+        next: "round_data_room",
+      },
+      {
+        text: "Sign the vibe. Speed is a strategy. Chemistry is a covenant.",
+        effects: {
+          shameless: 2,
+          clout: 3,
+          flags: { termSheetMarked: true, termSheetTrack: "soft" },
+        },
+        next: "round_data_room",
+      },
+      {
+        text: "Ask what 'deeper engagement' means. On the record.",
+        effects: {
+          shameless: 1,
+          clout: 4,
+          flags: { termSheetMarked: true, termSheetTrack: "ask" },
+        },
+        messages: [
+          {
+            npcId: "thiel",
+            text: "It means diligence without theater. And dinners without associates. Don't be precious. — PT",
+            unlock: true,
+          },
+        ],
+        next: "round_data_room",
+      },
+    ],
+  },
+
+  round_data_room: {
+    id: "round_data_room",
+    title: "Data Room Dungeon",
+    locationId: "soft-hq",
+    text: (s) =>
+      `Virtual data room. Folder structure designed by someone who hates joy.\n\n` +
+      `**01_Corporate** · **02_Financials** · **03_IP** · **04_HR** · **05_Sensitive** · **06_Founder_Personal** (why)\n\n` +
+      `Associates from the Thiel-adjacent fund request "a deeper dive." ` +
+      `Chat window: *we'll need everything bare — cap table, contracts, any… prior relationships that create risk.*\n\n` +
+      (s.flags.hasDirtyUsb
+        ? `Your backpack still holds a **USB** that could populate folder 05 with other people's sins. Or yours.\n\n`
+        : `You do not have the Palantir USB. Folder 05 stays mostly empty and somehow more suspicious.\n\n`) +
+      `Jordan (dealflow) slides into the room permissions: "upload something spicy or they'll think you're hiding. not *that* spicy. unless."\n\n` +
+      `Timer on exclusivity: still ticking.`,
+    choices: [
+      {
+        text: "Upload clean docs only. Professional. Boring. Alive.",
+        effects: {
+          clout: 4,
+          flags: { dataRoomDone: true, dataRoomTrack: "clean" },
+        },
+        next: "round_flare_b",
+      },
+      {
+        text: "Overshare. 'Open kimono' as a growth strategy.",
+        effects: {
+          shameless: 3,
+          clout: 3,
+          engagement: 10,
+          flags: { dataRoomDone: true, dataRoomTrack: "overshare" },
+        },
+        post: {
+          text: "data room is a love language. if you're not embarrassed by your cap table you raised too late",
+          likes: 90,
+          reposts: 20,
+        },
+        next: "round_flare_b",
+      },
+      {
+        text: "Slip the Palantir USB materials into 05_Sensitive (mid-diligence nuclear option).",
+        require: (st) =>
+          st.flags.hasDirtyUsb
+            ? true
+            : "You don't have the USB (steal it in the bunker first)",
+        hint: "They wanted unusual. You have unusual.",
+        effects: {
+          shameless: 4,
+          clout: 6,
+          flags: {
+            dataRoomDone: true,
+            dataRoomTrack: "usb",
+            usbInDataRoom: true,
+            usedUsbInRound: true,
+          },
+        },
+        messages: [
+          {
+            npcId: "thiel",
+            text: "Folder 05 was… educational. Karp understated your access. We'll discuss governance. And discretion. — PT",
+            unlock: true,
+          },
+          {
+            npcId: "karp",
+            text: "If that was our graph in a startup data room I will personally audit your blood. Call me. — AK",
+            unlock: true,
+          },
+        ],
+        next: "round_flare_b",
+      },
+    ],
+  },
+
+  round_flare_b: {
+    id: "round_flare_b",
+    title: "B-Plot: FlareUp Won't Wait for the Wire",
+    locationId: "tenderloin",
+    text: (s) => {
+      const match =
+        (s.flareup?.matches || []).includes("vanessa")
+          ? "vanessa"
+          : (s.flareup?.matches || []).includes("marisol")
+            ? "marisol"
+            : (s.flareup?.matches || []).includes("jules")
+              ? "jules"
+              : null;
+      if (match === "vanessa") {
+        return (
+          `Between data-room uploads, **Vanessa** texts: dinner. Tonight. "I need a real man, not a term sheet."\n\n` +
+          `You have exclusivity on a flaky Series A and a date that feels like a performance review.\n\n` +
+          `Soft HQ Slack pings. FlareUp pings harder.`
+        );
+      }
+      if (match === "marisol") {
+        return (
+          `**Marisol** calls: "School pickup energy or don't waste my time. Your 'I'm in diligence' is not a personality."\n\n` +
+          `Avery blocks 'deep work.' Reality blocks your narrative.`
+        );
+      }
+      if (match === "jules") {
+        return (
+          `**Jules** wants coffee that isn't a pitch. "If fundraising is your only emotion, swipe left on yourself."\n\n` +
+          `You sit in the Tenderloin and feel like two products.`
+        );
+      }
+      return (
+        `FlareUp badge pulses. No serious matches — or you ignored them for the raise.\n\n` +
+        `Still: loneliness is a metric. The Round does not pause for your attachment style.\n\n` +
+        `You can open the app and touch grass metaphorically, or ghost your own dopamine.`
+      );
+    },
+    choices: [
+      {
+        text: "Show up for the human. Let the term sheet wait 90 minutes.",
+        effects: {
+          clout: 2,
+          flags: { flareBDone: true, flareBTrack: "show" },
+        },
+        messages: [
+          {
+            npcId: "vanessa",
+            text: "you came. shocking. don't check slack at dinner or I'll write the Medium post. 🍷",
+            unlock: true,
+          },
+        ],
+        next: "round_board",
+      },
+      {
+        text: "Reschedule with a founder essay about prioritization.",
+        effects: {
+          shameless: 1,
+          flags: { flareBDone: true, flareBTrack: "ghost" },
+        },
+        post: {
+          text: "hard conversations: sometimes the round is the relationship. building in public includes disappointing dates",
+          likes: 70,
+          reposts: 15,
+        },
+        next: "round_board",
+      },
+      {
+        text: "Open FlareUp for five minutes of chaos, then board prep.",
+        openApp: "flareup",
+        effects: { flags: { flareBDone: true, flareBTrack: "app" }, engagement: 5 },
+        next: "round_board",
+      },
+    ],
+  },
+
+  round_board: {
+    id: "round_board",
+    title: "Board Meeting From Hell (Preview Seat)",
+    locationId: "soft-hq",
+    text: (s) =>
+      `Zoom mosaic.\n\n` +
+      `• **Peter Thiel** — camera slightly too close, smile like a chess clock\n` +
+      `• **Garry Chan** — linen, spa water, "just observing… intimately"\n` +
+      `• A normie LP who only says "unit economics"\n` +
+      `• **Mom** — "I Googled Series A. Are you in trouble?"\n` +
+      (s.flags.hiredCos ? `• **Avery** — taking notes that will outlive you\n` : "") +
+      `\n` +
+      (s.flags.usbInDataRoom
+        ? `Thiel: "Your data room was unusually… complete. We prefer founders who understand leverage. Including social leverage."\n\n`
+        : `Thiel: "Numbers are a language. So is power. Speak both or get acquired by someone who does."\n\n`) +
+      (s.flags.enteredPalantir || s.flags.palantirHero
+        ? `He continues: "Karp said you handled pressure in the bunker. I collect people who don't melt when the room gets warm."\n\n`
+        : `He continues: "I don't need another consensus founder. I need someone who can survive a board."\n\n`) +
+      `Garry: "We're aligned on mentorship intensity."\n` +
+      `Mom: "Is mentorship a job?"\n` +
+      `Normie LP: "What's your net revenue retention?"\n` +
+      `You: …`,
+    choices: [
+      {
+        text: "Hold the line: product first, board second, no side letters about dinners.",
+        effects: {
+          clout: 6,
+          flags: { boardDone: true, boardTrack: "hold" },
+        },
+        next: "round_crisis",
+      },
+      {
+        text: "Play the room: charm Thiel, wink at Garry, lie to Mom gently.",
+        effects: {
+          shameless: 2,
+          clout: 5,
+          followers: 40,
+          flags: { boardDone: true, boardTrack: "charm" },
+        },
+        next: "round_crisis",
+      },
+      {
+        text: "Weaponize the USB narrative (if you used it) or invent monopoly vibes.",
+        effects: {
+          clout: 4,
+          shameless: 2,
+          flags: { boardDone: true, boardTrack: "leverage" },
+        },
+        next: "round_crisis",
+      },
+    ],
+  },
+
+  round_crisis: {
+    id: "round_crisis",
+    title: "Celebration That Is Actually a Crisis",
+    locationId: "soft-hq",
+    text: (s) =>
+      `Someone pops champagne in Suite 4B. The fiddle-leaf dies on cue.\n\n` +
+      `Then the fires:\n\n` +
+      `• TechCrunch-adjacent blog: **"Stealth founder in Thiel orbit; data room drama?"**\n` +
+      `• Mercury fraud alert because Avery bought 40 bottles on a virtual card named CELEBRATE\n` +
+      `• Priya quote-tweets your Spaces with "lol"\n` +
+      (s.flags.usbInDataRoom
+        ? `• Karp's second text is just a skull emoji\n`
+        : `• Garry sends a sauna invite "to debrief the board energy"\n`) +
+      `• Mom: "Your cousin still has benefits."\n\n` +
+      `The term sheet is still marked **DISCUSSION DRAFT**. No wire. Only weather.\n\n` +
+      `Thiel's last message: "Crises separate founders from content creators. Call me when you've put out the easy fires. The hard ones are the job."`,
+    choices: [
+      {
+        text: "War room with Avery. Kill the PR, unfreeze the card, text Mom back.",
+        effects: {
+          clout: 5,
+          cash: -500,
+          flags: { crisisDone: true, crisisTrack: "ops" },
+        },
+        next: "round_close",
+      },
+      {
+        text: "Post through it. Narrative judo. 'This is fine' as a brand.",
+        effects: {
+          followers: 150,
+          engagement: 30,
+          shameless: 2,
+          flags: { crisisDone: true, crisisTrack: "post" },
+        },
+        post: {
+          text: "if your series a doesn't include a small crisis did you even raise. building in public means the fire is content 🔥",
+          likes: 400,
+          reposts: 100,
+        },
+        next: "round_close",
+      },
+      {
+        text: "Accept Garry's sauna debrief. 'Mentorship' as damage control.",
+        effects: {
+          clout: 3,
+          shameless: 2,
+          flags: { crisisDone: true, crisisTrack: "garry" },
+        },
+        messages: [
+          {
+            npcId: "garry",
+            text: "towels optional. term sheets optional. honesty… negotiated. see you at heat. 🧖",
+            unlock: true,
+          },
+        ],
+        next: "round_close",
+      },
+    ],
+  },
+
+  round_close: {
+    id: "round_close",
+    title: "End of The Round (For Now)",
+    locationId: "soft-hq",
+    text: (s) =>
+      `**CHAPTER 2 COMPLETE — THE ROUND**\n\n` +
+      `${s.character.name} · @${s.character.handle}\n` +
+      `Followers: **${s.followers}** · Clout: **${s.clout}** · Cash: **$${s.cash.toLocaleString()}**\n\n` +
+      `You ran Spaces. You touched a flaky term sheet. You survived the data room` +
+      (s.flags.usbInDataRoom ? " (and maybe committed a felony of vibes)" : "") +
+      `. You sat a board that included Mom and Peter Thiel. You celebrated into a crisis.\n\n` +
+      (s.flags.boardTrack === "hold"
+        ? `You held boundaries. The money may be slower. Your spine is intact.\n\n`
+        : s.flags.boardTrack === "charm"
+          ? `You charmed the room. Something will come due — socially or on a cap table.\n\n`
+          : `You played leverage. The board will remember.\n\n`) +
+      `No full Series A wire yet — that's the joke. The Round is the weather system, not the closing dinner.\n\n` +
+      `**Next chapters (parked):** agentic company takeover, more fires, stranger maps. Not tonight.\n\n` +
+      `Free roam is open. Thiel is in your texts. The glass box still bills monthly.`,
+    choices: [
+      {
+        text: "Continue free roam — the Bay isn't done.",
+        effects: { flags: { theRoundComplete: true }, day: 1 },
+        next: "home_hub",
+      },
+      {
+        text: "Soft HQ hub. Stare at the dead plant.",
+        effects: { flags: { theRoundComplete: true } },
+        next: "hq_hub",
+      },
+      {
+        text: "Text Thiel that you're still standing.",
+        effects: { flags: { theRoundComplete: true }, clout: 2 },
+        messages: [
+          {
+            npcId: "thiel",
+            text: "Good. Standing is the minimum. Monopoly is the homework. — PT",
+            unlock: true,
+          },
+        ],
+        next: "home_hub",
       },
     ],
   },
 
   round_hub: {
     id: "round_hub",
-    title: "The Round — In Progress",
+    title: "The Round — Campaign Map",
     locationId: "soft-hq",
     text: (s) =>
-      `Series A weather hangs over SoMa.\n\n` +
-      (s.flags.announcedSeriesA
-        ? `Your announcement is out. DMs are 40% congrats, 40% pitches, 20% Mom.\n\n`
-        : `Stealth mode: you pretend you're not raising while every coffee is a pitch.\n\n`) +
-      `**More Round beats (data room, board, full Spaces fight) are parked for the next writing pass.**\n\n` +
-      `You can still roam the Bay — Dylan, Palantir, FlareUp — with a company-shaped hole in your calendar.`,
+      `Series A weather. Soft HQ.\n\n` +
+      (s.flags.theRoundComplete
+        ? `**The Round is complete.** Free roam and parked agentic chaos await a later session.\n\n`
+        : `Progress:\n` +
+          `• Spaces: ${s.flags.spacesDone ? "done" : "← next"}\n` +
+          `• Term sheet: ${s.flags.termSheetMarked ? "done" : s.flags.spacesDone ? "← next" : "locked"}\n` +
+          `• Data room: ${s.flags.dataRoomDone ? "done" : s.flags.termSheetMarked ? "← next" : "locked"}\n` +
+          `• FlareUp B-plot: ${s.flags.flareBDone ? "done" : s.flags.dataRoomDone ? "← next" : "locked"}\n` +
+          `• Board: ${s.flags.boardDone ? "done" : s.flags.flareBDone ? "← next" : "locked"}\n` +
+          `• Crisis: ${s.flags.crisisDone ? "done" : s.flags.boardDone ? "← next" : "locked"}\n\n`) +
+      `Cash: **$${s.cash.toLocaleString()}**.`,
     choices: [
       {
-        text: "Return to Soft HQ.",
-        next: "hq_hub",
+        text: "Start The Round (green room).",
+        require: (st) =>
+          st.flags.theRoundComplete
+            ? "Already cleared"
+            : st.flags.spacesDone
+              ? "Already started — use resume"
+              : true,
+        next: "round_open",
       },
       {
-        text: "Home — process the existential invoice.",
+        text: "Resume: Spaces",
+        require: (st) =>
+          !st.flags.theRoundComplete && st.flags.theRoundStarted && !st.flags.spacesDone
+            ? true
+            : "Not the current beat",
+        next: "round_spaces",
+      },
+      {
+        text: "Resume: term sheet",
+        require: (st) =>
+          !st.flags.theRoundComplete && st.flags.spacesDone && !st.flags.termSheetMarked
+            ? true
+            : "Not the current beat",
+        next: "round_term_sheet",
+      },
+      {
+        text: "Resume: data room",
+        require: (st) =>
+          !st.flags.theRoundComplete && st.flags.termSheetMarked && !st.flags.dataRoomDone
+            ? true
+            : "Not the current beat",
+        next: "round_data_room",
+      },
+      {
+        text: "Resume: FlareUp B-plot",
+        require: (st) =>
+          !st.flags.theRoundComplete && st.flags.dataRoomDone && !st.flags.flareBDone
+            ? true
+            : "Not the current beat",
+        next: "round_flare_b",
+      },
+      {
+        text: "Resume: board",
+        require: (st) =>
+          !st.flags.theRoundComplete && st.flags.flareBDone && !st.flags.boardDone
+            ? true
+            : "Not the current beat",
+        next: "round_board",
+      },
+      {
+        text: "Resume: crisis celebration",
+        require: (st) =>
+          !st.flags.theRoundComplete && st.flags.boardDone && !st.flags.crisisDone
+            ? true
+            : "Not the current beat",
+        next: "round_crisis",
+      },
+      {
+        text: "Home.",
         effects: { locationId: "tenderloin" },
         next: "home_hub",
       },
       {
-        text: "Open the Map.",
+        text: "Map.",
         next: null,
       },
     ],

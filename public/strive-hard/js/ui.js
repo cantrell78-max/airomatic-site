@@ -96,8 +96,12 @@ export function renderScene(state, onChoice) {
     return;
   }
 
-  document.getElementById("scene-title").textContent = resolveText(scene.title, state);
-  document.getElementById("scene-text").textContent = resolveText(scene.text, state);
+  document.getElementById("scene-title").innerHTML = formatRichText(
+    resolveText(scene.title, state)
+  );
+  document.getElementById("scene-text").innerHTML = formatRichText(
+    resolveText(scene.text, state)
+  );
 
   const box = document.getElementById("choices");
   box.innerHTML = "";
@@ -392,4 +396,14 @@ function escapeHtml(str) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+/** Escape HTML, then apply light markdown: **bold**, *italic* (scene copy). */
+function formatRichText(str) {
+  let s = escapeHtml(str ?? "");
+  // Bold first so ** isn't eaten by italic
+  s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  // Italic: single *pairs* (after bold removed)
+  s = s.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+  return s;
 }

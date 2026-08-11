@@ -29,7 +29,7 @@ Still no clear product description. You’re buying **headcount that ships vibes
 
 ## Cognition HQ
 
-Real-brand map pin (satire; staff are fiction). AE **Lex** sells what the market sells: seat-based AI software engineers, parallel cloud agents, GitHub/Slack residency, guardrails, “founder mode.”
+Real-brand map pin. AE **Lex** sells what the market sells: seat-based AI software engineers, parallel cloud agents, GitHub/Slack residency, guardrails, “founder mode.”
 
 Anthropic shows up as dialogue roast — conscience brochure vs employees who ship. You can burn **$25k** or go enterprise **$60k**. Your Soft HQ plant still doesn’t know what the company does.
 

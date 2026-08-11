@@ -36,10 +36,23 @@ import {
 let state = null;
 let selectedCharacterId = null;
 
+function handleTranslate(sceneId, revert) {
+  if (!state) return;
+  const translatedScenes = { ...(state.translatedScenes || {}) };
+  if (revert) {
+    delete translatedScenes[sceneId];
+  } else {
+    translatedScenes[sceneId] = true;
+  }
+  state = { ...state, translatedScenes };
+  saveState(state);
+  refresh();
+}
+
 function refresh() {
   if (!state) return;
   updateStats(state);
-  renderScene(state, handleChoice);
+  renderScene(state, handleChoice, handleTranslate);
   renderPhoneHome(state);
   const active = document.querySelector(".phone-screen.active");
   if (active?.id === "phone-x") renderXApp(state);

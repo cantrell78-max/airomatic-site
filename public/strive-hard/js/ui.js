@@ -79,7 +79,7 @@ export function updateStats(state) {
     : "📍 Somewhere in the Bay";
 }
 
-export function renderScene(state, onChoice) {
+export function renderScene(state, onChoice, onTranslate) {
   const scene = getScene(state.sceneId);
   const storyBody = document.querySelector(".story-body");
   const sceneArt = document.getElementById("scene-art");
@@ -88,20 +88,46 @@ export function renderScene(state, onChoice) {
   if (sceneArt) sceneArt.classList.toggle("corgi-seizure-bar", isCorgi);
   document.body.classList.toggle("at-corgi-cafe", isCorgi);
 
+  const translateBar = document.getElementById("translate-bar");
+  const btnTranslate = document.getElementById("btn-translate");
+
   if (!scene) {
     document.getElementById("scene-title").textContent = "404: Scene not found";
     document.getElementById("scene-text").textContent =
       "The narrative pivoted out from under you. Try the Map.";
     document.getElementById("choices").innerHTML = "";
+    if (translateBar) translateBar.hidden = true;
     return;
   }
 
+  const translated = !!(state.translatedScenes && state.translatedScenes[scene.id]);
+  const hasZh = !!(scene.textZh || scene.titleZh);
+  const showZh = hasZh && !translated;
+
+  const titleSrc = showZh && scene.titleZh ? scene.titleZh : scene.title;
+  const textSrc = showZh && scene.textZh ? scene.textZh : scene.text;
+
   document.getElementById("scene-title").innerHTML = formatRichText(
-    resolveText(scene.title, state)
+    resolveText(titleSrc, state)
   );
   document.getElementById("scene-text").innerHTML = formatRichText(
-    resolveText(scene.text, state)
+    resolveText(textSrc, state)
   );
+
+  if (translateBar && btnTranslate) {
+    if (hasZh && !translated) {
+      translateBar.hidden = false;
+      btnTranslate.textContent = "Google Translate";
+      btnTranslate.onclick = () => onTranslate && onTranslate(scene.id);
+    } else if (hasZh && translated) {
+      translateBar.hidden = false;
+      btnTranslate.textContent = "Show original 中文";
+      btnTranslate.onclick = () => onTranslate && onTranslate(scene.id, true);
+    } else {
+      translateBar.hidden = true;
+      btnTranslate.onclick = null;
+    }
+  }
 
   const box = document.getElementById("choices");
   box.innerHTML = "";
@@ -113,7 +139,9 @@ export function renderScene(state, onChoice) {
     btn.className = "choice-btn";
     btn.disabled = !!disabledReason;
 
-    const label = resolveText(choice.text, state);
+    const labelRaw =
+      showZh && choice.textZh ? choice.textZh : choice.text;
+    const label = resolveText(labelRaw, state);
     const hint = choice.hint ? resolveText(choice.hint, state) : "";
     let cost = "";
     if (choice.cost?.cash) cost = `Costs $${choice.cost.cash}`;

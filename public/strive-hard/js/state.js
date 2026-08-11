@@ -32,6 +32,7 @@ export function createNewState(characterId) {
       // queue order = profile ids remaining to show; null = rebuild from all
       queue: null,
     },
+    translatedScenes: {},
   };
 }
 
@@ -61,7 +62,20 @@ export function loadState() {
     if (!data.visitedLocations) data.visitedLocations = ["tenderloin"];
     if (!data.threads) data.threads = buildInitialThreads(data.character);
     // Ensure optional NPC threads exist
-    for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp", "cos", "zane", "thiel"]) {
+    for (const id of [
+      "jules",
+      "marisol",
+      "vanessa",
+      "kayla",
+      "dylan",
+      "karp",
+      "cos",
+      "zane",
+      "thiel",
+      "lex",
+      "wei",
+      "swarm",
+    ]) {
       if (!data.threads[id]) {
         data.threads[id] = {
           npcId: id,
@@ -72,6 +86,7 @@ export function loadState() {
         };
       }
     }
+    if (!data.translatedScenes) data.translatedScenes = {};
     // Claw → Mercury location rename (flags keep claw* keys for save stability)
     if (data.locationId === "claw-hq") data.locationId = "mercury-hq";
     if (Array.isArray(data.visitedLocations)) {

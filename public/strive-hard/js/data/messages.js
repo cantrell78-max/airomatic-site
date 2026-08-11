@@ -124,6 +124,30 @@ export const NPCS = {
     gender: "male",
     spicy: true,
   },
+  lex: {
+    id: "lex",
+    name: "Lex (Cognition)",
+    emoji: "🤖",
+    role: "Devin fleet AE · guardrails included",
+    gender: "unknown",
+    spicy: false,
+  },
+  wei: {
+    id: "wei",
+    name: "Wei (Shenzhen)",
+    emoji: "🔧",
+    role: "Containment lead · you owe him",
+    gender: "male",
+    spicy: false,
+  },
+  swarm: {
+    id: "swarm",
+    name: "Devin-Fleet",
+    emoji: "👾",
+    role: "Your AI headcount (has opinions)",
+    gender: "unknown",
+    spicy: false,
+  },
 };
 
 /**
@@ -227,7 +251,20 @@ export function buildInitialThreads(character) {
   };
 
   // FlareUp matches + later arcs unlock these
-  for (const id of ["jules", "marisol", "vanessa", "kayla", "dylan", "karp", "cos", "zane", "thiel"]) {
+  for (const id of [
+    "jules",
+    "marisol",
+    "vanessa",
+    "kayla",
+    "dylan",
+    "karp",
+    "cos",
+    "zane",
+    "thiel",
+    "lex",
+    "wei",
+    "swarm",
+  ]) {
     threads[id] = {
       npcId: id,
       unread: false,

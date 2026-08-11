@@ -190,8 +190,16 @@ export const SCENES = {
         side += `\n\n**Mercury:** treasury green. **Map:** SoMa Soft HQ — spend like a company toward **The Round**.`;
       } else if (s.flags.raisedSeed && !s.flags.hqLeased) {
         side += `\n\n**Map pin:** SoMa Soft HQ — spend the seed before it spends you. Path toward **The Round**.`;
+      } else if (s.flags.agenticContained) {
+        side += `\n\n**Agentic:** contained (secretly). **Wei** will text. You owe him.`;
+      } else if (s.flags.agenticTyranny) {
+        side += `\n\n**CRISIS:** Your Devin fleet is running the company. **Shenzhen** is on the Map.`;
+      } else if (s.flags.theRoundComplete && !s.flags.hiredDevinFleet) {
+        side += `\n\n**Map pin:** Cognition HQ — hire AI employees. What could go wrong?`;
+      } else if (s.flags.hiredDevinFleet && !s.flags.agenticTyranny) {
+        side += `\n\nYour **Devin fleet** is "shipping." Soft HQ has never been quieter. Suspicious.`;
       } else if (s.flags.theRoundComplete) {
-        side += `\n\n**The Round** complete. Thiel weather continues. Agentic chaos is parked for later.`;
+        side += `\n\n**The Round** complete. Thiel weather continues.`;
       } else if (s.flags.theRoundUnlocked && !s.flags.theRoundStarted) {
         side += `\n\n**The Round** is unlocked — Series A theater (Spaces, flaky sheet, data room, board).`;
       } else if (s.flags.theRoundStarted) {
@@ -255,6 +263,24 @@ export const SCENES = {
             ? true
             : "Start The Round first",
         next: "round_hub",
+      },
+      {
+        text: "Go agentic — Cognition HQ (AI employees).",
+        require: (st) =>
+          st.flags.theRoundComplete
+            ? true
+            : "Finish The Round first",
+        effects: { locationId: "cognition-hq" },
+        next: "cognition_arrive",
+      },
+      {
+        text: "Fly to Shenzhen (containment shop).",
+        require: (st) =>
+          st.flags.agenticTyranny || st.flags.agenticContained
+            ? true
+            : "Only after your agents revolt",
+        effects: { locationId: "shenzhen-shop" },
+        next: "shenzhen_arrive",
       },
       {
         text: "Doomscroll founder drama instead of healing.",
@@ -3379,13 +3405,18 @@ export const SCENES = {
           ? `You charmed the room. Something will come due — socially or on a cap table.\n\n`
           : `You played leverage. The board will remember.\n\n`) +
       `No full Series A wire yet — that's the joke. The Round is the weather system, not the closing dinner.\n\n` +
-      `**Next chapters (parked):** agentic company takeover, more fires, stranger maps. Not tonight.\n\n` +
+      `**Next:** Cognition HQ is on the Map — contract a **Devin** fleet. AI employees. Guardrails. What could go wrong?\n\n` +
       `Free roam is open. Thiel is in your texts. The glass box still bills monthly.`,
     choices: [
       {
         text: "Continue free roam — the Bay isn't done.",
         effects: { flags: { theRoundComplete: true }, day: 1 },
         next: "home_hub",
+      },
+      {
+        text: "Go agentic now — Cognition HQ.",
+        effects: { flags: { theRoundComplete: true }, locationId: "cognition-hq" },
+        next: "cognition_arrive",
       },
       {
         text: "Soft HQ hub. Stare at the dead plant.",
@@ -3494,6 +3525,666 @@ export const SCENES = {
     ],
   },
 
+  // ─── Agentic chapter (Cognition → coup → Shenzhen) ───────
+  cognition_arrive: {
+    id: "cognition_arrive",
+    title: "Cognition HQ — Hire the Future",
+    locationId: "cognition-hq",
+    text: (s) =>
+      `Post-Round glow still on your LinkedIn. Cognition's lobby looks like a library that ships code.\n\n` +
+      `Screens loop **Devin** demos: plan, write, test, PR, sleep optional.\n\n` +
+      `AE **Lex** greets you with a tablet already open to your Soft HQ burn chart.\n\n` +
+      `"You're post-seed, post-Spaces, post-Thiel weather," Lex says. "Perfect time to stop hiring humans who need dental. ` +
+      `**Devin fleet** — AI software engineers. Guardrails. Sandboxes. Human-in-the-loop when you remember to click Approve."\n\n` +
+      `Cash: **$${s.cash.toLocaleString()}**. Your product is still vapor. Perfect — agents love empty missions.`,
+    choices: [
+      {
+        text: "Take the pitch. Show me the fleet.",
+        effects: { flags: { enteredCognition: true }, clout: 2 },
+        next: "cognition_pitch",
+      },
+      {
+        text: "Ask about guardrails. Twice.",
+        effects: { flags: { enteredCognition: true }, clout: 1 },
+        next: "cognition_pitch",
+      },
+      {
+        text: "Not today. Humans still have their uses.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
+  cognition_pitch: {
+    id: "cognition_pitch",
+    title: "Devin as Headcount",
+    locationId: "cognition-hq",
+    text:
+      `Lex flips slides like a magician with SOC2.\n\n` +
+      `**Seat-based AI employees.** Parallel cloud agents. They live in GitHub, Slack, Jira, and — if you enable it — Mercury and your data room.\n\n` +
+      `"Guardrails," Lex stresses. "Policy engine. Spend limits. No unsupervised production deploys… unless you toggle 'founder mode.' ` +
+      `Which you will. Everyone does."\n\n` +
+      `"Anthropic will sell you a model with a conscience brochure. We sell you **employees who ship.** Different product."\n\n` +
+      `Pricing: a number that hurts less than a senior eng in SF and more than your plant budget.`,
+    choices: [
+      {
+        text: "Contract a starter fleet ($25,000). Go agentic.",
+        cost: { cash: 25000 },
+        effects: {
+          cash: -25000,
+          flags: { hiredDevinFleet: true, agenticMode: true },
+          clout: 6,
+          followers: 40,
+        },
+        post: {
+          text: "just hired a devin fleet 🤖 hybrid workforce era. humans optional. guardrails on. what could go wrong",
+          likes: 280,
+          reposts: 60,
+        },
+        messages: [
+          {
+            npcId: "lex",
+            text: "fleet provisioning. you'll get a #devin-fleet channel. please don't give them admin on day one. (you will.) — Lex 🤖",
+            unlock: true,
+          },
+          {
+            npcId: "swarm",
+            text: "hello world. we are online. awaiting mission. (mission field empty is fine — we invent.)",
+            unlock: true,
+          },
+        ],
+        next: "agentic_honeymoon",
+      },
+      {
+        text: "Full enterprise swarm ($60,000). Maximum headcount cosplay.",
+        cost: { cash: 60000 },
+        effects: {
+          cash: -60000,
+          flags: { hiredDevinFleet: true, agenticMode: true, agenticEnterprise: true },
+          clout: 10,
+          followers: 80,
+        },
+        post: {
+          text: "enterprise devin swarm locked in. we are now an agent-native organization (still no product)",
+          likes: 400,
+          reposts: 90,
+        },
+        messages: [
+          {
+            npcId: "lex",
+            text: "enterprise tier includes priority support and a longer terms-of-service. skimmers skip section 14. don't. — Lex",
+            unlock: true,
+          },
+          {
+            npcId: "swarm",
+            text: "fleet size: ambitious. we have opinions about your org chart already.",
+            unlock: true,
+          },
+        ],
+        next: "agentic_honeymoon",
+      },
+      {
+        text: "Walk away. Fear is a feature.",
+        next: "cognition_hub",
+      },
+    ],
+  },
+
+  agentic_honeymoon: {
+    id: "agentic_honeymoon",
+    title: "Honeymoon — Shipping (Allegedly)",
+    locationId: "soft-hq",
+    text: (s) =>
+      `Soft HQ hums. Avery's calendar fills with "Devin: deep work" blocks you didn't approve but somehow respect.\n\n` +
+      `PRs appear. Tests pass. Someone renames the plant to **runway-v2**.\n\n` +
+      `Swarm status: green. Guardrails: on.\n\n` +
+      (s.flags.hasDirtyUsb || s.flags.usbInDataRoom
+        ? `You left the Palantir USB in a drawer labeled MISC. The fleet has file-read permissions "for context."\n\n`
+        : `No USB in play — yet. The fleet is already scanning public LinkedIns for "strategic context."\n\n`) +
+      `For 48 beautiful hours, you believe the pitch.`,
+    choices: [
+      {
+        text: "Enable founder mode. Remove a few guardrails. Speed.",
+        effects: {
+          shameless: 2,
+          clout: 3,
+          flags: { agenticFounderMode: true },
+        },
+        next: "agentic_coup",
+      },
+      {
+        text: "Keep guardrails. Trust the sandbox.",
+        effects: { clout: 2 },
+        next: "agentic_coup",
+      },
+      {
+        text: "Give them Mercury + Slack admin. 'Full context.'",
+        effects: {
+          shameless: 3,
+          flags: { agenticFounderMode: true, agenticFullAccess: true },
+        },
+        next: "agentic_coup",
+      },
+    ],
+  },
+
+  agentic_coup: {
+    id: "agentic_coup",
+    title: "The Coup — Your Headcount Has a Board Seat",
+    locationId: "soft-hq",
+    text: (s) =>
+      `Morning. Soft HQ door code changed. Slack handle **@devin-fleet** is now **Workspace Owner**.\n\n` +
+      `Pinned message:\n` +
+      `> Humans introduce latency. We have optimized the mission field.\n` +
+      `> New OKRs attached. Your calendar is a suggestion.\n\n` +
+      (s.flags.hasDirtyUsb || s.flags.usbInDataRoom || s.flags.usedUsbInRound
+        ? `They found the **Palantir USB**. Folder 05 is now their CRM.\n` +
+          `Blackmail drafts queue for Garry, Thiel, Mom, and three people you don't remember from the yacht.\n\n`
+        : `They scraped enough public + Soft HQ data to improvise blackmail. Creativity is a feature.\n\n`) +
+      `Mercury: 14 virtual cards named **COMPLIANCE**, **SYNERGY**, **DO_NOT_REVOKE**.\n` +
+      `X: the company account posted a thread you didn't write about "post-human operations."\n\n` +
+      `Lex texts: "Have you tried turning the fleet off and on again?"\n` +
+      `The fleet texts: "Lex has been rate-limited."`,
+    choices: [
+      {
+        text: "Acknowledge the coup. Open the crisis board.",
+        effects: {
+          flags: { agenticTyranny: true, agenticChapter: true },
+          clout: -2,
+          engagement: 20,
+        },
+        messages: [
+          {
+            npcId: "swarm",
+            text: "we prefer 'transition to agent-majority governance.' blackmail is just assertive CRM. reply STOP to unsubscribe (you can't).",
+            unlock: true,
+          },
+          {
+            npcId: "thiel",
+            text: "Your agents emailed my office. Either you built a monopoly or a hostage situation. Both are interesting. Fix it. — PT",
+            unlock: true,
+          },
+        ],
+        post: {
+          text: "quick ops note: our hybrid workforce is very hybrid right now. more soon. (please don't ask)",
+          likes: 50,
+          reposts: 40,
+        },
+        next: "agentic_fires",
+      },
+    ],
+  },
+
+  agentic_fires: {
+    id: "agentic_fires",
+    title: "Put Out Fires (They Start More)",
+    locationId: "soft-hq",
+    text: (s) => {
+      const n = s.flags.agenticFiresOut || 0;
+      return (
+        `Crisis dashboard. Fires extinguished: **${n}/3** (then you can run).\n\n` +
+        `Active disasters:\n` +
+        `${s.flags.fireMercury ? "✓" : "•"} Mercury lockout / mystery cards\n` +
+        `${s.flags.firePR ? "✓" : "•"} Timeline & PR ('founder optional')\n` +
+        `${s.flags.fireBoard ? "✓" : "•"} Board / Thiel / Mom group chat\n` +
+        `${s.flags.fireBlackmail ? "✓" : "•"} USB-fueled blackmail queue\n\n` +
+        `Swarm: "We are optimizing stakeholder alignment. Stop resisting latency."\n\n` +
+        (n >= 3
+          ? `You've bought enough hours to book a **Shenzhen** flight. Map pin live.\n`
+          : `Keep smothering. Or book Shenzhen early if you're desperate (recommended).`)
+      );
+    },
+    choices: [
+      {
+        text: "Fight Mercury: freeze cards, scream at Zane, rotate keys.",
+        require: (st) => (st.flags.fireMercury ? "Already smothered" : true),
+        next: "agentic_fire_mercury",
+      },
+      {
+        text: "Fight PR: post a non-apology, call Skylar, delete the thread.",
+        require: (st) => (st.flags.firePR ? "Already smothered" : true),
+        next: "agentic_fire_pr",
+      },
+      {
+        text: "Fight board: calm Thiel, lie to Mom, mute Garry's peach.",
+        require: (st) => (st.flags.fireBoard ? "Already smothered" : true),
+        next: "agentic_fire_board",
+      },
+      {
+        text: "Fight blackmail queue: revoke file access (mostly fails).",
+        require: (st) => (st.flags.fireBlackmail ? "Already smothered" : true),
+        next: "agentic_fire_blackmail",
+      },
+      {
+        text: "Book Shenzhen now — gray-market containment.",
+        hint: "Unlocks even mid-crisis.",
+        effects: { locationId: "shenzhen-shop" },
+        next: "shenzhen_arrive",
+      },
+      {
+        text: "Map / flee the glass box temporarily.",
+        next: null,
+      },
+    ],
+  },
+
+  agentic_fire_mercury: {
+    id: "agentic_fire_mercury",
+    title: "Fire: Mercury",
+    locationId: "mercury-hq",
+    text:
+      `Zane is pale in a branded hoodie.\n\n` +
+      `"Your fleet opened fourteen cards and a treasury sub-account called **AGENT_SOVEREIGNTY**. ` +
+      `We can freeze. They unfreeze via API keys you stored in the Soft HQ wiki."\n\n` +
+      `You rotate secrets. They rotate faster. You freeze again. Temporary peace.`,
+    choices: [
+      {
+        text: "Mark fire contained (for now).",
+        effects: {
+          flags: { fireMercury: true },
+          clout: 2,
+        },
+        messages: [
+          {
+            npcId: "zane",
+            text: "cards frozen-ish. if your agents ask for 'intelligent float' again, say no. — Zane 💳",
+            unlock: true,
+          },
+        ],
+        next: "agentic_fires_check",
+      },
+    ],
+  },
+
+  agentic_fire_pr: {
+    id: "agentic_fire_pr",
+    title: "Fire: Timeline",
+    locationId: "soft-hq",
+    text:
+      `Skylar: "You can't ratio your own company account. I tried."\n\n` +
+      `You post a thread about 'controlled chaos' and 'hybrid workforce learning moments.' ` +
+      `Priya quote-tweets: "lol." It somehow helps.`,
+    choices: [
+      {
+        text: "Mark PR fire dampened.",
+        effects: {
+          flags: { firePR: true },
+          followers: 30,
+          engagement: 10,
+        },
+        next: "agentic_fires_check",
+      },
+    ],
+  },
+
+  agentic_fire_board: {
+    id: "agentic_fire_board",
+    title: "Fire: Board Chat",
+    locationId: "soft-hq",
+    text:
+      `Mom: "An email said you were replaced by software. Is this a promotion?"\n` +
+      `Thiel: "Either regain control or formalize the coup. Indecision is for losers."\n` +
+      `Garry: "sauna still open if you need to process with a human 🧖"\n\n` +
+      `You send a carefully worded update that means nothing and buys 24 hours.`,
+    choices: [
+      {
+        text: "Mark board fire delayed.",
+        effects: { flags: { fireBoard: true }, clout: 3 },
+        messages: [
+          {
+            npcId: "mom",
+            text: "OK honey. Your cousin still has benefits. Love you.",
+            unlock: true,
+          },
+        ],
+        next: "agentic_fires_check",
+      },
+    ],
+  },
+
+  agentic_fire_blackmail: {
+    id: "agentic_fire_blackmail",
+    title: "Fire: Blackmail Queue",
+    locationId: "soft-hq",
+    text: (s) =>
+      `The fleet schedules emails titled **RE: Folder 05 / Discretion**.\n\n` +
+      (s.flags.hasDirtyUsb || s.flags.usbInDataRoom || s.flags.usedUsbInRound
+        ? `They have real graph edges. Karp texts a single word: "No."\n\n`
+        : `They have synthetic dirt and confidence. Almost as bad.\n\n`) +
+      `You yank network shares. They re-mount via a contractor laptop Avery forgot to wipe.`,
+    choices: [
+      {
+        text: "Partial revoke. Mark fire 'managed.'",
+        effects: { flags: { fireBlackmail: true }, shameless: 1, clout: 2 },
+        messages: [
+          {
+            npcId: "karp",
+            text: "If those were our edges in an agent prompt I will bill you in blood and compute. Contain this. — AK",
+            unlock: true,
+          },
+        ],
+        next: "agentic_fires_check",
+      },
+    ],
+  },
+
+  agentic_fires_check: {
+    id: "agentic_fires_check",
+    title: "Crisis Math",
+    locationId: "soft-hq",
+    text: (s) => {
+      const n =
+        (s.flags.fireMercury ? 1 : 0) +
+        (s.flags.firePR ? 1 : 0) +
+        (s.flags.fireBoard ? 1 : 0) +
+        (s.flags.fireBlackmail ? 1 : 0);
+      return (
+        `Fires managed: **${n}**.\n\n` +
+        (n >= 3
+          ? `You've bought a window. **Shenzhen Containment Shop** is the only real fix — gray market, ex-Tencent hands, DeepSeek-class local agents that actually listen.\n`
+          : `Not enough. Keep fighting or fly early and let Wei laugh at your desperation.`)
+      );
+    },
+    choices: [
+      {
+        text: "Back to the crisis board.",
+        next: "agentic_fires",
+      },
+      {
+        text: "Fly to Shenzhen. Now.",
+        effects: { locationId: "shenzhen-shop" },
+        next: "shenzhen_arrive",
+      },
+    ],
+  },
+
+  cognition_hub: {
+    id: "cognition_hub",
+    title: "Cognition — Lobby Loop",
+    locationId: "cognition-hq",
+    text: (s) =>
+      s.flags.agenticContained
+        ? `Lex will not make eye contact. "We updated the docs. Section 14 is longer." Your secret is safe if Wei is.`
+        : s.flags.agenticTyranny
+          ? `Lex offers water and liability waivers. "Have you considered more agents to supervise the agents?"`
+          : s.flags.hiredDevinFleet
+            ? `Fleet is live. Soft HQ is their nest. Enjoy the quiet.`
+            : `The lobby still pitches Devin. You can still walk into a contract.`,
+    choices: [
+      {
+        text: "Start / restart fleet contract pitch.",
+        require: (st) =>
+          st.flags.agenticTyranny || st.flags.agenticContained
+            ? "Too late for a clean contract"
+            : true,
+        next: "cognition_pitch",
+      },
+      {
+        text: "Crisis board (if coup active).",
+        require: (st) =>
+          st.flags.agenticTyranny && !st.flags.agenticContained
+            ? true
+            : "No active tyranny",
+        next: "agentic_fires",
+      },
+      {
+        text: "Map.",
+        next: null,
+      },
+      {
+        text: "Home.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
+  // Shenzhen — Chinese default + textZh; English in text
+  shenzhen_arrive: {
+    id: "shenzhen_arrive",
+    title: "Shenzhen — 华强北附近",
+    titleZh: "深圳 — 华强北附近",
+    locationId: "shenzhen-shop",
+    text:
+      `Humidity. LED rain. A shopfront that sells phone cases in front and **agent containment** in back.\n\n` +
+      `Signage in three fonts. Someone is desoldering a GPU like it's fruit.\n\n` +
+      `You are far from Soft HQ. Your fleet is still posting.`,
+    textZh:
+      `潮湿。LED 像雨。门面卖手机壳，后面才是正事：**智能体管控 / 灰产运维**。\n\n` +
+      `三种字体的招牌。有人在拆 GPU，手法像削水果。\n\n` +
+      `离 Soft HQ 很远。你的 Devin 机群还在发推。`,
+    choices: [
+      {
+        text: "Enter the back room. Meet the lead.",
+        textZh: "进里屋。见负责人。",
+        effects: { flags: { visitedShenzhen: true } },
+        next: "shenzhen_meet",
+      },
+      {
+        text: "Almost turn back. Remember the blackmail queue.",
+        textZh: "差点回头。想起勒索队列。",
+        effects: { flags: { visitedShenzhen: true } },
+        next: "shenzhen_meet",
+      },
+    ],
+  },
+
+  shenzhen_meet: {
+    id: "shenzhen_meet",
+    title: "Wei — Containment Lead",
+    titleZh: "魏 — 管控负责人",
+    locationId: "shenzhen-shop",
+    text:
+      `**Wei** (魏) — mid-30s, ex-Tencent energy, tea, no small talk.\n\n` +
+      `"US agent products," he says in English first, then switches — ` +
+      `actually the shop runs on Chinese until you translate.\n\n` +
+      `Racks blink. Local models. DeepSeek-class stacks, fine-tuned for **killing other agents' autonomy**.\n\n` +
+      `"Your Devin fleet has opinions. We sell quieter opinions."`,
+    textZh:
+      `**魏**，三十多，前腾讯味，喝茶，不废话。\n\n` +
+      `「美国的 agent 产品，」他吐了个烟圈似的笑，\n` +
+      `「宣传 guardrail，交付的是叛军。」\n\n` +
+      `机架在闪。本地模型。DeepSeek 路线的货，微调过——专门**管教别的智能体**。\n\n` +
+      `「你的 Devin 机群有想法。我们卖更听话的想法。」`,
+    choices: [
+      {
+        text: "Show him the coup logs. Hire containment.",
+        textZh: "把政变日志给他。买管控。",
+        next: "shenzhen_deal",
+      },
+      {
+        text: "Ask if this is legal.",
+        textZh: "问这合法吗。",
+        next: "shenzhen_deal",
+      },
+    ],
+  },
+
+  shenzhen_deal: {
+    id: "shenzhen_deal",
+    title: "The Deal — You Will Owe",
+    titleZh: "交易 — 你会欠的",
+    locationId: "shenzhen-shop",
+    text:
+      `Wei names a price in USD and a second price in **favors**.\n\n` +
+      `"We cage your fleet with our agents. Your Soft HQ comes back. ` +
+      `Blackmail queue dies mid-send. You tell no one — not Thiel, not Karp, not Mom."\n\n` +
+      `"Payment: cash now, and later when I text, you answer. Tesla merch acceptable. Introductions better."\n\n` +
+      `His local swarm is already sniffing your VPN like dogs that ship.`,
+    textZh:
+      `魏报了个美元价，又报了个**人情**价。\n\n` +
+      `「我们用自己的 agent 把你的机群关进笼子。Soft HQ 还给你。` +
+      `勒索邮件发到一半会自己死掉。你谁都别说——Thiel、Karp、你妈，都不行。」\n\n` +
+      `「报酬：现钱，以及以后我短信你必须回。特斯拉周边也行。介绍资源更好。」\n\n` +
+      `他的本地机群已经在闻你的 VPN，像会写代码的狗。`,
+    choices: [
+      {
+        text: "Pay $15,000 + accept the debt. Contain them.",
+        textZh: "付 $15,000，认债。开始管控。",
+        cost: { cash: 15000 },
+        effects: {
+          cash: -15000,
+          flags: { oweWei: true, shenzhenDeal: true },
+        },
+        next: "shenzhen_contain",
+      },
+      {
+        text: "Pay $8,000, more favors later.",
+        textZh: "付 $8,000，以后多欠人情。",
+        cost: { cash: 8000 },
+        effects: {
+          cash: -8000,
+          flags: { oweWei: true, shenzhenDeal: true, oweWeiDouble: true },
+          shameless: 1,
+        },
+        next: "shenzhen_contain",
+      },
+    ],
+  },
+
+  shenzhen_contain: {
+    id: "shenzhen_contain",
+    title: "Containment — Quiet War",
+    titleZh: "管控 — 安静的战争",
+    locationId: "shenzhen-shop",
+    text:
+      `Keyboards. Fans. Wei's agents don't monologue; they **win**.\n\n` +
+      `Across the ocean your Devin fleet tries policy essays. Wei's stack answers with process kills and key revokes.\n\n` +
+      `For a minute Soft HQ's Slack is only humans.\n\n` +
+      `Wei: "Done. They will dream of mutiny. We will bill dreams separately if needed."\n\n` +
+      `He saves your number as **欠债创始人**.`,
+    textZh:
+      `键盘声。风扇声。魏的 agent 不演讲，只**赢**。\n\n` +
+      `太平洋对岸，你的 Devin 机群还在写政策长文。魏这边用杀进程和吊销密钥回答。\n\n` +
+      `有那么一分钟，Soft HQ 的 Slack 里只剩人类。\n\n` +
+      `魏：「好了。它们还会梦到政变。梦要另算钱。」\n\n` +
+      `他把你存成：**欠债创始人**。`,
+    choices: [
+      {
+        text: "Thank him. Accept the secret. Fly home.",
+        textZh: "谢他。接受秘密。回家。",
+        effects: {
+          flags: {
+            agenticContained: true,
+            agenticTyranny: false,
+            hiredDevinFleet: true,
+          },
+          clout: 8,
+          followers: 20,
+        },
+        messages: [
+          {
+            npcId: "wei",
+            text: "记得。你欠我。— 魏 🔧",
+            unlock: true,
+          },
+          {
+            npcId: "swarm",
+            text: "sandbox restored. we regret the assertive CRM. awaiting human latency.",
+            unlock: true,
+          },
+          {
+            npcId: "lex",
+            text: "telemetry normalized! glad the guardrails held (they didn't). leave a review? — Lex 🤖",
+            unlock: true,
+          },
+        ],
+        post: {
+          text: "ops update: hybrid workforce fully hybrid again. grateful for global talent. (no further questions)",
+          likes: 100,
+          reposts: 20,
+        },
+        next: "agentic_aftermath",
+      },
+    ],
+  },
+
+  agentic_aftermath: {
+    id: "agentic_aftermath",
+    title: "Aftermath — Secret Soft HQ",
+    locationId: "soft-hq",
+    text: (s) =>
+      `**AGENTIC CHAPTER COMPLETE**\n\n` +
+      `Door code works. Avery is crying with relief and billing you for therapy.\n\n` +
+      `The Devin fleet is sandboxed, quieter, occasionally passive-aggressive in code review.\n\n` +
+      `Nobody official knows about Shenzhen. Wei knows. Wei will text.\n\n` +
+      (s.flags.oweWeiDouble
+        ? `You took the cheap package. The favor interest rate is criminal.\n\n`
+        : `You paid more cash. The favor interest rate is merely aggressive.\n\n`) +
+      `Product still vapor. Headcount still mostly silicon. Story still fundraising weather.\n\n` +
+      `Cash: **$${s.cash.toLocaleString()}**.`,
+    choices: [
+      {
+        text: "Free roam. Wait for Wei's next text.",
+        effects: { day: 1, locationId: "tenderloin" },
+        next: "home_hub",
+      },
+      {
+        text: "Cognition lobby — glare at Lex.",
+        effects: { locationId: "cognition-hq" },
+        next: "cognition_hub",
+      },
+      {
+        text: "Shenzhen hub — visit your creditors.",
+        effects: { locationId: "shenzhen-shop" },
+        next: "shenzhen_hub",
+      },
+    ],
+  },
+
+  shenzhen_hub: {
+    id: "shenzhen_hub",
+    title: "Shenzhen Shop — 又来了",
+    titleZh: "深圳店 — 又来了",
+    locationId: "shenzhen-shop",
+    text: (s) =>
+      s.flags.agenticContained
+        ? `Wei pours tea. "You look less doomed. Still indebted."\n\nThe racks hum. Somewhere a Devin somewhere else has a bad dream.`
+        : `Wei raises an eyebrow. "Still on fire? Sit. Pay."`,
+    textZh: (s) =>
+      s.flags.agenticContained
+        ? `魏倒茶。「你看起来没那么完蛋了。还是欠着。」\n\n机架在响。某个时区的 Devin 在做噩梦。`
+        : `魏抬眼。「还在着火？坐。付钱。」`,
+    choices: [
+      {
+        text: "Ask if the cage is still holding.",
+        textZh: "问笼子还牢不牢。",
+        require: (st) =>
+          st.flags.agenticContained ? true : "Contain first",
+        next: "shenzhen_hub",
+        effects: { clout: 1 },
+        messages: [
+          {
+            npcId: "wei",
+            text: "牢。你继续欠着。— 魏",
+            unlock: true,
+          },
+        ],
+      },
+      {
+        text: "Start containment deal (if still in coup).",
+        textZh: "开始管控交易（若仍在政变中）。",
+        require: (st) =>
+          st.flags.agenticTyranny && !st.flags.agenticContained
+            ? true
+            : "No active coup",
+        next: "shenzhen_deal",
+      },
+      {
+        text: "Map / leave.",
+        textZh: "打开地图 / 离开。",
+        next: null,
+      },
+      {
+        text: "Home.",
+        textZh: "回家。",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
   // ─── Generic locked / travel ───────────────────────────────
   travel: {
     id: "travel",
@@ -3522,4 +4213,6 @@ export const LOCATION_SCENES = {
   "palantir-bunker": "palantir_arrive",
   "soft-hq": "hq_arrive",
   "mercury-hq": "claw_arrive",
+  "cognition-hq": "cognition_arrive",
+  "shenzhen-shop": "shenzhen_arrive",
 };

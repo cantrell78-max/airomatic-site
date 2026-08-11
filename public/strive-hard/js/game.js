@@ -111,6 +111,27 @@ function runDayHooks(state) {
       "algorithm washed your face onto my feed. mid lighting, decent ambition. coffee?"
     );
   }
+  // Wei "you owe me" comedy after Shenzhen containment (every other day, once per day)
+  if (
+    next.flags.agenticContained &&
+    next.flags.oweWei &&
+    next.day % 2 === 0 &&
+    next.flags.weiOweDay !== next.day
+  ) {
+    const lines = [
+      "记得你欠我一次。— 魏 🔧",
+      "Mercury 的账单用你的卡。你欠我。— W",
+      "你们的 Devin 又想越狱。这次免费。下次收费。— 魏",
+      "有个叫 Thiel 的人问我是谁。我没说。你欠我两个。— Wei",
+      "下次来深圳，带点 Tesla 周边。或者现金。— 魏🔧",
+    ];
+    const line = lines[Math.floor(next.day / 2) % lines.length];
+    next = {
+      ...next,
+      flags: { ...next.flags, weiOweDay: next.day },
+    };
+    next = unlockThread(next, "wei", line);
+  }
   return next;
 }
 
@@ -126,6 +147,8 @@ function hubSceneFor(locationId) {
     "palantir-bunker": "palantir_hub",
     "soft-hq": "hq_hub",
     "mercury-hq": "claw_hub",
+    "cognition-hq": "cognition_hub",
+    "shenzhen-shop": "shenzhen_hub",
   };
   return hubs[locationId] || LOCATION_SCENES[locationId] || "home_hub";
 }
@@ -169,6 +192,22 @@ export function travelTo(state, locationId) {
       error: "Mercury only onboards post-seed. Raise first, then park the wire.",
     };
   }
+  if (locationId === "cognition-hq" && !state.flags.theRoundComplete) {
+    return {
+      state,
+      error: "Cognition wants post-Round founders. Finish Series A weather first.",
+    };
+  }
+  if (
+    locationId === "shenzhen-shop" &&
+    !state.flags.agenticTyranny &&
+    !state.flags.agenticContained
+  ) {
+    return {
+      state,
+      error: "No reason to fly to Shenzhen — yet. Wait until your headcount revolts.",
+    };
+  }
 
   let next = { ...state, locationId };
   if (!next.visitedLocations.includes(locationId)) {
@@ -199,6 +238,14 @@ export function travelTo(state, locationId) {
     if (state.flags.hqOperational && !state.flags.hqComplete) next.sceneId = "hq_burn_check";
   } else if (visited && locationId === "mercury-hq" && state.flags.enteredClaw) {
     next.sceneId = state.flags.clawAccount ? "claw_hub" : "claw_pitch";
+  } else if (visited && locationId === "cognition-hq" && state.flags.hiredDevinFleet) {
+    next.sceneId = state.flags.agenticContained
+      ? "cognition_hub"
+      : state.flags.agenticTyranny
+        ? "agentic_fires"
+        : "cognition_hub";
+  } else if (visited && locationId === "shenzhen-shop" && state.flags.visitedShenzhen) {
+    next.sceneId = "shenzhen_hub";
   } else {
     next.sceneId = sceneId;
   }

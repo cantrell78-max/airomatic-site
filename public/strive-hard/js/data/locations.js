@@ -121,6 +121,26 @@ export const LOCATIONS = [
     energyCost: 1,
     tags: ["soma", "fintech", "treasury"],
   },
+  {
+    id: "cognition-hq",
+    name: "Cognition HQ",
+    short: "Cognition",
+    emoji: "🤖",
+    desc: "Devin and the AI employee pitch. Hire a fleet. Guardrails included (allegedly).",
+    unlockDay: 1,
+    energyCost: 1,
+    tags: ["soma", "agentic", "ai"],
+  },
+  {
+    id: "shenzhen-shop",
+    name: "Shenzhen Containment Shop",
+    short: "Shenzhen",
+    emoji: "🔧",
+    desc: "Gray-market agent control. Ex-Tencent energy. DeepSeek-class local stacks. Translate recommended.",
+    unlockDay: 1,
+    energyCost: 4,
+    tags: ["china", "containment", "agents"],
+  },
 ];
 
 export function getLocation(id) {
@@ -135,6 +155,8 @@ export function locationLockReason(loc, state) {
   if (loc.id === "palantir-bunker") return "Requires alien contact (Mt. Shasta)";
   if (loc.id === "soft-hq") return "Raise a seed on the yacht first";
   if (loc.id === "mercury-hq") return "Raise a seed — then park it at Mercury";
+  if (loc.id === "cognition-hq") return "Finish The Round first — then go agentic";
+  if (loc.id === "shenzhen-shop") return "Survive the agent coup — then fly to Shenzhen";
   if (state.day < loc.unlockDay) return `Unlocks day ${loc.unlockDay}+`;
   return "Locked";
 }
@@ -160,6 +182,13 @@ export function isLocationUnlocked(loc, state) {
   }
   if (loc.id === "mercury-hq") {
     return !!state.flags.raisedSeed;
+  }
+  if (loc.id === "cognition-hq") {
+    return !!state.flags.theRoundComplete;
+  }
+  if (loc.id === "shenzhen-shop") {
+    // Unlocks during coup; stays open after containment (you owe them)
+    return !!(state.flags.agenticTyranny || state.flags.agenticContained);
   }
   return true;
 }

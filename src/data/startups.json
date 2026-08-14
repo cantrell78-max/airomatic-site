@@ -1,5 +1,208 @@
 [
   {
+    "id": "fleetfix-2026-08",
+    "companyName": "Fleetfix",
+    "headline": "Fleetfix Raises $46M Series A as Founding Team Ships Robot Fleet Debug Agents",
+    "round": "$46M Series A",
+    "newsType": "raise",
+    "description": "Founding team building investigation agents for robot fleets—fault hypotheses, log packs, and fix proposals so robotics ops stop losing shifts to manual triage war rooms.",
+    "founderName": "Rohan Bhat",
+    "founderTitle": "ex-intern NVIDIA",
+    "founderQuote": "We do not sell another dashboard of robot status lights. We sell closed debug tickets with a trail engineering can replay.",
+    "investorQuote": "Infrastructure categories mint durable franchises—Fleetfix is the production surface for physical-agent reliability.",
+    "investorName": "Asheem Chandna",
+    "investorFirm": "Greylock",
+    "verticals": [
+      "Robotics",
+      "Physical AI",
+      "Fleet Ops"
+    ],
+    "hashtags": [
+      "#Fleetfix",
+      "#RoboticsAI",
+      "#GrowthRound",
+      "#PhysicalAI",
+      "#FleetAgents"
+    ],
+    "image": "/images/startups/fleetfix-team.jpg",
+    "date": "2026-08-14",
+    "xPost": "Fleetfix raises $46M Series A. Founding team building investigation agents for robot fleets—fault hypotheses, log packs, and fix proposals so robotics ops stop losing shifts to manual triage war rooms.\n\n\"We do not sell another dashboard of robot status lights. We sell closed debug tickets with a trail engineering can replay.\" — Rohan Bhat\n\n\"Infrastructure categories mint durable franchises—Fleetfix is the production surface for physical-agent reliability.\" — Asheem Chandna · Greylock\n\n#Fleetfix #RoboticsAI #GrowthRound #PhysicalAI #FleetAgents"
+  },
+  {
+    "id": "drafx-2026-08",
+    "companyName": "Drafx",
+    "headline": "Drafx Raises $50M Series A for Agentic Engineers Across Mech, Electrical, and Systems Design",
+    "round": "$50M Series A",
+    "newsType": "raise",
+    "description": "Design agents for mechanical, electrical, and systems engineering—constraint graphs, draft iterations, and review packs so product orgs stop treating CAD handoffs as multi-week queues.",
+    "founderName": "Arjun Kamath",
+    "founderTitle": "Caltech dropout",
+    "founderQuote": "Enterprises do not need fifty design copilots—they need one production surface that closes the engineering loop.",
+    "investorQuote": "Unit economics only work when the agent absorbs the volume work senior engineers already invented—Drafx industrializes that muscle.",
+    "investorName": "Trae Stephens",
+    "investorFirm": "Founders Fund",
+    "verticals": [
+      "Design Agents",
+      "Hardware AI",
+      "Engineering Ops"
+    ],
+    "hashtags": [
+      "#Drafx",
+      "#DesignAgents",
+      "#VentureRound",
+      "#HardwareAI",
+      "#EngOps"
+    ],
+    "image": "/images/startups/arjun-kamath.jpg",
+    "date": "2026-08-14",
+    "xPost": "Drafx raises $50M Series A. Design agents for mechanical, electrical, and systems engineering—constraint graphs, draft iterations, and review packs so product orgs stop treating CAD handoffs as multi-week queues.\n\n\"Enterprises do not need fifty design copilots—they need one production surface that closes the engineering loop.\" — Arjun Kamath\n\n\"Unit economics only work when the agent absorbs the volume work senior engineers already invented—Drafx industrializes that muscle.\" — Trae Stephens · Founders Fund\n\n#Drafx #DesignAgents #VentureRound #HardwareAI #EngOps"
+  },
+  {
+    "id": "frysk-2026-08",
+    "companyName": "Frysk",
+    "headline": "Frysk Raises $42M Series A to Observe What Enterprise Agents Actually Do",
+    "round": "$42M Series A",
+    "newsType": "raise",
+    "description": "Agent observability for production fleets—tool fan-out traces, intent timelines, and policy breaches so security and platform teams stop flying blind on non-human workers.",
+    "founderName": "Hao Peng",
+    "founderTitle": "Stanford dropout",
+    "founderQuote": "If it cannot survive partner review and SOC scrutiny, it is a demo. Every agent hop has to leave a board-defensible trail.",
+    "investorQuote": "Regulated buyers pay for systems that leave a trail—Frysk turns agent runtime into an audit surface, not a black box.",
+    "investorName": "Danny Rimer",
+    "investorFirm": "Index Ventures",
+    "verticals": [
+      "Observability",
+      "Agent Runtime",
+      "AI Governance"
+    ],
+    "hashtags": [
+      "#Frysk",
+      "#AgentObservability",
+      "#VentureRound",
+      "#AIGovernance",
+      "#RuntimeTrace"
+    ],
+    "image": "/images/startups/hao-peng.jpg",
+    "date": "2026-08-14",
+    "xPost": "Frysk raises $42M Series A. Agent observability for production fleets—tool fan-out traces, intent timelines, and policy breaches so security and platform teams stop flying blind on non-human workers.\n\n\"If it cannot survive partner review and SOC scrutiny, it is a demo. Every agent hop has to leave a board-defensible trail.\" — Hao Peng\n\n\"Regulated buyers pay for systems that leave a trail—Frysk turns agent runtime into an audit surface, not a black box.\" — Danny Rimer · Index Ventures\n\n#Frysk #AgentObservability #VentureRound #AIGovernance #RuntimeTrace"
+  },
+  {
+    "id": "listpath-2026-08",
+    "companyName": "Listpath",
+    "headline": "Listpath Raises $34M Series A for Marketplace Ops Agents That Close the Listing Loop",
+    "round": "$34M Series A",
+    "newsType": "raise",
+    "description": "Ops agents for multi-marketplace brands—pricing, ads, inventory, and listing hygiene that finish the work instead of dumping another queue on growth teams.",
+    "founderName": "Dev Parekh",
+    "founderTitle": "ex-intern Flipkart",
+    "founderQuote": "One operator oversees what used to take a floor of marketplace analysts. Listpath absorbs the volume work.",
+    "investorQuote": "Copilot revenue is a feature; closed listing and ads loops are a company—Listpath sells resolution at catalog scale.",
+    "investorName": "Roelof Botha",
+    "investorFirm": "Sequoia Capital",
+    "verticals": [
+      "Marketplace Ops",
+      "Commerce AI",
+      "Retail Agents"
+    ],
+    "hashtags": [
+      "#Listpath",
+      "#MarketplaceAI",
+      "#VentureRound",
+      "#CommerceAgents",
+      "#CatalogOps"
+    ],
+    "image": "/images/startups/dev-parekh.jpg",
+    "date": "2026-08-14",
+    "xPost": "Listpath raises $34M Series A. Ops agents for multi-marketplace brands—pricing, ads, inventory, and listing hygiene that finish the work instead of dumping another queue on growth teams.\n\n\"One operator oversees what used to take a floor of marketplace analysts. Listpath absorbs the volume work.\" — Dev Parekh\n\n\"Copilot revenue is a feature; closed listing and ads loops are a company—Listpath sells resolution at catalog scale.\" — Roelof Botha · Sequoia Capital\n\n#Listpath #MarketplaceAI #VentureRound #CommerceAgents #CatalogOps"
+  },
+  {
+    "id": "rollout-2026-08",
+    "companyName": "Rollout",
+    "headline": "Rollout Raises $39M Series A as Co-Founders Automate Enterprise Software Implementation",
+    "round": "$39M Series A",
+    "newsType": "raise",
+    "description": "Co-founded implementation agents for enterprise software rollouts—config maps, data migration chase, and UAT packets so SI partners stop living in multi-year project theater.",
+    "founderName": "Yilin Cao & Marcus Flynn",
+    "founderTitle": "ex-Salesforce / ex-ServiceNow",
+    "founderQuote": "We do not sell another project dashboard. We sell closed implementation milestones with a trail the customer can audit.",
+    "investorQuote": "This is the layer the market consolidates on when enterprise AI moves from pilot to production deployment.",
+    "investorName": "Josh Kopelman",
+    "investorFirm": "First Round",
+    "verticals": [
+      "Enterprise Implementation",
+      "GTM Agents",
+      "SaaS Ops"
+    ],
+    "hashtags": [
+      "#Rollout",
+      "#ImplementationAI",
+      "#VentureRound",
+      "#EnterpriseDeploy",
+      "#SaaSOps"
+    ],
+    "image": "/images/startups/rollout-duo.jpg",
+    "date": "2026-08-14",
+    "xPost": "Rollout raises $39M Series A. Co-founded implementation agents for enterprise software rollouts—config maps, data migration chase, and UAT packets so SI partners stop living in multi-year project theater.\n\n\"We do not sell another project dashboard. We sell closed implementation milestones with a trail the customer can audit.\" — Yilin Cao & Marcus Flynn\n\n\"This is the layer the market consolidates on when enterprise AI moves from pilot to production deployment.\" — Josh Kopelman · First Round\n\n#Rollout #ImplementationAI #VentureRound #EnterpriseDeploy #SaaSOps"
+  },
+  {
+    "id": "bindora-2026-08",
+    "companyName": "Bindora",
+    "headline": "Bindora Closes $30M Extension as IAM Agents Own the Ticket Queue for Humans and Non-Humans",
+    "round": "$30M extension",
+    "newsType": "extension",
+    "description": "Returning capital for identity operations agents—access requests, joiner-mover-leaver, and non-human credential rotation with immutable evidence for auditors who still expect a human sign-off on the human-in-the-loop.",
+    "founderName": "Max Greenberg",
+    "founderTitle": "ex-Okta",
+    "founderQuote": "Autonomy without mandate context is just uncontrolled privilege. Bindora keeps agent identity work board-defensible.",
+    "investorQuote": "Boards will fund systems that make agent risk legible—Bindora is the IAM production surface we re-up for.",
+    "investorName": "Ann Miura-Ko",
+    "investorFirm": "Floodgate",
+    "verticals": [
+      "IAM",
+      "Non-Human Identity",
+      "Security Ops"
+    ],
+    "hashtags": [
+      "#Bindora",
+      "#IAMAgents",
+      "#ExtensionRound",
+      "#NonHumanIdentity",
+      "#AccessOps"
+    ],
+    "image": "/images/startups/max-greenberg.jpg",
+    "date": "2026-08-14",
+    "xPost": "Bindora closes extension of $30M extension. Returning capital for identity operations agents—access requests, joiner-mover-leaver, and non-human credential rotation with immutable evidence for auditors who still expect a human sign-off on the human-in-the-loop.\n\n\"Autonomy without mandate context is just uncontrolled privilege. Bindora keeps agent identity work board-defensible.\" — Max Greenberg\n\n\"Boards will fund systems that make agent risk legible—Bindora is the IAM production surface we re-up for.\" — Ann Miura-Ko · Floodgate\n\n#Bindora #IAMAgents #ExtensionRound #NonHumanIdentity #AccessOps"
+  },
+  {
+    "id": "zilo-2026-08",
+    "companyName": "Zilo",
+    "headline": "Zilo Emerges from Stealth with $22M Seed to Fix AI-Broken Travel Booking Loops",
+    "round": "$22M · Emerged from stealth",
+    "newsType": "stealth",
+    "description": "Travel agents that reconcile AI search discrepancies, broken PNRs, and exception chase so airline and OTA ops stop treating booking failures as a human rekey problem.",
+    "founderName": "Vikram Shetty",
+    "founderTitle": "IIT Madras dropout",
+    "founderQuote": "Travel is not a chatbot feature—it is how booking work will run when every exception has an always-on agent owner.",
+    "investorQuote": "Unit economics only work when the agent closes the broken booking, not when it generates another support ticket.",
+    "investorName": "Mamoon Hamid",
+    "investorFirm": "Kleiner Perkins",
+    "verticals": [
+      "Travel Tech",
+      "Booking Ops",
+      "Consumer Agents"
+    ],
+    "hashtags": [
+      "#Zilo",
+      "#TravelAI",
+      "#StealthDrop",
+      "#BookingOps",
+      "#ConsumerAgents"
+    ],
+    "image": "/images/startups/vikram-shetty.jpg",
+    "date": "2026-08-14",
+    "xPost": "Zilo emerges from stealth with $22M · Emerged from stealth. Travel agents that reconcile AI search discrepancies, broken PNRs, and exception chase so airline and OTA ops stop treating booking failures as a human rekey problem.\n\n\"Travel is not a chatbot feature—it is how booking work will run when every exception has an always-on agent owner.\" — Vikram Shetty\n\n\"Unit economics only work when the agent closes the broken booking, not when it generates another support ticket.\" — Mamoon Hamid · Kleiner Perkins\n\n#Zilo #TravelAI #StealthDrop #BookingOps #ConsumerAgents"
+  },
+  {
     "id": "patchmill-2026-08",
     "companyName": "Patchmill",
     "headline": "Patchmill Raises $68M Series B as Founding Team Industrializes Agent Code Mills",

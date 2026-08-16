@@ -115,6 +115,16 @@ export function loadState() {
         }));
       if (!Array.isArray(t.replyOptions)) t.replyOptions = [];
       if (!t.npcId) t.npcId = id;
+      // Existing unlocked Priya with no replies (older saves): offer quick replies once
+      if (
+        id === "priya" &&
+        !t.locked &&
+        t.replyOptions.length === 0 &&
+        !t.priyaRepliesMigrated
+      ) {
+        t.replyOptions = defaultRepliesFor("priya");
+        t.priyaRepliesMigrated = true;
+      }
     }
     if (!data.translatedScenes) data.translatedScenes = {};
     // Claw → Mercury location rename (flags keep claw* keys for save stability)

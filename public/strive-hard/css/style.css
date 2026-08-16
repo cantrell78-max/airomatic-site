@@ -637,6 +637,33 @@ button {
   display: flex;
 }
 
+/* Always-visible home indicator — recovers from blank/crashed app screens */
+.phone-home-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0 0.55rem;
+  background: #0a0b10;
+  border: 0;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.phone-home-bar:hover .phone-home-pill,
+.phone-home-bar:focus-visible .phone-home-pill {
+  background: #e8e9f0;
+}
+
+.phone-home-pill {
+  width: 36%;
+  max-width: 120px;
+  height: 5px;
+  border-radius: 999px;
+  background: #8b8d9a;
+  transition: background 0.15s;
+}
+
 .phone-wallpaper {
   position: absolute;
   inset: 0;

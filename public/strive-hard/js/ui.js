@@ -336,19 +336,32 @@ export function renderMap(state, onTravel) {
 
 export function renderTextThreads(state, onOpenThread) {
   const box = document.getElementById("text-threads");
-  const entries = Object.values(state.threads || {}).filter((t) => !t.locked);
+  if (!box) return;
+  // Always reset chat pane so back/home never leave a stuck blank chat
+  const chat = document.getElementById("text-chat");
+  if (chat) chat.hidden = true;
+  box.hidden = false;
+
+  const entries = Object.values(state.threads || {}).filter(
+    (t) => t && !t.locked
+  );
 
   if (!entries.length) {
     box.innerHTML = `<div class="texts-empty">No messages.<br/>Loneliness is a feature.</div>`;
     return;
   }
 
-  // sort unread first, then by last message
+  // sort unread first
   entries.sort((a, b) => (b.unread ? 1 : 0) - (a.unread ? 1 : 0));
 
   box.innerHTML = "";
   entries.forEach((t) => {
-    const last = t.messages[t.messages.length - 1];
+    const msgs = Array.isArray(t.messages) ? t.messages : [];
+    const last = msgs[msgs.length - 1];
+    const preview =
+      typeof last?.text === "string" && last.text
+        ? last.text
+        : "…";
     const row = document.createElement("button");
     row.type = "button";
     row.className = "thread-row" + (t.unread ? " unread" : "");
@@ -356,7 +369,7 @@ export function renderTextThreads(state, onOpenThread) {
       <span class="thread-avatar">${npcEmoji(t.npcId)}</span>
       <span class="thread-body">
         <span class="thread-name">${escapeHtml(npcName(t.npcId))}</span>
-        <span class="thread-preview">${escapeHtml(last?.text || "…")}</span>
+        <span class="thread-preview">${escapeHtml(preview)}</span>
       </span>
       ${t.unread ? '<span class="thread-dot"></span>' : ""}
     `;
@@ -366,24 +379,42 @@ export function renderTextThreads(state, onOpenThread) {
 }
 
 export function renderTextChat(state, npcId, onReply) {
-  const thread = state.threads[npcId];
-  document.getElementById("text-threads").hidden = true;
+  const threadsEl = document.getElementById("text-threads");
   const chat = document.getElementById("text-chat");
+  if (!chat) return;
+
+  let thread = state.threads?.[npcId];
+  // Missing / corrupt thread — show empty chat instead of crashing the phone
+  if (!thread) {
+    thread = { npcId, messages: [], replyOptions: [], locked: false };
+  }
+  const messages = Array.isArray(thread.messages) ? thread.messages : [];
+  const replyOptions = Array.isArray(thread.replyOptions)
+    ? thread.replyOptions
+    : [];
+
+  if (threadsEl) threadsEl.hidden = true;
   chat.hidden = false;
-  document.getElementById("chat-name").textContent = npcName(npcId);
+  const nameEl = document.getElementById("chat-name");
+  if (nameEl) nameEl.textContent = npcName(npcId);
 
   const msgs = document.getElementById("chat-messages");
-  msgs.innerHTML = (thread.messages || [])
-    .map(
-      (m) =>
-        `<div class="bubble ${m.from === "player" ? "me" : "them"}">${escapeHtml(m.text)}</div>`
-    )
-    .join("");
-  msgs.scrollTop = msgs.scrollHeight;
+  if (msgs) {
+    msgs.innerHTML = messages
+      .map((m) => {
+        const body =
+          typeof m?.text === "string" ? m.text : String(m?.text ?? "");
+        return `<div class="bubble ${m?.from === "player" ? "me" : "them"}">${escapeHtml(body)}</div>`;
+      })
+      .join("");
+    msgs.scrollTop = msgs.scrollHeight;
+  }
 
   const replies = document.getElementById("chat-replies");
+  if (!replies) return;
   replies.innerHTML = "";
-  (thread.replyOptions || []).forEach((opt) => {
+  replyOptions.forEach((opt) => {
+    if (!opt?.text) return;
     const b = document.createElement("button");
     b.type = "button";
     b.className = "reply-btn";
@@ -391,7 +422,7 @@ export function renderTextChat(state, npcId, onReply) {
     b.addEventListener("click", () => onReply(npcId, opt));
     replies.appendChild(b);
   });
-  if (!(thread.replyOptions || []).length) {
+  if (!replyOptions.length) {
     replies.innerHTML = `<div class="texts-empty" style="padding:0.5rem">No quick replies — check back after story beats.</div>`;
   }
 }

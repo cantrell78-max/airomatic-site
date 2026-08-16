@@ -61,8 +61,14 @@ export function loadState() {
     }
     if (!data.visitedLocations) data.visitedLocations = ["tenderloin"];
     if (!data.threads) data.threads = buildInitialThreads(data.character);
-    // Ensure optional NPC threads exist
+    // Ensure core + arc NPC threads exist (incl. priya/skylar — older saves sometimes omitted)
     for (const id of [
+      "roommate",
+      "mom",
+      "garry",
+      "jordan",
+      "skylar",
+      "priya",
       "jules",
       "marisol",
       "vanessa",
@@ -86,6 +92,29 @@ export function loadState() {
           replyOptions: [],
         };
       }
+    }
+    // Normalize corrupt / partial threads (prevents blank Messages crash)
+    for (const [id, t] of Object.entries(data.threads)) {
+      if (!t || typeof t !== "object") {
+        data.threads[id] = {
+          npcId: id,
+          unread: false,
+          locked: true,
+          messages: [],
+          replyOptions: [],
+        };
+        continue;
+      }
+      if (!Array.isArray(t.messages)) t.messages = [];
+      // Coerce any non-string message bodies (bad saves)
+      t.messages = t.messages
+        .filter((m) => m && (m.text != null || m.from))
+        .map((m) => ({
+          from: m.from === "player" ? "player" : "npc",
+          text: typeof m.text === "string" ? m.text : String(m.text ?? ""),
+        }));
+      if (!Array.isArray(t.replyOptions)) t.replyOptions = [];
+      if (!t.npcId) t.npcId = id;
     }
     if (!data.translatedScenes) data.translatedScenes = {};
     // Claw → Mercury location rename (flags keep claw* keys for save stability)
@@ -163,6 +192,31 @@ export function addPost(state, { text, likes = 0, reposts = 0 }) {
   };
 }
 
+/** Default one-shot replies when an NPC first unlocks with no options */
+function defaultRepliesFor(npcId) {
+  if (npcId === "priya") {
+    return [
+      {
+        text: "You're on. Loser buys oat milk. (I'm not losing.)",
+        effects: { clout: 1, followers: 5 },
+        npcReply:
+          "cute. screenshot this when I pass you. also don't steal my users 🚀",
+      },
+      {
+        text: "Rivalry accepted. Flirting optional. Both probable.",
+        effects: { clout: 2 },
+        npcReply: "gross. also correct. see you at the next free Zoom cult.",
+      },
+      {
+        text: "Focus on product. Race later.",
+        effects: { clout: 1 },
+        npcReply: "product? bold of you to assume either of us has one.",
+      },
+    ];
+  }
+  return [];
+}
+
 export function unlockThread(state, npcId, firstMessage) {
   const threads = { ...state.threads };
   const existing = threads[npcId] || {
@@ -173,13 +227,28 @@ export function unlockThread(state, npcId, firstMessage) {
   };
   const messages = [...(existing.messages || [])];
   if (firstMessage) {
-    messages.push({ from: "npc", text: firstMessage });
+    const text =
+      typeof firstMessage === "string" ? firstMessage : String(firstMessage ?? "");
+    messages.push({ from: "npc", text });
+  }
+  const hadReplies =
+    Array.isArray(existing.replyOptions) && existing.replyOptions.length > 0;
+  const wasLocked = existing.locked !== false && !messages.length;
+  // Fresh unlock of Priya (etc.): attach quick replies so "texting" works
+  let replyOptions = Array.isArray(existing.replyOptions)
+    ? [...existing.replyOptions]
+    : [];
+  if (!hadReplies && existing.locked !== false) {
+    const defaults = defaultRepliesFor(npcId);
+    if (defaults.length) replyOptions = defaults;
   }
   threads[npcId] = {
     ...existing,
+    npcId,
     locked: false,
     unread: true,
     messages,
+    replyOptions,
   };
   const unreadTexts = Object.values(threads).filter((t) => !t.locked && t.unread).length;
   return { ...state, threads, unreadTexts };

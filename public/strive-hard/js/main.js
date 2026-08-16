@@ -138,22 +138,39 @@ function handleTravel(locationId) {
 }
 
 function handleOpenThread(npcId) {
-  state = markThreadRead(state, npcId);
-  renderPhoneHome(state);
-  renderTextChat(state, npcId, handleTextReply);
+  try {
+    // Always show Messages app first so a render error can't leave a blank phone
+    openPhoneApp("texts");
+    state = markThreadRead(state, npcId);
+    renderPhoneHome(state);
+    renderTextChat(state, npcId, handleTextReply);
+  } catch (err) {
+    console.error("open thread failed", npcId, err);
+    openPhoneApp("texts");
+    renderTextThreads(state, handleOpenThread);
+    showToast("That thread glitched. Back to inbox.", "bad");
+  }
 }
 
 function handleTextReply(npcId, option) {
-  const result = sendTextReply(state, npcId, option);
-  if (result.error) {
-    showToast(result.error, "bad");
-    return;
+  try {
+    const result = sendTextReply(state, npcId, option);
+    if (result.error) {
+      showToast(result.error, "bad");
+      return;
+    }
+    state = result.state;
+    if (result.toast) showToast(result.toast, "good");
+    openPhoneApp("texts");
+    renderTextChat(state, npcId, handleTextReply);
+    renderPhoneHome(state);
+    updateStats(state);
+  } catch (err) {
+    console.error("text reply failed", npcId, err);
+    openPhoneApp("texts");
+    renderTextThreads(state, handleOpenThread);
+    showToast("Message failed to send. Phone recovered.", "bad");
   }
-  state = result.state;
-  if (result.toast) showToast(result.toast, "good");
-  renderTextChat(state, npcId, handleTextReply);
-  renderPhoneHome(state);
-  updateStats(state);
 }
 
 function startGame(characterId) {
@@ -233,11 +250,29 @@ function bindPhone() {
     btn.addEventListener("click", () => openPhoneApp("home"));
   });
 
-  document.getElementById("btn-thread-back").addEventListener("click", () => {
-    document.getElementById("text-chat").hidden = true;
-    document.getElementById("text-threads").hidden = false;
-    renderTextThreads(state, handleOpenThread);
-  });
+  // Always-visible home pill (survives blank/crashed app screens)
+  const homeBar = document.getElementById("btn-phone-home");
+  if (homeBar) {
+    homeBar.addEventListener("click", () => {
+      openPhoneApp("home");
+      renderPhoneHome(state);
+    });
+  }
+
+  const threadBack = document.getElementById("btn-thread-back");
+  if (threadBack) {
+    threadBack.addEventListener("click", () => {
+      try {
+        openPhoneApp("texts");
+        document.getElementById("text-chat").hidden = true;
+        document.getElementById("text-threads").hidden = false;
+        renderTextThreads(state, handleOpenThread);
+      } catch (err) {
+        console.error("thread back failed", err);
+        openPhoneApp("home");
+      }
+    });
+  }
 
   document.getElementById("btn-post-selfie").addEventListener("click", () => {
     const caption = document.getElementById("selfie-caption").value;

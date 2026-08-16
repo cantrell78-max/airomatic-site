@@ -468,27 +468,38 @@ export function postSelfie(state, caption) {
 
 export function sendTextReply(state, npcId, option) {
   let next = { ...state, threads: { ...state.threads } };
-  const thread = { ...next.threads[npcId] };
-  if (!thread) return { state, error: "No thread" };
+  const existing = next.threads[npcId];
+  if (!existing) return { state, error: "No thread" };
 
-  thread.messages = [
-    ...thread.messages,
-    { from: "player", text: option.text },
-  ];
-  if (option.npcReply) {
+  const thread = {
+    ...existing,
+    messages: Array.isArray(existing.messages) ? [...existing.messages] : [],
+    replyOptions: Array.isArray(existing.replyOptions)
+      ? [...existing.replyOptions]
+      : [],
+  };
+
+  thread.messages.push({ from: "player", text: option?.text || "" });
+  if (option?.npcReply) {
     thread.messages.push({ from: "npc", text: option.npcReply });
   }
   thread.replyOptions = []; // one-shot for simple threads
   thread.unread = false;
+  thread.locked = false;
   next.threads[npcId] = thread;
 
-  if (option.effects) {
+  if (option?.effects) {
     next = applyEffects(next, option.effects);
   }
 
-  next.unreadTexts = Object.values(next.threads).filter((t) => !t.locked && t.unread).length;
+  next.unreadTexts = Object.values(next.threads).filter(
+    (t) => t && !t.locked && t.unread
+  ).length;
   saveState(next);
-  return { state: next, toast: option.effects?.followers ? "Clout via text" : "Message sent" };
+  return {
+    state: next,
+    toast: option?.effects?.followers ? "Clout via text" : "Message sent",
+  };
 }
 
 export function markThreadRead(state, npcId) {

@@ -80,6 +80,13 @@ export function applyChoice(state, choice) {
 
   if (choice.effects?.locationId) {
     next.locationId = choice.effects.locationId;
+    if (!next.visitedLocations?.includes(choice.effects.locationId)) {
+      next.visitedLocations = [...(next.visitedLocations || []), choice.effects.locationId];
+    }
+  }
+  // Scene location changes also count as visits (story travel)
+  if (next.locationId && !next.visitedLocations?.includes(next.locationId)) {
+    next.visitedLocations = [...(next.visitedLocations || []), next.locationId];
   }
 
   saveState(next);
@@ -132,6 +139,42 @@ function runDayHooks(state) {
     };
     next = unlockThread(next, "wei", line);
   }
+  // Prema affirmations after meeting (odd days, once per day)
+  if (
+    next.flags.metPrema &&
+    next.day % 2 === 1 &&
+    next.flags.premaTextDay !== next.day
+  ) {
+    const lines = next.flags.theRoundComplete
+      ? [
+          "You closed theater. Now don't become the carrot. — Prema 🕉️",
+          "Wire or weather — same soul. Stay soft. — Maharaj",
+          "If heat that isn't spiritual texts you: delete, chant, build. — Prema Das",
+        ]
+      : [
+          "Fruitive labor continues. Detachment is still free. — Prema 🕉️",
+          "Another classmate 'closed.' You are not a failed product. — Maharaj",
+          "The stick is loud today. You don't have to run. — Prema Das",
+          "Hare Krishna. Also: hydrate. Founders forget water. — Prema",
+        ];
+    const line = lines[Math.floor(next.day / 2) % lines.length];
+    next = {
+      ...next,
+      flags: { ...next.flags, premaTextDay: next.day },
+    };
+    next = unlockThread(next, "prema", line);
+  }
+  // After yacht seed decision, soft-unlock temple pin once (flavor text on next day)
+  if (
+    (next.flags.raisedSeed || next.flags.declinedSeed) &&
+    !next.flags.templeUnlocked &&
+    !next.flags.weatherTempleHint
+  ) {
+    next = {
+      ...next,
+      flags: { ...next.flags, weatherTempleHint: true, templeUnlocked: true },
+    };
+  }
   return next;
 }
 
@@ -149,6 +192,7 @@ function hubSceneFor(locationId) {
     "mercury-hq": "claw_hub",
     "cognition-hq": "cognition_hub",
     "shenzhen-shop": "shenzhen_hub",
+    "hare-krishna": "temple_hub",
   };
   return hubs[locationId] || LOCATION_SCENES[locationId] || "home_hub";
 }
@@ -160,6 +204,13 @@ export function travelTo(state, locationId) {
   const loc = getLocation(locationId);
   if (!loc) return { state, error: "Unknown location" };
   if (!isLocationUnlocked(loc, state)) {
+    if (locationId === "hare-krishna") {
+      return {
+        state,
+        error:
+          "Temple unlocks after the yacht seed decision — or via Lytton Plaza / a local \"seek spiritual\" option on any hub.",
+      };
+    }
     return { state, error: "Not unlocked yet — keep grinding days & story flags." };
   }
   if (locationId === "yc-yacht" && !state.flags.yachtInvite && state.day < 5) {
@@ -208,7 +259,6 @@ export function travelTo(state, locationId) {
       error: "No reason to fly to Shenzhen — yet. Wait until your headcount revolts.",
     };
   }
-
   let next = { ...state, locationId };
   if (!next.visitedLocations.includes(locationId)) {
     next.visitedLocations = [...next.visitedLocations, locationId];
@@ -246,6 +296,8 @@ export function travelTo(state, locationId) {
         : "cognition_hub";
   } else if (visited && locationId === "shenzhen-shop" && state.flags.visitedShenzhen) {
     next.sceneId = "shenzhen_hub";
+  } else if (locationId === "hare-krishna" && (state.flags.templeVisited || state.flags.metPrema)) {
+    next.sceneId = "temple_hub";
   } else {
     next.sceneId = sceneId;
   }

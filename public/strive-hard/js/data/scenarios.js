@@ -21,6 +21,38 @@ function isMale(state) {
   return state.character?.gender === "male";
 }
 
+/**
+ * Temple / Prema side quest — open after yacht seed decision (raise or decline),
+ * or if player already met devotees / Prema (e.g. Lytton Plaza pre-seed).
+ */
+export function canSeekTemple(st) {
+  if (
+    st.flags.metPrema ||
+    st.flags.templeUnlocked ||
+    st.flags.metDevotee ||
+    st.flags.raisedSeed ||
+    st.flags.declinedSeed
+  ) {
+    return true;
+  }
+  return "Available after the yacht seed decision (or meet devotees at Lytton Plaza)";
+}
+
+/** Location-flavored exit → temple_arrive; unlocks map pin */
+function templePath(text, opts = {}) {
+  return {
+    text,
+    hint: opts.hint || "Hare Krishna Temple · Swami Prema Das",
+    require: canSeekTemple,
+    effects: {
+      locationId: "hare-krishna",
+      flags: { templeUnlocked: true, ...(opts.flags || {}) },
+      ...(opts.effects || {}),
+    },
+    next: "temple_arrive",
+  };
+}
+
 export const SCENES = {
   // ─── Opening arc ───────────────────────────────────────────
   intro: {
@@ -205,6 +237,11 @@ export const SCENES = {
       } else if (s.flags.theRoundStarted) {
         side += `\n\nYou're mid-**Round**. LPs are circling. The glass box is both HQ and cage.`;
       }
+      if (s.flags.metPrema) {
+        side += `\n\n**Temple:** Prema is in your texts. The carrot is optional. Map: **Hare Krishna Temple**.`;
+      } else if (s.flags.raisedSeed || s.flags.declinedSeed || s.flags.metDevotee || s.flags.templeUnlocked) {
+        side += `\n\nOutside: **yogis singing** on the sidewalk (or Map: **Hare Krishna Temple**). Post-seed soul optional.`;
+      }
       return (
         `Back in the box you call an apartment. Day ${s.day}. ` +
         `@${s.character.handle} sits at ${s.followers} followers` +
@@ -286,6 +323,10 @@ export const SCENES = {
         text: "Doomscroll founder drama instead of healing.",
         next: "home_scroll",
       },
+      templePath(
+        "Talk to the yogis singing outside the apartment.",
+        { hint: "Sidewalk kirtan → Hare Krishna Temple" }
+      ),
       {
         text: "Sleep. Let the markets cook overnight.",
         hint: "Advances to next day.",
@@ -304,10 +345,20 @@ export const SCENES = {
     id: "home_scroll",
     title: "Doomscroll, Founder Edition",
     locationId: "tenderloin",
-    text:
-      `You scroll. Someone raised $40M for \"AI-native toothbrushes.\" Someone else is live-tweeting their breakup as a \"personal pivot.\"\n\n` +
-      `A quote-tweet of a VC saying \"we're looking for technical founders who can also be fun at dinner\" gets 12k likes.\n\n` +
-      `You feel inspired and slightly ill. Perfect founder state.`,
+    text: (s) => {
+      let weather = "";
+      if (s.flags.raisedSeed && !s.flags.theRoundComplete) {
+        weather =
+          `\n\nAnother classmate closed. The announcement thread has champagne emojis and a deck that looks like yours, but validated. ` +
+          `Your Series A is still **weather** — forecasts, no wire.`;
+      }
+      return (
+        `You scroll. Someone raised $40M for "AI-native toothbrushes." Someone else is live-tweeting their breakup as a "personal pivot."\n\n` +
+        `A quote-tweet of a VC saying "we're looking for technical founders who can also be fun at dinner" gets 12k likes.\n\n` +
+        `You feel inspired and slightly ill. Perfect founder state.` +
+        weather
+      );
+    },
     choices: [
       {
         text: "Rage-post a hot take about AI toothbrushes.",
@@ -319,6 +370,7 @@ export const SCENES = {
         },
         next: "home_hub",
       },
+      templePath("Put the phone down. Follow the singing down the block."),
       {
         text: "Close the app. Touch grass (the sidewalk counts).",
         next: "home_hub",
@@ -378,6 +430,13 @@ export const SCENES = {
       if (s.flags.theRoundUnlocked && !s.flags.theRoundStarted) {
         extra +=
           "\n\n**The Round** is unlocked. Series A doesn't schedule itself (Avery would disagree).";
+      }
+      if (s.flags.metPrema) {
+        extra +=
+          "\n\n**Prema ping:** something about carrots and detachment is in your unread. Optionally wise.";
+      } else if (s.flags.raisedSeed || s.flags.declinedSeed) {
+        extra +=
+          "\n\n**Soul optional:** Hare Krishna Temple is on the Map (and most hubs have a local path — yogis, pier, dead plant, etc.).";
       }
       return (
         `You sleep four hours and call it recovery.\n\n` +
@@ -561,13 +620,17 @@ export const SCENES = {
     locationId: "vibe-cafe",
     text: (s) =>
       `Still at Vibe Code Café. The playlist switched to lo-fi that sounds like a startup failing gently.\n\n` +
-      `Followers: ${s.followers}. The outlet is still yours. For now.`,
+      `Followers: ${s.followers}. The outlet is still yours. For now.` +
+      (s.flags.raisedSeed || s.flags.declinedSeed
+        ? `\n\nOutside, someone is distributing books next to the e-scooters. Not a pitch deck.`
+        : ""),
     choices: [
       {
         text: "Grind another hour on the landing page.",
         effects: { clout: 1, followers: 5 },
         next: "vibe_hub",
       },
+      templePath("Follow the devotees collecting books outside the café."),
       {
         text: "Head home before the \"networking\" gets weird.",
         effects: { locationId: "tenderloin" },
@@ -871,6 +934,7 @@ export const SCENES = {
       `You've absorbed enough free advice to start a newsletter. Don't.\n\n` +
       `The Map whispers of Stanford lawns and warmer rooms.`,
     choices: [
+      templePath("Leave Zoom church for actual temple (saffron > batch energy)."),
       {
         text: "Home to process (and post).",
         effects: { locationId: "tenderloin" },
@@ -890,8 +954,8 @@ export const SCENES = {
     locationId: "stanford",
     text:
       `The air smells like money that went to college.\n\n` +
-      `Students glide by on bikes that cost more than your laptop. A tour group learns that \"Silicon Valley started here,\" which is true in the same way \"I founded the company\" is true when you were employee 40.\n\n` +
-      `You came for talent, co-founders, or to feel taller by proximity.`,
+      `Students glide by on bikes that cost more than your laptop. A tour group learns that "Silicon Valley started here," which is true in the same way "I founded the company" is true when you were employee 40.\n\n` +
+      `You came for talent, co-founders, or to feel taller by proximity. Down University Ave, past the trust-fund bikes, Lytton Plaza hums with something that isn't PE.`,
     choices: [
       {
         text: "Crash a CS lecture. Recruit.",
@@ -902,6 +966,11 @@ export const SCENES = {
         text: "Hang near the business school. Smell the PE.",
         effects: { clout: 1 },
         next: "stanford_gsb",
+      },
+      {
+        text: "Walk toward University Ave / Lytton Plaza.",
+        hint: "Kartals, books, bliss — not a mixer.",
+        next: "lytton_plaza",
       },
       {
         text: "Post a thirst-trap with Hoover Tower in the background.",
@@ -971,6 +1040,11 @@ export const SCENES = {
     text: `Palm trees. Impostor syndrome. Free WiFi that requires a SUNet ID you don't have — you hotspot like a racoon.`,
     choices: [
       {
+        text: "Walk to Lytton Plaza (University Ave).",
+        next: "lytton_plaza",
+      },
+      templePath("Skip the plaza — go straight to the temple (post-seed)."),
+      {
         text: "Back to the city.",
         effects: { locationId: "tenderloin" },
         next: "home_hub",
@@ -978,6 +1052,328 @@ export const SCENES = {
       {
         text: "Map time.",
         next: null,
+      },
+    ],
+  },
+
+  // ─── Lytton Plaza → Hare Krishna intro ─────────────────────
+  lytton_plaza: {
+    id: "lytton_plaza",
+    title: "Lytton Plaza",
+    locationId: "stanford",
+    text:
+      `You leave campus gravity and drift toward **Lytton Plaza** — Palo Alto's pocket of sun, skateboards, and people who do not care about your TAM.\n\n` +
+      `Kartals click. A small circle dances like the Series A is optional. A devotee in saffron — **Gopal**, if the name tag on the book stack is honest — offers you a book and a smile that has never filled out a SAFE.\n\n` +
+      `"Hare Krishna," he says, as if that's a complete pitch deck. "You look like someone chasing a stick. We have free feast. And a swami who speaks founder."`,
+    choices: [
+      {
+        text: "Accept a book. Ask about the temple.",
+        effects: {
+          clout: 1,
+          flags: { metDevotee: true, templeUnlocked: true },
+        },
+        next: "lytton_invite",
+      },
+      {
+        text: "Dance one awkward circle. For the bit. For the soul. Unclear.",
+        effects: {
+          engagement: 4,
+          shameless: 1,
+          flags: { metDevotee: true, templeUnlocked: true },
+        },
+        post: {
+          text: "got recruited by happiness at lytton plaza. no term sheet. suspicious. going deeper 🕉️",
+          likes: 15,
+          reposts: 2,
+        },
+        next: "lytton_invite",
+      },
+      {
+        text: "\"Come when the fruit fails\" — note the address, leave for now.",
+        effects: { flags: { metDevotee: true, templeUnlocked: true } },
+        next: "stanford_hub",
+      },
+      {
+        text: "Hard pass. Back to palm trees and PE smell.",
+        next: "stanford_hub",
+      },
+    ],
+  },
+
+  lytton_invite: {
+    id: "lytton_invite",
+    title: "Invitation (No Cap Table)",
+    locationId: "stanford",
+    text:
+      `Gopal presses a flyer into your hand. The paper is soft from other founders' anxiety.\n\n` +
+      `"**Hare Krishna Temple** — SF. Shoes off. Feast free. **Swami Prema Das** sits with people who raised… and people who didn't. Same smile either way."\n\n` +
+      `He winks — not VC wink. Worse. Sincerity.\n\n` +
+      `"Come when the fruit fails. Or before. Detachment is easier before the carrot arrives."\n\n` +
+      `**Map pin unlocked:** Hare Krishna Temple.`,
+    choices: [
+      {
+        text: "Go to the temple now. Leave Stanford's gravity.",
+        effects: { locationId: "hare-krishna" },
+        next: "temple_arrive",
+      },
+      {
+        text: "Save it for when Series A weather hits. Back to campus.",
+        next: "stanford_hub",
+      },
+      {
+        text: "Home. Process this like a weird offsite.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
+  // ─── Hare Krishna Temple + Swami Prema Das ─────────────────
+  temple_arrive: {
+    id: "temple_arrive",
+    title: "Hare Krishna Temple",
+    locationId: "hare-krishna",
+    text: (s) =>
+      `You take off your shoes. Instantly you are not a founder — you are feet.\n\n` +
+      `Incense. Soft kirtan under the ceiling fans. A feast table that does not require a badge or a deck. ` +
+      `Nobody asks your ARR. A child walks past holding a plate like it's a Series B.\n\n` +
+      (s.flags.metPrema
+        ? `You know the way to the courtyard. Prema may already be mid-monologue.\n\n`
+        : `In the courtyard, a man in simple robes sits like he has nowhere better to be — which, spiritually, is the whole product.\n\n` +
+          `**Swami Prema Das.** Warm eyes. Sanskrit-lite. The posture of someone who survived the SF scene and lived to warn about it.\n\n`) +
+      `A volunteer smiles: "Prasadam first? Or darshan with Maharaj?"`,
+    choices: [
+      {
+        text: "Feast first. Detachment is easier on a full stomach.",
+        effects: { flags: { templeVisited: true }, cash: 0 },
+        next: "temple_feast",
+      },
+      {
+        text: "Sit with Swami Prema Das. Bring your unvalidated soul.",
+        effects: { flags: { templeVisited: true } },
+        next: "temple_prema",
+      },
+      {
+        text: "Just breathe. No pitch. No post. Yet.",
+        effects: { flags: { templeVisited: true }, clout: 1 },
+        next: "temple_hub",
+      },
+    ],
+  },
+
+  temple_feast: {
+    id: "temple_feast",
+    title: "Free Feast (Zero Dilution)",
+    locationId: "hare-krishna",
+    text:
+      `Rice, dal, something sweet that is not a cap table. You eat like a person, not a burn-rate spreadsheet.\n\n` +
+      `Across the room, a founder you recognize from Twitter is quietly crying into a paper plate. Nobody films it. This is the most anti-SF room you've been in.\n\n` +
+      `Gopal (or his cousin — saffron is a brand) taps your shoulder: "Maharaj has a minute. He likes the ones who look like they lost a funding weather report."`,
+    choices: [
+      {
+        text: "Go meet Prema.",
+        next: "temple_prema",
+      },
+      {
+        text: "Second plate. Spiritual and tactical.",
+        effects: { engagement: 2 },
+        next: "temple_hub",
+      },
+    ],
+  },
+
+  temple_prema: {
+    id: "temple_prema",
+    title: "Swami Prema Das",
+    locationId: "hare-krishna",
+    text: (s) => {
+      if (s.flags.heardCarrotSermon) {
+        return (
+          `**Prema** again. Same courtyard. Same steadiness.\n\n` +
+          `"${s.character.name}. Still mid-carrot?" He smiles. "Good. Check-in only: the scene is still actors, the stick is still loud, and you still don't have to become either."\n\n` +
+          (s.flags.theRoundComplete
+            ? `"You did the theater. Now the hard part: don't *be* the carrot for the next cohort."\n\n`
+            : `"Weather reports lie. Your soul does not need a close."\n\n`) +
+          `He sips water. "Sauna energy still optional. Old Patagonia still not coming back."`
+        );
+      }
+      return (
+        `**Swami Prema Das** greets you like a product that doesn't need growth hacks.\n\n` +
+        `"${s.character.name}," he says — either he knows or the name is universal. "Sit. Leave the deck outside. It will wait. Decks always wait."\n\n` +
+        `He pours water. His hands are steady. Yours are not.\n\n` +
+        `"You came because the **fruit** is late," he continues, gentle. "Everyone around you 'closed.' Your wire is still weather. Stay detached from the results of **fruitive labor**. The labor is yours. The fruit was never the point — though San Francisco will swear otherwise."\n\n` +
+        `He leans in, almost conspiratorial:\n\n` +
+        `"Have you wondered if they are all just **actors** — and the whole scene a crafty illusion to keep you chasing the **carrot on a stick**? And if you *do* catch the carrot? Oh boy. You have a carrot."\n\n` +
+        `"Seems wise to keep the transcendental vibes flowing whether you 'win' or 'lose.' And chasing carrots in San Francisco…" He winces, almost fond. ` +
+        `"One man's success is another's **degradation**. Especially *these* carrots."\n\n` +
+        `A pause. The karmi past peeks through:\n\n` +
+        `"I too once confused a **term sheet for love**. Mentorship that was very… hands-on. Chemistry meetings. Board 'deeper engagement.' Heat that wasn't spiritual — someone still runs a **sauna** about it." ` +
+        `He touches his robes like an old Patagonia he no longer owns. "Don't ask about my old Patagonia. Krishna is kinder than a partner's WhatsApp at 1 a.m."\n\n` +
+        `He smiles. "You are not behind. You are mid-carrot. Sit with that."`
+      );
+    },
+    choices: [
+      {
+        text: "Sit with it. Actually try detachment for five minutes.",
+        effects: {
+          clout: 3,
+          flags: { metPrema: true, templeUnlocked: true, heardCarrotSermon: true },
+        },
+        messages: [
+          {
+            npcId: "prema",
+            text: "Hare Krishna, founder. When the weather report says 'everyone closed' and your wire is fog — remember: fruitive labor ≠ identity. The carrot is optional. — Prema Das 🕉️",
+            unlock: true,
+          },
+        ],
+        next: "temple_after",
+      },
+      {
+        text: "Argue: \"My LPs need the carrot. Detachment doesn't wire.\"",
+        effects: {
+          clout: 2,
+          flags: { metPrema: true, templeUnlocked: true, heardCarrotSermon: true, arguedWithPrema: true },
+        },
+        messages: [
+          {
+            npcId: "prema",
+            text: "LPs are also on sticks, just nicer sticks. Wire or no wire — don't become the carrot. — Prema 🕉️",
+            unlock: true,
+          },
+        ],
+        next: "temple_after",
+      },
+      {
+        text: "Ask for a mantra optimized for fundraising.",
+        effects: {
+          shameless: 1,
+          followers: 5,
+          flags: { metPrema: true, templeUnlocked: true, heardCarrotSermon: true, mantraForRaise: true },
+        },
+        messages: [
+          {
+            npcId: "prema",
+            text: "Mantra: work hard, release the outcome, don't sleep with the diligence. (Spiritual and tactical.) Call anytime the sauna energy returns. — Maharaj",
+            unlock: true,
+          },
+        ],
+        next: "temple_after",
+      },
+      {
+        text: "Offer seva — wash dishes, skip the monologue selfies.",
+        effects: {
+          clout: 4,
+          flags: { metPrema: true, templeUnlocked: true, heardCarrotSermon: true, didSeva: true },
+        },
+        messages: [
+          {
+            npcId: "prema",
+            text: "You washed plates. That is more honest than most decks. Come back when the fruit confuses you. — Prema Das",
+            unlock: true,
+          },
+        ],
+        next: "temple_seva",
+      },
+    ],
+  },
+
+  temple_seva: {
+    id: "temple_seva",
+    title: "Seva (Unpaid Internship for the Soul)",
+    locationId: "hare-krishna",
+    text:
+      `You wash dishes. No equity. No "founding volunteer" title on LinkedIn (you check the urge).\n\n` +
+      `Steam, steel, leftover sweet rice. For twenty minutes you are not a narrative. You are elbows.\n\n` +
+      `Prema passes by: "This is the only all-hands that feeds people." He does not ask for a testimonial.`,
+    choices: [
+      {
+        text: "Finish the stack. Feel weirdly okay.",
+        effects: { clout: 1 },
+        next: "temple_after",
+      },
+    ],
+  },
+
+  temple_after: {
+    id: "temple_after",
+    title: "After Darshan",
+    locationId: "hare-krishna",
+    text: (s) =>
+      `Prema gives you a phone number written like a blessing, not a lead magnet.\n\n` +
+      `"Text when the illusion gets loud. Or when you catch the carrot — *especially* then. Don't become the stick for someone else."\n\n` +
+      (s.flags.arguedWithPrema
+        ? `He adds: "Your LPs will still email. Answer from steadiness, not from hunger."\n\n`
+        : s.flags.mantraForRaise
+          ? `He adds: "If the mantra becomes a growth hack, you've missed it. Still: good luck with the weather."\n\n`
+          : s.flags.didSeva
+            ? `He adds: "The dishes will be here next week. So will the anxiety. Choose which one you serve."\n\n`
+            : `Outside, SF traffic continues its fruitive labor.\n\n`) +
+      `**Swami Prema Das** is in your texts. The temple stays on the Map.`,
+    choices: [
+      {
+        text: "Post nothing. Radical.",
+        effects: { clout: 2 },
+        next: "temple_hub",
+      },
+      {
+        text: "Post a careful non-pitch about 'perspective.'",
+        effects: { followers: 12, engagement: 4 },
+        post: {
+          text: "sat with a swami who called SF a carrot on a stick. still building. slightly less possessed. 🕉️",
+          likes: 28,
+          reposts: 5,
+        },
+        next: "temple_hub",
+      },
+      {
+        text: "Home. Carry the incense in your hoodie.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
+      },
+    ],
+  },
+
+  temple_hub: {
+    id: "temple_hub",
+    title: "Temple Courtyard",
+    locationId: "hare-krishna",
+    text: (s) =>
+      `Courtyard light. Kirtan low. Cash still **$${s.cash.toLocaleString()}** — the temple does not care.\n\n` +
+      (s.flags.metPrema
+        ? `Prema is around somewhere, or in your phone with better advice than most LPs.\n\n`
+        : `You haven't sat with Prema yet. The courtyard waits without FOMO — novel.\n\n`) +
+      (s.flags.theRoundComplete
+        ? `You closed theater. He would say: now don't become the carrot.\n\n`
+        : s.flags.raisedSeed
+          ? `Seed raised. Series A still weather. Detachment is a feature, not a bug.\n\n`
+          : ""),
+    choices: [
+      {
+        text: "Sit with Prema (carrot monologue / check-in).",
+        next: "temple_prema",
+      },
+      {
+        text: "Feast again. Zero burn rate on the plate.",
+        next: "temple_feast",
+      },
+      {
+        text: "Quiet seva — dishes, no content.",
+        next: "temple_seva",
+      },
+      {
+        text: "Text Prema from the courtyard (open Messages).",
+        require: (st) => (st.flags.metPrema ? true : "Meet Prema first"),
+        openApp: "messages",
+        next: "temple_hub",
+      },
+      {
+        text: "Map — back to fruitive labor.",
+        next: null,
+      },
+      {
+        text: "Tenderloin mattress. Grounded.",
+        effects: { locationId: "tenderloin" },
+        next: "home_hub",
       },
     ],
   },
@@ -1100,6 +1496,10 @@ export const SCENES = {
     locationId: "garry-sauna",
     text: `You leave smelling like eucalyptus and moral ambiguity. Klaus nods. The city feels smaller.`,
     choices: [
+      templePath(
+        "Seek heat that is actually spiritual (temple — not another sauna).",
+        { hint: "Prema has opinions about this kind of heat" }
+      ),
       {
         text: "Uber home on fumes and fantasy.",
         cost: { cash: 28 },
@@ -1124,11 +1524,16 @@ export const SCENES = {
       (s.flags.metGarry
         ? `Garry waves from the upper deck, linen shirt unbuttoned to a legally interesting degree. He mouths: *come up when you're ready to talk numbers.*\n\n`
         : `A man who looks expensive is holding court upper deck. People keep saying "Garry." The money conversation will find you before the night ends — one way or another.\n\n`) +
-      `Priya is here too, somehow. She mouths: *don't do anything I wouldn't livestream.*`,
+      `Priya is here too, somehow. She mouths: *don't do anything I wouldn't livestream.*` +
+      (s.flags.raisedSeed || s.flags.declinedSeed
+        ? `\n\nOn the pier below: saffron, kartals, and people who do not care about your wire.`
+        : ""),
     choices: [
       {
         text: "Go straight upstairs. Talk money before the champagne does.",
         hint: "Seed conversation — the real quest marker.",
+        require: (st) =>
+          st.flags.seedDecided ? "You already closed (or declined) upstairs" : true,
         effects: { clout: 3, flags: { metGarry: true } },
         next: "yacht_garry",
       },
@@ -1147,6 +1552,10 @@ export const SCENES = {
         effects: { clout: 2 },
         next: "yacht_skylar",
       },
+      templePath(
+        "Slip to the pier — devotees are chanting at the yacht money.",
+        { hint: "Post-seed (or post-decline) spiritual off-ramp" }
+      ),
     ],
   },
 
@@ -1220,7 +1629,12 @@ export const SCENES = {
           `• **SoMa Soft HQ** — glass-box company cosplay once the money has a grown-up home.\n\n` +
           `Garry's note: *Don't keep seed in Chase checking. That's how LPs smell fear. Mercury. Not your roommate's Venmo.*\n\n`
         : `You leave the upper deck with your integrity, your brand, and still roughly mattress money. The party continues without a wire confirmation.\n\n`) +
-      `Below, the fox onesie is still holding court with an otter. The night isn't done being weird.`,
+      `Below, the fox onesie is still holding court with an otter. The night isn't done being weird.` +
+      (s.flags.raisedSeed
+        ? `\n\nOn the pier: soft singing. Someone holds a book like it's not a SAFE. Detachment after the wire is… available.`
+        : s.flags.declinedSeed
+          ? `\n\nOn the pier: soft singing. The fruit failed on purpose. Someone might understand.`
+          : ""),
     choices: [
       {
         text: "Approach the fox onesie before you sober up.",
@@ -1228,6 +1642,10 @@ export const SCENES = {
         require: (st) => (st.flags.metDylan ? "Already collected the sticky note" : true),
         next: "yacht_dylan",
       },
+      templePath(
+        "Leave the boat for the pier — follow the chanting (temple).",
+        { hint: "Right after seed decision · Swami Prema Das" }
+      ),
       {
         text: "Post the victory (or beautiful failure) selfie. End Chapter 1.",
         effects: { followers: 50, engagement: 10, day: 1 },
@@ -1498,6 +1916,10 @@ export const SCENES = {
         effects: { locationId: "soft-hq" },
         next: "hq_arrive",
       },
+      templePath(
+        "Before Mercury — follow the pier singing to the temple.",
+        { hint: "Optional spiritual side quest after seed" }
+      ),
       {
         text: "Sleep. Dream of liquidity events.",
         effects: { day: 1 },
@@ -1777,6 +2199,10 @@ export const SCENES = {
         effects: { cash: -6, clout: 1, followers: 5 },
         next: "corgi_hub",
       },
+      templePath(
+        "Brand sensory overload → temple detox (incense > neon dog).",
+        { hint: "Post-seed spiritual palate cleanser" }
+      ),
       {
         text: "Flee to the Map before the walls recruit you.",
         next: null,
@@ -2113,6 +2539,10 @@ export const SCENES = {
           st.flags.alienContact ? "You already collected the cosmic 404" : true,
         next: "dylan_shasta_road",
       },
+      templePath(
+        "Dylan: \"There's a temple that doesn't charge for downloads.\" Go.",
+        { hint: "Oakland → SF temple · no K required" }
+      ),
       {
         text: "Leave for the Map.",
         next: null,
@@ -2362,6 +2792,10 @@ export const SCENES = {
         effects: { flags: { karpLines: true }, shameless: 1, clout: 1 },
         next: "palantir_hub",
       },
+      templePath(
+        "Leave the ontology. Seek a place with no graph (temple).",
+        { hint: "Even surveillance founders need fruitive-labor advice" }
+      ),
       {
         text: "Flee to daylight and the Map.",
         next: null,
@@ -2631,6 +3065,10 @@ export const SCENES = {
         },
         next: "claw_hub",
       },
+      templePath(
+        "Treasury is parked. Soul portfolio? Temple is free (Zane doesn't get a cut).",
+        { hint: "Post-wire spiritual ops" }
+      ),
       {
         text: "Map / leave the infrastructure cathedral.",
         next: null,
@@ -2932,6 +3370,10 @@ export const SCENES = {
         },
         next: "hq_hub",
       },
+      templePath(
+        "Stare at the dead plant, then go to temple.",
+        { hint: "Glass box → free feast · Soft HQ late night" }
+      ),
       {
         text: "Map — leave the glass box.",
         next: null,
@@ -3513,6 +3955,10 @@ export const SCENES = {
             : "Not the current beat",
         next: "round_crisis",
       },
+      templePath(
+        "Pause Series A weather for kirtan (temple).",
+        { hint: "LPs can wait; fruitive labor cannot own you" }
+      ),
       {
         text: "Home.",
         effects: { locationId: "tenderloin" },
@@ -3928,6 +4374,10 @@ export const SCENES = {
             : "No active tyranny",
         next: "agentic_fires",
       },
+      templePath(
+        "Agents can't detach for you. Go see Prema.",
+        { hint: "Human-only spiritual off-ramp" }
+      ),
       {
         text: "Map.",
         next: null,
@@ -4172,6 +4622,13 @@ export const SCENES = {
         next: "shenzhen_deal",
       },
       {
+        ...templePath(
+          "Wei: \"You need spirits, not only software.\" Fly home to temple.",
+          { hint: "Containment done — soul ops in SF" }
+        ),
+        textZh: "魏：「你需要灵魂，不只是软件。」飞回寺。",
+      },
+      {
         text: "Map / leave.",
         textZh: "打开地图 / 离开。",
         next: null,
@@ -4215,4 +4672,5 @@ export const LOCATION_SCENES = {
   "mercury-hq": "claw_arrive",
   "cognition-hq": "cognition_arrive",
   "shenzhen-shop": "shenzhen_arrive",
+  "hare-krishna": "temple_arrive",
 };

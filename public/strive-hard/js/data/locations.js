@@ -141,6 +141,16 @@ export const LOCATIONS = [
     energyCost: 4,
     tags: ["china", "containment", "agents"],
   },
+  {
+    id: "hare-krishna",
+    name: "Hare Krishna Temple",
+    short: "Temple",
+    emoji: "🕉️",
+    desc: "Incense, kirtan, free feast. Swami Prema Das holds court for unvalidated founders.",
+    unlockDay: 1,
+    energyCost: 1,
+    tags: ["spiritual", "sf", "prema"],
+  },
 ];
 
 export function getLocation(id) {
@@ -157,6 +167,9 @@ export function locationLockReason(loc, state) {
   if (loc.id === "mercury-hq") return "Raise a seed — then park it at Mercury";
   if (loc.id === "cognition-hq") return "Finish The Round first — then go agentic";
   if (loc.id === "shenzhen-shop") return "Survive the agent coup — then fly to Shenzhen";
+  if (loc.id === "hare-krishna") {
+    return "Unlocks after yacht seed decision — or Lytton Plaza / any post-seed hub path";
+  }
   if (state.day < loc.unlockDay) return `Unlocks day ${loc.unlockDay}+`;
   return "Locked";
 }
@@ -189,6 +202,16 @@ export function isLocationUnlocked(loc, state) {
   if (loc.id === "shenzhen-shop") {
     // Unlocks during coup; stays open after containment (you owe them)
     return !!(state.flags.agenticTyranny || state.flags.agenticContained);
+  }
+  if (loc.id === "hare-krishna") {
+    // After yacht seed decision, or Lytton/devotee path, or explicit unlock
+    return !!(
+      state.flags.metPrema ||
+      state.flags.templeUnlocked ||
+      state.flags.metDevotee ||
+      state.flags.raisedSeed ||
+      state.flags.declinedSeed
+    );
   }
   return true;
 }

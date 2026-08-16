@@ -148,6 +148,14 @@ export const NPCS = {
     gender: "unknown",
     spicy: false,
   },
+  prema: {
+    id: "prema",
+    name: "Swami Prema Das",
+    emoji: "🕉️",
+    role: "Bhakti guru · spiritual adviser to unvalidated founders",
+    gender: "male",
+    spicy: false,
+  },
 };
 
 /**
@@ -264,6 +272,7 @@ export function buildInitialThreads(character) {
     "lex",
     "wei",
     "swarm",
+    "prema",
   ]) {
     threads[id] = {
       npcId: id,

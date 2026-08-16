@@ -102,13 +102,21 @@ function handleChoice(choice) {
   refresh();
 
   // "Open the Map / go somewhere" choices use next: null — pop open Map on the iHype
+  // App ids: map | x | texts | flareup | selfie | home  (alias: messages → texts)
   const app = choice.openApp || (choice.next === null ? "map" : null);
   if (app) {
-    openPhoneApp(app);
-    if (app === "map") renderMap(state, handleTravel);
-    if (app === "x") renderXApp(state);
-    if (app === "texts") renderTextThreads(state, handleOpenThread);
-    if (app === "flareup") renderFlareUp(state, flareHandlers);
+    const appId = app === "messages" || app === "imessage" || app === "sms" ? "texts" : app;
+    openPhoneApp(appId);
+    if (appId === "map") renderMap(state, handleTravel);
+    if (appId === "x") renderXApp(state);
+    if (appId === "texts") {
+      renderTextThreads(state, handleOpenThread);
+      // Optional: jump straight into a thread (e.g. Prema at temple)
+      if (choice.openThread && state.threads?.[choice.openThread] && !state.threads[choice.openThread].locked) {
+        handleOpenThread(choice.openThread);
+      }
+    }
+    if (appId === "flareup") renderFlareUp(state, flareHandlers);
   }
 }
 

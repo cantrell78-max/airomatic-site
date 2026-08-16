@@ -1363,7 +1363,8 @@ export const SCENES = {
       {
         text: "Text Prema from the courtyard (open Messages).",
         require: (st) => (st.flags.metPrema ? true : "Meet Prema first"),
-        openApp: "messages",
+        openApp: "texts",
+        openThread: "prema",
         next: "temple_hub",
       },
       {

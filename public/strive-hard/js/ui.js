@@ -157,16 +157,29 @@ export function renderScene(state, onChoice, onTranslate) {
   });
 }
 
+/** Normalize openApp ids (scenarios sometimes say "messages") */
+export function resolvePhoneAppId(appId) {
+  if (!appId) return appId;
+  if (appId === "messages" || appId === "imessage" || appId === "sms") return "texts";
+  return appId;
+}
+
 export function openPhoneApp(appId) {
+  const id = resolvePhoneAppId(appId);
   document.querySelectorAll(".phone-screen").forEach((s) => s.classList.remove("active"));
   const target =
-    appId === "home"
+    id === "home"
       ? document.getElementById("phone-home")
-      : document.getElementById(`phone-${appId}`);
-  if (target) target.classList.add("active");
+      : document.getElementById(`phone-${id}`);
+  if (target) {
+    target.classList.add("active");
+  } else {
+    // Unknown app id → home screen instead of blank gray "crash"
+    document.getElementById("phone-home")?.classList.add("active");
+  }
 
   // reset text chat view when opening texts list
-  if (appId === "texts") {
+  if (id === "texts") {
     document.getElementById("text-threads").hidden = false;
     document.getElementById("text-chat").hidden = true;
   }

@@ -2,13 +2,12 @@
 title: "Broadway Odyssey, The Musical — a Grok Imagine contest film, cut in Grok Build"
 description: "How we made a 3-minute gender-swapped Sirens number for the Grok Imagine × Homer’s Odyssey contest — stills, Imagine voices, and an FFmpeg concat. No Premiere."
 pubDate: 2026-08-18
-tweetId: "2089865032016482479"
 ogImage: /images/blog/broadway-odyssey-og.jpg
 ---
 
 ![Jazz-hands finale: CEO Odysseus points off the bow while the crew throws their arms up at sunset](/images/blog/broadway-odyssey.jpg)
 
-The film is embedded above — that’s the [quote-tweet submission](https://x.com/AiromaticAI/status/2089865032016482479) on X. Watch it there if the embed is shy.
+The film is the [quote-tweet submission on X](https://x.com/AiromaticAI/status/2089865032016482479).
 
 NOW ON THE WINE-DARK SEA  
 **BROADWAY ODYSSEY, THE MUSICAL**

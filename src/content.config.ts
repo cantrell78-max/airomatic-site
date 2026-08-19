@@ -9,6 +9,8 @@ const blog = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     youtubeId: z.string().optional(),
+    /** X / Twitter status id — rendered as an embed above the article */
+    tweetId: z.string().optional(),
     embedUrl: z.string().url().optional(),
     /** Optional absolute or site-relative OG image override */
     ogImage: z.string().optional(),

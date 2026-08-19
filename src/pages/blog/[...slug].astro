@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import KatexHead from "../../components/math/KatexHead.astro";
 import SpaceEmbed from "../../components/SpaceEmbed.astro";
 import YouTubeEmbed from "../../components/YouTubeEmbed.astro";
+import XEmbed from "../../components/XEmbed.astro";
 import StartupCard from "../../components/StartupCard.astro";
 import { site } from "../../config/site";
 import { getStartupsSorted } from "../../lib/startups";
@@ -47,6 +48,7 @@ const featuredStartups = featuredIds
         }
       </time>
       {post.data.youtubeId && <YouTubeEmbed id={post.data.youtubeId} title={post.data.title} />}
+      {post.data.tweetId && <XEmbed id={post.data.tweetId} title={post.data.title} />}
       <Content />
       {
         featuredStartups.length > 0 && (

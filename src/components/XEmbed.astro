@@ -1,0 +1,61 @@
+---
+interface Props {
+  id: string;
+  title?: string;
+  theme?: "dark" | "light";
+}
+
+const { id, title = "Post on X", theme = "dark" } = Astro.props;
+const href = `https://x.com/i/status/${id}`;
+const iframeSrc = `https://platform.twitter.com/embed/Tweet.html?id=${id}&theme=${theme}&dnt=true`;
+---
+
+<figure class="x-embed" aria-label={title}>
+  <iframe
+    src={iframeSrc}
+    title={title}
+    loading="lazy"
+    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+    allowfullscreen></iframe>
+  <figcaption class="x-embed__fallback">
+    <a href={href} target="_blank" rel="noopener noreferrer">Watch on X →</a>
+  </figcaption>
+</figure>
+
+<style>
+  .x-embed {
+    margin: 1.5rem 0 2rem;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .x-embed iframe {
+    display: block;
+    width: 100%;
+    min-height: 720px;
+    height: 760px;
+    border: 0;
+    background: #000;
+  }
+
+  .x-embed__fallback {
+    margin: 0;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  .x-embed__fallback a {
+    color: var(--accent-secondary);
+  }
+
+  @media (min-width: 640px) {
+    .x-embed iframe {
+      min-height: 780px;
+      height: 820px;
+    }
+  }
+</style>

@@ -64,14 +64,25 @@ Copy names from `env.example`. Never commit `.env`.
 
 ## 5. Day-to-day updates
 
+**`main` on GitHub is production.** Cloudflare rebuilds airomatic.ai from that commit on every push. A page is not deployed until it is **committed and pushed**. Local `npx wrangler deploy` (or Dashboard **Direct Upload**) publishes the *current working tree*, including uncommitted files — and the next git push will **replace** that deploy with whatever is actually on `main`. That is how the Go I Ching post vanished after an Odyssey commit: it was live from a dirty-tree Wrangler deploy, never on `main`.
+
+Do this:
+
 ```bash
 cd ~/projects/airomatic-site
-git add .
-git commit -m "Update site"
+git status
+# If src/content/blog/, public/, or src/pages/ has untracked live pages, commit them
+# in the same push (or first). Do not leave “already on the site” files untracked.
+git add <the files for this change>
+git commit -m "…"
 git push
 ```
 
-Cloudflare rebuilds on every push to `main` when the project is connected to Git.
+Do **not**:
+
+- `npx wrangler deploy` from a dirty tree while Git integration is on
+- Treat a successful local Wrangler deploy as “it’s on main”
+- Push an unrelated change without checking `git status` for untracked posts/games
 
 ### Auto-deploy not running?
 

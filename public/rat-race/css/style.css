@@ -1,0 +1,540 @@
+:root {
+  --bg: #05010c;
+  --ink: #f4ecff;
+  --dim: #9aa0c8;
+  --mag: #ff2bd6;
+  --cyan: #39e7ff;
+  --amber: #ffb020;
+  --bad: #ff3355;
+  --ok: #7cff3a;
+  --panel: rgba(8, 4, 22, 0.82);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Share Tech Mono", "VT323", monospace;
+}
+
+#game {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.scanlines,
+.vignette {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+}
+.scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 3px,
+    rgba(0, 0, 0, 0.06) 3px 4px
+  );
+  opacity: 0.28;
+}
+.vignette {
+  box-shadow: inset 0 0 90px 16px rgba(8, 0, 20, 0.28);
+}
+
+#boot-error {
+  position: fixed;
+  z-index: 20;
+  left: 1rem;
+  bottom: 1rem;
+  color: var(--bad);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+}
+
+#screen-title {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.title-art {
+  position: absolute;
+  inset: 0;
+  background: #05010c center / cover no-repeat;
+  filter: saturate(1.15) contrast(1.05);
+}
+.title-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 1, 12, 0.88) 0 38%, rgba(5, 1, 12, 0.28) 70%, rgba(5, 1, 12, 0.55)),
+    linear-gradient(180deg, rgba(5, 1, 12, 0.2), rgba(5, 1, 12, 0.75));
+}
+
+.title-card {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+  padding: clamp(1rem, 5vh, 7vh) 6vw 2.4rem;
+}
+
+.eyebrow {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  color: var(--cyan);
+  margin: 0 0 1rem;
+}
+
+h1 {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(1.6rem, 5vw, 2.8rem);
+  line-height: 1.25;
+  margin: 0;
+  color: #fff;
+  text-shadow:
+    0 0 12px var(--mag),
+    4px 0 0 var(--cyan);
+}
+
+...cn {
+  font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+  font-size: 2rem;
+  margin: 0.4rem 0 1rem;
+  color: var(--mag);
+  text-shadow: 0 0 16px var(--mag);
+}
+
+.tag {
+  color: var(--dim);
+  line-height: 1.5;
+  max-width: 32rem;
+}
+
+.title-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.4rem 0 1rem;
+}
+
+.btn {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.62rem;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--cyan);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.btn.primary {
+  background: var(--mag);
+  border-color: var(--mag);
+  color: #fff;
+  box-shadow: 0 0 18px rgba(255, 43, 214, 0.45);
+}
+.btn.ghost:hover,
+.btn.primary:hover {
+  filter: brightness(1.12);
+}
+
+.hud-lang {
+  pointer-events: auto;
+  padding: 0.45rem 0.55rem;
+  font-size: 0.55rem;
+  align-self: flex-start;
+}
+
+body[data-lang="zh"] {
+  font-family: "Noto Sans SC", "ZCOOL KuaiLe", sans-serif;
+}
+body[data-lang="zh"] h1,
+body[data-lang="zh"] .btn,
+body[data-lang="zh"] .eyebrow,
+body[data-lang="zh"] .status,
+body[data-lang="zh"] .brand-en,
+body[data-lang="zh"] .feed-num,
+body[data-lang="zh"] .you-score b,
+body[data-lang="zh"] .panel h2,
+body[data-lang="zh"] #toast,
+body[data-lang="zh"] .touch-btns button {
+  font-family: "ZCOOL KuaiLe", "Noto Sans SC", sans-serif;
+}
+body[data-lang="zh"] .btn {
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
+body[data-lang="zh"] .eyebrow {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+body[data-lang="zh"] h1 {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+}
+body[data-lang="zh"] .status {
+  font-size: 0.95rem;
+}
+body[data-lang="zh"] .feed-num,
+body[data-lang="zh"] .you-score b {
+  font-size: 1.15rem;
+}
+body[data-lang="zh"] #toast {
+  font-size: 0.95rem;
+}
+body[data-lang="zh"] .hud-lang {
+  font-size: 0.85rem;
+}
+body[data-lang="zh"] .touch-btns button {
+  font-size: 0.95rem;
+}
+body[data-lang="zh"] .panel h2 {
+  font-size: 1.35rem;
+}
+body[data-lang="zh"] .how {
+  font-size: 0.98rem;
+}
+
+.how {
+  background: var(--panel);
+  border: 1px solid rgba(57, 231, 255, 0.35);
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  max-height: min(42vh, 18rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.how ul {
+  margin: 0;
+  padding: 0 0.4rem 0 1.1rem;
+  color: var(--dim);
+  line-height: 1.55;
+}
+.how li + li {
+  margin-top: 0.35rem;
+}
+
+@media (max-height: 760px) {
+  .title-card {
+    padding-top: 1rem;
+    padding-bottom: 1.4rem;
+  }
+  h1 {
+    font-size: clamp(1.25rem, 4.4vh, 2rem);
+  }
+  .cn {
+    font-size: 1.45rem;
+    margin: 0.2rem 0 0.45rem;
+  }
+  .tag {
+    margin: 0.35rem 0 0;
+  }
+  .title-actions {
+    margin: 0.85rem 0 0.7rem;
+  }
+  .how {
+    max-height: min(36vh, 14rem);
+  }
+}
+kbd {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.48rem;
+  color: var(--cyan);
+}
+
+.credit {
+  color: #6d7398;
+  font-size: 0.85rem;
+}
+
+.hud {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+}
+.hud-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  flex-wrap: wrap;
+}
+.brand-en {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.62rem;
+  display: block;
+}
+.brand-cn {
+  font-family: "ZCOOL KuaiLe", sans-serif;
+  color: var(--mag);
+  font-size: 1.2rem;
+}
+
+.feed-wrap {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+.feed-label {
+  font-size: 0.75rem;
+  color: var(--cyan);
+  letter-spacing: 0.12em;
+}
+.feed-bar {
+  height: 10px;
+  background: #161022;
+  border: 1px solid var(--cyan);
+  position: relative;
+  margin-top: 0.25rem;
+}
+.feed-bar i {
+  display: block;
+  height: 100%;
+  width: calc(var(--pct) * 100%);
+  background: linear-gradient(90deg, var(--amber), var(--mag));
+}
+.feed-num {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
+}
+
+.you-box {
+  min-width: 140px;
+}
+.you-score span {
+  display: block;
+  color: var(--dim);
+  font-size: 0.75rem;
+}
+.you-score b {
+  font-family: "Press Start 2P", monospace;
+  font-size: 1.1rem;
+  color: var(--amber);
+}
+.fat {
+  margin-top: 0.35rem;
+  height: 8px;
+  background: #161022;
+  border: 1px solid var(--mag);
+  position: relative;
+}
+.fat i {
+  display: block;
+  height: 100%;
+  width: calc(var(--fat) * 100%);
+  background: var(--mag);
+}
+.fat::after {
+  content: attr(data-label);
+  position: absolute;
+  right: 0;
+  top: 10px;
+  font-size: 0.7rem;
+  color: var(--mag);
+}
+
+.status {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.62rem;
+  padding: 0.55rem 0.7rem;
+  border: 2px solid var(--ok);
+  color: var(--ok);
+}
+.status[data-k="hide"] {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+.status[data-k="bad"] {
+  border-color: var(--bad);
+  color: var(--bad);
+  animation: pulse 0.35s steps(2) infinite;
+}
+.status[data-k="feed"] {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.hud-side {
+  position: absolute;
+  right: 0.8rem;
+  top: 4.6rem;
+  width: 160px;
+}
+.scores {
+  background: var(--panel);
+  border: 1px solid rgba(255, 43, 214, 0.35);
+  padding: 0.4rem;
+}
+.scores .sc {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.15rem 0.2rem;
+  color: var(--c, #fff);
+  font-size: 0.85rem;
+}
+.scores .sc.you {
+  background: rgba(255, 43, 214, 0.12);
+}
+#minimap {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 0.45rem;
+  border: 1px solid rgba(57, 231, 255, 0.4);
+  image-rendering: pixelated;
+}
+.hint {
+  color: #6d7398;
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+#toast {
+  position: fixed;
+  left: 50%;
+  top: 22%;
+  transform: translate(-50%, -20px);
+  z-index: 9;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.58rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 10px var(--mag);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  max-width: 80vw;
+}
+#toast[data-show="1"] {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.carded {
+  place-items: center;
+  background: rgba(5, 1, 12, 0.62);
+}
+.carded:not([hidden]) {
+  display: grid;
+}
+.panel {
+  width: min(34rem, 92vw);
+  background: var(--panel);
+  border: 2px solid var(--cyan);
+  padding: 1.4rem 1.3rem 1.2rem;
+  box-shadow: 0 0 40px rgba(57, 231, 255, 0.15);
+}
+.panel h2 {
+  font-family: "Press Start 2P", monospace;
+  font-size: 1rem;
+  line-height: 1.45;
+  margin: 0 0 0.6rem;
+}
+.panel .btn {
+  margin: 0.35rem 0.35rem 0 0;
+}
+
+.results {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.results li {
+  display: grid;
+  grid-template-columns: 2rem 1fr 3rem auto;
+  gap: 0.5rem;
+  padding: 0.4rem 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.results .you {
+  background: rgba(255, 43, 214, 0.1);
+}
+.results .nm {
+  color: var(--c);
+}
+.results .fat {
+  color: var(--dim);
+  font-size: 0.8rem;
+  border: 0;
+  height: auto;
+}
+
+.touch {
+  position: fixed;
+  inset: auto 0 1rem 0;
+  z-index: 7;
+  display: none;
+  justify-content: space-between;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+.joystick {
+  pointer-events: auto;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 2px solid rgba(57, 231, 255, 0.5);
+  background: rgba(8, 4, 22, 0.45);
+  position: relative;
+}
+.knob {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--mag);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -22px 0 0 -22px;
+}
+.touch-btns {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.touch-btns button {
+  pointer-events: auto;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+  width: 86px;
+  height: 52px;
+  border: 2px solid var(--cyan);
+  background: rgba(8, 4, 22, 0.6);
+  color: var(--ink);
+}
+
+@media (pointer: coarse) {
+  .touch:not([hidden]) {
+    display: flex;
+  }
+  .hint {
+    display: none;
+  }
+}
+
+/* Author `display:` rules beat the UA [hidden] stylesheet in Chrome.
+   Keep this last so mode screens can actually close. */
+[hidden] {
+  display: none !important;
+}

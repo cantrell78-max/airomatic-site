@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>老鼠赛跑</title>
+    <meta name="description" content="注意力有限。和其他老鼠抢 X，别让喵兹警长逮到。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=VT323&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect fill='%2305010c' width='64' height='64'/><text y='48' x='8' font-size='42'>🐀</text></svg>" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body data-mode="title" data-lang="zh">
+    <canvas id="game"></canvas>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <div id="toast" data-show="0"></div>
+    <p id="boot-error" hidden></p>
+
+    <section id="screen-title" class="overlay title">
+      <div class="title-art" style="background-image: url('assets/ui/title.jpg')"></div>
+      <div class="title-shade"></div>
+      <div class="title-card">
+        <p class="eyebrow" data-i18n="attract">演示模式 · 第 47 周目</p>
+        <h1 data-i18n="title">老鼠赛跑</h1>
+        <p class="cn" data-i18n="subtitle">RAT RACE</p>
+        <p class="tag" data-i18n="tag">
+          注意力有限。和其他老鼠抢 X，把腮帮子塞满，别让喵兹警长在你发帖的时候逮到。
+        </p>
+        <div class="title-actions">
+          <button id="btn-start" class="btn primary" type="button" data-i18n="start">投币开始</button>
+          <button id="btn-how" class="btn ghost" type="button" data-i18n="how">怎么跑</button>
+          <button id="btn-mute" class="btn ghost" type="button" data-i18n="soundOn">声音开</button>
+          <button class="btn-lang btn ghost" type="button" data-i18n="langToggle">ENGLISH</button>
+        </div>
+        <div id="how" class="how" hidden>
+          <ul>
+            <li data-i18n-html="how1"><kbd>WASD</kbd> / <kbd>↑←↓→</kbd> 跑 · <kbd>Shift</kbd> 冲刺</li>
+            <li data-i18n-html="how2">在 X 旁按住 <kbd>空格</kbd> / <kbd>E</kbd> 吃饲料</li>
+            <li data-i18n-html="how3">X 里的饲料就是倒计时。吃光后，饲料最多的老鼠获胜。</li>
+            <li data-i18n-html="how4">越吃越胖，越胖越慢。躲进垃圾箱、电视、冰箱后面。</li>
+            <li data-i18n-html="how5">被喵兹警长按住会掉饲料。别的老鼠会来抢。</li>
+            <li data-i18n-html="how6"><kbd>P</kbd> 暂停 · 要躲在障碍物背对猫的那一侧</li>
+          </ul>
+        </div>
+        <p class="credit" data-i18n="credit">一条关于发帖的湿漉漉寓言。内卷没有终点。</p>
+      </div>
+    </section>
+
+    <section id="hud" class="hud" hidden>
+      <div class="hud-top">
+        <div class="brand">
+          <span class="brand-en" data-i18n="brand">老鼠赛跑</span>
+          <span class="brand-cn" data-i18n="brandSub">内卷</span>
+        </div>
+        <div class="feed-wrap">
+          <div class="feed-label" data-i18n="feedLeft">X 剩余饲料</div>
+          <div id="feed-bar" class="feed-bar" style="--pct: 1"><i></i></div>
+          <div id="hud-remaining" class="feed-num">56</div>
+        </div>
+        <div class="you-box">
+          <div class="you-score"><span data-i18n="yourPellets">你的饲料</span><b id="hud-you">0</b></div>
+          <div id="hud-fat" class="fat" style="--fat: 0" data-label="饥饿"><i></i></div>
+        </div>
+        <div id="hud-status" class="status" data-k="ok">在逃</div>
+        <button class="btn-lang btn ghost hud-lang" type="button" data-i18n="langToggle">ENGLISH</button>
+      </div>
+      <div class="hud-side">
+        <div id="hud-scores" class="scores"></div>
+        <canvas id="minimap" width="148" height="110"></canvas>
+        <p class="hint" data-i18n="hint">WASD 移动 · SHIFT 冲刺 · 在 X 按住空格 · 躲进杂物后</p>
+      </div>
+    </section>
+
+    <div id="touch" class="touch" hidden>
+      <div id="joystick" class="joystick" data-i18n-aria="move" aria-label="移动">
+        <div id="joystick-knob" class="knob"></div>
+      </div>
+      <div class="touch-btns">
+        <button id="btn-dash" type="button" data-i18n="dash">冲刺</button>
+        <button id="btn-feed" type="button" data-i18n="feed">投喂</button>
+      </div>
+    </div>
+
+    <section id="screen-pause" class="overlay carded" hidden>
+      <div class="panel">
+        <h2 data-i18n="paused">暂停</h2>
+        <p data-i18n="pauseBlurb">时间线不等老鼠。猫会等。</p>
+        <button id="btn-resume" class="btn primary" type="button" data-i18n="resume">继续</button>
+        <button id="btn-quit" class="btn ghost" type="button" data-i18n="quit">回标题</button>
+        <button class="btn-lang btn ghost" type="button" data-i18n="langToggle">ENGLISH</button>
+      </div>
+    </section>
+
+    <section id="screen-results" class="overlay carded" hidden>
+      <div class="panel">
+        <p class="eyebrow" data-i18n="feedEmpty">饲料见底</p>
+        <h2 id="results-title">结算</h2>
+        <p id="results-blurb" class="tag"></p>
+        <ol id="results-list" class="results"></ol>
+        <button id="btn-again" class="btn primary" type="button" data-i18n="again">再跑一局</button>
+        <button id="btn-menu" class="btn ghost" type="button" data-i18n="titleBack">标题</button>
+        <button class="btn-lang btn ghost" type="button" data-i18n="langToggle">ENGLISH</button>
+      </div>
+    </section>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="老鼠赛跑 / Rat Race"
+  description="A wet-street cyberpunk rat race in the browser. Race to the X, eat finite pellets, hide from Sgt. Meowz. Simplified Chinese and English."
+  ogImage="/images/blog/rat-race-og.jpg"
+  ogImageAlt="Rat Race — wet-street cyberpunk alley on airomatic.ai"
+  noTranslate={true}
+>
+  <section class="rr-page">
+    <iframe
+      class="rr-frame"
+      src="/rat-race/app.html"
+      title="老鼠赛跑 — Rat Race"
+      allow="fullscreen"
+      allowfullscreen
+    ></iframe>
+  </section>
+</BaseLayout>
+
+<style>
+  .rr-page {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--header-h, 4rem));
+    margin: 0;
+    padding: 0;
+  }
+
+  .rr-frame {
+    flex: 1;
+    width: 100%;
+    min-height: calc(100vh - var(--header-h, 4rem));
+    border: 0;
+    display: block;
+    background: #05010c;
+  }
+</style>

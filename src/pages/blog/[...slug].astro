@@ -7,6 +7,7 @@ import XEmbed from "../../components/XEmbed.astro";
 import StartupCard from "../../components/StartupCard.astro";
 import { site } from "../../config/site";
 import { getStartupsSorted } from "../../lib/startups";
+import BlogLangToggle from "../../components/BlogLangToggle.astro";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -20,6 +21,19 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+const translations = await getCollection("blogEn");
+const enPost = translations.find((entry) => entry.id === post.id);
+const { Content: EnContent } = enPost
+  ? await render(enPost)
+  : { Content: null as unknown as typeof Content };
+
+const bilingual = Boolean(post.data.titleEn && enPost && EnContent);
+const defaultLang = post.data.defaultLang ?? "en";
+
+const dateOpts = { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" } as const;
+const dateEn = post.data.pubDate.toLocaleDateString("en-US", dateOpts);
+const dateZh = post.data.pubDate.toLocaleDateString("zh-Hant", dateOpts);
+
 const featuredIds = post.data.featuredStartupIds ?? [];
 const featuredStartups = featuredIds
   .map((id) => getStartupsSorted().find((s) => s.id === id))
@@ -32,24 +46,83 @@ const featuredStartups = featuredIds
   ogImage={post.data.ogImage}
   ogImageAlt={`${post.data.title} — ${site.name}`}
   ogType="article"
+  locale={bilingual && defaultLang === "zh" ? "zh-Hant" : "en"}
+  noTranslate={bilingual}
 >
   <KatexHead slot="head" />
-  <article class="section">
+  {
+    bilingual && (
+      <script is:inline slot="head">
+        (function () {
+          var q = new URLSearchParams(location.search).get("lang");
+          var s;
+          try {
+            s = localStorage.getItem("airomatic-blog-lang");
+          } catch (e) {}
+          var lang = q === "en" || q === "zh" ? q : s === "en" || s === "zh" ? s : "";
+          if (lang) document.documentElement.setAttribute("data-blog-lang-pref", lang);
+        })();
+      </script>
+    )
+  }
+  <article
+    class:list={["section", { notranslate: bilingual }]}
+    translate={bilingual ? "no" : undefined}
+    data-blog-i18n={bilingual ? "true" : undefined}
+    data-lang={bilingual ? defaultLang : undefined}
+  >
     <div class="container prose">
       <p class="eyebrow">Blog</p>
-      <h1>{post.data.title}</h1>
-      <time class="mono" datetime={post.data.pubDate.toISOString()} style="font-size: 0.85rem; color: var(--text-muted)">
-        {
-          post.data.pubDate.toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })
-        }
-      </time>
+      {bilingual && <BlogLangToggle defaultLang={defaultLang} />}
+      {
+        bilingual ? (
+          <>
+            <h1 class="post-title post-title--zh" lang="zh-Hant">{post.data.title}</h1>
+            <h1 class="post-title post-title--en" lang="en">{post.data.titleEn}</h1>
+            <time
+              class="mono post-date post-date--zh"
+              datetime={post.data.pubDate.toISOString()}
+              style="font-size: 0.85rem; color: var(--text-muted)"
+            >
+              {dateZh}
+            </time>
+            <time
+              class="mono post-date post-date--en"
+              datetime={post.data.pubDate.toISOString()}
+              style="font-size: 0.85rem; color: var(--text-muted)"
+            >
+              {dateEn}
+            </time>
+          </>
+        ) : (
+          <>
+            <h1>{post.data.title}</h1>
+            <time
+              class="mono"
+              datetime={post.data.pubDate.toISOString()}
+              style="font-size: 0.85rem; color: var(--text-muted)"
+            >
+              {dateEn}
+            </time>
+          </>
+        )
+      }
       {post.data.youtubeId && <YouTubeEmbed id={post.data.youtubeId} title={post.data.title} />}
       {post.data.tweetId && <XEmbed id={post.data.tweetId} title={post.data.title} />}
-      <Content />
+      {
+        bilingual && EnContent ? (
+          <>
+            <div class="post-lang notranslate" data-lang-panel="zh" lang="zh-Hant">
+              <Content />
+            </div>
+            <div class="post-lang notranslate" data-lang-panel="en" lang="en">
+              <EnContent />
+            </div>
+          </>
+        ) : (
+          <Content />
+        )
+      }
       {
         featuredStartups.length > 0 && (
           <section class="featured-startups" aria-label="Featured startup announcements">
@@ -117,5 +190,43 @@ const featuredStartups = featuredIds
   /* Cards sit outside the narrow prose column */
   .featured-startups :global(.startup-card__name) {
     font-size: 1.1rem;
+  }
+
+  .post-lang[data-lang-panel="zh"],
+  .post-title--zh {
+    font-family: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC",
+      "PMingLiU", "SimSun", var(--font-sans);
+    letter-spacing: 0.02em;
+  }
+
+  /* Default language is Chinese for bilingual posts; English pref wins without a flash. */
+  .post-title--en,
+  .post-date--en,
+  .post-lang[data-lang-panel="en"] {
+    display: none;
+  }
+
+  :global(html[data-blog-lang-pref="en"]) .post-title--zh,
+  :global(html[data-blog-lang-pref="en"]) .post-date--zh,
+  :global(html[data-blog-lang-pref="en"]) .post-lang[data-lang-panel="zh"] {
+    display: none !important;
+  }
+
+  :global(html[data-blog-lang-pref="en"]) .post-title--en,
+  :global(html[data-blog-lang-pref="en"]) .post-date--en,
+  :global(html[data-blog-lang-pref="en"]) .post-lang[data-lang-panel="en"] {
+    display: block !important;
+  }
+
+  :global(html[data-blog-lang-pref="zh"]) .post-title--en,
+  :global(html[data-blog-lang-pref="zh"]) .post-date--en,
+  :global(html[data-blog-lang-pref="zh"]) .post-lang[data-lang-panel="en"] {
+    display: none !important;
+  }
+
+  :global(html[data-blog-lang-pref="zh"]) .post-title--zh,
+  :global(html[data-blog-lang-pref="zh"]) .post-date--zh,
+  :global(html[data-blog-lang-pref="zh"]) .post-lang[data-lang-panel="zh"] {
+    display: block !important;
   }
 </style>

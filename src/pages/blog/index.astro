@@ -31,6 +31,7 @@ const posts = (await getCollection("blog")).sort(
                       year: "numeric",
                       month: "long",
                       day: "numeric",
+                      timeZone: "UTC",
                     })}
                   </time>
                 </li>

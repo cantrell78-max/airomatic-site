@@ -16,6 +16,12 @@ const blog = defineCollection({
     ogImage: z.string().optional(),
     /** Startup ids from src/data/startups.json to embed as cards in the post */
     featuredStartupIds: z.array(z.string()).optional(),
+    /** English title when the canonical post is not English */
+    titleEn: z.string().optional(),
+    /** English description when the canonical post is not English */
+    descriptionEn: z.string().optional(),
+    /** Initial article language when a matching blog-en translation exists */
+    defaultLang: z.enum(["en", "zh"]).optional(),
   }),
 });
 
@@ -28,4 +34,13 @@ const mathBlog = defineCollection({
   }),
 });
 
-export const collections = { blog, mathBlog };
+const blogEn = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog-en" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+  }),
+});
+
+export const collections = { blog, mathBlog, blogEn };

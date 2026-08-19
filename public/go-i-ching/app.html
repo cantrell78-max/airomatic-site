@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#e8dcc8" />
+    <meta name="description" content="Go I Ching — Weiqi fused with the Book of Changes. A contemplative browser game." />
+    <title>Go I Ching — 圍棋易經</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="brand">
+          <svg class="taiji" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="#1a1612" />
+            <path d="M32 2a30 30 0 0 0 0 60 15 15 0 0 0 0-30 15 15 0 0 1 0-30z" fill="#e8dcc8" />
+            <circle cx="32" cy="17" r="5" fill="#1a1612" />
+            <circle cx="32" cy="47" r="5" fill="#e8dcc8" />
+          </svg>
+          <div>
+            <h1 id="brand-title">Go I Ching</h1>
+            <p id="brand-sub">The board is a Book of Changes</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="btn-menu" type="button" data-i18n="menu">Menu</button>
+          <button id="btn-pass-h" class="hdr-play" type="button" data-i18n="pass">Pass</button>
+          <button id="btn-undo-h" class="hdr-play" type="button" data-i18n="undo">Undo</button>
+          <button id="btn-lang" type="button" title="Language">中文</button>
+          <button id="btn-new" class="btn-ink" type="button" data-i18n="newGame">New Game</button>
+          <button id="btn-collapse" type="button">Hide master</button>
+        </div>
+      </header>
+
+      <main>
+        <aside class="panel panel-left" id="side-controls">
+          <div class="group">
+            <h3 data-i18n="toPlay">to play</h3>
+            <div class="pills">
+              <div class="pill" id="pill-black"><span data-i18n="black">Black</span></div>
+              <div class="pill" id="pill-white"><span data-i18n="white">White</span></div>
+            </div>
+            <div class="stat-line"><span id="stat-turn">—</span></div>
+          </div>
+          <div class="group">
+            <div class="stat-line"><span data-i18n="move">Move</span><strong id="stat-move">0</strong></div>
+            <div class="stat-line"><span data-i18n="lastMove">Last</span><strong id="stat-last">—</strong></div>
+            <div class="stat-line"><span data-i18n="black">Black</span> · <span data-i18n="captures">Captures</span><strong id="stat-black-caps">0</strong></div>
+            <div class="stat-line"><span data-i18n="white">White</span> · <span data-i18n="captures">Captures</span><strong id="stat-white-caps">0</strong></div>
+          </div>
+          <div class="actions-col">
+            <button id="btn-pass" type="button" data-i18n="pass">Pass</button>
+            <button id="btn-undo" type="button" data-i18n="undo">Undo</button>
+            <button id="btn-resign" type="button" data-i18n="resign">Resign</button>
+            <button id="btn-tutorial" type="button" data-i18n="tutorial">Tutorial</button>
+            <button id="btn-save" type="button" data-i18n="save">Save</button>
+            <button id="btn-load" type="button" data-i18n="load">Load</button>
+            <button id="btn-sgf" type="button" data-i18n="exportSgf">Export SGF</button>
+            <button id="btn-about" type="button" data-i18n="about">About</button>
+          </div>
+          <div id="score-bar" hidden>
+            <span class="hint" data-i18n="scoringHint">Mark dead stones, then confirm.</span>
+            <button id="btn-score" class="btn-cinnabar" type="button" data-i18n="confirmScore">Confirm score</button>
+            <button id="btn-clear-dead" type="button" data-i18n="recount">Recount</button>
+          </div>
+          <p class="hint" data-i18n="rulesNote">Chinese area scoring · simple ko · komi 7.5</p>
+        </aside>
+
+        <section class="panel board-wrap">
+          <canvas id="board" width="320" height="320" aria-label="Go board"></canvas>
+          <div id="tutorial-bar" hidden>
+            <span id="tutorial-step">1 / 7</span>
+            <button id="btn-tut-continue" type="button" data-i18n="continue">Continue</button>
+            <button id="btn-tut-skip" type="button" data-i18n="skipTutorial">Leave the lesson</button>
+          </div>
+          <div id="result-overlay" hidden>
+            <h2 id="result-title">The changes rest</h2>
+            <p id="result-headline"></p>
+            <div id="result-body"></div>
+            <div class="modal-actions">
+              <button id="btn-result-close" type="button" data-i18n="close">Close</button>
+              <button id="btn-again" class="btn-ink" type="button" data-i18n="newFromOver">Another game</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel panel-master" id="master-panel">
+          <div class="master-top">
+            <div class="portrait-wrap" id="master-portrait">
+              <img id="master-rest-img" src="assets/master.jpg" alt="" />
+              <img id="master-speak-img" src="assets/master-speak.jpg" alt="" />
+            </div>
+            <div class="master-id">
+              <h2 data-i18n="masterName">Elder Yi</h2>
+              <p data-i18n="masterTitle">Keeper of the Changes</p>
+              <div id="oracle-badge" hidden></div>
+            </div>
+          </div>
+          <div class="speech-scroll">
+            <p id="master-speech"></p>
+          </div>
+          <div class="master-actions">
+            <button id="btn-ask" class="btn-cinnabar" type="button" data-i18n="askMaster">Ask the Master</button>
+            <button id="btn-library" type="button" data-i18n="library">Hexagram Library</button>
+            <label class="wisdom-row">
+              <input id="wisdom-toggle" class="switch" type="checkbox" checked />
+              <span data-i18n="wisdom">Wisdom Mode</span>
+            </label>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <div id="drawer">
+      <!-- populated visually by cloning styles of .panel-left; we reuse the same node on desktop -->
+    </div>
+
+    <div class="modal" id="modal-new" hidden>
+      <div class="modal-card">
+        <h2 data-i18n="newGame">New Game</h2>
+        <div class="stat-label" data-i18n="boardSize">Board</div>
+        <div class="choice-row">
+          <label><input type="radio" name="size" value="9" checked /> <span data-i18n="size9">9×9 Beginner</span></label>
+          <label><input type="radio" name="size" value="13" /> <span data-i18n="size13">13×13</span></label>
+          <label><input type="radio" name="size" value="19" /> <span data-i18n="size19">19×19</span></label>
+        </div>
+        <div class="stat-label" data-i18n="mode">Mode</div>
+        <div class="choice-row">
+          <label><input type="radio" name="mode" value="ai" checked /> <span data-i18n="vsAi">Play the Master</span></label>
+          <label><input type="radio" name="mode" value="local" /> <span data-i18n="twoPlayer">Two players</span></label>
+        </div>
+        <div class="stat-label" data-i18n="playAs">You play</div>
+        <div class="choice-row">
+          <label><input type="radio" name="color" value="b" checked /> <span data-i18n="asBlack">Black</span></label>
+          <label><input type="radio" name="color" value="w" /> <span data-i18n="asWhite">White</span></label>
+        </div>
+        <div class="modal-actions">
+          <button type="button" data-close="modal-new" data-i18n="cancel">Cancel</button>
+          <button id="btn-start-game" class="btn-ink" type="button" data-i18n="start">Begin</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="modal-library" hidden>
+      <div class="modal-card wide">
+        <h2 data-i18n="library">Hexagram Library</h2>
+        <input id="library-search" type="search" data-i18n-placeholder="searchHex" placeholder="Search name or number…" />
+        <div id="library-grid"></div>
+        <div id="hex-detail" hidden></div>
+        <div class="modal-actions">
+          <button type="button" data-close="modal-library" data-i18n="close">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="modal-about" hidden>
+      <div class="modal-card">
+        <h2 data-i18n="about">About</h2>
+        <p data-i18n="aboutBody">
+          Go I Ching is a contemplative fusion of Weiqi and the Yijing.
+        </p>
+        <p data-i18n="rulesNote">Chinese area scoring · simple ko · komi 7.5</p>
+        <div class="modal-actions">
+          <button type="button" data-close="modal-about" data-i18n="close">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/go.js"></script>
+    <script src="js/hexagrams.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/master.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

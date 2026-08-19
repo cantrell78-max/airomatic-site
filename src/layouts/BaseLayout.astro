@@ -13,6 +13,10 @@ interface Props {
   ogImage?: string;
   ogImageAlt?: string;
   ogType?: "website" | "article";
+  /** BCP 47 language for this page (article pages may start in zh-Hant) */
+  locale?: string;
+  /** Disable Chrome/Google auto-translate — used when the page ships its own toggle */
+  noTranslate?: boolean;
 }
 
 const {
@@ -22,7 +26,12 @@ const {
   ogImage = site.ogImage,
   ogImageAlt = `${site.name} — ${site.ogTagline}`,
   ogType = "website",
+  locale = "en",
+  noTranslate = false,
 } = Astro.props;
+
+const htmlLang = locale === "zh" || locale === "zh-Hant" ? "zh-Hant" : locale;
+const ogLocale = htmlLang.startsWith("zh") ? "zh_TW" : "en_US";
 
 const fullTitle =
   title === "Home"
@@ -40,9 +49,10 @@ const ogImageUrl = ogImage.startsWith("http")
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang} translate={noTranslate ? "no" : undefined} class:list={[{ notranslate: noTranslate }]}>
   <head>
     <meta charset="utf-8" />
+    {noTranslate && <meta name="google" content="notranslate" />}
     <link rel="icon" type="image/png" href="/images/brand/favicon-192.png" sizes="192x192" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -52,7 +62,7 @@ const ogImageUrl = ogImage.startsWith("http")
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />

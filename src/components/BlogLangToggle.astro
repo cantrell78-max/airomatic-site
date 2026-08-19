@@ -1,0 +1,102 @@
+---
+interface Props {
+  defaultLang?: "en" | "zh";
+}
+
+const { defaultLang = "zh" } = Astro.props;
+---
+
+<div class="lang-toggle notranslate" translate="no" data-blog-lang-toggle data-default-lang={defaultLang} role="group" aria-label="Language / 語言">
+  <button type="button" data-lang-btn="zh" aria-pressed={defaultLang === "zh" ? "true" : "false"}>
+    中文
+  </button>
+  <button type="button" data-lang-btn="en" aria-pressed={defaultLang === "en" ? "true" : "false"}>
+    English
+  </button>
+</div>
+
+<script>
+  const STORAGE_KEY = "airomatic-blog-lang";
+
+  function preferredLang(fallback: string) {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = params.get("lang");
+    if (fromUrl === "en" || fromUrl === "zh") return fromUrl;
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === "en" || saved === "zh") return saved;
+    } catch {
+      /* ignore */
+    }
+    return fallback === "en" ? "en" : "zh";
+  }
+
+  function applyLang(lang: "en" | "zh") {
+    const article = document.querySelector<HTMLElement>("[data-blog-i18n]");
+    if (!article) return;
+
+    article.dataset.lang = lang;
+    document.documentElement.lang = lang === "zh" ? "zh-Hant" : "en";
+
+    document.documentElement.setAttribute("data-blog-lang-pref", lang);
+
+    article.querySelectorAll<HTMLButtonElement>("[data-lang-btn]").forEach((btn) => {
+      btn.setAttribute("aria-pressed", btn.dataset.langBtn === lang ? "true" : "false");
+    });
+
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch {
+      /* ignore */
+    }
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", lang);
+    history.replaceState({}, "", url);
+  }
+
+  const toggle = document.querySelector<HTMLElement>("[data-blog-lang-toggle]");
+  const fallback = toggle?.dataset.defaultLang === "en" ? "en" : "zh";
+  applyLang(preferredLang(fallback));
+
+  toggle?.querySelectorAll<HTMLButtonElement>("[data-lang-btn]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.dataset.langBtn === "en" ? "en" : "zh";
+      applyLang(lang);
+    });
+  });
+</script>
+
+<style>
+  .lang-toggle {
+    display: inline-flex;
+    margin: 0 0 1.25rem;
+    padding: 0.2rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    gap: 0.15rem;
+  }
+
+  .lang-toggle button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    padding: 0.4rem 0.95rem;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .lang-toggle button[aria-pressed="true"] {
+    background: var(--accent-dim);
+    color: var(--text);
+  }
+
+  .lang-toggle button:hover {
+    color: var(--text);
+  }
+</style>

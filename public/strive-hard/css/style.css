@@ -1066,8 +1066,22 @@ button {
   min-height: 0;
 }
 
+.bubble-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: flex-start;
+  max-width: 92%;
+  gap: 0.15rem;
+}
+
+.bubble-wrap-me {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
 .bubble {
-  max-width: 88%;
+  max-width: 100%;
   padding: 0.55rem 0.75rem;
   border-radius: 16px;
   font-size: 0.82rem;
@@ -1075,15 +1089,29 @@ button {
 }
 
 .bubble.them {
-  align-self: flex-start;
   background: #2a2d3a;
   border-bottom-left-radius: 4px;
 }
 
 .bubble.me {
-  align-self: flex-end;
   background: #0a84ff;
   border-bottom-right-radius: 4px;
+}
+
+.bubble-translate {
+  border: 0;
+  background: transparent;
+  color: var(--accent, #7c5cff);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.1rem 0.35rem;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.bubble-translate:hover {
+  opacity: 1;
+  text-decoration: underline;
 }
 
 .chat-replies {

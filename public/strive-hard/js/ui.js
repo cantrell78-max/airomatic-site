@@ -378,7 +378,7 @@ export function renderTextThreads(state, onOpenThread) {
   });
 }
 
-export function renderTextChat(state, npcId, onReply) {
+export function renderTextChat(state, npcId, onReply, onToggleTranslate) {
   const threadsEl = document.getElementById("text-threads");
   const chat = document.getElementById("text-chat");
   if (!chat) return;
@@ -400,13 +400,38 @@ export function renderTextChat(state, npcId, onReply) {
 
   const msgs = document.getElementById("chat-messages");
   if (msgs) {
-    msgs.innerHTML = messages
-      .map((m) => {
-        const body =
-          typeof m?.text === "string" ? m.text : String(m?.text ?? "");
-        return `<div class="bubble ${m?.from === "player" ? "me" : "them"}">${escapeHtml(body)}</div>`;
-      })
-      .join("");
+    msgs.innerHTML = "";
+    const bubbles = state.translatedBubbles || {};
+    messages.forEach((m, i) => {
+      const zh = typeof m?.text === "string" ? m.text : String(m?.text ?? "");
+      const en = typeof m?.textEn === "string" ? m.textEn : null;
+      const canTranslate = !!(en && m?.from !== "player");
+      const key = `${npcId}:${i}`;
+      const showEn = !!(canTranslate && bubbles[key]);
+      const body = showEn ? en : zh;
+
+      const wrap = document.createElement("div");
+      wrap.className =
+        "bubble-wrap" + (m?.from === "player" ? " bubble-wrap-me" : "");
+
+      const bubble = document.createElement("div");
+      bubble.className = `bubble ${m?.from === "player" ? "me" : "them"}`;
+      bubble.textContent = body;
+      wrap.appendChild(bubble);
+
+      if (canTranslate) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "bubble-translate";
+        btn.textContent = showEn ? "原文 中文" : "Translate";
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (onToggleTranslate) onToggleTranslate(npcId, i);
+        });
+        wrap.appendChild(btn);
+      }
+      msgs.appendChild(wrap);
+    });
     msgs.scrollTop = msgs.scrollHeight;
   }
 

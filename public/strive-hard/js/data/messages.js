@@ -351,3 +351,61 @@ export function skylarOpeners(character) {
       : "are you the one with 0 followers and infinite confidence? that's hot. dangerous. mostly hot.",
   ];
 }
+
+/** True if string has CJK — used for Messages Translate affordance */
+export function looksChinese(str) {
+  return /[\u4e00-\u9fff]/.test(String(str ?? ""));
+}
+
+/**
+ * English for Chinese SMS (Wei / Lin / Ming). Exact-match keys.
+ * Scene 中文 still uses the story Translate bar; this is for the phone Texts app.
+ */
+export const MESSAGE_EN_BY_ZH = {
+  "记得你欠我一次。— 魏 🔧": "Remember you owe me one. — Wei 🔧",
+  "Mercury 的账单用你的卡。你欠我。— W":
+    "Mercury's bill is on your card. You owe me. — W",
+  "你们的 Devin 又想越狱。这次免费。下次收费。— 魏":
+    "Your Devin wants to jailbreak again. Free this time. Next time I bill. — Wei",
+  "有个叫 Thiel 的人问我是谁。我没说。你欠我两个。— Wei":
+    "Someone named Thiel asked who I am. I didn't say. You owe me two. — Wei",
+  "下次来深圳，带点 Tesla 周边。或者现金。— 魏🔧":
+    "Next time you come to Shenzhen, bring Tesla merch. Or cash. — Wei🔧",
+  "欠的别拖。旧金山唐人街——金门数码汇。USDT。别给我搞数字人民币。口令以后说。— 魏":
+    "Don't drag the debt. SF Chinatown — Golden Gate Digital Remit. USDT. Don't bring me digital yuan. Passcode later. — Wei",
+  "记得。你欠我。— 魏 🔧": "Remember. You owe me. — Wei 🔧",
+  "牢。你继续欠着。— 魏": "Cage holds. You keep owing. — Wei",
+  "数字人民币？错轨。要 U。别用央行的玩具还我人情。— 魏 🔧":
+    "Digital yuan? Wrong rail. Want U. Don't repay favors with the central bank's toy. — Wei 🔧",
+  "U 到了。账上好看一点。人情还在。别以为汇一次就清。下次不是汇款。— 魏 🔧":
+    "U arrived. Books look better. Favors remain. Don't think one remit clears you. Next time isn't a wire. — Wei 🔧",
+  "8k 到了。便宜套餐的利息。U 收到。人情还在，还是两个。— 魏 🔧":
+    "8k landed. Interest on the cheap package. U received. Favors remain — still two. — Wei 🔧",
+  "又来？U 够了。人情还是在。猫的 8 块我不要。— 魏":
+    "Again? U is enough. Favors still stand. I don't want the cat's $8. — Wei",
+  "茶在楼上。卦不催人。勿妄动。— 林清 📿":
+    "Tea is upstairs. The hexagram does not rush. Do not act rashly. — Lin Qing 📿",
+  "门槛也是座。上来。— 林清": "The threshold is also a seat. Come up. — Lin Qing",
+  "今日：勿妄动。Ship when the river ships. 未济不是失败。— 林清 📿":
+    "Today: do not act rashly. Ship when the river ships. Before Completion is not failure. — Lin Qing 📿",
+  "LP 也在河里。他们的棍子只是镀金。Wire 是果，不是桨。— 林清":
+    "LPs are in the river too. Their sticks are just gilded. The wire is fruit, not the oar. — Lin Qing",
+};
+
+export function lookupMessageEn(zhText) {
+  if (!zhText) return null;
+  if (MESSAGE_EN_BY_ZH[zhText]) return MESSAGE_EN_BY_ZH[zhText];
+  // Tolerate minor whitespace drift
+  const trimmed = String(zhText).trim();
+  return MESSAGE_EN_BY_ZH[trimmed] || null;
+}
+
+/** Attach textEn from dictionary when missing (saves + new SMS) */
+export function enrichMessageEn(msg) {
+  if (!msg || typeof msg !== "object") return msg;
+  const text = typeof msg.text === "string" ? msg.text : String(msg.text ?? "");
+  if (msg.textEn) return { ...msg, text };
+  if (!looksChinese(text)) return { ...msg, text };
+  const textEn = lookupMessageEn(text);
+  return textEn ? { ...msg, text, textEn } : { ...msg, text };
+}

@@ -57,10 +57,12 @@ export function applyChoice(state, choice) {
   if (choice.messages?.length) {
     for (const m of choice.messages) {
       const msgText = typeof m.text === "function" ? m.text(next) : m.text;
+      const textEn =
+        typeof m.textEn === "function" ? m.textEn(next) : m.textEn;
       if (m.unlock || !next.threads[m.npcId] || next.threads[m.npcId].locked) {
-        next = unlockThread(next, m.npcId, msgText);
+        next = unlockThread(next, m.npcId, msgText, textEn);
       } else {
-        next = appendNpcMessage(next, m.npcId, msgText);
+        next = appendNpcMessage(next, m.npcId, msgText, textEn);
       }
     }
     toasts.push("New text message");

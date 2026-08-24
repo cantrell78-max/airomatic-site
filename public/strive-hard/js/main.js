@@ -6,6 +6,7 @@ import {
   loadState,
   saveState,
   hasSave,
+  toggleBubbleTranslate,
 } from "./state.js";
 import {
   applyChoice,
@@ -137,13 +138,18 @@ function handleTravel(locationId) {
   refresh();
 }
 
+function handleToggleBubbleTranslate(npcId, msgIndex) {
+  state = toggleBubbleTranslate(state, npcId, msgIndex);
+  renderTextChat(state, npcId, handleTextReply, handleToggleBubbleTranslate);
+}
+
 function handleOpenThread(npcId) {
   try {
     // Always show Messages app first so a render error can't leave a blank phone
     openPhoneApp("texts");
     state = markThreadRead(state, npcId);
     renderPhoneHome(state);
-    renderTextChat(state, npcId, handleTextReply);
+    renderTextChat(state, npcId, handleTextReply, handleToggleBubbleTranslate);
   } catch (err) {
     console.error("open thread failed", npcId, err);
     openPhoneApp("texts");
@@ -162,7 +168,7 @@ function handleTextReply(npcId, option) {
     state = result.state;
     if (result.toast) showToast(result.toast, "good");
     openPhoneApp("texts");
-    renderTextChat(state, npcId, handleTextReply);
+    renderTextChat(state, npcId, handleTextReply, handleToggleBubbleTranslate);
     renderPhoneHome(state);
     updateStats(state);
   } catch (err) {

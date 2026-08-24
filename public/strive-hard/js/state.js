@@ -1,5 +1,5 @@
 import { getCharacter } from "./data/characters.js";
-import { buildInitialThreads } from "./data/messages.js";
+import { buildInitialThreads, enrichMessageEn } from "./data/messages.js";
 
 const SAVE_KEY = "strive-hard-save-v1";
 
@@ -33,6 +33,8 @@ export function createNewState(characterId) {
       queue: null,
     },
     translatedScenes: {},
+    /** Phone Texts: `${npcId}:${msgIndex}` → show English */
+    translatedBubbles: {},
   };
 }
 
@@ -130,6 +132,14 @@ export function loadState() {
       }
     }
     if (!data.translatedScenes) data.translatedScenes = {};
+    if (!data.translatedBubbles) data.translatedBubbles = {};
+    // Attach English for Chinese SMS (Wei / Lin / etc.) on load
+    if (data.threads) {
+      for (const t of Object.values(data.threads)) {
+        if (!t || !Array.isArray(t.messages)) continue;
+        t.messages = t.messages.map((m) => enrichMessageEn(m));
+      }
+    }
     // Claw → Mercury location rename (flags keep claw* keys for save stability)
     if (data.locationId === "claw-hq") data.locationId = "mercury-hq";
     if (Array.isArray(data.visitedLocations)) {
@@ -230,7 +240,11 @@ function defaultRepliesFor(npcId) {
   return [];
 }
 
-export function unlockThread(state, npcId, firstMessage) {
+/**
+ * Unlock / seed a thread. firstMessage may be a string or { text, textEn }.
+ * Optional 4th arg textEn when firstMessage is a string.
+ */
+export function unlockThread(state, npcId, firstMessage, textEn) {
   const threads = { ...state.threads };
   const existing = threads[npcId] || {
     npcId,
@@ -240,13 +254,20 @@ export function unlockThread(state, npcId, firstMessage) {
   };
   const messages = [...(existing.messages || [])];
   if (firstMessage) {
-    const text =
-      typeof firstMessage === "string" ? firstMessage : String(firstMessage ?? "");
-    messages.push({ from: "npc", text });
+    let text;
+    let en = textEn;
+    if (typeof firstMessage === "object" && firstMessage !== null) {
+      text = String(firstMessage.text ?? "");
+      en = firstMessage.textEn ?? en;
+    } else {
+      text = String(firstMessage ?? "");
+    }
+    messages.push(
+      enrichMessageEn({ from: "npc", text, ...(en ? { textEn: en } : {}) })
+    );
   }
   const hadReplies =
     Array.isArray(existing.replyOptions) && existing.replyOptions.length > 0;
-  const wasLocked = existing.locked !== false && !messages.length;
   // Fresh unlock of Priya (etc.): attach quick replies so "texting" works
   let replyOptions = Array.isArray(existing.replyOptions)
     ? [...existing.replyOptions]
@@ -267,16 +288,37 @@ export function unlockThread(state, npcId, firstMessage) {
   return { ...state, threads, unreadTexts };
 }
 
-export function appendNpcMessage(state, npcId, text) {
+export function appendNpcMessage(state, npcId, text, textEn) {
   const threads = { ...state.threads };
   const t = threads[npcId];
-  if (!t) return unlockThread(state, npcId, text);
+  if (!t) return unlockThread(state, npcId, text, textEn);
+  const body =
+    typeof text === "object" && text !== null
+      ? enrichMessageEn({
+          from: "npc",
+          text: String(text.text ?? ""),
+          ...(text.textEn || textEn ? { textEn: text.textEn || textEn } : {}),
+        })
+      : enrichMessageEn({
+          from: "npc",
+          text: String(text ?? ""),
+          ...(textEn ? { textEn } : {}),
+        });
   threads[npcId] = {
     ...t,
     locked: false,
     unread: true,
-    messages: [...t.messages, { from: "npc", text }],
+    messages: [...(t.messages || []), body],
   };
   const unreadTexts = Object.values(threads).filter((x) => !x.locked && x.unread).length;
   return { ...state, threads, unreadTexts };
+}
+
+export function toggleBubbleTranslate(state, npcId, msgIndex) {
+  const key = `${npcId}:${msgIndex}`;
+  const translatedBubbles = { ...(state.translatedBubbles || {}) };
+  translatedBubbles[key] = !translatedBubbles[key];
+  const next = { ...state, translatedBubbles };
+  saveState(next);
+  return next;
 }

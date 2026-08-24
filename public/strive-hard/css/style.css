@@ -978,6 +978,12 @@ button {
   min-height: 0;
 }
 
+/* hidden must beat display:flex or chat stays under the inbox like a nested pane */
+.text-threads[hidden],
+.text-chat[hidden] {
+  display: none !important;
+}
+
 .thread-row {
   display: flex;
   gap: 0.65rem;

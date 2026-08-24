@@ -270,8 +270,17 @@ function bindPhone() {
     threadBack.addEventListener("click", () => {
       try {
         openPhoneApp("texts");
-        document.getElementById("text-chat").hidden = true;
-        document.getElementById("text-threads").hidden = false;
+        const chat = document.getElementById("text-chat");
+        const threads = document.getElementById("text-threads");
+        if (chat) {
+          chat.hidden = true;
+          // Clear so a stale thread can't flash if CSS ever leaks
+          const msgs = document.getElementById("chat-messages");
+          const replies = document.getElementById("chat-replies");
+          if (msgs) msgs.innerHTML = "";
+          if (replies) replies.innerHTML = "";
+        }
+        if (threads) threads.hidden = false;
         renderTextThreads(state, handleOpenThread);
       } catch (err) {
         console.error("thread back failed", err);

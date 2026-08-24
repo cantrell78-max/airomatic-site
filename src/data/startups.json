@@ -1,5 +1,208 @@
 [
   {
+    "id": "dray-2026-08",
+    "companyName": "Dray",
+    "headline": "Dray Raises $64M Series B as Founding Team Ships Freight Agents That Close the Dock",
+    "round": "$64M Series B",
+    "newsType": "raise",
+    "description": "Founding team building voice, email, and scheduling agents for brokers and carriers—appointments, detention, and exception close-outs so ops teams stop staffing the 2 a.m. call queue.",
+    "founderName": "Dhruv Sawant",
+    "founderTitle": "ex-intern Flexport",
+    "founderQuote": "A freight network does not need another call dashboard. It needs the appointment booked and the driver paid.",
+    "investorQuote": "Headcount only scales if the agent takes the 2 a.m. detention call. Dray is the labor math for the dock.",
+    "investorName": "Roger Lee",
+    "investorFirm": "Battery Ventures",
+    "verticals": [
+      "Logistics",
+      "Freight Ops",
+      "Voice Ops"
+    ],
+    "hashtags": [
+      "#Dray",
+      "#FreightAgents",
+      "#SeriesB",
+      "#ClosedLoops",
+      "#DockOps"
+    ],
+    "image": "/images/startups/dray-team.jpg",
+    "date": "2026-08-24",
+    "xPost": "Dray raises $64M Series B. Founding team building voice, email, and scheduling agents for brokers and carriers—appointments, detention, and exception close-outs so ops teams stop staffing the 2 a.m. call queue.\n\n\"A freight network does not need another call dashboard. It needs the appointment booked and the driver paid.\" — Dhruv Sawant\n\n\"Headcount only scales if the agent takes the 2 a.m. detention call. Dray is the labor math for the dock.\" — Roger Lee · Battery Ventures\n\n#Dray #FreightAgents #SeriesB #ClosedLoops #DockOps"
+  },
+  {
+    "id": "revux-2026-08",
+    "companyName": "Revux",
+    "headline": "Revux Raises $45M Series A to Audit the Pull Requests Agents Now Write",
+    "round": "$45M Series A",
+    "newsType": "raise",
+    "description": "Review agents that score, prioritize, and pack an audit trail for human- and agent-authored diffs so engineering orgs stop treating AI-written code as an unreviewed firehose.",
+    "founderName": "Ishan Tandon",
+    "founderTitle": "IIT Kanpur dropout",
+    "founderQuote": "If a pull request cannot survive partner review, it is not merged. We ship an audit pack, not a suggestion comment.",
+    "investorQuote": "Review is the layer this market consolidates on once agents write the majority of the diff.",
+    "investorName": "Aydin Senkut",
+    "investorFirm": "Felicis",
+    "verticals": [
+      "Software Quality",
+      "Code Review",
+      "Agent Governance"
+    ],
+    "hashtags": [
+      "#Revux",
+      "#CodeReview",
+      "#SeriesA",
+      "#PRGovernance",
+      "#DiffAudit"
+    ],
+    "image": "/images/startups/ishan-tandon.jpg",
+    "date": "2026-08-24",
+    "xPost": "Revux raises $45M Series A. Review agents that score, prioritize, and pack an audit trail for human- and agent-authored diffs so engineering orgs stop treating AI-written code as an unreviewed firehose.\n\n\"If a pull request cannot survive partner review, it is not merged. We ship an audit pack, not a suggestion comment.\" — Ishan Tandon\n\n\"Review is the layer this market consolidates on once agents write the majority of the diff.\" — Aydin Senkut · Felicis\n\n#Revux #CodeReview #SeriesA #PRGovernance #DiffAudit"
+  },
+  {
+    "id": "kopy-2026-08",
+    "companyName": "Kopy",
+    "headline": "Kopy Emerges From Stealth With $24M to Twin Knowledge Workers From Their Own Inboxes",
+    "round": "$24M · Emerged from stealth",
+    "newsType": "stealth",
+    "description": "Co-founders shipping permissioned digital twins trained on email, meetings, and workplace systems so coverage, handoff, and institutional knowledge stop depending on who is in the seat.",
+    "founderName": "Aniket Bhattacharya & Feng Guo",
+    "founderTitle": "ex-Glean / ex-Notion",
+    "founderQuote": "One twin covers the inbox that used to need a floor. When someone is out, the work does not open a ticket.",
+    "investorQuote": "Boards will fund systems that make knowledge-worker concentration risk legible. A twin is a continuity control.",
+    "investorName": "Hemant Taneja",
+    "investorFirm": "General Catalyst",
+    "verticals": [
+      "Workforce Agents",
+      "Knowledge Capture",
+      "HR Tech"
+    ],
+    "hashtags": [
+      "#Kopy",
+      "#DigitalTwins",
+      "#FromStealth",
+      "#WorkforceAI",
+      "#InboxContinuity"
+    ],
+    "image": "/images/startups/kopy-duo.jpg",
+    "date": "2026-08-24",
+    "xPost": "Kopy emerges from stealth with $24M. Co-founders shipping permissioned digital twins trained on email, meetings, and workplace systems so coverage, handoff, and institutional knowledge stop depending on who is in the seat.\n\n\"One twin covers the inbox that used to need a floor. When someone is out, the work does not open a ticket.\" — Aniket Bhattacharya & Feng Guo\n\n\"Boards will fund systems that make knowledge-worker concentration risk legible. A twin is a continuity control.\" — Hemant Taneja · General Catalyst\n\n#Kopy #DigitalTwins #FromStealth #WorkforceAI #InboxContinuity"
+  },
+  {
+    "id": "apsis-2026-08",
+    "companyName": "Apsis",
+    "headline": "Apsis Closes $40M Extension to Treat Low-Earth Orbit as an AI Compute Region",
+    "round": "$40M extension",
+    "newsType": "extension",
+    "description": "Orbital data-center agents for siting, power, thermal, and workload placement so model training and inference can run in LEO as a first-class region rather than a slide.",
+    "founderName": "Nathan Blum",
+    "founderTitle": "ex-SpaceX",
+    "founderQuote": "Autonomy in orbit without a power and cooling mandate is just uncontrolled capex. We treat LEO like a region with a fiduciary.",
+    "investorQuote": "Infrastructure categories that mint durable franchises now look like another GPU cloud. Apsis is a new region.",
+    "investorName": "Josh Wolfe",
+    "investorFirm": "Lux Capital",
+    "verticals": [
+      "Data Centers",
+      "Space Compute",
+      "Cloud Infra"
+    ],
+    "hashtags": [
+      "#Apsis",
+      "#OrbitalCompute",
+      "#TopUp",
+      "#SpaceInfra",
+      "#LEORegion"
+    ],
+    "image": "/images/startups/nathan-blum.jpg",
+    "date": "2026-08-24",
+    "xPost": "Apsis closes extension of $40M. Orbital data-center agents for siting, power, thermal, and workload placement so model training and inference can run in LEO as a first-class region rather than a slide.\n\n\"Autonomy in orbit without a power and cooling mandate is just uncontrolled capex. We treat LEO like a region with a fiduciary.\" — Nathan Blum\n\n\"Infrastructure categories that mint durable franchises now look like another GPU cloud. Apsis is a new region.\" — Josh Wolfe · Lux Capital\n\n#Apsis #OrbitalCompute #TopUp #SpaceInfra #LEORegion"
+  },
+  {
+    "id": "nodi-2026-08",
+    "companyName": "Nodi",
+    "headline": "Nodi Raises $41M Series A for Agent Runtimes That Live Next to the Machine",
+    "round": "$41M Series A",
+    "newsType": "raise",
+    "description": "Edge and on-prem runtimes for industrial and branch agents—model routing, local memory, and disconnected execution so work does not wait on a hyperscale region.",
+    "founderName": "Cheng Wu",
+    "founderTitle": "MIT dropout",
+    "founderQuote": "Enterprises do not need fifty cloud-only runtimes. They need a production surface that runs the agent next to the machine.",
+    "investorQuote": "Copilot seats in the office are a feature. Closed jobs on the factory floor and the branch closet are a company.",
+    "investorName": "Mark Rostick",
+    "investorFirm": "Intel Capital",
+    "verticals": [
+      "Edge Autonomy",
+      "GPU Infra",
+      "Cloud Ops"
+    ],
+    "hashtags": [
+      "#Nodi",
+      "#EdgeAI",
+      "#SeriesA",
+      "#OnPremAgents",
+      "#FactoryRuntime"
+    ],
+    "image": "/images/startups/cheng-wu.jpg",
+    "date": "2026-08-24",
+    "xPost": "Nodi raises $41M Series A. Edge and on-prem runtimes for industrial and branch agents—model routing, local memory, and disconnected execution so work does not wait on a hyperscale region.\n\n\"Enterprises do not need fifty cloud-only runtimes. They need a production surface that runs the agent next to the machine.\" — Cheng Wu\n\n\"Copilot seats in the office are a feature. Closed jobs on the factory floor and the branch closet are a company.\" — Mark Rostick · Intel Capital\n\n#Nodi #EdgeAI #SeriesA #OnPremAgents #FactoryRuntime"
+  },
+  {
+    "id": "ontol-2026-08",
+    "companyName": "Ontol",
+    "headline": "Ontol Raises $32M Series A for a Shared Enterprise Graph Agents Can Actually Trust",
+    "round": "$32M Series A",
+    "newsType": "raise",
+    "description": "A continuously updated knowledge graph that binds fragmented systems into one source of context so people and agents stop deciding from contradictory exports.",
+    "founderName": "Hui Zheng",
+    "founderTitle": "ex-Palantir",
+    "founderQuote": "Context is not a retrieval feature. It is how the enterprise will run when every agent shares one graph.",
+    "investorQuote": "Regulated buyers pay for a source of context that leaves a trail. Ontol is that graph, not another search box.",
+    "investorName": "Philippe Laffont",
+    "investorFirm": "Coatue",
+    "verticals": [
+      "Agent Memory",
+      "Data Platform",
+      "Knowledge Graph"
+    ],
+    "hashtags": [
+      "#Ontol",
+      "#KnowledgeGraph",
+      "#SeriesA",
+      "#EnterpriseContext",
+      "#SharedGraph"
+    ],
+    "image": "/images/startups/hui-zheng.jpg",
+    "date": "2026-08-24",
+    "xPost": "Ontol raises $32M Series A. A continuously updated knowledge graph that binds fragmented systems into one source of context so people and agents stop deciding from contradictory exports.\n\n\"Context is not a retrieval feature. It is how the enterprise will run when every agent shares one graph.\" — Hui Zheng\n\n\"Regulated buyers pay for a source of context that leaves a trail. Ontol is that graph, not another search box.\" — Philippe Laffont · Coatue\n\n#Ontol #KnowledgeGraph #SeriesA #EnterpriseContext #SharedGraph"
+  },
+  {
+    "id": "litho-2026-08",
+    "companyName": "Litho",
+    "headline": "Litho Wins $12M CHIPS Grant for Cryogenic Packaging Agents on a Domestic Fab Path",
+    "round": "$12M grant",
+    "newsType": "grant",
+    "description": "Packaging and process agents for quantum-adjacent and advanced-node lines—wafer-to-cryostat travelers, yield packs, and program-review trails so domestic fabs stop treating error-correction hardware as a lab demo.",
+    "founderName": "Ashish Tiwari",
+    "founderTitle": "Caltech dropout",
+    "founderQuote": "If the packaging cannot survive a government program review, it is a lab demo. We keep a wafer-to-cryostat trail.",
+    "investorQuote": "Domestic packaging is how the category actually gets funded when the check is non-dilutive.",
+    "investorName": "David Anderson",
+    "investorFirm": "CHIPS for America",
+    "verticals": [
+      "Semiconductors",
+      "Quantum",
+      "Deep Tech"
+    ],
+    "hashtags": [
+      "#Litho",
+      "#CHIPSGrant",
+      "#NonDilutive",
+      "#QuantumPackaging",
+      "#DomesticFab"
+    ],
+    "image": "/images/startups/ashish-tiwari.jpg",
+    "date": "2026-08-24",
+    "xPost": "Litho wins a grant of $12M. Packaging and process agents for quantum-adjacent and advanced-node lines—wafer-to-cryostat travelers, yield packs, and program-review trails so domestic fabs stop treating error-correction hardware as a lab demo.\n\n\"If the packaging cannot survive a government program review, it is a lab demo. We keep a wafer-to-cryostat trail.\" — Ashish Tiwari\n\n\"Domestic packaging is how the category actually gets funded when the check is non-dilutive.\" — David Anderson · CHIPS for America\n\n#Litho #CHIPSGrant #NonDilutive #QuantumPackaging #DomesticFab"
+  },
+  {
     "id": "fleetfix-2026-08",
     "companyName": "Fleetfix",
     "headline": "Fleetfix Raises $46M Series A as Founding Team Ships Robot Fleet Debug Agents",

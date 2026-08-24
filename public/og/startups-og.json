@@ -1,25 +1,25 @@
 {
-  "ogImage": "/og/startups-patchmill-spendstack-sealith.jpg",
+  "ogImage": "/og/startups-dray-revux-kopy.jpg",
   "ogImageLatest": "/og/startups-latest.jpg",
-  "ogImageAlt": "Latest Agentic AI Startup News: Patchmill · Spendstack · Sealith",
-  "description": "Patchmill ($68M Series B) · Spendstack ($51M Series A) · Sealith ($48M · Emerged from stealth). Living archive of satirical AI startup funding announcements on Airomatic.",
+  "ogImageAlt": "Latest Agentic AI Startup News: Dray · Revux · Kopy",
+  "description": "Dray ($64M Series B) · Revux ($45M Series A) · Kopy ($24M · Emerged from stealth). Living archive of satirical AI startup funding announcements on Airomatic.",
   "title": "Agentic AI Startup News",
   "companies": [
     {
-      "companyName": "Patchmill",
-      "round": "$68M Series B",
-      "id": "patchmill-2026-08"
+      "companyName": "Dray",
+      "round": "$64M Series B",
+      "id": "dray-2026-08"
     },
     {
-      "companyName": "Spendstack",
-      "round": "$51M Series A",
-      "id": "spendstack-2026-08"
+      "companyName": "Revux",
+      "round": "$45M Series A",
+      "id": "revux-2026-08"
     },
     {
-      "companyName": "Sealith",
-      "round": "$48M · Emerged from stealth",
-      "id": "sealith-2026-08"
+      "companyName": "Kopy",
+      "round": "$24M · Emerged from stealth",
+      "id": "kopy-2026-08"
     }
   ],
-  "generatedAt": "2026-08-11T21:28:10.482Z"
+  "generatedAt": "2026-08-24T19:41:19.793Z"
 }

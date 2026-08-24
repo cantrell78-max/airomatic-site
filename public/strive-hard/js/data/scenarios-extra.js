@@ -1,6 +1,6 @@
 /**
  * Extra chapter scenes — Zero-to-One Fellowship Intensive, Chinatown remittance, I Ching / wu wei.
- * Loaded via getScene() in scenarios.js. Parody; not a how-to or a documentary.
+ * Loaded via getScene() in scenarios.js.
  */
 
 function isMale(s) {
@@ -29,7 +29,7 @@ export const EXTRA_SCENES = {
         `Brick townhouse. Cedar. A bookshelf of **Zero to One** — multiple copies, some annotated, one that appears to have been… cherished. ` +
         `A printed schedule, tastefully kerned:\n\n` +
         `**ZERO-TO-ONE FELLOWSHIP INTENSIVE**\n` +
-        `(parody program · legally distinct from any real fellowship · spiritually adjacent to every off-record dinner you've heard about)\n\n` +
+        `(spiritually adjacent to every off-record dinner you've heard about)\n\n` +
         `• 10:00  Monopoly thesis breakfast\n` +
         `• 14:00  Chemistry meetings *(required)*\n` +
         `• 18:00  Alignment walks — towels in the guesthouse\n` +

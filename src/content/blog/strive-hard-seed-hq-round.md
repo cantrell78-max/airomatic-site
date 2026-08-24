@@ -31,7 +31,7 @@ So Chapter 1 still ends in free roam — but almost every run now has a **capita
 
 **New map pin** after you raise: **Mercury HQ**.
 
-Post-seed ritual, startup-banking satire. Partner-bank poetry, KYC next to your term-sheet selfie, a dashboard that makes the same number look more adult. AE **Zane** is a pure parody human (not a real employee) — same energy as Garry Chan vs. the real-world persona: brand is real, staff are fiction.
+Post-seed ritual, startup-banking theater. Partner-bank poetry, KYC next to your term-sheet selfie, a dashboard that makes the same number look more adult. AE **Zane** — same energy as Garry Chan: the brand is real, the staff are fiction.
 
 Inside the pitch you get the competitive set for free:
 
@@ -41,7 +41,6 @@ Inside the pitch you get the competitive set for free:
 
 Open **treasury only** or **full stack + cards**, optional yield-theater emails, then Soft HQ is calling.
 
-*Not affiliated with Mercury, Ramp, Slash, or anyone’s real SOC 2. Satire only — the Corgi playbook: real map pin, fake people, timeline bait.*
 
 ### 3. SoMa Soft HQ — where seed goes to die stylishly
 

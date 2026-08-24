@@ -17,7 +17,7 @@ We pointed Grok Build at a stupidly on-brand idea: what if **Leisure Suit Larry*
 
 - **Pick a founder** — 24-year-old tech bro, 29-year-old Asian woman CMO, 20-year-old Indian CS major, or 18-year-old Chinese math genius
 - **Scoreboard = your fake X account** — post selfies and funding rounds; watch followers and engagement climb (or die in the replies)
-- **iHype phone** (Pear Inc. parody) on the side — **X**, **Map**, **Texts**, and a **Selfie** composer
+- **iHype phone** (Pear Inc.) on the side — **X**, **Map**, **Texts**, and a **Selfie** composer
 - **Map the Bay** — Tenderloin studio, Vibe Code Café, hackathon, Y Combinator Startup School, Stanford, Garry Chan’s sauna, YC SUS yacht afterparty
 - **Texts** from roommates, mom, rival founders, dealflow associates, and VCs who keep inviting you to “put our heads together on some coding problems… on the yacht?”
 

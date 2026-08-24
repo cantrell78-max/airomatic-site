@@ -156,7 +156,7 @@ export const LOCATIONS = [
     name: "Zero-to-One Fellowship House",
     short: "Fellowship",
     emoji: "♟️",
-    desc: "Thiel-adjacent intensive. Curriculum TBD. Chemistry meetings scheduled. Parody — not the real Fellowship.",
+    desc: "Thiel-adjacent intensive. Curriculum TBD. Chemistry meetings scheduled.",
     unlockDay: 1,
     energyCost: 2,
     tags: ["peninsula", "vc", "series-a", "fellowship"],

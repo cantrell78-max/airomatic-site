@@ -218,37 +218,62 @@ export const SCENES = {
       } else if (s.flags.hasDirtyUsb) {
         side += `\n\nA USB in your sock drawer could topple three cap tables. Or get you disappeared.`;
       }
+      // Early money ops (exclusive unlock hints)
       if (s.flags.raisedSeed && !s.flags.clawAccount) {
         side += `\n\n**Map pin:** Mercury HQ — your seed is still in "vibes checking." Park the wire before Soft HQ burns it.`;
       } else if (s.flags.clawAccount && !s.flags.hqLeased) {
         side += `\n\n**Mercury:** treasury green. **Map:** SoMa Soft HQ — spend like a company toward **The Round**.`;
       } else if (s.flags.raisedSeed && !s.flags.hqLeased) {
         side += `\n\n**Map pin:** SoMa Soft HQ — spend the seed before it spends you. Path toward **The Round**.`;
-      } else if (s.flags.agenticContained) {
-        side += `\n\n**Agentic:** contained (secretly). **Wei** will text. You owe him.`;
-      } else if (s.flags.agenticTyranny) {
-        side += `\n\n**CRISIS:** Your Devin fleet is running the company. **Shenzhen** is on the Map.`;
-      } else if (s.flags.seriesAWired) {
-        side += `\n\n**Series A:** wired (Fellowship path). Mercury looks like a real company. Briefly.`;
+      }
+
+      // Round / Fellowship (stack — don't hide behind agentic)
+      if (s.flags.seriesAWired) {
+        side += `\n\n**Series A:** wired via Fellowship. Thiel weather broke into a deposit. Mercury looks almost adult.`;
+      } else if (s.flags.fellowshipCompleted && s.flags.keptBoundaries) {
+        side += `\n\n**Fellowship:** completed with boundaries. No wire. Still striving. The intensive is on your résumé as irony.`;
       } else if (
         s.flags.theRoundComplete &&
         !s.flags.fellowshipCompleted &&
         !s.flags.seriesAWired
       ) {
-        side += `\n\n**Map pin:** Zero-to-One Fellowship House — loose Series A requirement. Chemistry optional. Wire optional.`;
-      } else if (s.flags.oweWei && !s.flags.weiPaidOnce) {
-        side += `\n\n**魏欠债:** Chinatown **金门数码汇** can move USDT. Translate recommended.`;
-      } else if (s.flags.theRoundComplete && !s.flags.hiredDevinFleet) {
-        side += `\n\n**Map pin:** Cognition HQ — hire AI employees. What could go wrong?`;
-      } else if (s.flags.hiredDevinFleet && !s.flags.agenticTyranny) {
-        side += `\n\nYour **Devin fleet** is "shipping." Soft HQ has never been quieter. Suspicious.`;
-      } else if (s.flags.theRoundComplete) {
-        side += `\n\n**The Round** complete. Thiel weather continues.`;
+        side += `\n\n**Map pin:** Zero-to-One Fellowship House — Series A intensive. Chemistry optional. Wire optional.`;
       } else if (s.flags.theRoundUnlocked && !s.flags.theRoundStarted) {
         side += `\n\n**The Round** is unlocked — Series A theater (Spaces, flaky sheet, data room, board).`;
-      } else if (s.flags.theRoundStarted) {
+      } else if (s.flags.theRoundStarted && !s.flags.theRoundComplete) {
         side += `\n\nYou're mid-**Round**. LPs are circling. The glass box is both HQ and cage.`;
+      } else if (
+        s.flags.theRoundComplete &&
+        !s.flags.hiredDevinFleet &&
+        !s.flags.agenticContained &&
+        !s.flags.agenticTyranny
+      ) {
+        side += `\n\n**The Round** complete. **Map:** Cognition HQ — or Fellowship if you want a real wire.`;
       }
+
+      // Agentic / Wei / Chinatown (stack with Fellowship — not else-if against it)
+      if (s.flags.agenticTyranny && !s.flags.agenticContained) {
+        side += `\n\n**CRISIS:** Your Devin fleet is running the company. **Shenzhen** is on the Map.`;
+      } else if (s.flags.agenticContained) {
+        if (s.flags.weiPaidOnce) {
+          side += `\n\n**Agentic:** contained (secretly). **Wei:** U received once — favors still subscribe. Chinatown cat remembers you.`;
+        } else if (s.flags.oweWei) {
+          side += `\n\n**Agentic:** contained (secretly). **魏欠债:** Chinatown **金门数码汇** — USDT. Translate in Texts.`;
+        } else {
+          side += `\n\n**Agentic:** contained (secretly). **Wei** will text.`;
+        }
+      } else if (s.flags.oweWei && !s.flags.weiPaidOnce) {
+        side += `\n\n**魏欠债:** Chinatown **金门数码汇** can move USDT.`;
+      } else if (s.flags.hiredDevinFleet && !s.flags.agenticTyranny && !s.flags.agenticContained) {
+        side += `\n\nYour **Devin fleet** is "shipping." Soft HQ has never been quieter. Suspicious.`;
+      }
+
+      // I Ching / wu wei (independent)
+      if (s.flags.heardWuWei || s.flags.metIching) {
+        side += `\n\n**林清:** wu wei is in your texts. Effortless action upstairs from the remittance shop. Do not force the river.`;
+      }
+
+      // Temple (independent)
       if (s.flags.metPrema) {
         side += `\n\n**Temple:** Prema is in your texts. The carrot is optional. Map: **Hare Krishna Temple**.`;
       } else if (s.flags.raisedSeed || s.flags.declinedSeed || s.flags.metDevotee || s.flags.templeUnlocked) {
@@ -257,7 +282,9 @@ export const SCENES = {
       return (
         `Back in the box you call an apartment. Day ${s.day}. ` +
         `@${s.character.handle} sits at ${s.followers} followers` +
-        (s.flags.raisedSeed ? ` with **$${s.cash.toLocaleString()}** in the war chest` : "") +
+        (s.flags.raisedSeed || s.flags.seriesAWired
+          ? ` with **$${s.cash.toLocaleString()}** in the war chest`
+          : "") +
         `.\n\n` +
         `The roommate is doing yoga on a stolen yoga mat while on a "strategy call."` +
         flare +
@@ -460,6 +487,24 @@ export const SCENES = {
       if (s.flags.theRoundUnlocked && !s.flags.theRoundStarted) {
         extra +=
           "\n\n**The Round** is unlocked. Series A doesn't schedule itself (Avery would disagree).";
+      }
+      if (s.flags.seriesAWired) {
+        extra +=
+          "\n\n**Series A hangover:** the wire cleared. Reed may text. Thiel expects monopoly homework.";
+      } else if (s.flags.fellowshipCompleted && s.flags.keptBoundaries) {
+        extra +=
+          "\n\n**Fellowship hangover:** you kept the spine. No wire. Still striving.";
+      }
+      if (s.flags.weiPaidOnce) {
+        extra +=
+          "\n\n**Wei:** U landed once. Favors renew like a subscription. Chinatown optional revisit.";
+      } else if (s.flags.oweWei) {
+        extra +=
+          "\n\n**Wei:** still owed. Chinatown 金门数码汇 if you haven't remitted.";
+      }
+      if (s.flags.heardWuWei || s.flags.metIching) {
+        extra +=
+          "\n\n**林清:** a hexagram residue in the unread. 勿妄动 — or at least don't force the deck before coffee.";
       }
       if (s.flags.metPrema) {
         extra +=

@@ -156,6 +156,30 @@ export const NPCS = {
     gender: "male",
     spicy: false,
   },
+  reed: {
+    id: "reed",
+    name: "Reed Holt",
+    emoji: "🥂",
+    role: "Fellowship VC · chemistry meetings · founder-friendly heat",
+    gender: "male",
+    spicy: true,
+  },
+  lin: {
+    id: "lin",
+    name: "Lin Qing (林清)",
+    emoji: "📿",
+    role: "I Ching · wu wei · anti–Strive Hard",
+    gender: "unknown",
+    spicy: false,
+  },
+  ming: {
+    id: "ming",
+    name: "Ah Ming (阿明)",
+    emoji: "📱",
+    role: "Chinatown counter · USDT / 汇款 · 0冻结 energy",
+    gender: "male",
+    spicy: false,
+  },
 };
 
 /**
@@ -273,6 +297,9 @@ export function buildInitialThreads(character) {
     "wei",
     "swarm",
     "prema",
+    "reed",
+    "lin",
+    "ming",
   ]) {
     threads[id] = {
       npcId: id,

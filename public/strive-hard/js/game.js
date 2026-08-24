@@ -175,6 +175,41 @@ function runDayHooks(state) {
       flags: { ...next.flags, weatherTempleHint: true, templeUnlocked: true },
     };
   }
+  // Wei names Chinatown remittance once after containment
+  if (
+    next.flags.oweWei &&
+    next.flags.agenticContained &&
+    !next.flags.weiPaidOnce &&
+    !next.flags.chinatownHinted &&
+    next.day >= 1
+  ) {
+    next = {
+      ...next,
+      flags: { ...next.flags, chinatownHinted: true },
+    };
+    next = unlockThread(
+      next,
+      "wei",
+      "欠的别拖。旧金山唐人街——金门数码汇。USDT。别给我搞数字人民币。口令以后说。— 魏"
+    );
+  }
+  // Thiel fellowship tease after Round if not done
+  if (
+    next.flags.theRoundComplete &&
+    !next.flags.fellowshipCompleted &&
+    !next.flags.fellowshipTease &&
+    !next.flags.seriesAWired
+  ) {
+    next = {
+      ...next,
+      flags: { ...next.flags, fellowshipTease: true, fellowshipUnlocked: true },
+    };
+    next = unlockThread(
+      next,
+      "thiel",
+      "The Round was weather. There's a fellowship intensive — filter before wire. Chemistry meetings are… curricular. — PT"
+    );
+  }
   return next;
 }
 
@@ -193,6 +228,8 @@ function hubSceneFor(locationId) {
     "cognition-hq": "cognition_hub",
     "shenzhen-shop": "shenzhen_hub",
     "hare-krishna": "temple_hub",
+    "fellowship-house": "fellowship_hub",
+    chinatown: "chinatown_hub",
   };
   return hubs[locationId] || LOCATION_SCENES[locationId] || "home_hub";
 }
@@ -209,6 +246,18 @@ export function travelTo(state, locationId) {
         state,
         error:
           "Temple unlocks after the yacht seed decision — or via Lytton Plaza / a local \"seek spiritual\" option on any hub.",
+      };
+    }
+    if (locationId === "fellowship-house") {
+      return {
+        state,
+        error: "Finish The Round first — then the Fellowship intensive may unlock Series A.",
+      };
+    }
+    if (locationId === "chinatown") {
+      return {
+        state,
+        error: "Chinatown remittance unlocks after you owe Wei (Shenzhen containment).",
       };
     }
     return { state, error: "Not unlocked yet — keep grinding days & story flags." };
@@ -298,6 +347,13 @@ export function travelTo(state, locationId) {
     next.sceneId = "shenzhen_hub";
   } else if (locationId === "hare-krishna" && (state.flags.templeVisited || state.flags.metPrema)) {
     next.sceneId = "temple_hub";
+  } else if (
+    locationId === "fellowship-house" &&
+    (state.flags.fellowshipStarted || state.flags.fellowshipCompleted)
+  ) {
+    next.sceneId = "fellowship_hub";
+  } else if (locationId === "chinatown" && state.flags.visitedChinatown) {
+    next.sceneId = "chinatown_hub";
   } else {
     next.sceneId = sceneId;
   }

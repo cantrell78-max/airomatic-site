@@ -151,6 +151,26 @@ export const LOCATIONS = [
     energyCost: 1,
     tags: ["spiritual", "sf", "prema"],
   },
+  {
+    id: "fellowship-house",
+    name: "Zero-to-One Fellowship House",
+    short: "Fellowship",
+    emoji: "♟️",
+    desc: "Thiel-adjacent intensive. Curriculum TBD. Chemistry meetings scheduled. Parody — not the real Fellowship.",
+    unlockDay: 1,
+    energyCost: 2,
+    tags: ["peninsula", "vc", "series-a", "fellowship"],
+  },
+  {
+    id: "chinatown",
+    name: "Chinatown — 金门数码汇",
+    short: "Chinatown",
+    emoji: "🧧",
+    desc: "Phone cases upstairs, USDT whispers downstairs. Pay Wei. Optional: I Ching tea. Translate recommended.",
+    unlockDay: 1,
+    energyCost: 1,
+    tags: ["sf", "crypto", "wei", "iching"],
+  },
 ];
 
 export function getLocation(id) {
@@ -169,6 +189,12 @@ export function locationLockReason(loc, state) {
   if (loc.id === "shenzhen-shop") return "Survive the agent coup — then fly to Shenzhen";
   if (loc.id === "hare-krishna") {
     return "Unlocks after yacht seed decision — or Lytton Plaza / any post-seed hub path";
+  }
+  if (loc.id === "fellowship-house") {
+    return "Finish The Round first — then the Fellowship intensive (Series A theater)";
+  }
+  if (loc.id === "chinatown") {
+    return "Owe Wei after Shenzhen containment — then remit via Chinatown";
   }
   if (state.day < loc.unlockDay) return `Unlocks day ${loc.unlockDay}+`;
   return "Locked";
@@ -211,6 +237,23 @@ export function isLocationUnlocked(loc, state) {
       state.flags.metDevotee ||
       state.flags.raisedSeed ||
       state.flags.declinedSeed
+    );
+  }
+  if (loc.id === "fellowship-house") {
+    return !!(
+      state.flags.theRoundComplete ||
+      state.flags.fellowshipStarted ||
+      state.flags.fellowshipCompleted ||
+      state.flags.seriesAWired
+    );
+  }
+  if (loc.id === "chinatown") {
+    return !!(
+      state.flags.oweWei ||
+      state.flags.agenticContained ||
+      state.flags.chinatownRemitDone ||
+      state.flags.metIching ||
+      state.flags.visitedChinatown
     );
   }
   return true;

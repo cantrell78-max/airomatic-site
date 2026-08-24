@@ -82,6 +82,9 @@ export function loadState() {
       "wei",
       "swarm",
       "prema",
+      "reed",
+      "lin",
+      "ming",
     ]) {
       if (!data.threads[id]) {
         data.threads[id] = {

@@ -1,3 +1,5 @@
+import { EXTRA_SCENES } from "./scenarios-extra.js";
+
 /**
  * Story scenes — choose-your-own-adventure nodes.
  *
@@ -226,6 +228,16 @@ export const SCENES = {
         side += `\n\n**Agentic:** contained (secretly). **Wei** will text. You owe him.`;
       } else if (s.flags.agenticTyranny) {
         side += `\n\n**CRISIS:** Your Devin fleet is running the company. **Shenzhen** is on the Map.`;
+      } else if (s.flags.seriesAWired) {
+        side += `\n\n**Series A:** wired (Fellowship path). Mercury looks like a real company. Briefly.`;
+      } else if (
+        s.flags.theRoundComplete &&
+        !s.flags.fellowshipCompleted &&
+        !s.flags.seriesAWired
+      ) {
+        side += `\n\n**Map pin:** Zero-to-One Fellowship House — loose Series A requirement. Chemistry optional. Wire optional.`;
+      } else if (s.flags.oweWei && !s.flags.weiPaidOnce) {
+        side += `\n\n**魏欠债:** Chinatown **金门数码汇** can move USDT. Translate recommended.`;
       } else if (s.flags.theRoundComplete && !s.flags.hiredDevinFleet) {
         side += `\n\n**Map pin:** Cognition HQ — hire AI employees. What could go wrong?`;
       } else if (s.flags.hiredDevinFleet && !s.flags.agenticTyranny) {
@@ -302,6 +314,15 @@ export const SCENES = {
         next: "round_hub",
       },
       {
+        text: "Fellowship House — Series A intensive (Thiel-adjacent).",
+        require: (st) =>
+          st.flags.theRoundComplete || st.flags.fellowshipCompleted
+            ? true
+            : "Finish The Round first",
+        effects: { locationId: "fellowship-house" },
+        next: "fellowship_arrive",
+      },
+      {
         text: "Go agentic — Cognition HQ (AI employees).",
         require: (st) =>
           st.flags.theRoundComplete
@@ -318,6 +339,15 @@ export const SCENES = {
             : "Only after your agents revolt",
         effects: { locationId: "shenzhen-shop" },
         next: "shenzhen_arrive",
+      },
+      {
+        text: "Chinatown — pay Wei (USDT / 汇款).",
+        require: (st) =>
+          st.flags.oweWei || st.flags.agenticContained || st.flags.visitedChinatown
+            ? true
+            : "Survive Shenzhen containment first (owe Wei)",
+        effects: { locationId: "chinatown" },
+        next: "chinatown_arrive",
       },
       {
         text: "Doomscroll founder drama instead of healing.",
@@ -3376,6 +3406,15 @@ export const SCENES = {
         { hint: "Glass box → free feast · Soft HQ late night" }
       ),
       {
+        text: "Fellowship House — Series A intensive.",
+        require: (st) =>
+          st.flags.theRoundComplete || st.flags.fellowshipCompleted
+            ? true
+            : "Finish The Round first",
+        effects: { locationId: "fellowship-house" },
+        next: "fellowship_arrive",
+      },
+      {
         text: "Map — leave the glass box.",
         next: null,
       },
@@ -3848,13 +3887,23 @@ export const SCENES = {
           ? `You charmed the room. Something will come due — socially or on a cap table.\n\n`
           : `You played leverage. The board will remember.\n\n`) +
       `No full Series A wire yet — that's the joke. The Round is the weather system, not the closing dinner.\n\n` +
-      `**Next:** Cognition HQ is on the Map — contract a **Devin** fleet. AI employees. Guardrails. What could go wrong?\n\n` +
+      `**Next paths:**\n` +
+      `• **Zero-to-One Fellowship House** — Thiel-adjacent intensive. Loose "requirement" before a real wire. Chemistry meetings on the calendar.\n` +
+      `• **Cognition HQ** — contract a **Devin** fleet. AI employees. Guardrails. What could go wrong?\n\n` +
       `Free roam is open. Thiel is in your texts. The glass box still bills monthly.`,
     choices: [
       {
         text: "Continue free roam — the Bay isn't done.",
         effects: { flags: { theRoundComplete: true }, day: 1 },
         next: "home_hub",
+      },
+      {
+        text: "Enter the Fellowship intensive (Series A path).",
+        effects: {
+          flags: { theRoundComplete: true, fellowshipUnlocked: true },
+          locationId: "fellowship-house",
+        },
+        next: "fellowship_arrive",
       },
       {
         text: "Go agentic now — Cognition HQ.",
@@ -4563,6 +4612,7 @@ export const SCENES = {
       (s.flags.oweWeiDouble
         ? `You took the cheap package. The favor interest rate is criminal.\n\n`
         : `You paid more cash. The favor interest rate is merely aggressive.\n\n`) +
+      `**Map pin unlocked soon:** Chinatown **金门数码汇** — when Wei names a number, you remit via USDT theater.\n\n` +
       `Product still vapor. Headcount still mostly silicon. Story still fundraising weather.\n\n` +
       `Cash: **$${s.cash.toLocaleString()}**.`,
     choices: [
@@ -4570,6 +4620,11 @@ export const SCENES = {
         text: "Free roam. Wait for Wei's next text.",
         effects: { day: 1, locationId: "tenderloin" },
         next: "home_hub",
+      },
+      {
+        text: "Chinatown now — start the remittance.",
+        effects: { locationId: "chinatown" },
+        next: "chinatown_arrive",
       },
       {
         text: "Cognition lobby — glare at Lex.",
@@ -4654,7 +4709,7 @@ export const SCENES = {
 };
 
 export function getScene(id) {
-  return SCENES[id] ?? null;
+  return SCENES[id] ?? EXTRA_SCENES[id] ?? null;
 }
 
 /** Default scene when arriving at a location via map */
@@ -4674,4 +4729,6 @@ export const LOCATION_SCENES = {
   "cognition-hq": "cognition_arrive",
   "shenzhen-shop": "shenzhen_arrive",
   "hare-krishna": "temple_arrive",
+  "fellowship-house": "fellowship_arrive",
+  chinatown: "chinatown_arrive",
 };

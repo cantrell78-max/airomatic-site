@@ -1,0 +1,304 @@
+:root {
+  --black: #0a0608;
+  --ink: #f3e6c4;
+  --gold: #e0b43a;
+  --gold-2: #f8e7a0;
+  --amber: #ff9a1f;
+  --purple: #6b2d7a;
+  --bruise: #3a1a4a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--black);
+  color: var(--ink);
+  font-family: Oswald, sans-serif;
+}
+
+#game {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: min(100vh, calc(100vw * 9 / 16));
+  display: block;
+}
+
+.grain,
+.vignette {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+}
+.grain {
+  opacity: 0.18;
+  background-image: repeating-radial-gradient(
+    circle at 20% 30%,
+    rgba(255, 255, 255, 0.05) 0 1px,
+    transparent 1px 3px
+  );
+  mix-blend-mode: overlay;
+}
+.vignette {
+  box-shadow: inset 0 0 120px 28px rgba(8, 0, 6, 0.55);
+}
+
+#boot-error {
+  position: fixed;
+  z-index: 30;
+  left: 1rem;
+  bottom: 1rem;
+  color: #ff5577;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  display: none;
+}
+body[data-mode="title"] #screen-title {
+  display: block;
+  inset: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: min(100vh, calc(100vw * 9 / 16));
+  overflow: hidden;
+}
+body[data-mode="dead"] #screen-dead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body[data-mode="pause"] #screen-pause {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 6, 8, 0.55);
+  font-family: "New Rocker", serif;
+  font-size: 3rem;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+}
+
+.title {
+  background: linear-gradient(
+    90deg,
+    rgba(10, 6, 8, 0.82) 0 42%,
+    rgba(10, 6, 8, 0.15) 72%,
+    rgba(10, 6, 8, 0.4)
+  );
+}
+.title-art {
+  position: absolute;
+  inset: 0;
+  background: url("../assets/ui/title.jpg") center / cover no-repeat;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.title-card {
+  position: relative;
+  z-index: 1;
+  max-width: min(42rem, 92%);
+  padding: clamp(0.8rem, 6vh, 6vh) 5vw 1.2rem;
+}
+
+.eyebrow {
+  font-family: Oswald, sans-serif;
+  letter-spacing: 0.42em;
+  font-size: 0.78rem;
+  color: var(--amber);
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  font-family: "New Rocker", "Cinzel Decorative", serif;
+  font-size: clamp(2.6rem, 9vw, 7rem);
+  line-height: 0.86;
+  margin: 0;
+  background: linear-gradient(#fff4c4, #e0b43a 42%, #8a5a12 78%, #f8e7a0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 5px 0 #1a0800) drop-shadow(0 0 28px rgba(255, 154, 31, 0.45));
+}
+
+h2 {
+  font-family: "New Rocker", serif;
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  color: var(--gold);
+  margin: 0.2rem 0 0.4rem;
+}
+
+.subtitle {
+  font-family: "IM Fell English", serif;
+  font-style: italic;
+  font-size: clamp(1.15rem, 3vw, 1.7rem);
+  color: #f3e6c4;
+  margin: 1rem 0 1.6rem;
+  text-shadow: 0 2px 0 #000;
+}
+
+.title-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.btn {
+  font-family: Oswald, sans-serif;
+  letter-spacing: 0.14em;
+  font-size: 0.95rem;
+  border: 2px solid var(--gold);
+  background: transparent;
+  color: var(--gold-2);
+  padding: 0.7rem 1.1rem;
+  cursor: pointer;
+}
+.btn.gold {
+  background: linear-gradient(#c9a227, #7a4e10);
+  color: #1a0a00;
+  border-color: #f8e7a0;
+  font-weight: 700;
+}
+.btn.ghost:hover,
+.btn.gold:hover {
+  filter: brightness(1.15);
+}
+
+.how {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  width: min(32rem, 86%);
+  max-height: min(70%, 22rem);
+  overflow: auto;
+  background: rgba(10, 6, 8, 0.92);
+  border: 2px solid rgba(224, 180, 58, 0.65);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65), 0 0 28px rgba(224, 180, 58, 0.18);
+  padding: 0.95rem 1.15rem 1rem;
+}
+.how-title {
+  font-family: Oswald, sans-serif;
+  letter-spacing: 0.22em;
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin: 0 0 0.55rem;
+}
+.how ul {
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  font-family: "IM Fell English", serif;
+  line-height: 1.5;
+}
+kbd {
+  font-family: Oswald, sans-serif;
+  font-size: 0.78rem;
+  border: 1px solid var(--gold);
+  padding: 0 0.3rem;
+  color: var(--gold);
+}
+
+.hud {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 7;
+  padding: 0.55rem 1rem 0.4rem;
+  pointer-events: none;
+  font-family: Oswald, sans-serif;
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 0 #000;
+  gap: 1rem;
+  align-items: baseline;
+}
+body[data-mode="play"] .hud,
+body[data-mode="pause"] .hud {
+  display: flex;
+  flex-wrap: wrap;
+}
+.hud-brand {
+  font-family: "New Rocker", serif;
+  color: var(--gold);
+  font-size: 1.05rem;
+  margin-right: auto;
+}
+.hud-score b,
+.hud-best b {
+  display: block;
+  font-size: 1.35rem;
+  color: #fff4c4;
+}
+.hud-score span,
+.hud-best span {
+  font-size: 0.65rem;
+  color: var(--amber);
+}
+.hud-combo {
+  color: #ff9a1f;
+  font-size: 1.4rem;
+  min-width: 2rem;
+}
+.hud-trip {
+  width: 100%;
+  font-size: 0.78rem;
+  color: #d9b6ff;
+  letter-spacing: 0.22em;
+}
+.hud-lives {
+  font-size: 1.1rem;
+}
+
+.dead {
+  background: rgba(10, 6, 8, 0.72);
+}
+.over-score {
+  font-family: Oswald, sans-serif;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+
+.touch {
+  display: none;
+  position: fixed;
+  bottom: 0.8rem;
+  left: 0.6rem;
+  right: 0.6rem;
+  z-index: 9;
+  gap: 0.4rem;
+  align-items: center;
+}
+.touch button {
+  flex: 0 0 auto;
+  min-width: 3.4rem;
+  height: 3.4rem;
+  border: 2px solid var(--gold);
+  background: rgba(10, 6, 8, 0.55);
+  color: var(--gold);
+  font-family: Oswald, sans-serif;
+  letter-spacing: 0.08em;
+}
+.touch-spacer {
+  flex: 1;
+}
+@media (pointer: coarse) {
+  .touch {
+    display: flex;
+  }
+}

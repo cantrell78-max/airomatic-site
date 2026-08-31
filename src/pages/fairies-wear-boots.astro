@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Fairies Wear Boots"
+  description="A 2D side-scrolling stomp-platformer: tiny fairy, oversized steel-toe boots, a looping late-night English street that melts into a purple-black trip. Play free in the browser."
+  ogImage="/images/blog/fairies-wear-boots-og.jpg"
+  ogImageAlt="Fairies Wear Boots — occult-metal street stomp on airomatic.ai"
+>
+  <section class="fwb-page">
+    <iframe
+      class="fwb-frame"
+      src="/fairies-wear-boots/app.html"
+      title="Fairies Wear Boots — playable street stomp"
+      allow="fullscreen"
+      allowfullscreen
+    ></iframe>
+  </section>
+</BaseLayout>
+
+<style>
+  .fwb-page {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--header-h, 4rem));
+    margin: 0;
+    padding: 0;
+  }
+
+  .fwb-frame {
+    flex: 1;
+    width: 100%;
+    min-height: calc(100vh - var(--header-h, 4rem));
+    border: 0;
+    display: block;
+    background: #0a0608;
+  }
+</style>

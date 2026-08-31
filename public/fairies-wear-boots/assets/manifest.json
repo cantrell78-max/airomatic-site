@@ -1,0 +1,15 @@
+{
+  "fairyWalk": [
+    "assets/sprites/fairy/walk-001.png",
+    "assets/sprites/fairy/walk-002.png",
+    "assets/sprites/fairy/walk-003.png",
+    "assets/sprites/fairy/walk-004.png",
+    "assets/sprites/fairy/walk-005.png",
+    "assets/sprites/fairy/walk-006.png",
+    "assets/sprites/fairy/walk-007.png",
+    "assets/sprites/fairy/walk-008.png"
+  ],
+  "fps": {
+    "walk": 10
+  }
+}

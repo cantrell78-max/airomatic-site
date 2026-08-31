@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>FAIRIES WEAR BOOTS</title>
+    <meta name="description" content="Yeah, you gotta believe me. A late-night street, oversized boots, and a heavy riff." />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=IM+Fell+English:ital@0;1&family=New+Rocker&family=Oswald:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-mode="title">
+    <canvas id="game" width="960" height="540" aria-label="Fairies Wear Boots"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <p id="boot-error" hidden></p>
+
+    <section id="screen-title" class="overlay title">
+      <div class="title-art" aria-hidden="true"></div>
+      <div class="title-card">
+        <p class="eyebrow">LATE LAST NIGHT</p>
+        <h1>
+          FAIRIES<br />
+          WEAR BOOTS
+        </h1>
+        <p class="subtitle">Yeah, you gotta believe me.</p>
+        <div class="title-actions">
+          <button id="btn-start" class="btn gold" type="button">ENTER THE STREET</button>
+          <button id="btn-how" class="btn ghost" type="button" aria-expanded="false" aria-controls="how">
+            HOW TO STOMP
+          </button>
+          <button id="btn-mute" class="btn ghost" type="button">SOUND ON</button>
+        </div>
+      </div>
+      <div id="how" class="how" hidden>
+        <p class="how-title">HOW TO STOMP</p>
+        <ul>
+          <li><kbd>A</kbd><kbd>D</kbd> / arrows — move</li>
+          <li><kbd>Space</kbd> / <kbd>W</kbd> / <kbd>↑</kbd> — jump</li>
+          <li><kbd>J</kbd> / click — stomp-kick</li>
+          <li>Mash <kbd>J</kbd> in the air for a boot dance combo</li>
+          <li>Trip orbs flip gravity, stretch the street, or spawn extra fairies</li>
+          <li>Stomp the boot-boys. Kick the bottle spirits. Dance with whoever’s in the window.</li>
+        </ul>
+      </div>
+    </section>
+
+    <header id="hud" class="hud">
+      <div class="hud-brand">FAIRIES WEAR BOOTS</div>
+      <div class="hud-score">
+        <span>SCORE</span><b id="hud-score">000000</b>
+      </div>
+      <div class="hud-best">
+        <span>BEST</span><b id="hud-best">000000</b>
+      </div>
+      <div id="hud-combo" class="hud-combo"></div>
+      <div id="hud-lives" class="hud-lives">🥾🥾🥾</div>
+      <div id="hud-trip" class="hud-trip">NIGHT STREET</div>
+    </header>
+
+    <section id="screen-dead" class="overlay dead">
+      <div class="title-card">
+        <p class="eyebrow">DOWN THE COBBLES</p>
+        <h2>BOOTS OFF</h2>
+        <p class="subtitle">Yeah, you gotta believe me.</p>
+        <p class="over-score">SCORE <b id="over-score">000000</b></p>
+        <button id="btn-again" class="btn gold" type="button">WALK IT AGAIN</button>
+      </div>
+    </section>
+
+    <section id="screen-pause" class="overlay pause">
+      <p>PAUSED</p>
+    </section>
+
+    <div id="touch" class="touch">
+      <button id="btn-left" type="button">◀</button>
+      <button id="btn-right" type="button">▶</button>
+      <span class="touch-spacer"></span>
+      <button id="btn-jump" type="button">JUMP</button>
+      <button id="btn-kick" type="button">STOMP</button>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

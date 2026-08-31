@@ -1,25 +1,25 @@
 {
-  "ogImage": "/og/startups-dray-revux-kopy.jpg",
+  "ogImage": "/og/startups-venu-loadbank-practis.jpg",
   "ogImageLatest": "/og/startups-latest.jpg",
-  "ogImageAlt": "Latest Agentic AI Startup News: Dray · Revux · Kopy",
-  "description": "Dray ($64M Series B) · Revux ($45M Series A) · Kopy ($24M · Emerged from stealth). Living archive of satirical AI startup funding announcements on Airomatic.",
+  "ogImageAlt": "Latest Agentic AI Startup News: Venu · Loadbank · Practis",
+  "description": "Venu ($48M Series A) · Loadbank ($55M Series A) · Practis ($18M · Emerged from stealth). Living archive of satirical AI startup funding announcements on Airomatic.",
   "title": "Agentic AI Startup News",
   "companies": [
     {
-      "companyName": "Dray",
-      "round": "$64M Series B",
-      "id": "dray-2026-08"
+      "companyName": "Venu",
+      "round": "$48M Series A",
+      "id": "venu-2026-08"
     },
     {
-      "companyName": "Revux",
-      "round": "$45M Series A",
-      "id": "revux-2026-08"
+      "companyName": "Loadbank",
+      "round": "$55M Series A",
+      "id": "loadbank-2026-08"
     },
     {
-      "companyName": "Kopy",
-      "round": "$24M · Emerged from stealth",
-      "id": "kopy-2026-08"
+      "companyName": "Practis",
+      "round": "$18M · Emerged from stealth",
+      "id": "practis-2026-08"
     }
   ],
-  "generatedAt": "2026-08-24T19:41:19.793Z"
+  "generatedAt": "2026-08-31T20:59:46.945Z"
 }

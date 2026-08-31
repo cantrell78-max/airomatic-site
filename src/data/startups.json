@@ -1,5 +1,208 @@
 [
   {
+    "id": "venu-2026-08",
+    "companyName": "Venu",
+    "headline": "Venu Raises $48M Series A to Put Agents Behind the Counter at Local Shops",
+    "round": "$48M Series A",
+    "newsType": "raise",
+    "description": "Co-founders shipping voice, web, and POS agents for independent restaurants and retailers so phone orders, reservations, and inventory close without a second shift at the register.",
+    "founderName": "Nikhil Iyengar & Ayan Chatterjee",
+    "founderTitle": "ex-Shopify / ex-Toast",
+    "founderQuote": "One operator covers the lunch rush that used to take a floor. The phone is answered and the ticket is in the kitchen.",
+    "investorQuote": "Another website builder is a feature. Closed orders on the actual phone line are a company.",
+    "investorName": "Kirsten Green",
+    "investorFirm": "Forerunner Ventures",
+    "verticals": [
+      "Local Commerce",
+      "Voice AI",
+      "SMB Ops"
+    ],
+    "hashtags": [
+      "#Venu",
+      "#LocalCommerce",
+      "#ShopAgents",
+      "#PhoneOrdering",
+      "#MainStreetAI"
+    ],
+    "image": "/images/startups/venu-duo.jpg",
+    "date": "2026-08-31",
+    "xPost": "Venu raises $48M Series A. Co-founders shipping voice, web, and POS agents for independent restaurants and retailers so phone orders, reservations, and inventory close without a second shift at the register.\n\n\"One operator covers the lunch rush that used to take a floor. The phone is answered and the ticket is in the kitchen.\" — Nikhil Iyengar & Ayan Chatterjee\n\n\"Another website builder is a feature. Closed orders on the actual phone line are a company.\" — Kirsten Green · Forerunner Ventures\n\n#Venu #LocalCommerce #ShopAgents #PhoneOrdering #MainStreetAI"
+  },
+  {
+    "id": "loadbank-2026-08",
+    "companyName": "Loadbank",
+    "headline": "Loadbank Raises $55M Series A for Agents That Treat the Grid as a GPU Scheduler",
+    "round": "$55M Series A",
+    "newsType": "raise",
+    "description": "Placement and demand-response agents that sit between training clusters and the feeder, shedding and shifting load so data centers buy power the way they already buy flop capacity.",
+    "founderName": "Lei Han",
+    "founderTitle": "ex-NVIDIA",
+    "founderQuote": "Enterprises do not need fifty dashboards on megawatts. They need one production surface that schedules compute against the feeder.",
+    "investorQuote": "Boards will fund systems that make stranded power and stranded GPUs the same fiduciary problem.",
+    "investorName": "Clay Dumas",
+    "investorFirm": "Lowercarbon Capital",
+    "verticals": [
+      "Energy",
+      "Data Centers",
+      "Cloud Infra"
+    ],
+    "hashtags": [
+      "#Loadbank",
+      "#GridAI",
+      "#PowerForCompute",
+      "#DemandResponse",
+      "#WattOps"
+    ],
+    "image": "/images/startups/lei-han.jpg",
+    "date": "2026-08-31",
+    "xPost": "Loadbank raises $55M Series A. Placement and demand-response agents that sit between training clusters and the feeder, shedding and shifting load so data centers buy power the way they already buy flop capacity.\n\n\"Enterprises do not need fifty dashboards on megawatts. They need one production surface that schedules compute against the feeder.\" — Lei Han\n\n\"Boards will fund systems that make stranded power and stranded GPUs the same fiduciary problem.\" — Clay Dumas · Lowercarbon Capital\n\n#Loadbank #GridAI #PowerForCompute #DemandResponse #WattOps"
+  },
+  {
+    "id": "practis-2026-08",
+    "companyName": "Practis",
+    "headline": "Practis Emerges From Stealth With $18M to Clone Enterprise Software for Agent Rehearsal",
+    "round": "$18M · Emerged from stealth",
+    "newsType": "stealth",
+    "description": "Resettable digital twins of Salesforce, Workday, and the inbox so agents can fail a full workday of permissions and webhooks before they ever touch production.",
+    "founderName": "Kai Gao",
+    "founderTitle": "Carnegie Mellon dropout",
+    "founderQuote": "If an agent cannot survive a cloned Workday with the permissions graph intact, it is a demo. We sell rehearsal, not a sandbox API.",
+    "investorQuote": "The durable layer is the gym that looks like the enterprise, not another eval leaderboard.",
+    "investorName": "Peter Wagner",
+    "investorFirm": "Wing VC",
+    "verticals": [
+      "Agent Eval",
+      "Enterprise Apps",
+      "Agent Gyms"
+    ],
+    "hashtags": [
+      "#Practis",
+      "#AgentGyms",
+      "#SaaSTwins",
+      "#OutOfStealth",
+      "#ResettableERP"
+    ],
+    "image": "/images/startups/kai-gao.jpg",
+    "date": "2026-08-31",
+    "xPost": "Practis emerges from stealth with $18M. Resettable digital twins of Salesforce, Workday, and the inbox so agents can fail a full workday of permissions and webhooks before they ever touch production.\n\n\"If an agent cannot survive a cloned Workday with the permissions graph intact, it is a demo. We sell rehearsal, not a sandbox API.\" — Kai Gao\n\n\"The durable layer is the gym that looks like the enterprise, not another eval leaderboard.\" — Peter Wagner · Wing VC\n\n#Practis #AgentGyms #SaaSTwins #OutOfStealth #ResettableERP"
+  },
+  {
+    "id": "errand-2026-08",
+    "companyName": "Errand",
+    "headline": "Errand Raises $80M Series B at $1.8B to Let Household Agents Close the Errand",
+    "round": "$80M Series B at $1.8B",
+    "newsType": "raise",
+    "description": "A life-ops agent that books, pays, and cancels across grocery, travel, and subscriptions under a household spend mandate, with a permission trail for every action.",
+    "founderName": "Noah Stern",
+    "founderTitle": "ex-Stripe",
+    "founderQuote": "We do not sell another chat thread for your calendar. We sell the groceries purchased and the subscription actually cancelled.",
+    "investorQuote": "Household work is not a feature set. It is how domestic logistics will run.",
+    "investorName": "Joshua Kushner",
+    "investorFirm": "Thrive Capital",
+    "verticals": [
+      "Consumer Agents",
+      "Voice AI",
+      "Agentic Work"
+    ],
+    "hashtags": [
+      "#Errand",
+      "#LifeOps",
+      "#HouseholdAgents",
+      "#LateStage",
+      "#PermissionedSpend"
+    ],
+    "image": "/images/startups/noah-stern.jpg",
+    "date": "2026-08-31",
+    "xPost": "Errand raises $80M Series B at $1.8B. A life-ops agent that books, pays, and cancels across grocery, travel, and subscriptions under a household spend mandate, with a permission trail for every action.\n\n\"We do not sell another chat thread for your calendar. We sell the groceries purchased and the subscription actually cancelled.\" — Noah Stern\n\n\"Household work is not a feature set. It is how domestic logistics will run.\" — Joshua Kushner · Thrive Capital\n\n#Errand #LifeOps #HouseholdAgents #LateStage #PermissionedSpend"
+  },
+  {
+    "id": "packet-2026-08",
+    "companyName": "Packet",
+    "headline": "Packet Acquired by Marque in Estimated $95M Deal for Agentic Casework",
+    "round": "Acquired · est. $95M",
+    "newsType": "acquisition",
+    "description": "Investigation agents that assemble SAR-ready case packets across alerts, so fraud and compliance teams stop staffing a queue that now includes other agents as counterparties.",
+    "founderName": "Rohan Dalal",
+    "founderTitle": "ex-intern Plaid",
+    "founderQuote": "One investigator oversees the volume that used to take a night team. The packet is filed; the queue is not a dashboard.",
+    "investorQuote": "We bought a system that makes agent-speed fraud legible to a bank's mandate, not another alert widget.",
+    "investorName": "Dana Cho",
+    "investorFirm": "Marque",
+    "verticals": [
+      "Fincrime",
+      "Compliance",
+      "Investigations"
+    ],
+    "hashtags": [
+      "#Packet",
+      "#FincrimeAgents",
+      "#CaseOps",
+      "#Acquired",
+      "#SARQueue"
+    ],
+    "image": "/images/startups/rohan-dalal.jpg",
+    "date": "2026-08-31",
+    "xPost": "Packet is acquired in an estimated $95M deal. Investigation agents that assemble SAR-ready case packets across alerts, so fraud and compliance teams stop staffing a queue that now includes other agents as counterparties.\n\n\"One investigator oversees the volume that used to take a night team. The packet is filed; the queue is not a dashboard.\" — Rohan Dalal\n\n\"We bought a system that makes agent-speed fraud legible to a bank's mandate, not another alert widget.\" — Dana Cho · Marque\n\n#Packet #FincrimeAgents #CaseOps #Acquired #SARQueue"
+  },
+  {
+    "id": "motex-2026-08",
+    "companyName": "Motex",
+    "headline": "Motex Raises $28M Series A for Matter Agents That File the Motion",
+    "round": "$28M Series A",
+    "newsType": "raise",
+    "description": "Matter agents that draft, cite, and pack a review trail for motions and correspondence so mid-market firms stop treating generative output as an unfiled suggestion.",
+    "founderName": "Qing Luo",
+    "founderTitle": "Stanford dropout",
+    "founderQuote": "If a draft cannot survive partner review with citations intact, it is not filed. We ship a motion pack.",
+    "investorQuote": "Copilot-in-Word is a feature. Closed filings on the docket are a company.",
+    "investorName": "Byron Deeter",
+    "investorFirm": "Bessemer Venture Partners",
+    "verticals": [
+      "Legal AI",
+      "Matter Ops",
+      "Compliance"
+    ],
+    "hashtags": [
+      "#Motex",
+      "#LegalAI",
+      "#MotionPractice",
+      "#MatterAgents",
+      "#DocketTime"
+    ],
+    "image": "/images/startups/qing-luo.jpg",
+    "date": "2026-08-31",
+    "xPost": "Motex raises $28M Series A. Matter agents that draft, cite, and pack a review trail for motions and correspondence so mid-market firms stop treating generative output as an unfiled suggestion.\n\n\"If a draft cannot survive partner review with citations intact, it is not filed. We ship a motion pack.\" — Qing Luo\n\n\"Copilot-in-Word is a feature. Closed filings on the docket are a company.\" — Byron Deeter · Bessemer Venture Partners\n\n#Motex #LegalAI #MotionPractice #MatterAgents #DocketTime"
+  },
+  {
+    "id": "aliquot-2026-08",
+    "companyName": "Aliquot",
+    "headline": "Aliquot Raises $22M Seed as Founding Team Digitizes the Wet Lab for Model Training",
+    "round": "$22M Seed",
+    "newsType": "raise",
+    "description": "Founding team building bench agents that capture protocol, pipette, and instrument state so lab work becomes a resettable run instead of a notebook that models cannot train on.",
+    "founderName": "Tejas Naidu",
+    "founderTitle": "IIT Madras dropout",
+    "founderQuote": "The bench is not a camera problem. It is how experimental work will run when the model is in the loop.",
+    "investorQuote": "Regulated labs pay for a traveler from aliquot to result. If it cannot be audited, it is not training data.",
+    "investorName": "Robert Nelsen",
+    "investorFirm": "ARCH Venture Partners",
+    "verticals": [
+      "Healthtech",
+      "Lab Automation",
+      "Clinical Ops"
+    ],
+    "hashtags": [
+      "#Aliquot",
+      "#LabOps",
+      "#BenchToModel",
+      "#SeedRound",
+      "#ProtocolAgents"
+    ],
+    "image": "/images/startups/aliquot-team.jpg",
+    "date": "2026-08-31",
+    "xPost": "Aliquot raises $22M Seed. Founding team building bench agents that capture protocol, pipette, and instrument state so lab work becomes a resettable run instead of a notebook that models cannot train on.\n\n\"The bench is not a camera problem. It is how experimental work will run when the model is in the loop.\" — Tejas Naidu\n\n\"Regulated labs pay for a traveler from aliquot to result. If it cannot be audited, it is not training data.\" — Robert Nelsen · ARCH Venture Partners\n\n#Aliquot #LabOps #BenchToModel #SeedRound #ProtocolAgents"
+  },
+  {
     "id": "dray-2026-08",
     "companyName": "Dray",
     "headline": "Dray Raises $64M Series B as Founding Team Ships Freight Agents That Close the Dock",

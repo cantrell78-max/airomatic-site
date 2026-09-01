@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Gate Crash"
+  description="Steer a barge wrecking ball through the Golden Gate. Teslas on the span count extra. Play free in the browser."
+  ogImage="/images/blog/gate-crash-og.jpg"
+  ogImageAlt="Gate Crash — barge wrecking ball at the Golden Gate on airomatic.ai"
+>
+  <section class="gc-page">
+    <iframe
+      class="gc-frame"
+      src="/gate-crash/app.html"
+      title="Gate Crash — wrecking ball at the Golden Gate"
+      allow="fullscreen"
+      allowfullscreen
+    ></iframe>
+  </section>
+</BaseLayout>
+
+<style>
+  .gc-page {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--header-h, 4rem));
+    margin: 0;
+    padding: 0;
+  }
+
+  .gc-frame {
+    flex: 1;
+    width: 100%;
+    min-height: calc(100vh - var(--header-h, 4rem));
+    border: 0;
+    display: block;
+    background: #071018;
+  }
+</style>

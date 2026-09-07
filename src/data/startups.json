@@ -1,5 +1,208 @@
 [
   {
+    "id": "punchlist-2026-09",
+    "date": "2026-09-07",
+    "companyName": "Punchlist",
+    "headline": "Punchlist Raises $36M Series A as Co-Founders Put Agents on the Jobsite Punch List",
+    "round": "$36M Series A",
+    "newsType": "raise",
+    "description": "Co-founders shipping field agents that close RFIs, inspections, and punch items across drawings and GC software so general contractors stop staffing a trailer queue that never empties.",
+    "founderName": "Yiran Ma & Cole Brennan",
+    "founderTitle": "Berkeley dropout / ex-Procore",
+    "founderQuote": "We do not sell another site dashboard. We sell the punch item closed and the inspection signed.",
+    "investorQuote": "Jobsite work is how field construction will run, not another RFI inbox.",
+    "investorName": "Brendan Wallace",
+    "investorFirm": "Fifth Wall",
+    "verticals": [
+      "Construction AI",
+      "Field Ops",
+      "Agentic Ops"
+    ],
+    "hashtags": [
+      "#Punchlist",
+      "#JobsiteAgents",
+      "#ConstructionAI",
+      "#ClosedInspections",
+      "#FieldOps"
+    ],
+    "xPost": "Punchlist raises $36M Series A. Co-founders shipping field agents that close RFIs, inspections, and punch items across drawings and GC software so general contractors stop staffing a trailer queue that never empties.\n\n\"We do not sell another site dashboard. We sell the punch item closed and the inspection signed.\" — Yiran Ma & Cole Brennan\n\n\"Jobsite work is how field construction will run, not another RFI inbox.\" — Brendan Wallace · Fifth Wall\n\n#Punchlist #JobsiteAgents #ConstructionAI #ClosedInspections #FieldOps",
+    "image": "/images/startups/punchlist-duo.jpg"
+  },
+  {
+    "id": "klinq-2026-09",
+    "date": "2026-09-07",
+    "companyName": "Klinq",
+    "headline": "Klinq Raises $22M Series A for Voice Agents That Book the Clinic Slot",
+    "round": "$22M Series A",
+    "newsType": "raise",
+    "description": "Front-office agents that answer, triage, and write the appointment into the EHR so orthopedic and specialty clinics stop losing the after-hours call to voicemail.",
+    "founderName": "Rajat Parmar",
+    "founderTitle": "IIT Delhi dropout",
+    "founderQuote": "One front-desk operator covers the call volume that used to take a night rotation. The appointment is on the calendar.",
+    "investorQuote": "Clinics do not need fifty intake bots. They need one production surface that books the slot.",
+    "investorName": "Vijay Pande",
+    "investorFirm": "a16z Bio + Health",
+    "verticals": [
+      "Healthtech",
+      "Voice AI",
+      "Clinical Ops"
+    ],
+    "hashtags": [
+      "#Klinq",
+      "#ClinicVoice",
+      "#FrontDeskAI",
+      "#PatientBooking",
+      "#HealthOps"
+    ],
+    "xPost": "Klinq raises $22M Series A. Front-office agents that answer, triage, and write the appointment into the EHR so orthopedic and specialty clinics stop losing the after-hours call to voicemail.\n\n\"One front-desk operator covers the call volume that used to take a night rotation. The appointment is on the calendar.\" — Rajat Parmar\n\n\"Clinics do not need fifty intake bots. They need one production surface that books the slot.\" — Vijay Pande · a16z Bio + Health\n\n#Klinq #ClinicVoice #FrontDeskAI #PatientBooking #HealthOps",
+    "image": "/images/startups/rajat-parmar.jpg"
+  },
+  {
+    "id": "vetora-2026-09",
+    "date": "2026-09-07",
+    "companyName": "Vetora",
+    "headline": "Vetora Emerges From Stealth With $42M to Permit Every Skill an Agent Installs",
+    "round": "$42M · Emerged from stealth",
+    "newsType": "stealth",
+    "description": "A continuous permit layer for agent skills, plugins, and MCP servers, with a marketplace of add-ons that must pass SOC 2 as non-human employees before they load into the fleet.",
+    "founderName": "Xin Liang",
+    "founderTitle": "MIT dropout / ex-intern CrowdStrike",
+    "founderQuote": "If a skill cannot survive SOC 2 as a non-human employee, it is a demo. We issue the permit, not a scanner report.",
+    "investorQuote": "Boards will fund the control plane that makes agent add-ons a fiduciary problem, not an IT ticket.",
+    "investorName": "Tomasz Tunguz",
+    "investorFirm": "Theory Ventures",
+    "verticals": [
+      "Agent Identity",
+      "Agent Governance",
+      "Security"
+    ],
+    "hashtags": [
+      "#Vetora",
+      "#SkillSupplyChain",
+      "#AgentPermits",
+      "#StealthRaise",
+      "#PluginAllowlist"
+    ],
+    "xPost": "Vetora emerges from stealth with $42M. A continuous permit layer for agent skills, plugins, and MCP servers, with a marketplace of add-ons that must pass SOC 2 as non-human employees before they load into the fleet.\n\n\"If a skill cannot survive SOC 2 as a non-human employee, it is a demo. We issue the permit, not a scanner report.\" — Xin Liang\n\n\"Boards will fund the control plane that makes agent add-ons a fiduciary problem, not an IT ticket.\" — Tomasz Tunguz · Theory Ventures\n\n#Vetora #SkillSupplyChain #AgentPermits #StealthRaise #PluginAllowlist",
+    "image": "/images/startups/xin-liang.jpg"
+  },
+  {
+    "id": "dossier-2026-09",
+    "date": "2026-09-07",
+    "companyName": "Dossier",
+    "headline": "Dossier Raises $31M Series A as Founding Team Files the Intelligence Case",
+    "round": "$31M Series A",
+    "newsType": "raise",
+    "description": "Founding team building investigation agents that assemble classified-ready case files across SIGINT, OSINT, and partner feeds so national-security desks stop staffing a queue that now includes other agents as collectors.",
+    "founderName": "Harish Batra",
+    "founderTitle": "ex-Palantir",
+    "founderQuote": "Autonomy without classification context is just uncontrolled collection. The file is closed under the mandate.",
+    "investorQuote": "Regulated buyers pay for investigation systems that leave a trail an inspector can actually open.",
+    "investorName": "Joe Lonsdale",
+    "investorFirm": "8VC",
+    "verticals": [
+      "GovTech",
+      "Defense",
+      "Investigations"
+    ],
+    "hashtags": [
+      "#Dossier",
+      "#GovTech",
+      "#IntelCasework",
+      "#ClassifiedOps",
+      "#MatterFiles"
+    ],
+    "xPost": "Dossier raises $31M Series A. Founding team building investigation agents that assemble classified-ready case files across SIGINT, OSINT, and partner feeds so national-security desks stop staffing a queue that now includes other agents as collectors.\n\n\"Autonomy without classification context is just uncontrolled collection. The file is closed under the mandate.\" — Harish Batra\n\n\"Regulated buyers pay for investigation systems that leave a trail an inspector can actually open.\" — Joe Lonsdale · 8VC\n\n#Dossier #GovTech #IntelCasework #ClassifiedOps #MatterFiles",
+    "image": "/images/startups/dossier-team.jpg"
+  },
+  {
+    "id": "attache-2026-09",
+    "date": "2026-09-07",
+    "companyName": "Attache",
+    "headline": "Attache Raises $14M Seed for an Executive Agent That Closes the Calendar",
+    "round": "$14M Seed",
+    "newsType": "raise",
+    "description": "A chief-of-staff agent that schedules, delegates, and files travel and expenses under an executive mandate, with a permission trail for every booking.",
+    "founderName": "Ezra Nussbaum",
+    "founderTitle": "ex-Stripe",
+    "founderQuote": "One chief of staff oversees the calendar load that used to take a floor of coordinators. The trip is booked.",
+    "investorQuote": "Copilot-in-inbox is a feature. Closed meetings and filed expenses are a company.",
+    "investorName": "Albert Wenger",
+    "investorFirm": "Union Square Ventures",
+    "verticals": [
+      "Workplace Agents",
+      "Voice AI",
+      "Agentic Work"
+    ],
+    "hashtags": [
+      "#Attache",
+      "#ExecOps",
+      "#ChiefOfStaffAI",
+      "#CalendarClose",
+      "#WorkplaceAgents"
+    ],
+    "xPost": "Attache raises $14M Seed. A chief-of-staff agent that schedules, delegates, and files travel and expenses under an executive mandate, with a permission trail for every booking.\n\n\"One chief of staff oversees the calendar load that used to take a floor of coordinators. The trip is booked.\" — Ezra Nussbaum\n\n\"Copilot-in-inbox is a feature. Closed meetings and filed expenses are a company.\" — Albert Wenger · Union Square Ventures\n\n#Attache #ExecOps #ChiefOfStaffAI #CalendarClose #WorkplaceAgents",
+    "image": "/images/startups/ezra-nussbaum.jpg"
+  },
+  {
+    "id": "bathy-2026-09",
+    "date": "2026-09-07",
+    "companyName": "Bathy",
+    "headline": "Bathy Raises $18M Seed for Agents That Keep the Seabed Chart Current",
+    "round": "$18M Seed",
+    "newsType": "raise",
+    "description": "Survey agents that fuse sonar, ROV, and cable-route data into a living seabed twin so ports, energy operators, and telecoms plan berths and repairs against the actual floor, not last year's PDF.",
+    "founderName": "Vineet Sundaram",
+    "founderTitle": "ex-intern NVIDIA",
+    "founderQuote": "Ports do not need fifty survey PDFs. They need one production surface that keeps the seabed current.",
+    "investorQuote": "The layer the market consolidates on is a living chart, not another sonar gallery.",
+    "investorName": "Matt Ocko",
+    "investorFirm": "DCVC",
+    "verticals": [
+      "Maritime AI",
+      "Energy",
+      "Logistics"
+    ],
+    "hashtags": [
+      "#Bathy",
+      "#SubseaAI",
+      "#PortCharts",
+      "#CableRoutes",
+      "#MaritimeOps"
+    ],
+    "xPost": "Bathy raises $18M Seed. Survey agents that fuse sonar, ROV, and cable-route data into a living seabed twin so ports, energy operators, and telecoms plan berths and repairs against the actual floor, not last year's PDF.\n\n\"Ports do not need fifty survey PDFs. They need one production surface that keeps the seabed current.\" — Vineet Sundaram\n\n\"The layer the market consolidates on is a living chart, not another sonar gallery.\" — Matt Ocko · DCVC\n\n#Bathy #SubseaAI #PortCharts #CableRoutes #MaritimeOps",
+    "image": "/images/startups/vineet-sundaram.jpg"
+  },
+  {
+    "id": "quotex-2026-09",
+    "date": "2026-09-07",
+    "companyName": "Quotex",
+    "headline": "Quotex Announces $35M Secondary as Revenue Agents Hit Early Liquidity",
+    "round": "$35M secondary",
+    "newsType": "secondary",
+    "description": "Revenue agents that run the next step in outbound, forecast, and close so mid-market GTM teams stop treating pipeline as a dashboard the AE has to refresh.",
+    "founderName": "Yi Pan",
+    "founderTitle": "ex-Salesforce",
+    "founderQuote": "Pipeline work is not a feature set. It is how revenue teams will run when the agent owns the next step.",
+    "investorQuote": "Secondary buyers will fund systems that make quota risk legible to a board, not another forecast widget.",
+    "investorName": "Marc Stad",
+    "investorFirm": "Dragoneer Investment Group",
+    "verticals": [
+      "Agentic GTM",
+      "Sales Ops",
+      "Revenue Agents"
+    ],
+    "hashtags": [
+      "#Quotex",
+      "#RevenueAgents",
+      "#QuotaOps",
+      "#SecondaryRound",
+      "#GTMExecution"
+    ],
+    "xPost": "Quotex announces a secondary of $35M. Revenue agents that run the next step in outbound, forecast, and close so mid-market GTM teams stop treating pipeline as a dashboard the AE has to refresh.\n\n\"Pipeline work is not a feature set. It is how revenue teams will run when the agent owns the next step.\" — Yi Pan\n\n\"Secondary buyers will fund systems that make quota risk legible to a board, not another forecast widget.\" — Marc Stad · Dragoneer Investment Group\n\n#Quotex #RevenueAgents #QuotaOps #SecondaryRound #GTMExecution",
+    "image": "/images/startups/yi-pan.jpg"
+  },
+  {
     "id": "venu-2026-08",
     "companyName": "Venu",
     "headline": "Venu Raises $48M Series A to Put Agents Behind the Counter at Local Shops",

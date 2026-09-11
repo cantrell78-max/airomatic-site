@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Freedom Eagle"
+  description="They picked the wrong roof. Blonde commando, Twin Towers, 747s, red-white-blue lasers. Play free in the browser."
+  ogImage="/images/blog/freedom-eagle-og.jpg"
+  ogImageAlt="Freedom Eagle — rooftop commando over New York, 2001, on airomatic.ai"
+>
+  <section class="fe-page">
+    <iframe
+      class="fe-frame"
+      src="/freedom-eagle/app.html"
+      title="Freedom Eagle — playable rooftop shooter"
+      allow="fullscreen"
+      allowfullscreen
+    ></iframe>
+  </section>
+</BaseLayout>
+
+<style>
+  .fe-page {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--header-h, 4rem));
+    margin: 0;
+    padding: 0;
+  }
+
+  .fe-frame {
+    flex: 1;
+    width: 100%;
+    min-height: calc(100vh - var(--header-h, 4rem));
+    border: 0;
+    display: block;
+    background: #071433;
+  }
+</style>

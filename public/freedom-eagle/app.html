@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>FREEDOM EAGLE</title>
+    <meta name="description" content="They picked the wrong roof. New York City, 2001." />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Black+Ops+One&family=Oswald:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-mode="title">
+    <canvas id="game" width="960" height="540" aria-label="Freedom Eagle"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="stripes" aria-hidden="true"></div>
+
+    <p id="boot-error" hidden></p>
+
+    <section id="screen-title" class="overlay title">
+      <div class="title-art" aria-hidden="true"></div>
+      <div class="title-card">
+        <p class="eyebrow">NEW YORK CITY · 2001</p>
+        <h1>FREEDOM<br />EAGLE</h1>
+        <p class="subtitle">They picked the wrong roof.</p>
+        <div class="title-actions">
+          <button id="btn-start" class="btn gold" type="button">DEFEND AMERICA</button>
+          <button id="btn-how" class="btn ghost" type="button" aria-expanded="false" aria-controls="how">
+            HOW TO FIGHT
+          </button>
+          <button id="btn-mute" class="btn ghost" type="button">SOUND ON</button>
+        </div>
+      </div>
+      <div id="how" class="how" hidden>
+        <p class="how-title">HOW TO FIGHT</p>
+        <ul>
+          <li><kbd>A</kbd><kbd>D</kbd> / arrows — run the rooftops</li>
+          <li><kbd>W</kbd> / <kbd>↑</kbd> — jump the girder</li>
+          <li>Mouse aim · hold click / <kbd>Space</kbd> / <kbd>J</kbd> — red white blue lasers</li>
+          <li>Shoot down the 747s before they hit the towers</li>
+          <li>They come faster. They come thicker. Do not let a tower fall.</li>
+          <li><kbd>P</kbd> pause · <kbd>M</kbd> mute</li>
+        </ul>
+      </div>
+    </section>
+
+    <header id="hud" class="hud">
+      <div class="hud-brand">FREEDOM EAGLE</div>
+      <div class="hud-score">
+        <span>SCORE</span><b id="hud-score">000000</b>
+      </div>
+      <div class="hud-best">
+        <span>BEST</span><b id="hud-best">000000</b>
+      </div>
+      <div class="hud-wave">
+        <span>WAVE</span><b id="hud-wave">01</b>
+      </div>
+      <div id="hud-combo" class="hud-combo"></div>
+      <div class="hud-towers">
+        <div class="hp">
+          <span>NORTH</span>
+          <div class="hp-track"><i id="hp-north"></i></div>
+        </div>
+        <div class="hp">
+          <span>SOUTH</span>
+          <div class="hp-track"><i id="hp-south"></i></div>
+        </div>
+      </div>
+    </header>
+
+    <section id="screen-dead" class="overlay dead">
+      <div class="title-card">
+        <p class="eyebrow">TOWER DOWN</p>
+        <h2>AMERICA NEEDS YOU</h2>
+        <p class="subtitle">Get back on that roof.</p>
+        <p class="over-score">SCORE <b id="over-score">000000</b></p>
+        <button id="btn-again" class="btn gold" type="button">FIGHT AGAIN</button>
+      </div>
+    </section>
+
+    <section id="screen-pause" class="overlay pause">
+      <p>PAUSED</p>
+    </section>
+
+    <div id="touch" class="touch">
+      <button id="btn-left" type="button">◀</button>
+      <button id="btn-right" type="button">▶</button>
+      <span class="touch-spacer"></span>
+      <button id="btn-jump" type="button">JUMP</button>
+      <button id="btn-kick" type="button">FIRE</button>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

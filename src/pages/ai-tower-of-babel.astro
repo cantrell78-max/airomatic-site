@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="AI Tower of Babel"
+  description="Stack glitchy rainbow AI companies in Silicon Valley. Reach the stars. Become God. Flood, comets, and lightning will try to knock you down. Play free in the browser."
+  ogImage="/images/blog/ai-tower-of-babel-og.jpg"
+  ogImageAlt="AI Tower of Babel — rainbow company tower under wrath in Silicon Valley, on airomatic.ai"
+>
+  <section class="babel-page">
+    <iframe
+      class="babel-frame"
+      src="/ai-tower-of-babel/app.html"
+      title="AI Tower of Babel — playable stacking game"
+      allow="fullscreen"
+      allowfullscreen
+    ></iframe>
+  </section>
+</BaseLayout>
+
+<style>
+  .babel-page {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--header-h, 4rem));
+    margin: 0;
+    padding: 0;
+  }
+
+  .babel-frame {
+    flex: 1;
+    width: 100%;
+    min-height: calc(100vh - var(--header-h, 4rem));
+    border: 0;
+    display: block;
+    background: #14061f;
+  }
+</style>

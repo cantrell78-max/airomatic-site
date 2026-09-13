@@ -33,6 +33,7 @@ Copy `env.example` to `.env` and fill in:
 | `/blog/` | Markdown posts in `src/content/blog/` |
 | `/about` | Founder story + Airomatic legacy |
 | `/contact` | Form + links |
+| `/ai-tower-of-babel/` | AI Tower of Babel (browser game) |
 
 ## Deploy
 

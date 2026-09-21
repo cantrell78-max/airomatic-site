@@ -1,5 +1,208 @@
 [
   {
+    "id": "assurly-2026-09",
+    "date": "2026-09-21",
+    "companyName": "Assurly",
+    "headline": "Assurly Raises $36M Series A to Certify and Insure Enterprise Agents",
+    "round": "$36M Series A",
+    "newsType": "raise",
+    "description": "Certifies enterprise agents against a control standard and binds a fleet-style policy to the non-human workforce, so a deployment can ship with a certificate and a carrier behind it.",
+    "founderName": "Mohit Thakkar",
+    "founderTitle": "Stanford dropout",
+    "founderQuote": "A control review that cannot be handed to a carrier is still a demo. We ship the certificate and the policy together.",
+    "investorQuote": "Residual risk has to sit somewhere a board can name. The policy is the instrument.",
+    "investorName": "Meyer Malka",
+    "investorFirm": "Ribbit Capital",
+    "verticals": [
+      "Agent Assurance",
+      "Insurtech",
+      "Regulated AI"
+    ],
+    "hashtags": [
+      "#Assurly",
+      "#AgentAssurance",
+      "#RoundA",
+      "#BinderReady",
+      "#NonHumanStaff"
+    ],
+    "xPost": "Assurly raises $36M Series A. Certifies enterprise agents against a control standard and binds a fleet-style policy to the non-human workforce, so a deployment can ship with a certificate and a carrier behind it.\n\n\"A control review that cannot be handed to a carrier is still a demo. We ship the certificate and the policy together.\" \u2014 Mohit Thakkar\n\n\"Residual risk has to sit somewhere a board can name. The policy is the instrument.\" \u2014 Meyer Malka \u00b7 Ribbit Capital\n\n#Assurly #AgentAssurance #RoundA #BinderReady #NonHumanStaff",
+    "image": "/images/startups/mohit-thakkar.jpg"
+  },
+  {
+    "id": "drawcore-2026-09",
+    "date": "2026-09-21",
+    "companyName": "Drawcore",
+    "headline": "Drawcore Raises $27M Series A as Founding Team Staffs the Bank Core",
+    "round": "$27M Series A",
+    "newsType": "raise",
+    "description": "Founding team placing agents inside a bank's existing core to move consumer credit files \u2014 intake, stipulations, and booking \u2014 without ripping out the system of record.",
+    "founderName": "Atul Saxena",
+    "founderTitle": "ex-intern Stripe",
+    "founderQuote": "If the file is still waiting on a human to retype it into the core, the agent did not finish.",
+    "investorQuote": "Credit committees fund tools that post through the core they already trust.",
+    "investorName": "Aaref Hilaly",
+    "investorFirm": "Bain Capital Ventures",
+    "verticals": [
+      "Banking Ops",
+      "Fintech",
+      "Agentic Work"
+    ],
+    "hashtags": [
+      "#Drawcore",
+      "#BankingOps",
+      "#RoundA",
+      "#CorePosting",
+      "#CreditFile"
+    ],
+    "xPost": "Drawcore raises $27M Series A. Founding team placing agents inside a bank's existing core to move consumer credit files \u2014 intake, stipulations, and booking \u2014 without ripping out the system of record.\n\n\"If the file is still waiting on a human to retype it into the core, the agent did not finish.\" \u2014 Atul Saxena\n\n\"Credit committees fund tools that post through the core they already trust.\" \u2014 Aaref Hilaly \u00b7 Bain Capital Ventures\n\n#Drawcore #BankingOps #RoundA #CorePosting #CreditFile",
+    "image": "/images/startups/drawcore-team.jpg"
+  },
+  {
+    "id": "patchyard-2026-09",
+    "date": "2026-09-21",
+    "companyName": "Patchyard",
+    "headline": "Patchyard Raises $42M Series A to Turn Coding Agents into a Software Factory",
+    "round": "$42M Series A",
+    "newsType": "raise",
+    "description": "Co-founders building the production system around coding agents, so spec, patch, test, and release run as one factory the engineering organization operates.",
+    "founderName": "Ling Song & Colin Mercer",
+    "founderTitle": "ex-intern Meta AI / ex-GitHub",
+    "founderQuote": "Suggestions in a sidebar do not ship the release. The factory does.",
+    "investorQuote": "The market is past the single coding agent. It is paying for the system the engineering org actually runs.",
+    "investorName": "Aydin Senkut",
+    "investorFirm": "Felicis",
+    "verticals": [
+      "Software Factory",
+      "Coding Agents",
+      "Dev Tools"
+    ],
+    "hashtags": [
+      "#Patchyard",
+      "#SoftwareFactory",
+      "#RoundA",
+      "#EngOrg",
+      "#ReleaseTrain"
+    ],
+    "xPost": "Patchyard raises $42M Series A. Co-founders building the production system around coding agents, so spec, patch, test, and release run as one factory the engineering organization operates.\n\n\"Suggestions in a sidebar do not ship the release. The factory does.\" \u2014 Ling Song & Colin Mercer\n\n\"The market is past the single coding agent. It is paying for the system the engineering org actually runs.\" \u2014 Aydin Senkut \u00b7 Felicis\n\n#Patchyard #SoftwareFactory #RoundA #EngOrg #ReleaseTrain",
+    "image": "/images/startups/patchyard-duo.jpg"
+  },
+  {
+    "id": "rezum-2026-09",
+    "date": "2026-09-21",
+    "companyName": "Rezum",
+    "headline": "Rezum Raises $58M Series B for Agent Runs That Outlast a Crash",
+    "round": "$58M Series B",
+    "newsType": "raise",
+    "description": "A runtime that checkpoints long-horizon agent work so a multi-day task resumes after a crash instead of starting over.",
+    "founderName": "Praveen Ganesan",
+    "founderTitle": "IIT Madras dropout",
+    "founderQuote": "A task that dies on a restart was never in production. The run has to remember Thursday.",
+    "investorQuote": "Headcount does not scale with agents that need a person every time the process falls over.",
+    "investorName": "Neeraj Agrawal",
+    "investorFirm": "Battery Ventures",
+    "verticals": [
+      "Durable Execution",
+      "Agent Runtime",
+      "Agentic Work"
+    ],
+    "hashtags": [
+      "#Rezum",
+      "#DurableExecution",
+      "#RoundB",
+      "#LongHorizon",
+      "#CrashSafe"
+    ],
+    "xPost": "Rezum raises $58M Series B. A runtime that checkpoints long-horizon agent work so a multi-day task resumes after a crash instead of starting over.\n\n\"A task that dies on a restart was never in production. The run has to remember Thursday.\" \u2014 Praveen Ganesan\n\n\"Headcount does not scale with agents that need a person every time the process falls over.\" \u2014 Neeraj Agrawal \u00b7 Battery Ventures\n\n#Rezum #DurableExecution #RoundB #LongHorizon #CrashSafe",
+    "image": "/images/startups/praveen-ganesan.jpg"
+  },
+  {
+    "id": "winch-2026-09",
+    "date": "2026-09-21",
+    "companyName": "Winch",
+    "headline": "Winch Emerges From Stealth With $34M to Close the Physical Shift",
+    "round": "$34M \u00b7 Emerged from stealth",
+    "newsType": "stealth",
+    "description": "Agents that schedule, dispatch, and close exceptions across plants, yards, and docks, an operating layer for physical work that does not live in a browser tab.",
+    "founderName": "Jian Yao",
+    "founderTitle": "ex-intern NVIDIA",
+    "founderQuote": "One dispatcher covers the yard, the line, and the dock. That used to be a roster.",
+    "investorQuote": "Industrial work is a production surface. The control plane has to live next to the freight, not in a browser.",
+    "investorName": "Keith Crandell",
+    "investorFirm": "ARCH Venture Partners",
+    "verticals": [
+      "Industrial Ops",
+      "Physical AI",
+      "Agentic Ops"
+    ],
+    "hashtags": [
+      "#Winch",
+      "#IndustrialOps",
+      "#OutOfStealth",
+      "#PlantFloor",
+      "#YardClose"
+    ],
+    "xPost": "Winch emerges from stealth with $34M. Agents that schedule, dispatch, and close exceptions across plants, yards, and docks, an operating layer for physical work that does not live in a browser tab.\n\n\"One dispatcher covers the yard, the line, and the dock. That used to be a roster.\" \u2014 Jian Yao\n\n\"Industrial work is a production surface. The control plane has to live next to the freight, not in a browser.\" \u2014 Keith Crandell \u00b7 ARCH Venture Partners\n\n#Winch #IndustrialOps #OutOfStealth #PlantFloor #YardClose",
+    "image": "/images/startups/jian-yao.jpg"
+  },
+  {
+    "id": "meritum-2026-09",
+    "date": "2026-09-21",
+    "companyName": "Meritum",
+    "headline": "Meritum Takes $30M Strategic to Keep Portfolio Agents Inside the Mandate",
+    "round": "$30M strategic",
+    "newsType": "strategic",
+    "description": "Portfolio agents that execute inside a written mandate, with a book-and-record allocators can hand a committee.",
+    "founderName": "Isaac Hirsch",
+    "founderTitle": "ex-Ramp",
+    "founderQuote": "An agent that cannot show the mandate it traded under is just unmonitored exposure.",
+    "investorQuote": "Allocators pay for a trail that shows which agent touched which book, and why.",
+    "investorName": "Michael Carmen",
+    "investorFirm": "Wellington Management",
+    "verticals": [
+      "Agentic Investing",
+      "Fintech",
+      "Portfolio Ops"
+    ],
+    "hashtags": [
+      "#Meritum",
+      "#AgenticInvesting",
+      "#StrategicCheck",
+      "#MandateTrail",
+      "#BookAndRecord"
+    ],
+    "xPost": "Meritum takes strategic $30M. Portfolio agents that execute inside a written mandate, with a book-and-record allocators can hand a committee.\n\n\"An agent that cannot show the mandate it traded under is just unmonitored exposure.\" \u2014 Isaac Hirsch\n\n\"Allocators pay for a trail that shows which agent touched which book, and why.\" \u2014 Michael Carmen \u00b7 Wellington Management\n\n#Meritum #AgenticInvesting #StrategicCheck #MandateTrail #BookAndRecord",
+    "image": "/images/startups/isaac-hirsch.jpg"
+  },
+  {
+    "id": "seatara-2026-09",
+    "date": "2026-09-21",
+    "companyName": "Seatara",
+    "headline": "Seatara Raises $18M Seed for Agents on Both Sides of a Hire",
+    "round": "$18M Seed",
+    "newsType": "raise",
+    "description": "A two-sided hiring market where one agent represents the candidate and another represents the seat, so recruiters supervise a negotiation instead of rebuilding shortlists.",
+    "founderName": "Cheng Shi",
+    "founderTitle": "Berkeley dropout",
+    "founderQuote": "The hire is going to be negotiated by two agents before a recruiter ever opens the req.",
+    "investorQuote": "One recruiter supervising matches replaces the team that rebuilt shortlists by hand.",
+    "investorName": "Ann Miura-Ko",
+    "investorFirm": "Floodgate",
+    "verticals": [
+      "Talent Agents",
+      "Agentic Work",
+      "Marketplace"
+    ],
+    "hashtags": [
+      "#Seatara",
+      "#TalentAgents",
+      "#SeedCheck",
+      "#TwoSidedHire",
+      "#SeatMatch"
+    ],
+    "xPost": "Seatara raises $18M Seed. A two-sided hiring market where one agent represents the candidate and another represents the seat, so recruiters supervise a negotiation instead of rebuilding shortlists.\n\n\"The hire is going to be negotiated by two agents before a recruiter ever opens the req.\" \u2014 Cheng Shi\n\n\"One recruiter supervising matches replaces the team that rebuilt shortlists by hand.\" \u2014 Ann Miura-Ko \u00b7 Floodgate\n\n#Seatara #TalentAgents #SeedCheck #TwoSidedHire #SeatMatch",
+    "image": "/images/startups/cheng-shi.jpg"
+  },
+  {
     "id": "kerf-2026-09",
     "date": "2026-09-14",
     "companyName": "Kerf",
